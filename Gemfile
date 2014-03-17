@@ -4,7 +4,15 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+	gem 'sqlite3'
+	gem 'bullet'
+end
+
+group :production do
+	gem 'pg'
+   gem 'rails_12factor'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -28,18 +36,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'devise', '~> 3.1.1'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'
