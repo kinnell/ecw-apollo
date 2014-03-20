@@ -20,7 +20,16 @@ module Apollo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.assets.paths << "#{Rails.root}/vendor/assets/fonts"
+    config.assets.paths << "#{Rails.root}/app/assets/img"
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+
     config.assets.initialize_on_precompile = false
+
+    config.generators.stylesheets = false
+    config.generators.javascripts = false
+    config.generators.helper      = false
 
   end
 end
