@@ -6,6 +6,7 @@
 			<div class="logo">apollo</div>
 
 	<center>
+
  		<% unless user_signed_in? %>
  		   <%= link_to new_user_registration_path, class: "btn btn-primary btn-md" do %>
          	<i class='fa fa-magic'></i> Register
@@ -14,6 +15,8 @@
          	<i class='fa fa-key'></i> Log In
          <% end %>
  		<% else %>
+ 			Hello <%= current_user.name %>!
+ 			<br><br>
  	      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-warning btn-md" do %>
  	      	<i class='fa fa-sign-out'></i> Log Out
  	      <% end %>
