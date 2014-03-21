@@ -58,6 +58,10 @@ html, body {
 	text-shadow: -1px 0 #DDD, 0 1px #DDD, 1px 0 #DDD, 0 -1px #DDD, 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
+.logo a:hover {
+	text-decoration: none;
+}
+
 .alert-info {
 	text-align: center;
 }
