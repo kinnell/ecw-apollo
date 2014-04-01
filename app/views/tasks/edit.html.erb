@@ -1,0 +1,49 @@
+<div class="container" style="margin-top: 50px;">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title"><i class='fa fa-check-circle'></i> Edit Task</h3></div>
+
+        <div class="panel-body">
+          <%= form_for(@task) do |f| %>
+
+            <% if @task.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+                <ul><% @task.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul>
+              </div>
+            <% end %>
+
+            <fieldset>
+
+              <div class="form-group">
+              	   <%= f.collection_select(:project_id, Project.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
+              </div>
+
+              <div class="form-group">
+                <%= f.text_field :name, :placeholder => "Task Name", class: "form-control" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.date_field :due_date, class: "form-control" %>
+              </div>
+
+              <hr>
+
+              <div class="form-group">
+                <%= f.check_box :completed, class: "form-control" %> Completed?
+              </div>
+
+              <%= f.submit "Save", class: "btn btn-md btn-success btn-block" %>
+
+            </fieldset>
+
+          <% end %>
+
+        </div>
+
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </div>
+</div>

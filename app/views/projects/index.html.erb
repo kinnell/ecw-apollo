@@ -1,7 +1,38 @@
+<div class="container">
+
+	<h2><i class="fa fa-folder-o"></i> Projects<%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-success", style: "float: right;" %></h2>
 
 
-<% @projects.each do |project| %>
+	<table class="table table-bordered" style="background-color: white;">
+	  <thead>
+	    <tr>
+	    	<th>ID</th>
+	      <th>Name</th>
+	      <th>Due Date</th>
+	      <th>Status</th>
+	      <th>Tools</th>
+	    </tr>
+	  </thead>
 
-	project.name<br>
+	  <tbody>
+	    <% @projects.each do |project| %>
+	      <tr>
+	      	<td><%= project.id %>
+	        <td><%= link_to project.name, project %></td>
+	        <td>
+	        	<%= "<font color=red>".html_safe if project.due_date < DateTime.now %>
+	        	<%= project.due_date.strftime("%x") if project.due_date %>
+	        	<%= "</font>".html_safe if project.due_date < DateTime.now %>
+	        </td>
+	        <td><%= project.status %></td>
+	        <td><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %>
+	        		<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        	</td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
 
-<% end %>
+	<br>
+
+</div>

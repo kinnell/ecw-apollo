@@ -1,15 +1,16 @@
 class ProjectsController < ApplicationController
+	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@projects = Project.all
 	end
 
 	def show
-		@project = Project.find(params[:id])
+		@tasks = @project.tasks
 	end
 
 	def new
-		@project = projects.build
+		@project = Project.new
 	end
 
 	def edit
@@ -17,30 +18,35 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
+
 		if @project.save
-			redirect_to :back, notice: 'Project was successfully created.'
+			redirect_to projects_path, notice: 'Project was successfully created.'
 		else
-			render :new
+			render action: 'new'
 		end
 	end
 
 	def update
 		if @project.update(project_params)
-			redirect_to projects_path, notice: 'Project was successfully updated.'
+			redirect_to @project, notice: 'Project was successfully updated.'
 		else
-			render :edit
+		  render action: 'edit'
 		end
 	end
 
 	def destroy
 		@project.destroy
-		redirect_to projects_path, notice: 'Project was successfully deleted.'
+		redirect_to projects_url
 	end
 
 	private
 
+	def set_project
+		@project = Project.find(params[:id])
+	end
+
 	def project_params
-		params.require(:project).permit(:project)
+		params.require(:project).permit(:name, :due_date, :description)
 	end
 
 end

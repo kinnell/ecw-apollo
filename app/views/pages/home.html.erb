@@ -1,20 +1,20 @@
-<div class="topBar"></div>
 
 <div class="container" style="margin-top: 250px;">
 	<div class="row">
-
 
 			<div class="logo" style="font-size: 10em;">apollo</div>
 
 				<center>
 
 			 		<% unless user_signed_in? %>
-			 		   <%= link_to new_user_registration_path, class: "btn btn-primary btn-md" do %>
+			 			<div class="btn-group">
+			 		   <%= link_to new_user_registration_path, class: "btn btn-default btn-md" do %>
 			         	<i class='fa fa-magic'></i> Register
 			         <% end %>
-			         <%= link_to new_user_session_path, class: "btn btn-success btn-md" do %>
+			         <%= link_to new_user_session_path, class: "btn btn-default btn-md" do %>
 			         	<i class='fa fa-key'></i> Log In
 			         <% end %>
+			      </div>
 			 		<% else %>
 			 			Hello <%= current_user.name %>!
 			 			<br><br>
@@ -27,5 +27,3 @@
 
 	</div>
 </div>
-
-<div class="bottomBar"></div>

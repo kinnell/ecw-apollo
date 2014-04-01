@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321182633) do
+ActiveRecord::Schema.define(version: 20140401171753) do
 
   create_table "products", force: true do |t|
     t.string   "name",       null: false
@@ -20,18 +20,33 @@ ActiveRecord::Schema.define(version: 20140321182633) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "due_date"
+    t.string   "status",      default: "Incomplete", null: false
+    t.string   "description"
   end
 
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.datetime "due_date"
+    t.boolean  "completed",    default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.datetime "completed_at"
+  end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -42,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140321182633) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
+    t.boolean  "admin",                  default: false, null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

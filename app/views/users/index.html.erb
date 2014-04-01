@@ -1,0 +1,30 @@
+<div class="container">
+
+	<h2><i class="fa fa-users"></i> Users</h2>
+
+
+	<table class="table table-bordered" style="background-color: white;">
+	  <thead>
+	    <tr>
+	    	<th>ID</th>
+	      <th>Name</th>
+	      <th>Email</th>
+	      <th>Admin?</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	   <% @users.each do |user| %>
+	      <tr>
+	      	<td><%= user.id %>
+	      	<td><%= user.name %></td>
+	      	<td><%= user.email %></td>
+	      	<td><%= user.admin %></td>
+	      </tr>
+	   <% end %>
+	  </tbody>
+	</table>
+
+	<br>
+
+</div>
