@@ -1,0 +1,84 @@
+<div class="container">
+
+	<h2><i class="fa fa-tasks"></i> Dashboard</h2>
+
+	<hr>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" style="padding: 10px 20px 5px 20px;">
+				<h4><i class="fa fa-check-circle"></i> Tasks</h4>
+			</div>
+			<div class="panel-body">
+
+				<h4>no due date</h4>
+
+						<% @tasks.notDue.each do |task| %>
+
+
+				<div style="display: inline; color: #999; font-size: 12px;"><%= link_to task.project.name.upcase, task.project %></div>
+			<ul style="list-style-type: none; padding:5px 0 0 15px;">
+				<li style="padding-bottom: 10px;">
+					<%= link_to '<i class="fa fa-square-o" style="padding-right: 5px;"></i>'.html_safe, complete_task_path(task), method: :post %>
+					<%= task.name %>
+
+					<div style="float: right;">
+						<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
+						<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				</li>
+
+				<hr style="margin: 2px 0 15px 20px; border-top: 1px solid #EEE;">
+			</ul>
+
+
+
+
+				<% end %>
+				<br>
+
+
+				<% @tasks_sorted = @tasks.due.group_by {|d| d.due_date.to_date } %>
+				<% @tasks_sorted.each do |date, tasks| %>
+				<h4>
+
+						due in <%= time_ago_in_words(date) %>
+						<font color='#999'><%= "(#{date.strftime('%x')})".html_safe %></font>
+						<br>
+						</h4>
+
+						<% for task in tasks %>
+
+
+				<div style="display: inline; color: #999; font-size: 12px;"><%= link_to task.project.name.upcase, task.project %></div>
+			<ul style="list-style-type: none; padding:5px 0 0 15px;">
+				<li style="padding-bottom: 10px;">
+					<%= link_to '<i class="fa fa-square-o" style="padding-right: 5px;"></i>'.html_safe, complete_task_path(task), method: :post %>
+					<%= task.name %>
+
+					<div style="float: right;">
+						<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
+						<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				</li>
+
+				<hr style="margin: 2px 0 15px 20px; border-top: 1px solid #EEE;">
+			</ul>
+
+			<% end %>
+
+
+
+			<br>
+				<% end %>
+
+
+
+
+
+			</div>
+		</div>
+
+
+	<br>
+
+</div>

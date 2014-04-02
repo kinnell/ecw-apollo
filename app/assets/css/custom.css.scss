@@ -4,6 +4,9 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 }
 
+hr {
+	border-top: 1px solid #ddd;
+}
 .frontpage {
 	background: url('background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;

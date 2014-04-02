@@ -1,20 +1,75 @@
 <div class="container">
 
-	<h2><i class="fa fa-folder-o"></i> <%= @project.name %><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project), class: "btn btn-sm btn-success", style: "float: right;" %></h2>
 
-	<h4><b>Due Date:</b> <%= @project.due_date.strftime("%x") %></h4>
+	<div class="panel panel-default">
+		<div class="panel-heading" style="padding: 5px 20px 5px 20px;">
+			<h3><%= if @project.product then "[#{@project.product.name}] #{@project.name}" else "#{@project.name}" end %>
+				<div style="float:right"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project) %> <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, @project, method: :delete, data: { confirm: 'Are you sure?' } %></div></h3>
+		</div>
+		<div class="panel-body">
+						<p style="color: #666; line-height: 250%;">
+							<i class="fa fa-calendar" style="padding-right: 5px;"></i> <%= @project.due_date.strftime("%B %-m, %Y") if @project.due_date %>
+						<i class="fa fa-user" style="padding-left: 100px; padding-right: 5px;"></i> <%= link_to current_user.name, current_user %>
+						<br><i class="fa fa-code" style="padding-right: 5px;"></i> <%= @project.description %>
+						 </p>		</div>
+	</div>
 
 	<hr>
 
-	<ul>
-		<% @tasks.each do |task| %>
-		<li>
-			<%= task.name %> (<%= task.due_date.strftime("%x") if task.due_date %>)
-			<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
-			<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</li>
-		<% end %>
-	</ul>
+	<div class="panel panel-default">
+		<div class="panel-heading" style="padding: 10px 20px 5px 20px;">
+			<h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)</h4>
+		</div>
+		<div class="panel-body">
+
+			<ul style="list-style-type: none; padding:5px 0 0 15px;">
+				<% @project.tasks.incomplete.each do |task| %>
+				<li style="padding-bottom: 10px;">
+					<%= link_to '<i class="fa fa-square-o" style="padding-right: 5px;"></i>'.html_safe, complete_task_path(task), method: :post %>
+					<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
+
+					<div style="float: right;">
+						<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
+						<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				</li>
+
+				<hr style="margin: 2px 0 15px 20px; border-top: 1px solid #EEE;">
+				<% end %>
+			</ul>
+
+		<%= link_to '<i class="fa fa-plus" style="padding-left: 15px; padding-right: 15px"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask' %>
+
+
+		<br><br>
+
+		<div id="addTask" class="collapse">
+			<%= form_for [@project.tasks.new], :html => {:class => 'form-inline'} do |f| %>
+			<div class="form-group">
+				<%= f.hidden_field :project_id, :value => @project.id, class: "form-control"%>
+				<%= f.text_field :name, :placeholder => "Task", class: "form-control" %>
+				<%= f.date_field :due_date, class: "form-control" %>
+				<%= f.submit "Add Task", class: "btn btn-md btn-success" %>
+			</div>
+			<% end %>
+		</div>
+
+			<hr>
+
+			<ul style="list-style-type: none; padding-left:15px;">
+				<% @project.tasks.completed.each do |task| %>
+				<li style="padding-bottom: 10px; color: #bbb; font-style: italic;">
+					<%= link_to '<i class="fa fa-check-square" style="padding-right: 5px; color: #bbb"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
+					<strike><%= task.name %></strike>
+					<%= "(Completed: #{task.completed_at.strftime("%x")})".html_safe %>
+				</li>
+				<hr style="margin: 2px 0 15px 20px; border-top: 1px solid #EEE;">
+				<% end %>
+			</ul>
+
+		</div>
+	</div>
+
 
 
 

@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@tasks = @project.tasks
 	end
 
 	def new
@@ -46,7 +45,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :due_date, :description)
+		params.require(:project).permit(:name, :due_date, :description, :product_id)
 	end
 
 end

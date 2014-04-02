@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
   def update
       if @task.update(task_params)
-        redirect_to @task, notice: 'Task was successfully updated.'
+        redirect_to @task.project, notice: 'Task was successfully updated.'
       else
         render action: 'edit'
       end
@@ -35,7 +35,23 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-      redirect_to tasks_url
+      redirect_to :back
+  end
+
+  def complete
+    @task = Task.find(params[:id])
+    if @task.update_attributes(:completed => true)
+      @task.update_attributes(:completed_at => DateTime.now)
+      redirect_to :back
+    end
+  end
+
+  def uncomplete
+    @task = Task.find(params[:id])
+    if @task.update_attributes(:completed => false)
+      @task.update_attributes(:completed_at => nil)
+      redirect_to :back
+    end
   end
 
   private
