@@ -1,29 +1,20 @@
-
-<div class="container" style="margin-top: 250px;">
+<div style="margin-top: 250px;">
 	<div class="row">
 
-			<div class="logo" style="font-size: 10em;">apollo</div>
+		<div class="logo" style="font-size: 10em;">apollo</div>
 
-				<center>
-
-			 		<% unless user_signed_in? %>
-			 			<div class="btn-group">
-			 		   <%= link_to new_user_registration_path, class: "btn btn-default btn-md" do %>
-			         	<i class='fa fa-magic'></i> Register
-			         <% end %>
-			         <%= link_to new_user_session_path, class: "btn btn-default btn-md" do %>
-			         	<i class='fa fa-key'></i> Log In
-			         <% end %>
-			      </div>
-			 		<% else %>
-			 			Hello <%= current_user.name %>!
-			 			<br><br>
-			 	      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-warning btn-md" do %>
-			 	      	<i class='fa fa-sign-out'></i> Log Out
-			 	      <% end %>
-			 	   <% end %>
-
-			 	</center>
+		<center>
+	 		<% unless user_signed_in? %>
+	 			<div class="btn-group">
+		 		   <%= link_to new_user_registration_path, class: "btn btn-default btn-md" do %>
+		         	<i class='fa fa-magic'></i> Register
+		         <% end %>
+		         <%= link_to new_user_session_path, class: "btn btn-default btn-md" do %>
+		         	<i class='fa fa-key'></i> Log In
+		         <% end %>
+	      	</div>
+	 	   <% end %>
+	 	</center>
 
 	</div>
 </div>

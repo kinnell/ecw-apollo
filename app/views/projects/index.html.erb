@@ -1,46 +1,51 @@
-<div class="container">
+<h2><i class="fa fa-folder-o"></i> Projects<%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-success", style: "float: right;" %></h2>
 
-	<h2><i class="fa fa-folder-o"></i> Projects<%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-success", style: "float: right;" %></h2>
+<hr>
 
-	<hr>
+<% for project in @projects %>
 
+	<div class="panel panel-default">
+		<div class="panel-heading">
 
-	<% @projects.each do |project| %>
-		<div class="panel panel-default">
-			<div class="panel-heading" style="padding: 10px 20px 5px 20px;">
-				<h4><%= link_to "[#{project.product.name}] #{project.name}", project %>
-					<div style="float:right"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %> <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %></div></h4>
+			<h4>
+				<%= link_to "[#{project.product.name}] #{project.name}", project %>
+				<div class="tools">
+					<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %>
+					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</div>
+			</h4>
 
-						<p style="color: #666; line-height: 200%;">
-							<i class="fa fa-calendar" style="padding-right: 5px;"></i> <%= project.due_date.strftime("%B %-m, %Y") if project.due_date %>
-						<i class="fa fa-user" style="padding-left: 100px; padding-right: 5px;"></i> <%= link_to current_user.name, current_user %>
-						<br><i class="fa fa-code" style="padding-right: 5px;"></i> <%= project.description %>
-						 </p>
+			<div class="project-info">
+				<p>
+					<i class="fa fa-calendar"></i> <%= project.due_date.strftime("%B %-m, %Y") if project.due_date %>
+					<i class="fa fa-user" style="padding-left: 100px"></i> <%= link_to current_user.name, current_user %><br>
+					<i class="fa fa-code"></i> <%= project.description %>
+				</p>
 			</div>
-			<div class="panel-body">
 
-			<ul style="list-style-type: none; padding:5px 0 0 15px;">
-				<% project.tasks.incomplete.each do |task| %>
-				<li style="padding-bottom: 10px;">
-					<%= link_to '<i class="fa fa-square-o" style="padding-right: 5px;"></i>'.html_safe, complete_task_path(task), method: :post %>
-					<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
-
-					<div style="float: right;">
-						<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
-						<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
-					</div>
-				</li>
-
-				<hr style="margin: 2px 0 15px 20px; border-top: 1px solid #EEE;">
-				<% end %>
-			</ul>
-
-
-			</div>
 		</div>
-	<% end %>
 
+		<div class="panel-body">
 
-	<br>
+			<div class="tasks-list">
+				<ul>
+					<% for task in  project.tasks.incomplete %>
+						<li>
+							<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+							<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
 
-</div>
+							<div style="float: right;">
+								<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
+								<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
+							</div>
+						</li>
+						<hr>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+<% end %>

@@ -11,16 +11,17 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 
-<body class="<%= user_signed_in? ? 'insidepage' : 'frontpage'%>">
+<body class="<%= user_signed_in? ? 'inside-page' : 'front-page'%>">
 
-<%= render "layouts/nav" %>
+	<%= render "layouts/nav" %>
 
-<% flash.each do |name, msg| %>
-   <%= content_tag(:div, msg, class: "alert alert-info") %>
-<% end %>
+	<% flash.each do |name, msg| %>
+	   <%= content_tag(:div, msg, class: "alert alert-info") %>
+	<% end %>
 
-
-<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

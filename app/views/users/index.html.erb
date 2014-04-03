@@ -1,42 +1,34 @@
-<div class="container">
+<h2><i class="fa fa-users"></i> Team</h2>
 
-  <h2><i class="fa fa-users"></i> Team</h2>
+<hr>
 
-  <hr>
+<% for user in @users %>
 
+  <div class="panel panel-default">
 
-  <% @users.each do |user| %>
-    <div class="panel panel-default">
-      <div class="panel-heading" style="padding: 10px 20px 5px 20px;">
-        <h4><i class="fa fa-user" style="color: #666"></i> <%= link_to user.name, user %> <%= "<font color=#999>(#{user.email})</font>".html_safe %></h4>
+    <div class="panel-heading">
+      <h4><i class="fa fa-user" style="color: #666"></i> <%= link_to user.name, user %> <%= "<font color=#999>(#{user.email})</font>".html_safe %></h4>
+    </div>
 
+    <div class="panel-body">
 
-      </div>
-      <div class="panel-body">
-
-  <table class="table">
-    <thead>
-      <tr>
-      	<th>Product</th>
-        <th>Project</th>
-        <th>Start Date</th>
-        <th>Due Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-
-
-  </table>
-
-
-
-      </div>
+      <table class="table">
+        <thead>
+          <tr>
+          	<th>Product</th>
+            <th>Project</th>
+            <th>Start Date</th>
+            <th>Due Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+      </table>
 
     </div>
-  <% end %>
 
+  </div>
 
-  <br>
+<% end %>
 
-</div>
+<br>

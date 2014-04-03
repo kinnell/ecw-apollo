@@ -1,5 +1,7 @@
 @import 'bootstrap';
 
+// GENERAL HTML //
+
 html, body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -7,7 +9,8 @@ html, body {
 hr {
 	border-top: 1px solid #ddd;
 }
-.frontpage {
+
+.front-page {
 	background: url('background.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -15,49 +18,44 @@ hr {
   background-size: cover;
 }
 
-.insidepage {
+.inside-page {
 	background: #ecf0f1;
+	background: url('dust.png') repeat;
 }
+
+// NAV
+
+.navbar {
+	border-radius: 0px;
+
+	.navbar-brand {
+		padding-left: 50px;
+		padding-right: 100px;
+	}
+
+	.navbar-nav li {
+		padding-right: 20px;
+	}
+}
+
+
+// FORMS
 
 .form-control {
 	padding: 20px;
 }
 
-
-.panel-heading {
-	padding: 20px;
-}
-
-.panel-footer {
-	font-size: 12px;
-	text-align: center;
-}
-
-.topBar {
-	position: fixed;
-	background-color: white;
-	top: 0px;
-	min-height: 100px;
-	min-width: 100%;
-	border: 1px solid #e7e7e7;
-	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
-
-.bottomBar {
-	position: fixed;
-	background-color: #428bca;
-	bottom: 0px;
-	min-height: 100px;
-	min-width: 100%;
-	border: 1px solid #357ebd;
-	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
+// PANELS //
 
 .panel {
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+
+
+	.panel-footer {
+		font-size: 12px;
+		text-align: center;
+	}
 }
 
 .panel-outside {
@@ -65,6 +63,80 @@ hr {
 	box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
 }
 
+.btn {
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+// PROJECTS
+
+.project-info, .user-info {
+
+	p {
+		color: #666;
+		line-height: 200%;
+	}
+
+	i {
+		padding-right: 5px;
+	}
+
+
+
+}
+
+
+
+// TASKS
+
+.tasks-list {
+
+	.title-sm {
+		display: inline-block;
+		color: #999;
+		font-size: 12px;
+		padding-bottom: 5px;
+	}
+
+	ul {
+		list-style-type: none;
+		padding: 5px 0 0 15px;
+
+		li { padding-bottom: 10px; }
+
+		li a i { padding-right: 5px; }
+
+		hr {
+			margin: 2px 0 15px 20px;
+			border-top: 1px solid #EEE;
+		}
+	}
+
+	.completed {
+		color: #bbb;
+		font-style: italic;
+
+		li i {
+			color: #bbb;
+		}
+	}
+
+	.add-task i {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+}
+
+.tools { float: right; }
+
+// ROW
+
+.row {
+	margin-top: 50px;
+}
+
+// LOGO
 
 .logo {
 	font-family: 'Orbitron', sans-serif;
@@ -85,6 +157,8 @@ hr {
 .logo a:hover {
 	text-decoration: none;
 }
+
+// ALERTS
 
 .alert-info {
 	text-align: center;
