@@ -6,6 +6,9 @@
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 
+  <%= javascript_include_tag "jquery-1.10.2.min" %>
+  <%= javascript_include_tag "jquery.noty" %>
+
 	<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -15,9 +18,32 @@
 
 	<%= render "layouts/nav" %>
 
+<% if false %>
 	<% flash.each do |name, msg| %>
 	   <%= content_tag(:div, msg, class: "alert alert-info") %>
 	<% end %>
+<% end %>
+
+	<script type="text/javascript">
+    $(document).ready(function () {
+      <% flash.each do |name, msg| %>
+        noty({text:'<%= msg %>',
+              type: 'information',
+              layout: 'topCenter',
+              timeout: 5000,
+              animation: {
+                open: {height: 'toggle'},
+                close: {height: 'toggle'},
+                easing: 'swing',
+                speed: 200}
+              }
+        );
+      <% end %>
+
+
+    });
+</script>
+
 
 	<div class="container">
 		<%= yield %>

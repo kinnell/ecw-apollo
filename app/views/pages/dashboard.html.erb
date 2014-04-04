@@ -9,28 +9,34 @@
 	</div>
 
 	<div class="panel-body">
+
+
 		<div class="tasks-list">
 
-			<h4>no due date</h4>
+			<% if @tasks.notDue.exists? %>
 
-			<% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks| %>
+				<h4>no due date</h4><hr>
 
-				<div class="title-sm"><%= link_to project.name.upcase, project %></div>
+				<% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks| %>
 
-				<ul>
-					<% for task in tasks %>
-						<li><%= render partial: "tasks/show", :locals => {:task => task} %></li>
-						<hr>
-					<% end %>
-				</ul>
+					<div class="title-sm"><%= link_to project.name.upcase, project %></div>
+
+					<ul>
+						<% for task in tasks %>
+							<li><%= render partial: "tasks/show", :locals => {:task => task} %></li>
+							<hr>
+						<% end %>
+					</ul>
+
+				<% end %>
+
+				<br>
 
 			<% end %>
 
-			<br>
-
 			<% @tasks.due.group_by {|t| t.due_date.to_date }.each do |date, tasks_by_date| %>
 
-				<h4>due in <%= time_ago_in_words(date) %><font color='#999'> <%= "(#{date.strftime('%x')})".html_safe %></font></h4>
+				<h4>due in <%= time_ago_in_words(date) %><font color='#999'> <%= "(#{date.strftime('%x')})".html_safe %></font></h4><hr>
 
 				<%	tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
 

@@ -34,9 +34,14 @@
             <%= f.date_field :due_date, class: "form-control" %>
           </div>
 
-          <div class="form-group">
-             <%= f.collection_select(:product_id, Product.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
-          </div>
+          <%= f.fields_for :assignment do |builder| %>
+            <div class="form-group">
+              <%= builder.hidden_field :user_id, :value => current_user.id %>
+              <%= builder.collection_select(:user_id, User.all, :id , :name, {:class => 'form-control' }) if false %>
+            </div>
+          <% end %>
+
+
 
           <%= f.submit "Add Project", class: "btn btn-md btn-success btn-block" %>
 

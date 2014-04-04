@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
+		@assignment = @project.assignments.build(:project_id => @project.id)
 	end
 
 	def edit
@@ -17,6 +18,7 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
+		@assignment = @project.assignments.build(:project_id => @project.id)
 
 		if @project.save
 			redirect_to projects_path, notice: 'Project was successfully created.'
