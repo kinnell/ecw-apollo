@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   def calendar
   	@tasks = Task.incomplete.due.order("due_date")
     @tasks_by_date = @tasks.group_by {|t| t.due_date.to_date}
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
 

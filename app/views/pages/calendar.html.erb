@@ -3,12 +3,17 @@
 	<div class="panel-heading"><h4><i class="fa fa-calendar"></i> Calendar</h4></div>
 
 	<div class="panel-body">
-		<%= calendar do |date| %>
+		<h2 id="month">
+	    <%= link_to "<", date: @date.prev_month %>
+	    <%= @date.strftime("%B %Y") %>
+	    <%= link_to ">", date: @date.next_month %>
+	  </h2>
+		<%= calendar @date do |date| %>
 			<%= date.day %>
 			<% if @tasks_by_date[date] %>
 				<ul>
 					<% @tasks_by_date[date].each do |task| %>
-						<li><%= link_to task.name, task.project %></li>
+						<%= link_to "<li><i class='fa fa-check-circle'></i> #{task.name[0,17]}...</li>".html_safe, task.project %>
 					<% end %>
 				</ul>
 			<% end %>
