@@ -9,6 +9,8 @@ gem 'rails', '4.0.2'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'bullet'
+	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 group :production do

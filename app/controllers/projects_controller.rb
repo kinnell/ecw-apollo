@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
-		@assignment = @project.assignments.build(:project_id => @project.id)
+		@project.assignments.build
 	end
 
 	def edit
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
-		@assignment = @project.assignments.build(:project_id => @project.id)
+		@project.assignments.build
 
 		if @project.save
 			redirect_to projects_path, notice: 'Project was successfully created.'
@@ -47,7 +47,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :due_date, :description, :product_id)
+		params.require(:project).permit(:name, :due_date, :description, :product_id, :status, assignments_attributes: [ :user_id, :project_id ])
 	end
+
 
 end

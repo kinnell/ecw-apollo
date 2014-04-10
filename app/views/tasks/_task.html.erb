@@ -1,0 +1,9 @@
+<li>
+	<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+
+	<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
+
+	<%= render partial: "tasks/tools", :locals => {:task => task} %>
+</li>
+
+<hr>

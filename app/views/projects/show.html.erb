@@ -3,19 +3,18 @@
 	<div class="panel-heading">
 		<h3>
 			<%= if @project.product then "[#{@project.product.name}] #{@project.name}" else "#{@project.name}" end %>
-			<div class="tools">
-				<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project) %>
-				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, @project, method: :delete, data: { confirm: 'Are you sure?' } %>
-			</div>
+				<%= render partial: "projects/tools", :locals => {:project => @project} %>
 		</h3>
 	</div>
 
 	<div class="panel-body">
 		<div class="project-info" style="line-height: 250%;">
 			<p>
-				<i class="fa fa-calendar"></i> <%= @project.due_date.strftime("%B %-m, %Y") if @project.due_date %>
-				<i class="fa fa-user" style="padding-left: 100px;"></i> <%= link_to current_user.name, current_user %><br>
-				<i class="fa fa-code"></i> <%= @project.description %>
+				<div class="col-md-4"><i class="fa fa-calendar"></i> <%= @project.due_date.strftime("%B %-m, %Y") if @project.due_date %></div>
+				<div class="col-md-4"><i class="fa fa-user"></i> <%= link_to current_user.name, current_user %></div>
+				<div class="col-md-4"><i class="fa fa-refresh"></i> <%= @project.status %></div>
+
+				<div class="col-md-12"><i class="fa fa-code"></i> <%= @project.description %></div>
 			</p>
 		</div>
 	</div>
@@ -33,22 +32,9 @@
 	<div class="panel-body">
 
 		<div class="tasks-list">
-			<ul>
-				<% for task in @project.tasks.incomplete %>
-					<li>
-						<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-						<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
+			<ul><%= render @project.tasks.incomplete %></ul>
 
-						<div class="tools">
-							<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
-							<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
-						</div>
-					</li>
-					<hr>
-				<% end %>
-			</ul>
-
-		<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
+			<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
 
 		</div>
 
@@ -66,16 +52,7 @@
 		<hr>
 
 		<div class="tasks-list">
-			<ul class="completed">
-				<% for task in @project.tasks.completed %>
-					<li>
-						<%= link_to '<i class="fa fa-check-square"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
-						<strike><%= task.name %></strike>
-						<%= "(Completed: #{task.completed_at.strftime("%x")})".html_safe %>
-					</li>
-					<hr>
-				<% end %>
-			</ul>
+			<ul class="completed"><%= render @project.tasks.completed %></ul>
 		</div>
 
 	</div>

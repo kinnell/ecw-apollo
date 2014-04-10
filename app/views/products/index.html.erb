@@ -30,7 +30,7 @@
         <tbody>
           <% product.projects.each do |project| %>
             <tr>
-              <td><%= project.name %></td>
+              <td><%= link_to project.name, project %></td>
               <td><%= link_to current_user.name, current_user %></td>
               <td><%= project.created_at.strftime("%x") if project.created_at %></td>
               <td><%= project.due_date.strftime("%x") if project.due_date %></td>

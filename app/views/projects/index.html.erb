@@ -9,18 +9,19 @@
 
 			<h4>
 				<%= link_to "[#{project.product.name}] #{project.name}", project %>
-				<div class="tools">
-					<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %>
-					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
-				</div>
+
+				<%= render partial: "projects/tools", :locals => {:project => project} %>
+
 			</h4>
 
-			<div class="project-info">
-				<p>
-					<i class="fa fa-calendar"></i> <%= project.due_date.strftime("%B %-m, %Y") if project.due_date %>
-					<i class="fa fa-user" style="padding-left: 100px"></i> <%= link_to current_user.name, current_user %><br>
-					<i class="fa fa-code"></i> <%= project.description %>
-				</p>
+			<div class="project-info" style="line-height: 250%">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-md-4"><i class="fa fa-calendar"></i> <%= project.due_date.strftime("%B %-m, %Y") if project.due_date %></div>
+					<div class="col-md-4"><i class="fa fa-user"></i> <%= if project.users.first then project.users.uniq.map {|u| u.name}.join(", ") end %></div>
+					<div class="col-md-4"><i class="fa fa-refresh"></i> <%= project.status %></div>
+
+					<div class="col-md-12"><i class="fa fa-code"></i> <%= project.description %></div>
+				</div>
 			</div>
 
 		</div>
@@ -28,20 +29,7 @@
 		<div class="panel-body">
 
 			<div class="tasks-list">
-				<ul>
-					<% for task in  project.tasks.incomplete %>
-						<li>
-							<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-							<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
-
-							<div style="float: right;">
-								<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_task_path(task) %>
-								<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
-							</div>
-						</li>
-						<hr>
-					<% end %>
-				</ul>
+				<ul><%= render project.tasks.incomplete %></ul>
 			</div>
 
 		</div>

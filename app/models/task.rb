@@ -7,3 +7,4 @@ class Task < ActiveRecord::Base
 	scope :notDue, -> { where(:due_date => nil) }
 	scope :due, -> { where.not(:due_date => nil) }
 end
+

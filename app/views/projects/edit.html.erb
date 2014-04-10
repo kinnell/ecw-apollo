@@ -32,6 +32,20 @@
             <%= f.date_field :due_date, class: "form-control" %>
           </div>
 
+          <hr>
+
+          <div class="form-group">
+             <%= f.select(:status, [['Incomplete'],['In Progress'],['Completed']], {}, { :class => 'form-control' }) %>
+          </div>
+
+          <%= f.fields_for :assignments do |builder| %>
+            <div class="form-group">
+              <%= builder.collection_select(:user_id, User.all, :id , :name, {}, {:class => 'form-control' }) %>
+            </div>
+          <% end %>
+
+
+
           <%= f.submit "Save", class: "btn btn-md btn-success btn-block" %>
 
         </fieldset>

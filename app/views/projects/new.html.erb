@@ -34,14 +34,11 @@
             <%= f.date_field :due_date, class: "form-control" %>
           </div>
 
-          <%= f.fields_for :assignment do |builder| %>
+          <%= f.fields_for :assignments do |builder| %>
             <div class="form-group">
-              <%= builder.hidden_field :user_id, :value => current_user.id %>
-              <%= builder.collection_select(:user_id, User.all, :id , :name, {:class => 'form-control' }) if false %>
+              <%= builder.collection_select(:user_id, User.all, :id , :name, {}, {:class => 'form-control' }) %>
             </div>
           <% end %>
-
-
 
           <%= f.submit "Add Project", class: "btn btn-md btn-success btn-block" %>
 

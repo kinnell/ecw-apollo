@@ -82,10 +82,7 @@ hr {
 	}
 
 
-
 }
-
-
 
 // TASKS
 
@@ -115,6 +112,16 @@ hr {
 			margin: 2px 0 15px 20px;
 			border-top: 1px solid #EEE;
 		}
+
+		.tools-dropdown {
+			padding: 0px;
+
+			li { padding-bottom: 0px; }
+
+			li ul { padding: 5px 0; }
+
+			li ul a i { padding: 0px; }
+		}
 	}
 
 	.completed {
@@ -123,6 +130,10 @@ hr {
 
 		li i {
 			color: #bbb;
+		}
+
+		li {
+			text-decoration: line-through;
 		}
 	}
 
@@ -134,6 +145,19 @@ hr {
 }
 
 .tools { float: right; }
+
+
+.tools-dropdown {
+	float: right;
+	list-style-type: none;
+	padding-right: 5px;
+
+	li ul { min-width: 0px; }
+
+	li a { opacity: 0.8; }
+
+	li a:hover { opacity: 1; }
+}
 
 // ROW
 
@@ -167,4 +191,62 @@ hr {
 
 .alert-info {
 	text-align: center;
+}
+
+
+// CALENDAR
+.calendar {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999;
+  }
+
+  th {
+    background: #DDD;
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+  }
+
+  td {
+    background: #FFF;
+    color: #777;
+    height: 80px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .notmonth, .notmonth a { color: #CCC; }
+  .today { background-color: #D7F2FF; }
+
+
+	#month {
+	  margin: 0;
+	  padding-bottom: 10px;
+	  text-align: center;
+	  font-size: 22px;
+	  a {
+	    text-decoration: none;
+	    padding: 0 10px;
+	    color: #999;
+	  }
+	}
+
+	ul {
+	  font-size: 11px;
+	  padding-left: 20px;
+	  list-style-type: none;
+
+	  li {
+	  	background-color: #EEE;
+	  	border-radius: 5px;
+	  	padding: 5px;
+	  	margin-bottom: 2px;
+	  }
+
+	}
 }
