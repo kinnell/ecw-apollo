@@ -13,7 +13,7 @@
 			<% if @tasks_by_date[date] %>
 				<ul>
 					<% @tasks_by_date[date].each do |task| %>
-						<%= link_to "<li><i class='fa fa-check-circle'></i> #{task.name[0,17]}...</li>".html_safe, task.project %>
+						<%= link_to "<li><i class='fa fa-check-circle'></i> #{task.name[0,21]}...</li>".html_safe, task.project %>
 					<% end %>
 				</ul>
 			<% end %>

@@ -199,6 +199,9 @@ hr {
   border-collapse: collapse;
   width: 100%;
 
+  tr {
+  }
+
   td, th {
     font-size: 10px;
     padding: 6px;
@@ -211,27 +214,27 @@ hr {
     text-align: center;
     width: 14.2857142857143%;
     text-transform: uppercase;
-    text-align: right;
   }
 
   td {
     background: #FFF;
     color: #777;
-    height: 80px;
+    height: 120px;
     vertical-align: top;
+    text-align: right;
     font-size: 12px;
   }
 
   .notmonth, .notmonth a { background-color: #F7F7F7; color: #CCC; }
   .today {
-  	background-color: #F1F1F1;
+  	background-color: #e4f6fe;
   	//border: 2px solid #999;
   }
 
 
 	ul {
 	  font-size: 10px;
-	  padding-left: 20px;
+	  padding-left: 0px;
 	  list-style-type: none;
 
 	  li {
@@ -239,7 +242,8 @@ hr {
 	  	border: 1px solid #79D3FC;
 	  	border-radius: 5px;
 	  	padding: 5px;
-	  	margin-bottom: 2px;
+	  	margin-top: 2px;
+	  	text-align: left;
 	  }
 
 	  a, a:hover {
@@ -255,6 +259,7 @@ hr {
 }
 
 #month {
+		font-weight: bold;
 	  margin: 0;
 	  padding-bottom: 10px;
 	  text-align: center;

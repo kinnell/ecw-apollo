@@ -1,5 +1,7 @@
 Apollo::Application.routes.draw do
 
+  resources :items
+
   resources :products
 
   resources :projects
