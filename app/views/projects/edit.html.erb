@@ -44,12 +44,12 @@
           </div>
 
           <div class="form-group">
-           <%  User.all(:order => "name ASC").each_with_index do |user,idx| %>
-              <%= check_box_tag "project[assignments_attributes][#{idx}][user_id]", user.id, @project.user_ids.include?(user.id) %>
-              <%= user.name %>
-              <br>
+           <%  User.all.each_with_index do |user,idx| %>
+            <%= check_box_tag "project[assignments_attributes][#{idx}][user_id]", user.id, @project.user_ids.include?(user.id) %>
+            <%= user.name %>
+            <br>
           <% end %>
-        </div>
+          </div>
 
           <% if false %>
           <div class="form-group">
@@ -62,17 +62,17 @@
           <% end %>
 
 
-        <% if false %>
-          <%= f.fields_for :assignments do |builder| %>
-            <% if builder.object.new_record? %>
-              <div class="form-group">
-                <%= builder.collection_select(:user_id, User.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
-              </div>
-              <% else %>
-                <%= builder.object.user.name %>  <%= builder.check_box :_destroy %><%= builder.label :_destroy, "Remove User" %><br>
-              <% end %>
+          <% if false %>
+            <%= f.fields_for :assignments do |builder| %>
+              <% if builder.object.new_record? %>
+                <div class="form-group">
+                  <%= builder.collection_select(:user_id, User.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
+                </div>
+                <% else %>
+                  <%= builder.object.user.name %>  <%= builder.check_box :_destroy %><%= builder.label :_destroy, "Remove User" %><br>
+                <% end %>
+            <% end %>
           <% end %>
-        <% end %>
 
 
 

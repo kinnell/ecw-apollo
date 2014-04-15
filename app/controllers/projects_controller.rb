@@ -55,7 +55,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-
 	private
 
 	def set_project

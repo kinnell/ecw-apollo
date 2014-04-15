@@ -1,3 +1,5 @@
-<b><%= link_to comment.user.name, comment.user %></b> <%= comment.content %><br>
+<b><%= link_to comment.user.name, comment.user %></b> <%= comment.content %><div style="float: right;"><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div><br>
 <font color=#999><%= time_ago_in_words(comment.created_at) %> ago</font>
+
 <hr>

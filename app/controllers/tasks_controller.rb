@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
-    @tasks = Task.incomplete.order("due_date")
+    @projects = current_user.projects
+    @tasks = @projects.map{|p| p.tasks.incomplete}.first.order("due_date")
 
   end
 
