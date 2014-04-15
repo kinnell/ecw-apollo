@@ -32,17 +32,29 @@
             <%= f.date_field :due_date, class: "form-control" %>
           </div>
 
+          <div class="form-group">
+             <%= f.select(:priority, [['None', 0],['Low', 1],['Medium', 2], ['High', 3]], {}, { :class => 'form-control' }) %>
+          </div>
+
+
           <hr>
 
           <div class="form-group">
              <%= f.select(:status, [['Incomplete'],['In Progress'],['Completed']], {}, { :class => 'form-control' }) %>
           </div>
 
+
+
           <%= f.fields_for :assignments do |builder| %>
-            <div class="form-group">
-              <%= builder.collection_select(:user_id, User.all, :id , :name, {}, {:class => 'form-control' }) %>
-            </div>
+            <% if builder.object.new_record? %>
+              <div class="form-group">
+                <%= builder.collection_select(:user_id, User.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
+              </div>
+              <% else %>
+                <%= builder.object.user.name %>  <%= builder.check_box :_destroy %><%= builder.label :_destroy, "Remove User" %><br>
+              <% end %>
           <% end %>
+
 
 
 

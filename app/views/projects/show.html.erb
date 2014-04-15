@@ -2,26 +2,33 @@
 
 	<div class="panel-heading">
 		<h3>
-			<%= if @project.product then "[#{@project.product.name}] #{@project.name}" else "#{@project.name}" end %>
-				<%= render partial: "projects/tools", :locals => {:project => @project} %>
+				<span class="fa-stack" style="font-size: 14px;">
+				  <i class="fa fa-folder fa-stack-2x"></i>
+					<% if @project.status == "Incomplete" %>
+				  <i class="fa fa-ellipsis-h fa-inverse fa-stack-1x"></i>
+					<% elsif @project.status == "In Progress" %>
+					  <i class="fa fa-refresh fa-inverse fa-stack-1x"></i>
+				<% else %>
+					  <i class="fa fa-check fa-inverse fa-stack-1x"></i>
+
+					<% end %>
+				</span>
+
+			<%= link_to "[#{@project.product.name}]", @project.product %> <%= @project.name %>
+
+
+
+			<%= render partial: "projects/tools", :locals => {:project => @project} %>
+
+
 		</h3>
 	</div>
 
 	<div class="panel-body">
-		<div class="project-info" style="line-height: 250%;">
-			<p>
-				<div class="col-md-4"><i class="fa fa-calendar"></i> <%= @project.due_date.strftime("%B %-m, %Y") if @project.due_date %></div>
-				<div class="col-md-4"><i class="fa fa-user"></i> <%= link_to current_user.name, current_user %></div>
-				<div class="col-md-4"><i class="fa fa-refresh"></i> <%= @project.status %></div>
-
-				<div class="col-md-12"><i class="fa fa-code"></i> <%= @project.description %></div>
-			</p>
-		</div>
+		<%= render partial: "projects/info", :locals => {:project => @project} %>
 	</div>
 
 </div>
-
-<hr>
 
 <div class="panel panel-default">
 
@@ -32,7 +39,7 @@
 	<div class="panel-body">
 
 		<div class="tasks-list">
-			<ul><%= render @project.tasks.incomplete %></ul>
+			<ul><%= render @project.tasks.incomplete.order("due_date") %></ul>
 
 			<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
 

@@ -1,4 +1,4 @@
-<h2><i class="fa fa-folder-o"></i> Projects<%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-success", style: "float: right;" %></h2>
+<h2><i class="fa fa-folder-o"></i> Projects<%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-primary", style: "float: right;" %></h2>
 
 <hr>
 
@@ -8,31 +8,47 @@
 		<div class="panel-heading">
 
 			<h4>
+
+				<span class="fa-stack" style="font-size: 10px;">
+				  <i class="fa fa-folder fa-stack-2x"></i>
+					<% if project.status == "Incomplete" %>
+				  <i class="fa fa-ellipsis-h fa-inverse fa-stack-1x"></i>
+					<% elsif project.status == "In Progress" %>
+					  <i class="fa fa-refresh fa-inverse fa-stack-1x"></i>
+				<% else %>
+					  <i class="fa fa-check fa-inverse fa-stack-1x"></i>
+
+					<% end %>
+				</span>
+
 				<%= link_to "[#{project.product.name}] #{project.name}", project %>
 
 				<%= render partial: "projects/tools", :locals => {:project => project} %>
 
 			</h4>
 
-			<div class="project-info" style="line-height: 250%">
-				<div class="row" style="margin-top: 0px;">
-					<div class="col-md-4"><i class="fa fa-calendar"></i> <%= project.due_date.strftime("%B %-m, %Y") if project.due_date %></div>
-					<div class="col-md-4"><i class="fa fa-user"></i> <%= if project.users.first then project.users.uniq.map {|u| u.name}.join(", ") end %></div>
-					<div class="col-md-4"><i class="fa fa-refresh"></i> <%= project.status %></div>
 
-					<div class="col-md-12"><i class="fa fa-code"></i> <%= project.description %></div>
+
+		</div>
+
+
+			<div class="panel-body">
+				<%= render partial: "projects/info", :locals => {:project => project} %>
+
+		<% unless project.status == "Completed" %>
+
+				<hr>
+
+				<div class="tasks-list">
+					<div class="title-sm">TASKS (<%= project.tasks.incomplete.count %>)</div>
+					<%= unless project.tasks.exists? then "<br>None".html_safe end %>
+					<ul><%= render project.tasks.incomplete.order('due_date') %></ul>
 				</div>
+
+		<% end %>
+
 			</div>
 
-		</div>
-
-		<div class="panel-body">
-
-			<div class="tasks-list">
-				<ul><%= render project.tasks.incomplete %></ul>
-			</div>
-
-		</div>
 
 	</div>
 

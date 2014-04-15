@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   end
 
   private
+
     def set_item
       @item = Item.find(params[:id])
     end
@@ -47,4 +48,5 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :type)
     end
+
 end

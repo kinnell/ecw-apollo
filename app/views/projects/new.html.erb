@@ -34,9 +34,14 @@
             <%= f.date_field :due_date, class: "form-control" %>
           </div>
 
+          <div class="form-group">
+             <%= f.select(:priority, [['None', 0],['Low', 1],['Medium', 2], ['High', 3]], {}, { :class => 'form-control' }) %>
+          </div>
+
+
           <%= f.fields_for :assignments do |builder| %>
             <div class="form-group">
-              <%= builder.collection_select(:user_id, User.all, :id , :name, {}, {:class => 'form-control' }) %>
+              <%= builder.collection_select(:user_id, User.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
             </div>
           <% end %>
 

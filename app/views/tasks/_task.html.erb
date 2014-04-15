@@ -1,7 +1,17 @@
 <li>
-	<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+	<% if task.completed %>
+		<%= link_to '<i class="fa fa-check-square-o"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
+	<% else %>
+		<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+	<% end %>
 
-	<%= task.name %> <%= if task.due_date then "<font color='#999'>(#{task.due_date.strftime("%x")})</font>".html_safe end %>
+	<% if task.due_date %>
+		<%= (task.due_date < DateTime.now) && (task.completed == false) ? "<font color='#CD3333'>".html_safe : "<font>".html_safe %>
+		<%= task.name %>
+		<%= "<font color='#999'>(#{task.due_date.strftime("%x")})</font></font>".html_safe %>
+	<% else %>
+		<%= task.name %>
+	<% end %>
 
 	<%= render partial: "tasks/tools", :locals => {:task => task} %>
 </li>

@@ -1,5 +1,11 @@
 @import 'bootstrap';
 
+// GENERAL COLOR //
+
+$blue: #79D3FC;
+$dark-blue: #059ce0;
+$red: #CD3333;
+
 // GENERAL HTML //
 
 html, body {
@@ -8,6 +14,10 @@ html, body {
 
 hr {
 	border-top: 1px solid #ddd;
+}
+
+.fa-stack {
+	color: $dark-blue;
 }
 
 .front-page {
@@ -20,22 +30,46 @@ hr {
 
 .inside-page {
 	background: #ecf0f1;
-	background: url('dust.png') repeat;
+	background: url('old_mathematics.png') repeat;
 }
+
+
 
 // NAV
 
 .navbar {
 	border-radius: 0px;
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dddddd;
 
 	.navbar-brand {
+		font-family: 'Orbitron', sans-serif;
 		padding-left: 50px;
 		padding-right: 100px;
+		padding-top: 18px;
 	}
 
-	.navbar-nav li {
-		padding-right: 20px;
+	.main-menu.navbar-nav li {
+		padding-right: 10px;
+		padding-left: 10px;
+
 	}
+
+
+
+	.main-menu.navbar-nav .selected {
+		background-color: $dark-blue;
+
+		a {
+			color: white;
+		}
+
+
+	}
+
+
+
 }
 
 
@@ -48,6 +82,7 @@ hr {
 // PANELS //
 
 .panel {
+	border-radius: 0px;
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 
@@ -79,6 +114,7 @@ hr {
 
 	i {
 		padding-right: 5px;
+		color: #666;
 	}
 
 
@@ -238,8 +274,8 @@ hr {
 	  list-style-type: none;
 
 	  li {
-	  	background-color: #79D3FC;
-	  	border: 1px solid #79D3FC;
+	  	background-color: $blue;
+	  	border: 1px solid $blue;
 	  	border-radius: 5px;
 	  	padding: 5px;
 	  	margin-top: 2px;

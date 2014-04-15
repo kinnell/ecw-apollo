@@ -1,0 +1,40 @@
+<div class="project-info" style="line-height: 200%">
+	<div class="row" style="margin-top: 0px;">
+
+		<div class="col-md-4">
+			<i class="fa fa-flag"></i> <b>Priority:</b> <%= if project.priority == 3 then "High" elsif project.priority == 2 then "Medium" elsif project.priority == 1 then "Low" else "None" end %>
+		</div>
+
+		<div class="col-md-4">
+			<i class="fa fa-tasks"></i> <b>Tasks Progress:</b> <%= "#{project.tasks.completed.count} / #{project.tasks.count}" %>
+		</div>
+
+		<div class="col-md-4">
+			<i class="fa fa-refresh"></i> <b>Status:</b> <%= project.status %>
+		</div>
+
+
+
+
+
+		<div class="col-md-4">
+			<i class="fa fa-calendar"></i> <b>Start Date:</b> <%= project.created_at.strftime("%B %-d, %Y") %>
+		</div>
+
+		<div class="col-md-4">
+			<i class="fa fa-calendar"></i> <b>Due Date:</b> <%= project.due_date ? print_date(project.due_date) : "n/a"  %>
+		</div>
+
+		<div class="col-md-4">
+			<i class="fa fa-calendar"></i> <b>End Date:</b> <%= project.end_date ?  project.end_date.strftime("%B %-d, %Y") : "n/a" %>
+		</div>
+
+
+
+		<div class="col-md-12">
+			<i class="fa fa-user"></i> <b>Assigned:</b> <%= project.users.first ? project.users.uniq.map {|u| u.name}.join(", ") : "None" %>
+		</div>
+
+		<div class="col-md-12" style="line-height: 150%"><i class="fa fa-code"></i> <b>Description:</b> <font color="#666"><%= project.description %></font></div>
+	</div>
+</div>

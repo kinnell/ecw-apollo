@@ -1,29 +1,28 @@
-<h1>Listing items</h1>
+<h2><i class="fa fa-check-circle"></i> Items<%= link_to 'New Item', new_item_path, class: "btn btn-sm btn-success", style: "float: right;" %></h2>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
+      <th>ID</th>
+      <th>Project</th>
       <th>Name</th>
       <th>Type</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Tools</th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.id %>
+        <td></td>
         <td><%= item.name %></td>
-        <td><%= item.type %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
+        <td>
+          <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_item_path(item) %>
+          <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411190950) do
+ActiveRecord::Schema.define(version: 20140415073026) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 20140411190950) do
 
   create_table "items", force: true do |t|
     t.string   "name",       default: "", null: false
-    t.string   "type",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
+
+  add_index "items", ["project_id"], name: "index_items_on_project_id"
 
   create_table "products", force: true do |t|
     t.string   "name",       default: "", null: false
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 20140411190950) do
     t.string   "status",      default: "Incomplete", null: false
     t.string   "description"
     t.integer  "product_id"
+    t.datetime "end_date"
+    t.integer  "priority"
   end
 
   add_index "projects", ["product_id"], name: "index_projects_on_product_id"

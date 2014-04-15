@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @projects = Project.all
+    @tasks = Task.incomplete.order("due_date")
+
   end
 
   def show
