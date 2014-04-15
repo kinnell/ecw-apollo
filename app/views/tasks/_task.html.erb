@@ -18,6 +18,12 @@
 
 		<% if task.completed %>
 			<%= "<font color='#999'>(Completed #{task.completed_at.strftime("%x")})</font></font>".html_safe %>
+		<% else %>
+
+			<% if task.due_date.end_of_day < DateTime.now %>
+				<span class="label label-danger">Overdue</span>
+			<% end %>
+
 		<% end %>
 
 

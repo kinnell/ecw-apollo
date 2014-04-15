@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 	has_many :items, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
-	has_many :assignments
+	has_many :assignments, :dependent => :destroy
 	has_many :users, :through => :assignments
 
 	accepts_nested_attributes_for :assignments, :reject_if => lambda { |a| a[:user_id].blank? }, :allow_destroy => true
