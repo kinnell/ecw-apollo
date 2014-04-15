@@ -8,10 +8,18 @@
 	<% if task.due_date %>
 		<%= (task.due_date < DateTime.now) && (task.completed == false) ? "<font color='#CD3333'>".html_safe : "<font>".html_safe %>
 		<%= task.name %>
-		<%= "<font color='#999'>(#{task.due_date.strftime("%x")})</font></font>".html_safe %>
+
+		<% unless task.completed %>
+			<%= "<font color='#999'>(#{task.due_date.strftime("%x")})</font></font>".html_safe %>
+		<% end %>
 	<% else %>
 		<%= task.name %>
 	<% end %>
+
+		<% if task.completed %>
+			<%= "<font color='#999'>(Completed #{task.completed_at.strftime("%x")})</font></font>".html_safe %>
+		<% end %>
+
 
 	<%= render partial: "tasks/tools", :locals => {:task => task} %>
 </li>

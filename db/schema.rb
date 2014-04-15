@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415073026) do
+ActiveRecord::Schema.define(version: 20140415090629) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20140415073026) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id"
 
   create_table "items", force: true do |t|
     t.string   "name",       default: "", null: false

@@ -1,11 +1,14 @@
 Apollo::Application.routes.draw do
 
+  resources :comments
+
   resources :items
 
   resources :products
 
   resources :projects do
     resources :items
+    resources :comments
   end
 
   resources :tasks

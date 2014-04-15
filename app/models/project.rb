@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 
 	has_many :tasks, dependent: :destroy
 	has_many :items, dependent: :destroy
+	has_many :comments, dependent: :destroy
 
 	has_many :assignments
 	has_many :users, :through => :assignments
