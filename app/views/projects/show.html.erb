@@ -68,28 +68,7 @@
 </div>
 
 <div class="panel panel-default">
-
-	<div class="panel-heading">
-		<h4><i class="fa fa-comment"></i> Comments (<%= @project.comments.count %>)</h4>
-	</div>
-
-	<div class="panel-body">
-
-		<%= render @project.comments %>
-
-		<center>
-		<%= form_for [@project.comments.new], :html => {:class => 'form-inline'} do |f| %>
-			<div class="form-group">
-				<%= f.hidden_field :user_id, :value => current_user.id, class: "form-control" %>
-				<%= f.hidden_field :project_id, :value => @project.id, class: "form-control" %>
-		    <%= f.text_field :content, :size=>"80", :placeholder => "Comment", class: "form-control" %>
-		    <%= f.submit "Add Comment", class: "btn btn-md btn-success" %>
-		    </div>
-
-		<% end %>
-	</center>
-
-	</div>
-
+	<div class="panel-heading"><h4><i class="fa fa-comment"></i> Comments (<%= @project.comments.count %>)</h4></div>
+	<div class="panel-body"><%= render @project.comments %><%= render partial: "comments/new" %></div>
 </div>
 

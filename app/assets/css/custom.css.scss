@@ -308,3 +308,10 @@ hr {
     color: #999;
   }
 }
+
+.comment {
+	a.commenter { font-weight: bold; }
+	.comment-content { display: inline-block; }
+	.comment-tools { float: right; }
+	.comment-date { color: #999; font-size: 12px;}
+}

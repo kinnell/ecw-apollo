@@ -5,9 +5,6 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
-  def show
-  end
-
   def new
     @comment = Comment.new
   end
@@ -21,7 +18,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to :back, notice: 'Comment was successfully created.'
     else
-      render action: 'new'
+      redirect_to :back
     end
 
   end
