@@ -12,7 +12,6 @@ module DateHelper
 		if dT < DateTime.now then "<div class='late'>due #{time_ago_in_words(dT)} ago</div>".html_safe
 		else "due in #{time_ago_in_words(dT)}".html_safe
 		end
-end
-
+	end
 
 end

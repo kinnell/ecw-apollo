@@ -5,19 +5,13 @@
     <div class="panel-heading"><h4><i class='fa fa-check-circle'></i> Edit Item</h4></div>
 
     <div class="panel-body">
-      <%= form_for(@item) do |f| %>
 
-        <% if @item.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-            <ul><% @item.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul>
-          </div>
-        <% end %>
+      <%= form_for(@item) do |f| %>
 
         <fieldset>
 
           <div class="form-group">
-            <%= f.text_field :name, :placeholder => "Item Name", class: "form-control" %>
+            <%= f.text_field :name, :placeholder => "Item Name", class: "form-control", :required => true %>
           </div>
 
           <%= f.submit "Save", class: "btn btn-md btn-success btn-block" %>

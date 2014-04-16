@@ -9,35 +9,7 @@
     <% for user in @users %>
 
       <h4><%= link_to user.name, user %></h4>
-
-      <table class="table">
-        <thead>
-          <tr>
-          	<th>Product</th>
-            <th>Project</th>
-            <th>Start Date</th>
-            <th>Due Date</th>
-            <th>End Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% user.projects.uniq.each do |project| %>
-            <tr>
-              <td><%= link_to project.product.name, project.product %></td>
-              <td><%= link_to project.name, project %></td>
-              <td><%= print_date(project.created_at, 's') if project.created_at %></td>
-              <td><%= print_date(project.due_date, 's') if project.due_date %></td>
-              <td><%= print_date(project.end_date, 's') if project.end_date %></td>
-              <td><%= project.status %></td>
-            </tr>
-          <% end %>
-        </tbody>
-
-
-      </table>
-
+      <%= render partial: "users/projects_table", :locals => {:projects => user.projects.incomplete.uniq} %>
       <hr><br><br>
 
     <% end %>

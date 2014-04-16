@@ -1,1 +1,3 @@
-<li><%= item.name %></li>
+<li>
+	<i class="fa fa-file-o"></i> <%= item.name %><%= render partial: "items/tools", :locals => {:item => item} %><br>
+</li>

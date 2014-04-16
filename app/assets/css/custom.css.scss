@@ -43,7 +43,6 @@ a:hover {
 
 .late {
 	display: inline-block;
-	font-weight: bold;
 	color: $red;
 }
 
@@ -132,18 +131,11 @@ a:hover {
 
 }
 
-.items-list {
-	ul {
-		padding: 5px 0 0 15px;
-
-		li { padding-bottom: 10px; }
-
-	}
-}
 
 // TASKS
 
-.tasks-list {
+.tasks-list, .items-list {
+
 
 	.title-sm {
 		display: inline-block;
@@ -203,6 +195,9 @@ a:hover {
 	}
 
 }
+
+.items-list ul li .fa-file-o { color: #AAA; margin-right: 3px; }
+
 
 .tools { float: right; }
 

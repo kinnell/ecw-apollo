@@ -13,5 +13,7 @@ class Project < ActiveRecord::Base
 	validates :name, presence: true
 	validates :product_id, presence: true
 
+	scope :completed, -> { where(:status => "Completed") }
+	scope :incomplete, -> { where(:end_date => nil) }
 
 end

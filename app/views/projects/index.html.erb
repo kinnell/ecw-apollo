@@ -27,26 +27,10 @@
 
 			</h4>
 
-
-
 		</div>
-
 
 			<div class="panel-body">
 				<%= render partial: "projects/info", :locals => {:project => project} %>
-
-		<% unless project.status == "Completed" %>
-
-				<hr>
-
-				<div class="tasks-list">
-					<div class="title-sm">TASKS (<%= project.tasks.incomplete.count %>)</div>
-					<%= unless project.tasks.exists? then "<br>None".html_safe end %>
-					<ul><%= render project.tasks.incomplete.order('due_date') %></ul>
-				</div>
-
-		<% end %>
-
 			</div>
 
 
