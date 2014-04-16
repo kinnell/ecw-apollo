@@ -16,4 +16,8 @@ class Project < ActiveRecord::Base
 	scope :completed, -> { where(:status => "Completed") }
 	scope :incomplete, -> { where(:end_date => nil) }
 
+	def progress_percent
+		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
+	end
+
 end

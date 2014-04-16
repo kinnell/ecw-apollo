@@ -6,7 +6,6 @@
 		</div>
 
 		<div class="col-md-4">
-			<i class="fa fa-tasks"></i> <b>Tasks Progress:</b> <%= "#{project.tasks.completed.count} / #{project.tasks.count}" %>
 		</div>
 
 		<div class="col-md-4">
@@ -36,9 +35,13 @@
 			<i class="fa fa-user"></i> <b>Assigned By:</b> <%= project.assigned_by %>
 		</div>
 
+		<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b> <font color="#666"><%= project.description %></font><hr></div>
 
-
-		<div class="col-md-12" style="line-height: 150%"><i class="fa fa-code"></i> <b>Description:</b> <font color="#666"><%= project.description %></font></div>
+		<div class="col-md-12">
+			<div class="progress active">
+				<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%= project.progress_percent %>%"><span><%= project.progress_percent %>% Complete</span></div>
+			</div>
+		</div>
 
 	</div>
 </div>
