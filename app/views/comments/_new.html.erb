@@ -6,6 +6,7 @@
 			<%= f.hidden_field :project_id, :value => @project.id %>
 			<%= f.text_field :content, :placeholder => "Comment", class: "form-control input-sm", :required => true %>
 			<%= f.submit "Add Comment", class: "btn btn-sm btn-primary" %>
+			<%= link_to "x".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addComment', style: "margin-left: 5px;" %>
 		</div>
 
 	<% end %>

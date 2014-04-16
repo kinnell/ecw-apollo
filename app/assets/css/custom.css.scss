@@ -5,6 +5,7 @@
 $blue: #79D3FC;
 $dark-blue: #059ce0;
 $red: #CD3333;
+$dark-red: #a42828;
 
 // GENERAL HTML //
 
@@ -38,12 +39,13 @@ a:hover {
 
 .inside-page {
 	background: #ecf0f1;
-	background: url('old_mathematics.png') repeat;
+	background: url('old_mathematics2.png') repeat;
 }
 
 .late {
 	display: inline-block;
-	color: $red;
+	color: $dark-red;
+	font-weight: 600;
 }
 
 
@@ -54,7 +56,11 @@ a:hover {
 	border-radius: 0px;
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.01),
+             inset 0 0 1em hsla(0,0%,0%,.01),
+             0 .1em 1em hsla(0,0%,0%,.07);
 	border: 1px solid #dddddd;
+
 
 	.navbar-brand {
 		font-family: 'Orbitron', sans-serif;
@@ -96,6 +102,11 @@ a:hover {
 	border-radius: 0px;
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.01),
+                inset 0 0 1em hsla(0,0%,0%,.01),
+                0 .1em 1em hsla(0,0%,0%,.07);
+
+   .panel-body, .panel-heading { padding-left: 25px; padding-right: 25px; }
 
 
 	.panel-footer {
@@ -161,7 +172,7 @@ a:hover {
 
 		li .task-date { color: #999; }
 
-		li.task-late .task-name, li.task-late .task-date { color: $red; }
+		li.task-late .task-name, li.task-late .task-date { color: $red; font-weight: 600; }
 
 		li.task-completed { font-style: italic; color: #bbb; }
 		li.task-completed i { color: #bbb; }
