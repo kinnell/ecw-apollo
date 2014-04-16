@@ -5,6 +5,10 @@ class ProjectsController < ApplicationController
 		@projects = Project.all.order("due_date")
 	end
 
+	def myProjects
+		@projects = current_user.projects.order("due_date")
+	end
+
 	def show
 	end
 

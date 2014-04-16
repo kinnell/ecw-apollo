@@ -66,7 +66,7 @@
 				<div class="tasks-list">
 
 					<div id="addTask" class="collapse"><%= render partial: "tasks/new" %><br><hr></div>
-
+					<%= content_tag :div, "Remaining Tasks", class: "title-sm", style: "color: #333;" %>
 					<ul>
 						<%= render @project.tasks.incomplete.due.order("due_date") %>
 						<%= render @project.tasks.incomplete.notDue.order("created_at") %>
@@ -77,6 +77,7 @@
 				<hr>
 
 				<div class="tasks-list">
+					<%= content_tag :div, "Completed Tasks", class: "title-sm" %>
 					<ul><%= render @project.tasks.completed %></ul>
 				</div>
 

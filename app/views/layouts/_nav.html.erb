@@ -16,7 +16,7 @@
       <ul class="main-menu nav navbar-nav">
         <li class="<%= 'selected' if current_page?(tasks_path) %>"><%= link_to '<i class="fa fa-check-circle"></i> Tasks'.html_safe, tasks_path %></li>
         <li class="<%= 'selected' if current_page?(calendar_path) %>"><%= link_to '<i class="fa fa-calendar"></i> Calendar'.html_safe, calendar_path %></li>
-        <li class="<%= 'selected' if current_page?(projects_path) %>"><%= link_to '<i class="fa fa-folder-o"></i> Projects'.html_safe, projects_path %></li>
+        <li class="<%= 'selected' if current_page?(myProjects_path) %>"><%= link_to '<i class="fa fa-folder-o"></i> My Projects'.html_safe, myProjects_path %></li>
         <li class="<%= 'selected' if current_page?(users_path) %>"><%= link_to '<i class="fa fa-users"></i> Team'.html_safe, users_path %></li>
         <li class="<%= 'selected' if current_page?(products_path) %>"><%= link_to '<i class="fa fa-shopping-cart"></i> Products'.html_safe, products_path %></li>
       </ul>

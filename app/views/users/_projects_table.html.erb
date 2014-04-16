@@ -1,9 +1,9 @@
 <table class="table">
 	<thead>
 		<tr>
-       	<th width="10%">Product</th>
-         <th width="25%">Project</th>
-         <th width="25%">Assigned By</th>
+       	<th width="15%">Product</th>
+         <th width="30%">Project</th>
+         <th width="15%">Assigned By</th>
          <th width="10%">Start Date</th>
          <th width="10%">Due Date</th>
          <th width="10%">End Date</th>
@@ -14,8 +14,8 @@
 
 			<% for project in projects %>
 							<tr>
-				<td><%= project.product.name %></td>
-				<td><%= project.name %></td>
+				<td><%= link_to project.product.name, project.product %></td>
+				<td><%= link_to project.name, project %></td>
 				<td><%= project.assigned_by %></td>
 				<td><%= print_date(project.created_at, "s") %></td>
 				<td><%= print_date(project.due_date, "s") if project.due_date %></td>

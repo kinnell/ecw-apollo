@@ -28,6 +28,7 @@ Apollo::Application.routes.draw do
   get '/tasks', to: "tasks#index"
   get '/users', to: "users#index"
   get 'calendar', to: "pages#calendar"
+  get 'myProjects', to: "projects#myProjects"
 
   match '/tasks/:id/complete' => "tasks#complete", :as => :complete_task, via: [:post]
   match '/tasks/:id/uncomplete' => "tasks#uncomplete", :as => :uncomplete_task, via: [:post]
