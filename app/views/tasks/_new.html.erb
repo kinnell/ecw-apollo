@@ -4,7 +4,7 @@
 		<div class="form-group">
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control"%>
 			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm", :required => true %>
-			<%= f.date_field :due_date, class: "form-control input-sm" %>
+			<%= f.datetime_local_field :due_date, class: "form-control input-sm" %>
 			<%= f.submit "Add Task", class: "btn btn-sm btn-primary" %>
 		</div>
 	<% end %>

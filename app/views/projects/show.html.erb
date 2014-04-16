@@ -36,7 +36,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>
-				<i class="fa fa-comment"></i> Activity (<%= @project.comments.count %>)
+				<i class="fa fa-comment"></i> Updates (<%= @project.comments.count %>)
 				<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addComment', class: "btn btn-xs btn-primary", style: "float: right;" %>
 			</h4>
 		</div>
@@ -62,15 +62,14 @@
 			<div class="panel-body">
 
 				<div class="tasks-list">
+
+					<div id="addTask" class="collapse"><%= render partial: "tasks/new" %><br><hr></div>
+
 					<ul>
 						<%= render @project.tasks.incomplete.due.order("due_date") %>
 						<%= render @project.tasks.incomplete.notDue.order("created_at") %>
 					</ul>
 
-				</div>
-
-				<div id="addTask" class="collapse">
-					<%= render partial: "tasks/new" %>
 				</div>
 
 				<hr>
@@ -97,13 +96,8 @@
 
 			<div class="panel-body">
 				<div class="items-list">
-					<ul><%= render @project.items %></ul>
-
-				<hr>
-
-				<div id="addItem" class="collapse">
-					<%= render partial: "items/new" %>
-				</div>
+					<ul><%= render @project.items %></ul><hr>
+					<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
 
 
 				</div>
