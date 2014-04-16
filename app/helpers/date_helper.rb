@@ -7,4 +7,5 @@ module DateHelper
 		DateTime.now > dateTime ? "<font color='#CD3333'>#{dateTime.strftime("%B %-d, %Y")}</font>".html_safe : "#{dateTime.strftime("%B %-d, %Y")}"
 	end
 
+
 end

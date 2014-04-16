@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to :back, notice: 'Item was successfully created.'
     else
       render action: 'new'
     end
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
+      redirect_to :back, notice: 'Item was successfully updated.'
     else
       render action: 'edit'
     end
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :type)
+      params.require(:item).permit(:name, :type, :project_id)
     end
 
 end

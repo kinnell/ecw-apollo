@@ -36,6 +36,10 @@
              <%= f.select(:priority, [['None', 0],['Low', 1],['Medium', 2], ['High', 3]], {}, { :class => 'form-control' }) %>
           </div>
 
+          <div class="form-group">
+            <%= f.text_field :assigned_by, :placeholder => "Assigned By", class: "form-control" %>
+          </div>
+
 
           <hr>
 
@@ -50,30 +54,6 @@
             <br>
           <% end %>
           </div>
-
-          <% if false %>
-          <div class="form-group">
-            <%= hidden_field_tag "project[user_id][]", nil %>
-            <% User.all.each do |user| %>
-              <%= check_box_tag "project[user_id][]", user.id, @project.user_ids.include?(user.id), id: dom_id(user) %>
-              <%= label_tag dom_id(user), user.name %><br>
-            <% end %>
-          </div>
-          <% end %>
-
-
-          <% if false %>
-            <%= f.fields_for :assignments do |builder| %>
-              <% if builder.object.new_record? %>
-                <div class="form-group">
-                  <%= builder.collection_select(:user_id, User.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
-                </div>
-                <% else %>
-                  <%= builder.object.user.name %>  <%= builder.check_box :_destroy %><%= builder.label :_destroy, "Remove User" %><br>
-                <% end %>
-            <% end %>
-          <% end %>
-
 
 
 

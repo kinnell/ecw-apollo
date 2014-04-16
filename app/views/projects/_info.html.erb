@@ -31,9 +31,14 @@
 
 
 
-		<div class="col-md-12">
+		<div class="col-md-8">
 			<i class="fa fa-user"></i> <b>Assigned:</b> <%= project.users.first ? project.users.uniq.map {|u| u.name}.join(", ") : "None" %>
 		</div>
+
+		<div class="col-md-4">
+			<i class="fa fa-user"></i> <b>Assigned By:</b> <%= project.assigned_by %>
+		</div>
+
 
 		<div class="col-md-12" style="line-height: 150%"><i class="fa fa-code"></i> <b>Description:</b> <font color="#666"><%= project.description %></font></div>
 	</div>

@@ -31,44 +31,63 @@
 </div>
 
 
-<div class="panel panel-default">
+  <div class="col-md-8">
 
-	<div class="panel-heading">
-		<h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)</h4>
-	</div>
+		<div class="panel panel-default">
 
-	<div class="panel-body">
+			<div class="panel-heading"><h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)</h4></div>
 
-		<div class="tasks-list">
-			<ul><%= render @project.tasks.incomplete.order("due_date") %></ul>
+			<div class="panel-body">
 
-			<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
+				<div class="tasks-list">
+					<ul>
+						<%= render @project.tasks.incomplete.due.order("due_date") %>
+						<%= render @project.tasks.incomplete.notDue.order("created_at") %>
+					</ul>
 
-		</div>
+					<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
+				</div>
 
-		<div id="addTask" class="collapse">
-			<%= form_for [@project.tasks.new], :html => {:class => 'form-inline'} do |f| %>
-			<div class="form-group">
-				<%= f.hidden_field :project_id, :value => @project.id, class: "form-control"%>
-				<%= f.text_field :name, :placeholder => "Task", class: "form-control" %>
-				<%= f.date_field :due_date, class: "form-control" %>
-				<%= f.submit "Add Task", class: "btn btn-md btn-success" %>
+				<br>
+
+				<div id="addTask" class="collapse">
+					<%= render partial: "tasks/new" %>
+				</div>
+
+				<hr>
+
+				<div class="tasks-list">
+					<ul><%= render @project.tasks.completed %></ul>
+				</div>
+
 			</div>
-			<% end %>
-		</div>
 
-		<hr>
-
-		<div class="tasks-list">
-			<ul class="completed"><%= render @project.tasks.completed %></ul>
 		</div>
 
 	</div>
 
-</div>
+	<div class="col-md-4">
 
-<div class="panel panel-default">
-	<div class="panel-heading"><h4><i class="fa fa-comment"></i> Comments (<%= @project.comments.count %>)</h4></div>
-	<div class="panel-body"><%= render @project.comments %><%= render partial: "comments/new" %></div>
-</div>
+		<div class="panel panel-default">
+			<div class="panel-heading"><h4><i class="fa fa-picture-o"></i> Items (<%= @project.items.count %>)</h4></div>
+			<div class="panel-body">
+				<div class="items-list">
+					<ul>
+						<%= render @project.items %>
+					</ul>
 
+					<%= render partial: "items/new" %>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4><i class="fa fa-comment"></i> Comments (<%= @project.comments.count %>)</h4></div>
+		<div class="panel-body"><%= render @project.comments %><%= render partial: "comments/new" %></div>
+	</div>
+</div>

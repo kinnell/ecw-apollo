@@ -23,7 +23,7 @@
         </thead>
 
         <tbody>
-          <% user.projects.each do |project| %>
+          <% user.projects.uniq.each do |project| %>
             <tr>
               <td><%= link_to project.product.name, project.product %></td>
               <td><%= link_to project.name, project %></td>

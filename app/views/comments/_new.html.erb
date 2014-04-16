@@ -1,12 +1,11 @@
 <center>
 
-	<% @comment = @project.comments.new %>
-	<%= form_for [@comment], :html => {:class => 'form-inline'} do |f| %>
+	<%= form_for [@project.comments.new], :html => {:class => 'form-inline'} do |f| %>
 
 		<div class="form-group">
 			<%= f.hidden_field :user_id, :value => current_user.id, class: "form-control" %>
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control" %>
-			<%= f.text_field :content, :size=>"80", :placeholder => "Comment", class: "form-control", :required => true %>
+			<%= f.text_field :content, :placeholder => "Comment", class: "form-control", :required => true %>
 			<%= f.submit "Add Comment", class: "btn btn-md btn-success" %>
 		</div>
 

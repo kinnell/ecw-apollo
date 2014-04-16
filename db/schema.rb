@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415090629) do
+ActiveRecord::Schema.define(version: 20140416061737) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140415090629) do
     t.integer  "product_id"
     t.datetime "end_date"
     t.integer  "priority"
+    t.string   "assigned_by"
   end
 
   add_index "projects", ["product_id"], name: "index_projects_on_product_id"

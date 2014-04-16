@@ -7,21 +7,10 @@
     <div class="panel-body">
       <%= form_for(@task) do |f| %>
 
-        <% if @task.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-            <ul><% @task.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul>
-          </div>
-        <% end %>
-
         <fieldset>
 
           <div class="form-group">
-          	   <%= f.collection_select(:project_id, Project.all, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
-          </div>
-
-          <div class="form-group">
-            <%= f.text_field :name, :placeholder => "Task Name", class: "form-control" %>
+            <%= f.text_field :name, :placeholder => "Task Name", class: "form-control", :required => true %>
           </div>
 
           <div class="form-group">
@@ -29,10 +18,6 @@
           </div>
 
           <hr>
-
-          <div class="form-group">
-            <%= f.check_box :completed, class: "form-control" %> Completed?
-          </div>
 
           <%= f.submit "Save", class: "btn btn-md btn-success btn-block" %>
 

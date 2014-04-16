@@ -1,11 +1,8 @@
 <div class="panel panel-default">
 
-  <div class="panel-heading">
-    <h4><i class="fa fa-check-circle"></i> Tasks</h4>
-  </div>
+  <div class="panel-heading"><h4><i class="fa fa-check-circle"></i> Tasks</h4></div>
 
   <div class="panel-body">
-
 
     <div class="tasks-list">
 
@@ -14,16 +11,8 @@
         <h4><%= print_days_ago(date) %><font color='#999'> <%= "(#{date.strftime('%A, %B %-d, %Y')})".html_safe %></font></h4><hr>
 
         <%  tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
-
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-
-          <ul>
-            <% for task in tasks %>
-              <li><%= render partial: "tasks/show", :locals => {:task => task} %></li>
-              <hr>
-            <% end %>
-          </ul>
-
+          <ul><%= render tasks %></ul>
         <% end %>
 
         <br>
@@ -33,18 +22,9 @@
       <% if @tasks.notDue.exists? %>
 
         <h4><font color="#999">no due date</font></h4><hr>
-
         <% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks| %>
-
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-
-          <ul>
-            <% for task in tasks %>
-              <li><%= render partial: "tasks/show", :locals => {:task => task} %></li>
-              <hr>
-            <% end %>
-          </ul>
-
+          <ul><%= render tasks %></ul>
         <% end %>
 
         <br>

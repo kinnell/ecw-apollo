@@ -1,7 +1,0 @@
-<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-
-<%= task.due_date && task.due_date < DateTime.now ? "<font color='#CD3333'>".html_safe : "<font>".html_safe %>
-	<%= task.name %>
-</font>
-
-<%= render partial: "tasks/tools", :locals => {:task => task} %>

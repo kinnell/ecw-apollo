@@ -1,33 +1,33 @@
-<li>
-	<% if task.completed %>
-		<%= link_to '<i class="fa fa-check-square-o"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
-	<% else %>
-		<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-	<% end %>
+<% unless task.completed %>
 
 	<% if task.due_date %>
-		<%= (task.due_date < DateTime.now) && (task.completed == false) ? "<font color='#CD3333'>".html_safe : "<font>".html_safe %>
-		<%= task.name %>
 
-		<% unless task.completed %>
-			<%= "<font color='#999'>(#{task.due_date.strftime("%x")})</font></font>".html_safe %>
-		<% end %>
+		<li class="<%= 'task-late' if task.late? %>">
+			<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+			<%= content_tag :div, task.name, class: "task-name" %>
+			<%= content_tag :div, " (#{task.due_date.strftime("%x")})", class: "task-date" %>
+			<%= render partial: "tasks/tools", :locals => {:task => task} %>
+		</li>
+
 	<% else %>
-		<%= task.name %>
+
+		<li>
+			<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
+			<%= content_tag :div, task.name, class: "task-name" %>
+			<%= render partial: "tasks/tools", :locals => {:task => task} %>
+		</li>
+
 	<% end %>
 
-		<% if task.completed %>
-			<%= "<font color='#999'>(Completed #{task.completed_at.strftime("%x")})</font></font>".html_safe %>
-		<% else %>
+<% else %>
 
-			<% if task.due_date.end_of_day < DateTime.now %>
-				<span class="label label-danger">Overdue</span>
-			<% end %>
+	<li class="task-completed">
+		<%= link_to '<i class="fa fa-check-square-o"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
+		<%= content_tag :div, task.name, class: "task-name" %>
+		<%= content_tag :div, " (Completed #{task.completed_at.strftime("%x")})", class: "task-date" %>
+		<%= render partial: "tasks/tools", :locals => {:task => task} %>
+	</li>
 
-		<% end %>
-
-
-	<%= render partial: "tasks/tools", :locals => {:task => task} %>
-</li>
+<% end %>
 
 <hr>
