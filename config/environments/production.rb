@@ -90,4 +90,8 @@ Apollo::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'ecw-apollo.heroku.com' }
 
+  config.serve_static_assets = true
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+  config.assets.compile = true
+
 end
