@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def myProjects
-		@projects = current_user.projects.order("due_date")
+		@projects = current_user.projects.order("due_date").uniq
 	end
 
 	def show
