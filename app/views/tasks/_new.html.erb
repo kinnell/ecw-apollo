@@ -3,9 +3,9 @@
 	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline'} do |f| %>
 		<div class="form-group">
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control"%>
-			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control", :required => true %>
-			<%= f.date_field :due_date, class: "form-control" %>
-			<%= f.submit "Add Task", class: "btn btn-md btn-success" %>
+			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm", :required => true %>
+			<%= f.date_field :due_date, class: "form-control input-sm" %>
+			<%= f.submit "Add Task", class: "btn btn-sm btn-primary" %>
 		</div>
 	<% end %>
 

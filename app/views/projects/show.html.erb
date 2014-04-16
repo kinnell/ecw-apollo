@@ -1,41 +1,63 @@
-<div class="panel panel-default">
+<div class="col-md-12">
+	<div class="panel panel-default">
 
-	<div class="panel-heading">
-		<h3>
-				<span class="fa-stack" style="font-size: 14px;">
-				  <i class="fa fa-folder fa-stack-2x"></i>
-					<% if @project.status == "Incomplete" %>
-				  <i class="fa fa-ellipsis-h fa-inverse fa-stack-1x"></i>
-					<% elsif @project.status == "In Progress" %>
-					  <i class="fa fa-refresh fa-inverse fa-stack-1x"></i>
-				<% else %>
-					  <i class="fa fa-check fa-inverse fa-stack-1x"></i>
+		<div class="panel-heading">
+			<h3>
+					<span class="fa-stack" style="font-size: 14px;">
+					  <i class="fa fa-folder fa-stack-2x"></i>
+						<% if @project.status == "Incomplete" %>
+					  <i class="fa fa-ellipsis-h fa-inverse fa-stack-1x"></i>
+						<% elsif @project.status == "In Progress" %>
+						  <i class="fa fa-refresh fa-inverse fa-stack-1x"></i>
+					<% else %>
+						  <i class="fa fa-check fa-inverse fa-stack-1x"></i>
 
-					<% end %>
-				</span>
+						<% end %>
+					</span>
 
-			<%= link_to "[#{@project.product.name}]", @project.product %> <%= @project.name %>
-
-
-
-			<%= render partial: "projects/tools", :locals => {:project => @project} %>
+				<%= "[#{@project.product.name}]" %> <%= @project.name %>
 
 
-		</h3>
+
+				<%= render partial: "projects/tools", :locals => {:project => @project} %>
+
+
+			</h3>
+		</div>
+
+		<div class="panel-body">
+			<%= render partial: "projects/info", :locals => {:project => @project} %>
+		</div>
+
 	</div>
-
-	<div class="panel-body">
-		<%= render partial: "projects/info", :locals => {:project => @project} %>
-	</div>
-
 </div>
+
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>
+				<i class="fa fa-comment"></i> Activity (<%= @project.comments.count %>)
+				<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addComment', class: "btn btn-xs btn-primary", style: "float: right;" %>
+			</h4>
+		</div>
+		<div class="panel-body">
+			<%= render @project.comments %>
+			<div id="addComment" class="collapse"><%= render partial: "comments/new" %></div>
+		</div>
+	</div>
+</div>
+
 
 
   <div class="col-md-8">
 
 		<div class="panel panel-default">
 
-			<div class="panel-heading"><h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)</h4></div>
+			<div class="panel-heading">
+				<h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)
+					<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "btn btn-xs btn-primary", style: "float: right;" %>
+				</h4>
+			</div>
 
 			<div class="panel-body">
 
@@ -45,10 +67,7 @@
 						<%= render @project.tasks.incomplete.notDue.order("created_at") %>
 					</ul>
 
-					<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "add-task" %>
 				</div>
-
-				<br>
 
 				<div id="addTask" class="collapse">
 					<%= render partial: "tasks/new" %>
@@ -69,14 +88,26 @@
 	<div class="col-md-4">
 
 		<div class="panel panel-default">
-			<div class="panel-heading"><h4><i class="fa fa-picture-o"></i> Items (<%= @project.items.count %>)</h4></div>
+			<div class="panel-heading">
+				<h4>
+					<i class="fa fa-picture-o"></i> Items (<%= @project.items.count %>)
+					<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-xs btn-primary", style: "float: right;" %>
+				</h4>
+			</div>
+
 			<div class="panel-body">
 				<div class="items-list">
 					<ul>
 						<%= render @project.items %>
 					</ul>
 
+				<hr>
+
+				<div id="addItem" class="collapse">
 					<%= render partial: "items/new" %>
+				</div>
+
+
 				</div>
 
 			</div>
@@ -85,9 +116,3 @@
 
 	</div>
 
-<div class="col-md-12">
-	<div class="panel panel-default">
-		<div class="panel-heading"><h4><i class="fa fa-comment"></i> Comments (<%= @project.comments.count %>)</h4></div>
-		<div class="panel-body"><%= render @project.comments %><%= render partial: "comments/new" %></div>
-	</div>
-</div>

@@ -8,7 +8,7 @@
 
     <% for user in @users %>
 
-      <h4><i class="fa fa-user" style="color: #666"></i> <%= link_to user.name, user %> <%= "<font color=#999>(#{user.email})</font>".html_safe %></h4>
+      <h4><%= link_to user.name, user %></h4>
 
       <table class="table">
         <thead>
@@ -27,9 +27,9 @@
             <tr>
               <td><%= link_to project.product.name, project.product %></td>
               <td><%= link_to project.name, project %></td>
-              <td><%= project.created_at.strftime("%x") if project.created_at %></td>
-              <td><%= project.due_date.strftime("%x") if project.due_date %></td>
-              <td><%= project.end_date.strftime("%x") if project.end_date %></td>
+              <td><%= print_date(project.created_at, 's') if project.created_at %></td>
+              <td><%= print_date(project.due_date, 's') if project.due_date %></td>
+              <td><%= print_date(project.end_date, 's') if project.end_date %></td>
               <td><%= project.status %></td>
             </tr>
           <% end %>

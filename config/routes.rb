@@ -18,7 +18,7 @@ Apollo::Application.routes.draw do
   resources :users
 
   authenticated :user do
-    root :to => "projects#index", as: :authenticated_root
+    root :to => "tasks#index", as: :authenticated_root
   end
 
   root :to => "pages#home"

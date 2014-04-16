@@ -8,7 +8,7 @@
 
       <% @tasks.due.group_by {|t| t.due_date.to_date }.each do |date, tasks_by_date| %>
 
-        <h4><%= print_days_ago(date) %><font color='#999'> <%= "(#{date.strftime('%A, %B %-d, %Y')})".html_safe %></font></h4><hr>
+        <h4><%= print_time_ago(date) %><font color='#999'> <%= "(#{print_date(date, 'l')})".html_safe %></font></h4><hr>
 
         <%  tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>

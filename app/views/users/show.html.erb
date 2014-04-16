@@ -21,7 +21,7 @@
 <div class="panel panel-default">
 
 	<div class="panel-heading">
-		<h4><i class="fa fa-folder-o"></i> Current Projects ()</h4>
+		<h4><i class="fa fa-folder-o"></i> Current Projects (<%= @user.projects.uniq.count %>)</h4>
 	</div>
 
 	<div class="panel-body">
@@ -37,6 +37,21 @@
 				   <th>Status</th>
 				</tr>
 			</thead>
+			<tbody>
+
+					<% for project in @user.projects.uniq %>
+									<tr>
+						<td><%= project.product.name %></td>
+						<td><%= project.name %></td>
+						<td><%= project.created_at %></td>
+						<td><%= project.due_date if project.due_date %></td>
+						<td><%= project.end_date if project.end_date %></td>
+						<td><%= project.status %></td>
+					</tr>
+					<% end %>
+
+
+			</tbody>
 		</table>
 
 	</div>

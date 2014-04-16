@@ -30,9 +30,9 @@
             <tr>
               <td><%= link_to project.name, project %></td>
               <td><%= project.users.first ? project.users.uniq.map {|u| u.name}.join(", ") : "None" %></td>
-              <td><%= project.created_at.strftime("%x") if project.created_at %></td>
-              <td><%= project.due_date.strftime("%x") if project.due_date %></td>
-              <td><%= project.end_date.strftime("%x") if project.end_date %></td>
+              <td><%= print_date(project.created_at, "s") if project.created_at %></td>
+              <td><%= print_date(project.due_date, "s") if project.due_date %></td>
+              <td><%= print_date(project.end_date, "s") if project.end_date %></td>
               <td><%= project.status %></td>
             </tr>
           <% end %>

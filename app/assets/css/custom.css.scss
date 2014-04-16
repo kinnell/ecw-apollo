@@ -16,6 +16,14 @@ hr {
 	border-top: 1px solid #ddd;
 }
 
+.container {
+	margin-bottom: 50px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 .fa-stack {
 	color: $dark-blue;
 }
@@ -31,6 +39,12 @@ hr {
 .inside-page {
 	background: #ecf0f1;
 	background: url('old_mathematics.png') repeat;
+}
+
+.late {
+	display: inline-block;
+	font-weight: bold;
+	color: $red;
 }
 
 
@@ -74,7 +88,7 @@ hr {
 // FORMS
 
 .form-control {
-	padding: 20px;
+//	padding: 20px;
 }
 
 // PANELS //
