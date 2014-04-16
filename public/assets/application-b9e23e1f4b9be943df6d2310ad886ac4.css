@@ -5180,47 +5180,139 @@ button.close {
   .hidden-print {
     display: none !important; } }
 html, body {
-  background: #ecf0f1;
+  font-family: 'Open Sans', sans-serif; }
+
+hr {
+  border-top: 1px solid #ddd; }
+
+.container {
+  margin-bottom: 50px; }
+
+a:hover {
+  text-decoration: none; }
+
+.fa-stack {
+  color: #059ce0; }
+
+.front-page {
   background: url("background.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  font-family: 'Open Sans', sans-serif; }
+  background-size: cover; }
 
-.form-control {
-  padding: 20px; }
+.inside-page {
+  background: #ecf0f1;
+  background: url("old_mathematics.png") repeat; }
 
-.panel-heading {
-  padding: 20px; }
+.late {
+  display: inline-block;
+  color: #cd3333; }
 
-.panel-footer {
-  font-size: 12px;
-  text-align: center; }
-
-.topBar {
-  position: fixed;
-  background-color: white;
-  top: 0px;
-  min-height: 100px;
-  min-width: 100%;
-  border: 1px solid #e7e7e7;
+.navbar {
+  border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); }
-
-.bottomBar {
-  position: fixed;
-  background-color: #428bca;
-  bottom: 0px;
-  min-height: 100px;
-  min-width: 100%;
-  border: 1px solid #357ebd;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dddddd; }
+  .navbar .navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 18px; }
+  .navbar .main-menu.navbar-nav li {
+    padding-right: 10px;
+    padding-left: 10px; }
+  .navbar .main-menu.navbar-nav .selected {
+    background-color: #059ce0; }
+    .navbar .main-menu.navbar-nav .selected a {
+      color: white; }
 
 .panel {
+  border-radius: 0px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); }
+  .panel .panel-footer {
+    font-size: 12px;
+    text-align: center; }
+
+.panel-outside {
   -webkit-box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2); }
+
+.btn {
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); }
+
+.project-info p, .user-info p {
+  color: #666;
+  line-height: 200%; }
+.project-info i, .user-info i {
+  padding-right: 5px;
+  color: #666; }
+
+.tasks-list .title-sm, .items-list .title-sm {
+  display: inline-block;
+  color: #999;
+  font-size: 12px;
+  padding-bottom: 5px; }
+.tasks-list hr, .items-list hr {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+.tasks-list ul, .items-list ul {
+  list-style-type: none;
+  padding: 5px 0 0 15px; }
+  .tasks-list ul li, .items-list ul li {
+    padding-bottom: 10px; }
+  .tasks-list ul li a i, .items-list ul li a i {
+    padding-right: 5px; }
+  .tasks-list ul li .task-name, .tasks-list ul .task-date, .items-list ul li .task-name, .items-list ul .task-date {
+    display: inline-block; }
+  .tasks-list ul li .task-date, .items-list ul li .task-date {
+    color: #999; }
+  .tasks-list ul li.task-late .task-name, .tasks-list ul li.task-late .task-date, .items-list ul li.task-late .task-name, .items-list ul li.task-late .task-date {
+    color: #cd3333; }
+  .tasks-list ul li.task-completed, .items-list ul li.task-completed {
+    font-style: italic;
+    color: #bbb; }
+  .tasks-list ul li.task-completed i, .items-list ul li.task-completed i {
+    color: #bbb; }
+  .tasks-list ul li.task-completed .task-name, .items-list ul li.task-completed .task-name {
+    text-decoration: line-through; }
+  .tasks-list ul hr, .items-list ul hr {
+    margin: 2px 0 15px 20px;
+    border-top: 1px solid #EEE; }
+  .tasks-list ul .tools-dropdown, .items-list ul .tools-dropdown {
+    padding: 0px; }
+    .tasks-list ul .tools-dropdown li, .items-list ul .tools-dropdown li {
+      padding-bottom: 0px; }
+    .tasks-list ul .tools-dropdown li ul, .items-list ul .tools-dropdown li ul {
+      padding: 5px 0; }
+    .tasks-list ul .tools-dropdown li ul a i, .items-list ul .tools-dropdown li ul a i {
+      padding: 0px; }
+.tasks-list .add-task i, .items-list .add-task i {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.items-list ul li .fa-file-o {
+  color: #AAA;
+  margin-right: 3px; }
+
+.tools {
+  float: right; }
+
+.tools-dropdown {
+  float: right;
+  list-style-type: none;
+  padding-right: 5px; }
+  .tools-dropdown li ul {
+    min-width: 0px; }
+  .tools-dropdown li a {
+    opacity: 0.8; }
+  .tools-dropdown li a:hover {
+    opacity: 1; }
+
+.row {
+  margin-top: 50px; }
 
 .logo {
   font-family: 'Orbitron', sans-serif;
@@ -5239,3 +5331,66 @@ html, body {
 
 .alert-info {
   text-align: center; }
+
+.calendar {
+  border-collapse: collapse;
+  width: 100%; }
+  .calendar td, .calendar th {
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999; }
+  .calendar th {
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+    text-transform: uppercase; }
+  .calendar td {
+    background: #FFF;
+    color: #777;
+    height: 120px;
+    vertical-align: top;
+    text-align: right;
+    font-size: 12px; }
+  .calendar .notmonth, .calendar .notmonth a {
+    background-color: #F7F7F7;
+    color: #CCC; }
+  .calendar .today {
+    background-color: #e4f6fe; }
+  .calendar ul {
+    font-size: 10px;
+    padding-left: 0px;
+    list-style-type: none; }
+    .calendar ul li {
+      background-color: #79d3fc;
+      border: 1px solid #79d3fc;
+      border-radius: 5px;
+      padding: 5px;
+      margin-top: 2px;
+      text-align: left; }
+    .calendar ul a, .calendar ul a:hover {
+      color: #333;
+      text-decoration: none; }
+    .calendar ul a:hover li {
+      border: 1px solid #60a8c9; }
+
+#month {
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase; }
+  #month a {
+    text-decoration: none;
+    padding: 0 10px;
+    color: #999; }
+
+.comment a.commenter {
+  font-weight: bold; }
+.comment .comment-content {
+  display: inline-block; }
+.comment .comment-tools {
+  float: right; }
+.comment .comment-date {
+  color: #999;
+  font-size: 12px; }
