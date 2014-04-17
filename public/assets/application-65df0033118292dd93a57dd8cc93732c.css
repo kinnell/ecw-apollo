@@ -5232,6 +5232,12 @@ a:hover {
     .navbar .main-menu.navbar-nav .selected a {
       color: white; }
 
+.label.project-status {
+  font-size: 12px;
+  font-weight: 600;
+  float: right;
+  padding: 5px; }
+
 .panel {
   border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
@@ -5313,7 +5319,8 @@ a:hover {
 .tools-dropdown {
   float: right;
   list-style-type: none;
-  padding-right: 5px; }
+  padding-right: 5px;
+  padding-left: 10px; }
   .tools-dropdown li ul {
     min-width: 0px; }
   .tools-dropdown li a {
