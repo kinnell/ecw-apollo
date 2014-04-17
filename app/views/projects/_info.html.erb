@@ -34,7 +34,7 @@
 			<i class="fa fa-user"></i> <b>Assigned By:</b> <%= project.assigned_by %>
 		</div>
 
-		<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b> <font color="#666"><%= project.description %></font><hr></div>
+		<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b><br><font color="#777"><%= project.description.gsub(/\n/, '<br>').html_safe %></font><hr></div>
 
 		<div class="col-md-12">
 			<div class="progress active">
