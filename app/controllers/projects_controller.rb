@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+   before_action :authenticate_user!
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -59,6 +60,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def toggle_starred
+  	@project = Project.find(params[:id])
+  	if @project.update_attributes(:starred => @project.starred.!)
+  		redirect_to :back
+  	end
+  end
+
 	private
 
 	def set_project
@@ -66,7 +74,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :due_date, :end_date, :priority, :assigned_by, :description, :product_id, :status, assignments_attributes: [ :user_id, :project_id ])
+		params.require(:project).permit(:name, :due_date, :end_date, :starred, :assigned_by, :description, :product_id, :status, assignments_attributes: [ :user_id, :project_id ])
 	end
 
 

@@ -2,19 +2,18 @@
 	<div class="row" style="margin-top: 0px;">
 
 		<div class="col-md-4">
-			<i class="fa fa-flag"></i> <b>Priority:</b> <%= if project.priority == 3 then "High" elsif project.priority == 2 then "Medium" elsif project.priority == 1 then "Low" else "None" end %>
 		</div>
 
 		<div class="col-md-4">
 		</div>
 
 		<div class="col-md-4">
-			<i class="fa fa-refresh"></i> <b>Status:</b> <%= project.status %>
 		</div>
 
 
 		<div class="col-md-4">
-			<i class="fa fa-calendar"></i> <b>Start Date:</b> <%= print_date(project.created_at, "m") %>
+			<i class="fa fa-calendar"></i>
+			<b>Start Date:</b> <%= print_date(project.created_at, "m") %>
 		</div>
 
 		<div class="col-md-4">
@@ -39,7 +38,7 @@
 
 		<div class="col-md-12">
 			<div class="progress active">
-				<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%= project.progress_percent %>%"><span><%= project.progress_percent %>% Complete</span></div>
+				<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%= project.progress_percent %>%"><span><%= project.progress_percent %>% Complete (<%= project.tasks.completed.count %> out of <%= project.tasks.count %> tasks)</span></div>
 			</div>
 		</div>
 

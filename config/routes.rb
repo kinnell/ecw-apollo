@@ -36,5 +36,7 @@ Apollo::Application.routes.draw do
   match '/projects/:id/complete' => "projects#complete", :as => :complete_project, via: [:post]
   match '/projects/:id/uncomplete' => "projects#uncomplete", :as => :uncomplete_project, via: [:post]
 
+  match '/projects/:id/toggle_starred' => "projects#toggle_starred", :as => :toggle_starred_project, via: [:post]
+
 
 end

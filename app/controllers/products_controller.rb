@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.order("name")
+    @products = Product.all.sort_by {|p| p.name.downcase }
   end
 
   def show

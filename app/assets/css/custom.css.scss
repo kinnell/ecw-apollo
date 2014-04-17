@@ -91,6 +91,16 @@ a:hover {
 }
 
 
+// LABELS
+
+.label.project-status {
+	font-size: 12px;
+	font-weight: 600;
+	float: right;
+	padding: 5px;
+}
+
+
 // FORMS
 
 .form-control {
@@ -154,7 +164,6 @@ a:hover {
 		color: #999;
 		font-size: 12px;
 		padding-bottom: 5px;
-		text-transform:uppercase;
 	}
 
 	hr {
@@ -219,6 +228,7 @@ a:hover {
 	float: right;
 	list-style-type: none;
 	padding-right: 5px;
+	padding-left: 10px;
 
 	li ul { min-width: 0px; }
 
