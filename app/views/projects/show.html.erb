@@ -2,27 +2,7 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			<h3>
-					<span class="fa-stack" style="font-size: 14px;">
-					  <i class="fa fa-folder fa-stack-2x"></i>
-						<% if @project.status == "Incomplete" %>
-					  <i class="fa fa-ellipsis-h fa-inverse fa-stack-1x"></i>
-						<% elsif @project.status == "In Progress" %>
-						  <i class="fa fa-refresh fa-inverse fa-stack-1x"></i>
-					<% else %>
-						  <i class="fa fa-check fa-inverse fa-stack-1x"></i>
-
-						<% end %>
-					</span>
-
-				<%= "[#{@project.product.name}]" %> <%= @project.name %>
-
-
-
-				<%= render partial: "projects/tools", :locals => {:project => @project} %>
-
-
-			</h3>
+			<%= render partial: "projects/title", :locals => {:project => @project} %>
 		</div>
 
 		<div class="panel-body">

@@ -1,0 +1,12 @@
+<h4>
+	<%= link_to '<i class="fa fa-star" style="color: #d6bc32;"></i>'.html_safe, toggle_starred_project_path(project), method: :post if project.starred %>
+	<%= link_to '<i class="fa fa-star-o" style="color: #999;"></i>'.html_safe, toggle_starred_project_path(project), method: :post unless project.starred %>
+
+	<%= link_to "[#{project.product.name}] #{project.name}", project %>
+
+	<%= render partial: "projects/tools", :locals => {:project => project} %>
+
+	<%= "<span class='label label-success project-status'>Status: Completed</span>".html_safe if project.status == "Completed" %>
+	<%= "<span class='label label-warning project-status'>Status: In Progress</span>".html_safe if project.status == "In Progress" %>
+	<%= "<span class='label label-default project-status'>Status: Incomplete</span>".html_safe if project.status == "Incomplete" %>
+</h4>

@@ -1,43 +1,52 @@
-<div class="row"><div class="col-md-6 col-md-offset-3">
+ <%= form_for(@project, html: {class: 'form-inline'}) do |f| %>
 
+
+<div class="col-md-12">
   <div class="panel panel-default">
 
-    <div class="panel-heading"><h4><i class='fa fa-folder'></i> New Project</h4></div>
+    <div class="panel-heading"><h4>
 
-    <div class="panel-body">
+      <fieldset>
+        <div class="form-group" style="width: 100%;">
+          <i class="fa fa-folder-o" style="color: #999;"></i>
+           <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => "Select Product", :required => true}, {:class => 'form-control', style: "min-width: 20%;" }) %>
+           <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true, style: "width: 50%;", :required => true %>
+        </div>
+      </fieldset>
 
-      <%= form_for(@project) do |f| %>
+    </h4></div>
 
 
 
+      <div class="panel-body">
         <fieldset>
 
-          <div class="form-group">
-             <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => true}, {:class => 'form-control' }) %>
+          <div class="form-group" style="width: 100%;">
+            <b>Description: </b><br>
+            <%= f.text_area :description, :placeholder => "Description", class: "form-control", style: "width: 100%" %>
           </div>
 
+          <br><br>
 
           <div class="form-group">
-            <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true %>
+            <b>Due Date: </b><br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.datetime_local_field :due_date, class: "form-control" %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <%= f.text_area :description, :placeholder => "Description", class: "form-control" %>
+          <br><br>
+
+           <div class="form-group">
+            <b>Assigned By: </b><br>
+            <%= f.text_field :assigned_by, :placeholder => "Name", class: "form-control" %>
           </div>
 
-          <div class="form-group">
-            <%= f.datetime_local_field :due_date, class: "form-control" %>
-          </div>
-
-          <hr>
+          <br><br>
 
           <div class="form-group">
-            <%= f.text_field :assigned_by, :placeholder => "Assigned By", class: "form-control" %>
-          </div>
-
-
-          <div class="form-group">
-            <b>Users assigned:</b><br>
+            <b>Users Assigned:</b><br>
            <%  User.all.each_with_index do |user,idx| %>
             <%= check_box_tag "project[assignments_attributes][#{idx}][user_id]", user.id, @project.user_ids.include?(user.id) %>
             <%= user.name %>
@@ -45,15 +54,16 @@
           <% end %>
           </div>
 
+       </fieldset>
+      </div>
 
-          <%= f.submit "Add Project", class: "btn btn-md btn-success btn-block" %>
+      <div class="panel-footer">
+        <%= f.submit "Add Project", class: "btn btn-sm btn-success" %>
+      </div>
 
-        </fieldset>
 
-      <% end %>
-
-    </div>
 
   </div>
+</div>
 
-</div></div>
+<% end %>
