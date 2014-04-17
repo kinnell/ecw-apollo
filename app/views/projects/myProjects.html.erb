@@ -1,7 +1,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h2><i class="fa fa-folder-o"></i> My Projects <%= link_to "(View all Projects)", projects_path %><%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-primary", style: "float: right;" %></h2>
+		<h2><i class="fa fa-folder-o"></i> My Projects <%= link_to "(View all Projects)", projects_path, style: "font-size: 18px;" %><%= link_to 'New Project', new_project_path, class: "btn btn-sm btn-primary", style: "float: right; font-size: 12px;" %></h2>
 	</div>
 </div>
 
@@ -25,7 +25,6 @@
 				<%= "<span class='label label-success project-status'>Status: Completed</span>".html_safe if project.status == "Completed" %>
 				<%= "<span class='label label-warning project-status'>Status: In Progress</span>".html_safe if project.status == "In Progress" %>
 				<%= "<span class='label label-default project-status'>Status: Incomplete</span>".html_safe if project.status == "Incomplete" %>
-
 
 			</h4>
 

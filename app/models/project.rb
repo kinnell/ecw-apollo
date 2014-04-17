@@ -20,4 +20,5 @@ class Project < ActiveRecord::Base
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end
 
+
 end
