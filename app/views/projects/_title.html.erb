@@ -6,7 +6,12 @@
 
 	<%= render partial: "projects/tools", :locals => {:project => project} %>
 
-	<%= "<span class='label label-success project-status'>Status: Completed</span>".html_safe if project.status == "Completed" %>
-	<%= "<span class='label label-warning project-status'>Status: In Progress</span>".html_safe if project.status == "In Progress" %>
-	<%= "<span class='label label-default project-status'>Status: Incomplete</span>".html_safe if project.status == "Incomplete" %>
+	<div class="project-status">
+		<%= "<span class='label label-info'><i class='fa fa-list-ol'></i> In Queue</span>".html_safe if project.status == "In Queue" %>
+		<%= "<span class='label label-warning'><i class='fa fa-refresh'></i> In Progress</span>".html_safe if project.status == "In Progress" %>
+		<%= "<span class='label label-default'><i class='fa fa-pause'></i> On Hold</span>".html_safe if project.status == "On Hold" %>
+		<%= "<span class='label label-danger'><i class='fa fa-times-circle'></i> Cancelled</span>".html_safe if project.status == "Cancelled" %>
+		<%= "<span class='label label-success'><i class='fa fa-check-circle'></i> Completed</span>".html_safe if project.status == "Completed" %>
+	</div>
+
 </h4>

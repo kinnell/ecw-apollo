@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417160051) do
+ActiveRecord::Schema.define(version: 20140418044630) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 20140417160051) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "due_date"
-    t.string   "status",      default: "Incomplete", null: false
+    t.string   "status",      default: "In Queue", null: false
     t.string   "description"
     t.integer  "product_id"
     t.datetime "end_date"
     t.string   "assigned_by"
-    t.boolean  "starred",     default: false,        null: false
+    t.boolean  "starred",     default: false,      null: false
   end
 
   add_index "projects", ["product_id"], name: "index_projects_on_product_id"
