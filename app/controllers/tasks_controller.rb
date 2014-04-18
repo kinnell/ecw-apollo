@@ -46,9 +46,13 @@ class TasksController < ApplicationController
 
   def complete
     @task = Task.find(params[:id])
-    if @task.update_attributes(:completed => true)
-      @task.update_attributes(:completed_at => DateTime.now)
-      redirect_to :back
+    if @task.user == current_user
+      if @task.update_attributes(:completed => true)
+        @task.update_attributes(:completed_at => DateTime.now)
+        redirect_to :back
+      end
+    else
+      redirect_to :back, notice: 'That is not your task to complete!'
     end
   end
 
@@ -66,6 +70,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :project_id)
+      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id)
     end
 end

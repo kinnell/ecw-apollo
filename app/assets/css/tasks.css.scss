@@ -23,15 +23,17 @@
 
 		li a i { padding-right: 5px; }
 
-		li .task-name, .task-date { display: inline-block; }
+		li .task-name, li .task-date, li .task-user { display: inline-block; }
 
-		li .task-date { color: #999; }
+		li .task-date { color: #666; float: right; margin-right: 5px; }
+
+		li .task-user { color: #999; }
 
 		li.task-late .task-name, li.task-late .task-date { color: $red; font-weight: 600; }
 
 		li.task-completed { font-style: italic; color: #bbb; }
 		li.task-completed i { color: #bbb; }
-		li.task-completed .task-name { text-decoration: line-through;}
+		li.task-completed .task-name, li.task-completed .task-user { text-decoration: line-through;}
 
 
 
