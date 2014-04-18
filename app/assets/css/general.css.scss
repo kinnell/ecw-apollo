@@ -1,0 +1,53 @@
+@import 'bootstrap';
+@import 'colors';
+
+// GENERAL HTML //
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+hr {
+	border-top: 1px solid #ddd;
+}
+
+.container {
+	margin-bottom: 50px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.fa-stack {
+	color: $dark-blue;
+}
+
+.front-page {
+	background: url('background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.inside-page {
+	background: #ecf0f1;
+	background: url('old_mathematics2.png') repeat;
+}
+
+.late {
+	display: inline-block;
+	color: $dark-red;
+	font-weight: 600;
+}
+
+
+.row {
+	margin-top: 50px;
+}
+
+
+.alert-info {
+	text-align: center;
+}

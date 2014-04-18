@@ -19,6 +19,67 @@
 
 
 
+.calendar {
+  border-collapse: collapse;
+  width: 100%; }
+  .calendar td, .calendar th {
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999; }
+  .calendar th {
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+    text-transform: uppercase; }
+  .calendar td {
+    background: #FFF;
+    color: #777;
+    height: 120px;
+    vertical-align: top;
+    text-align: right;
+    font-size: 12px; }
+  .calendar .notmonth, .calendar .notmonth a {
+    background-color: #F7F7F7;
+    color: #CCC; }
+  .calendar .today {
+    background-color: #e4f6fe; }
+  .calendar ul {
+    font-size: 10px;
+    padding-left: 0px;
+    list-style-type: none; }
+    .calendar ul li {
+      background-color: #79d3fc;
+      border: 1px solid #79d3fc;
+      border-radius: 5px;
+      padding: 5px;
+      margin-top: 2px;
+      text-align: left; }
+    .calendar ul a, .calendar ul a:hover {
+      color: #333;
+      text-decoration: none; }
+    .calendar ul a:hover li {
+      border: 1px solid #60a8c9; }
+
+#month {
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase; }
+  #month a {
+    text-decoration: none;
+    padding: 0 10px;
+    color: #999; }
+.comment a.commenter {
+  font-weight: bold; }
+.comment .comment-content {
+  display: inline-block; }
+.comment .comment-tools {
+  float: right; }
+.comment .comment-date {
+  color: #999;
+  font-size: 12px; }
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -5213,6 +5274,25 @@ a:hover {
   color: #a42828;
   font-weight: 600; }
 
+.row {
+  margin-top: 50px; }
+
+.alert-info {
+  text-align: center; }
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 4em;
+  padding-bottom: 20px;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15); }
+
+.logo a {
+  color: white; }
+
+.logo a:hover {
+  text-decoration: none; }
 .navbar {
   border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
@@ -5231,7 +5311,6 @@ a:hover {
     background-color: #059ce0; }
     .navbar .main-menu.navbar-nav .selected a {
       color: white; }
-
 .panel {
   border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
@@ -5251,6 +5330,17 @@ a:hover {
 .btn {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); }
+.project-status {
+  display: inline-block;
+  float: right; }
+  .project-status span.label {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 100px;
+    padding-right: 10px;
+    padding-left: 10px; }
+    .project-status span.label i {
+      padding-right: 3px; }
 
 .project-info p, .user-info p {
   color: #666;
@@ -5258,7 +5348,6 @@ a:hover {
 .project-info i, .user-info i {
   padding-right: 5px;
   color: #666; }
-
 .tasks-list .title-sm, .items-list .title-sm {
   display: inline-block;
   color: #999;
@@ -5321,98 +5410,3 @@ a:hover {
     opacity: 0.8; }
   .tools-dropdown li a:hover {
     opacity: 1; }
-
-.row {
-  margin-top: 50px; }
-
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: bold;
-  font-size: 4em;
-  padding-bottom: 20px;
-  text-align: center;
-  color: white;
-  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15); }
-
-.logo a {
-  color: white; }
-
-.logo a:hover {
-  text-decoration: none; }
-
-.alert-info {
-  text-align: center; }
-
-.calendar {
-  border-collapse: collapse;
-  width: 100%; }
-  .calendar td, .calendar th {
-    font-size: 10px;
-    padding: 6px;
-    border: 1px solid #999; }
-  .calendar th {
-    color: #666;
-    text-align: center;
-    width: 14.2857142857143%;
-    text-transform: uppercase; }
-  .calendar td {
-    background: #FFF;
-    color: #777;
-    height: 120px;
-    vertical-align: top;
-    text-align: right;
-    font-size: 12px; }
-  .calendar .notmonth, .calendar .notmonth a {
-    background-color: #F7F7F7;
-    color: #CCC; }
-  .calendar .today {
-    background-color: #e4f6fe; }
-  .calendar ul {
-    font-size: 10px;
-    padding-left: 0px;
-    list-style-type: none; }
-    .calendar ul li {
-      background-color: #79d3fc;
-      border: 1px solid #79d3fc;
-      border-radius: 5px;
-      padding: 5px;
-      margin-top: 2px;
-      text-align: left; }
-    .calendar ul a, .calendar ul a:hover {
-      color: #333;
-      text-decoration: none; }
-    .calendar ul a:hover li {
-      border: 1px solid #60a8c9; }
-
-#month {
-  font-weight: bold;
-  margin: 0;
-  padding-bottom: 10px;
-  text-align: center;
-  font-size: 16px;
-  text-transform: uppercase; }
-  #month a {
-    text-decoration: none;
-    padding: 0 10px;
-    color: #999; }
-
-.comment a.commenter {
-  font-weight: bold; }
-.comment .comment-content {
-  display: inline-block; }
-.comment .comment-tools {
-  float: right; }
-.comment .comment-date {
-  color: #999;
-  font-size: 12px; }
-.project-status {
-  display: inline-block;
-  float: right; }
-  .project-status span.label {
-    font-size: 12px;
-    font-weight: 600;
-    min-width: 100px;
-    padding-right: 10px;
-    padding-left: 10px; }
-    .project-status span.label i {
-      padding-right: 3px; }

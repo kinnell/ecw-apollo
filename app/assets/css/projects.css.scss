@@ -1,3 +1,5 @@
+@import 'colors';
+
 .project-status {
 
 	display: inline-block;
@@ -15,5 +17,20 @@
 		}
 
 	}
+
+}
+
+.project-info, .user-info {
+
+	p {
+		color: #666;
+		line-height: 200%;
+	}
+
+	i {
+		padding-right: 5px;
+		color: #666;
+	}
+
 
 }

@@ -1,0 +1,35 @@
+@import 'colors';
+
+.navbar {
+	border-radius: 0px;
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 0 0 .1em hsla(0,0%,0%,.01),
+             inset 0 0 1em hsla(0,0%,0%,.01),
+             0 .1em 1em hsla(0,0%,0%,.07);
+	border: 1px solid #dddddd;
+
+
+	.navbar-brand {
+		font-family: 'Orbitron', sans-serif;
+		padding-left: 50px;
+		padding-right: 100px;
+		padding-top: 18px;
+	}
+
+	.main-menu.navbar-nav li {
+		padding-right: 10px;
+		padding-left: 10px;
+
+	}
+
+	.main-menu.navbar-nav .selected {
+		background-color: $dark-blue;
+
+		a {
+			color: white;
+		}
+
+	}
+
+}
