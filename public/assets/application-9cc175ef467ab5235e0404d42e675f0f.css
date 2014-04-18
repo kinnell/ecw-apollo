@@ -5232,12 +5232,6 @@ a:hover {
     .navbar .main-menu.navbar-nav .selected a {
       color: white; }
 
-.label.project-status {
-  font-size: 12px;
-  font-weight: 600;
-  float: right;
-  padding: 5px; }
-
 .panel {
   border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
@@ -5411,3 +5405,14 @@ a:hover {
 .comment .comment-date {
   color: #999;
   font-size: 12px; }
+.project-status {
+  display: inline-block;
+  float: right; }
+  .project-status span.label {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 100px;
+    padding-right: 10px;
+    padding-left: 10px; }
+    .project-status span.label i {
+      padding-right: 3px; }
