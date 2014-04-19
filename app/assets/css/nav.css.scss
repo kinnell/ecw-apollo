@@ -17,13 +17,26 @@
 		padding-top: 18px;
 	}
 
+	.main-menu.navbar-nav li .badge {
+		background-color: $dark-blue;
+		font-weight: 600;
+		font-size: 10px;
+		margin-left: 3px;
+	}
+
+	.main-menu.navbar-nav li.selected .badge {
+		background-color: white;
+		color: $dark-blue;
+
+	}
+
 	.main-menu.navbar-nav li {
 		padding-right: 10px;
 		padding-left: 10px;
 
 	}
 
-	.main-menu.navbar-nav .selected {
+	.main-menu.navbar-nav li.selected {
 		background-color: $dark-blue;
 
 		a {
