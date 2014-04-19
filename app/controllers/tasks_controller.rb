@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
 
   def myTasks
-    @tasks = current_user.projects.collect{|p| p.tasks}.flatten
+    @tasks = current_user.tasks.incomplete.order('due_date')
   end
 
   def show

@@ -14,8 +14,8 @@
 
     <div class="collapse navbar-collapse main-menu" id="bs-example-navbar-collapse-1">
       <ul class="main-menu nav navbar-nav">
-        <li class="<%= 'selected' if current_page?(tasks_path) %>"><%= link_to '<i class="fa fa-check-circle"></i> Tasks'.html_safe, tasks_path %></li>
-        <li class="<%= 'selected' if current_page?(calendar_path) %>"><%= link_to '<i class="fa fa-calendar"></i> Calendar'.html_safe, calendar_path %></li>
+        <li class="<%= 'selected' if current_page?(myTasks_path) %>"><%= link_to '<i class="fa fa-check-circle"></i> My Tasks'.html_safe, myTasks_path %></li>
+        <li class="<%= 'selected' if current_page?(myCalendar_path) %>"><%= link_to '<i class="fa fa-calendar"></i> My Calendar'.html_safe, myCalendar_path %></li>
         <li class="<%= 'selected' if current_page?(myProjects_path) %>"><%= link_to '<i class="fa fa-folder-o"></i> My Projects'.html_safe, myProjects_path %></li>
         <li class="<%= 'selected' if current_page?(users_path) %>"><%= link_to '<i class="fa fa-users"></i> Team'.html_safe, users_path %></li>
         <li class="<%= 'selected' if current_page?(products_path) %>"><%= link_to '<i class="fa fa-shopping-cart"></i> Products'.html_safe, products_path %></li>
