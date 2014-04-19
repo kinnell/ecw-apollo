@@ -5376,9 +5376,11 @@ a:hover {
   .tasks-list ul li.task-completed, .items-list ul li.task-completed {
     font-style: italic;
     color: #bbb; }
+  .tasks-list ul li.task-completed .task-date, .items-list ul li.task-completed .task-date {
+    color: #bbb; }
   .tasks-list ul li.task-completed i, .items-list ul li.task-completed i {
     color: #bbb; }
-  .tasks-list ul li.task-completed .task-name, .tasks-list ul li.task-completed .task-user, .items-list ul li.task-completed .task-name, .items-list ul li.task-completed .task-user {
+  .tasks-list ul li.task-completed .task-name, .items-list ul li.task-completed .task-name {
     text-decoration: line-through; }
   .tasks-list ul hr, .items-list ul hr {
     margin: 2px 0 15px 20px;
