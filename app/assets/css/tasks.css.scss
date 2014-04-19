@@ -32,11 +32,13 @@
 		li.task-late .task-name, li.task-late .task-date { color: $red; font-weight: 600; }
 
 		li.task-completed { font-style: italic; color: #bbb; }
+
+		li.task-completed .task-date { color: #bbb; }
+
+
 		li.task-completed i { color: #bbb; }
-		li.task-completed .task-name, li.task-completed .task-user { text-decoration: line-through;}
 
-
-
+		li.task-completed .task-name { text-decoration: line-through;}
 
 		hr {
 			margin: 2px 0 15px 20px;

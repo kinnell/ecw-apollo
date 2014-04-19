@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418151358) do
+ActiveRecord::Schema.define(version: 20140419005543) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20140418151358) do
     t.boolean  "completed",    default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
+    t.integer  "project_id",                   null: false
     t.datetime "completed_at"
-    t.integer  "user_id"
+    t.integer  "user_id",                      null: false
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
