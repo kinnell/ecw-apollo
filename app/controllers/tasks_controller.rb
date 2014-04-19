@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
   def update
       if @task.update(task_params)
-        redirect_to :back, notice: 'Task was successfully updated.'
+        redirect_to @task.project, notice: 'Task was successfully updated.'
       else
         render action: 'edit'
       end
