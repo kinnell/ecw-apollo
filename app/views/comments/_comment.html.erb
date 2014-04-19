@@ -1,9 +1,8 @@
 <div class="comment">
 	<%= link_to comment.user.name, comment.user, class: "commenter" %>:
 	<%= content_tag :div, comment.content, class: "comment-content" %>
-	<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools" %><br>
+	<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools", style: "padding-top: 8px;" %><br>
 	<%= content_tag :div, "<font color='#666'>#{time_ago_in_words(comment.created_at)} ago</font> (#{print_date(comment.created_at, 'xl')})".html_safe, class: "comment-date" %>
-
 </div>
 
 <hr>
