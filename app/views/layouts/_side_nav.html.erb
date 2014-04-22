@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+
+<nav class="side-nav col-md-2">
+
+	<center><%= link_to current_user do %><%= image_tag current_user.profile_photo.url(:thumb), class: "profile-photo" %><% end %></center><br><br>
+
+	<ul class="nav nav-pills nav-stacked">
+		<hr>
+		<li class="<%= 'selected' if current_page?(myTasks_path) %>"><%= link_to "<i class='fa fa-check-circle'></i> Tasks <span class='badge'>#{current_user.tasks.incomplete.count}</span>".html_safe, myTasks_path %></li>
+			<hr>
+        <li class="<%= 'selected' if current_page?(myProjects_path) %>"><%= link_to "<i class='fa fa-folder-o'></i> Projects <span class='badge'>#{current_user.projects.incomplete.uniq.count}</span>".html_safe, myProjects_path %></li>
+        <hr>
+         <li class="<%= 'selected' if current_page?(myCalendar_path) %>"><%= link_to "<i class='fa fa-calendar'></i> Calendar".html_safe, myCalendar_path %></li>
+        <hr>
+        <li class="<%= 'selected' if current_page?(users_path) %>"><%= link_to '<i class="fa fa-users"></i> Team'.html_safe, users_path %></li>
+        <hr>
+        <li class="<%= 'selected' if current_page?(products_path) %>"><%= link_to '<i class="fa fa-shopping-cart"></i> Products'.html_safe, products_path %></li>
+        <hr>
+        <li class="<%= 'selected' if current_page?(edit_user_registration_path) %>"><%= link_to '<i class="fa fa-cog"></i> Settings'.html_safe, edit_user_registration_path %></li>
+        <hr>
+        <li><%= link_to '<i class="fa fa-sign-out"></i> Log Out'.html_safe, destroy_user_session_path, method: :delete %></li>
+
+	</ul>
+
+</nav>
+
+<% end %>

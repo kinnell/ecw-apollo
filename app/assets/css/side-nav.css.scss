@@ -1,0 +1,72 @@
+@import 'colors';
+$gray-blue: #2b2d37;
+$dark-gray: #6c6b70;
+
+
+nav.side-nav {
+	position: fixed;
+	height: 100%;
+
+	background-color: $gray-blue;
+	//background: url('concrete_wall.png') repeat;
+
+	padding: 20px 0px;
+
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
+	hr { margin: 0px auto; width: 90%; border-color: $dark-gray; opacity: 0.1;}
+
+	ul li {
+
+		a {
+
+			font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+			border-radius: 0px;
+			padding: 20px;
+			color: $dark-gray;
+
+			i {
+				padding-right: 5px;
+			}
+
+			.badge {
+				float: right;
+				border-radius: 50%;
+				font-size: 12px;
+				font-weight: 300;
+				background-color: $dark-gray;
+			}
+
+			 text-transform: uppercase;
+			 font-size: 13px;
+			 font-weight: 300;
+
+	      -webkit-transition: all .5s ease-in-out;
+	      -moz-transition: all .5s ease-in-out;
+	      -o-transition: all .5s ease-in-out;
+	      transition: all .5s ease-in-out;
+		}
+
+	}
+
+	ul li.selected a {
+		background-color: whitesmoke;
+		color: $dark-gray;
+
+
+		.badge {
+			background-color: $dark-gray;
+		}
+	}
+
+	ul li.selected a:hover {
+		-webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      -o-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+
+	}
+
+
+}
