@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
    has_many :comments
    has_many :tasks
 
-   has_attached_file :profile_photo, :styles => { :medium => "200x200#", :thumb => "75x75#" }
+   has_attached_file :profile_photo, :styles => { :medium => "200x200#", :thumb => "75x75#" }, :default_url => "turtle75.jpg"
 
 
 end
