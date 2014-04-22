@@ -2,7 +2,8 @@
 
 <nav class="side-nav col-md-2">
 
-	<center><%= link_to current_user do %><%= image_tag current_user.profile_photo.url(:thumb), class: "profile-photo" %><% end %></center><br><br>
+	<%= link_to current_user do %><%= image_tag current_user.profile_photo.url(:thumb), class: "profile-photo" %><% end %>
+	<div class="user-name"><%= current_user.name %></div><br><br>
 
 	<ul class="nav nav-pills nav-stacked">
 		<hr>

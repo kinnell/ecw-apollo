@@ -5286,7 +5286,7 @@ a:hover {
 
 .inside-page {
   background: #ecf0f1;
-  background: url("old_mathematics2.png") repeat; }
+  background: url("grid2.png") repeat; }
 
 .late {
   display: inline-block;
@@ -5312,32 +5312,6 @@ a:hover {
 
 .logo a:hover {
   text-decoration: none; }
-.navbar {
-  border-radius: 0px;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 0 0 0.1em rgba(0, 0, 0, 0.01), inset 0 0 1em rgba(0, 0, 0, 0.01), 0 0.1em 1em rgba(0, 0, 0, 0.07);
-  border: 1px solid #dddddd; }
-  .navbar .navbar-brand {
-    font-family: 'Orbitron', sans-serif;
-    padding-left: 50px;
-    padding-right: 100px;
-    padding-top: 18px; }
-  .navbar .main-menu.navbar-nav li .badge {
-    background-color: #059ce0;
-    font-weight: 600;
-    font-size: 10px;
-    margin-left: 3px; }
-  .navbar .main-menu.navbar-nav li.selected .badge {
-    background-color: white;
-    color: #059ce0; }
-  .navbar .main-menu.navbar-nav li {
-    padding-right: 10px;
-    padding-left: 10px; }
-  .navbar .main-menu.navbar-nav li.selected {
-    background-color: #059ce0; }
-    .navbar .main-menu.navbar-nav li.selected a {
-      color: white; }
 .panel {
   border-radius: 0px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
@@ -5374,6 +5348,59 @@ a:hover {
 .project-info i, .user-info i {
   padding-right: 5px;
   color: #666; }
+nav.side-nav {
+  position: fixed;
+  height: 100%;
+  background-color: #2b2d37;
+  padding: 20px 0px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
+  nav.side-nav .user-name {
+    display: inline-block;
+    padding-left: 20px;
+    color: whitesmoke; }
+  nav.side-nav .profile-photo {
+    margin-left: 20px; }
+  nav.side-nav hr {
+    margin: 0px auto;
+    width: 90%;
+    border-color: #6c6b70;
+    opacity: 0.1; }
+  nav.side-nav ul li a {
+    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #6c6b70;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 300;
+    -webkit-transition: all .75s ease-in-out;
+    -moz-transition: all .75s ease-in-out;
+    -o-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out; }
+    nav.side-nav ul li a i {
+      padding-right: 10px; }
+    nav.side-nav ul li a .badge {
+      float: right;
+      font-size: 10px;
+      font-weight: 300;
+      background-color: #6c6b70; }
+  nav.side-nav ul li a:hover {
+    background-color: #22242c;
+    color: white; }
+  nav.side-nav ul li.selected a {
+    background-color: #22242c;
+    color: white; }
+    nav.side-nav ul li.selected a .badge {
+      background-color: #6c6b70; }
+  nav.side-nav ul li.selected a:hover {
+    -webkit-transition: all .75s ease-in-out;
+    -moz-transition: all .75s ease-in-out;
+    -o-transition: all .75s ease-in-out;
+    transition: all .75s ease-in-out; }
 .tasks-list .title-sm, .items-list .title-sm {
   display: inline-block;
   color: #999;
@@ -5442,10 +5469,35 @@ a:hover {
     opacity: 0.8; }
   .tools-dropdown li a:hover {
     opacity: 1; }
+.navbar {
+  border-radius: 0px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0 0.1em rgba(0, 0, 0, 0.01), inset 0 0 1em rgba(0, 0, 0, 0.01), 0 0.1em 1em rgba(0, 0, 0, 0.07);
+  border: 1px solid #dddddd; }
+  .navbar .navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 18px; }
+  .navbar .main-menu.navbar-nav li .badge {
+    background-color: #059ce0;
+    font-weight: 600;
+    font-size: 10px;
+    margin-left: 3px; }
+  .navbar .main-menu.navbar-nav li.selected .badge {
+    background-color: white;
+    color: #059ce0; }
+  .navbar .main-menu.navbar-nav li {
+    padding-right: 10px;
+    padding-left: 10px; }
+  .navbar .main-menu.navbar-nav li.selected {
+    background-color: #059ce0; }
+    .navbar .main-menu.navbar-nav li.selected a {
+      color: white; }
 .profile-photo {
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border: 1px solid #EEE; }
+  -webkit-border-radius: 50%; }
 /*!
  * jQuery UI CSS Framework 1.10.4
  * http://jqueryui.com
