@@ -50,3 +50,4 @@ gem 'devise', '~> 3.1.1'
 gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'
 
 gem 'newrelic_rpm'
+gem 'paperclip', '~> 3.0'

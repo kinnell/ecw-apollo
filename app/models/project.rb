@@ -20,5 +20,12 @@ class Project < ActiveRecord::Base
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end
 
+	def product_name
+	  product.try(:name)
+	end
+
+	def product_name=(name)
+  		self.product = Product.find_or_create_by_name(name).id if name.present?
+	end
 
 end

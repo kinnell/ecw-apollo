@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
    has_many :comments
    has_many :tasks
 
+   has_attached_file :profile_photo, :styles => { :thumb => "100x100#" }
+
 
 end

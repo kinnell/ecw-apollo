@@ -6,10 +6,10 @@
 			<% if task.user == current_user %>
 				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
 			<% else %>
-				<a><i class="fa fa-square-o"></i></a>
+				<a><i class="fa fa-square-o" style="color: #CCC;"></i></a>
 			<% end %>
 			<%= content_tag :div, task.name, class: "task-name" %>
-			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user %>
+			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 			<%= render partial: "tasks/tools", :locals => {:task => task} %>
 			<%= content_tag :div, " due #{print_date(task.due_date, "s")}", class: "task-date" %>
 
@@ -21,10 +21,10 @@
 			<% if task.user == current_user %>
 				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
 			<% else %>
-				<a><i class="fa fa-square-o"></i></a>
+				<a><i class="fa fa-square-o" style="color: #CCC;"></i></a>
 			<% end %>
 			<%= content_tag :div, task.name, class: "task-name" %>
-			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user %>
+			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 			<%= render partial: "tasks/tools", :locals => {:task => task} %>
 		</li>
 
@@ -35,7 +35,7 @@
 	<li class="task-completed">
 		<%= link_to '<i class="fa fa-check-square-o"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
 		<%= content_tag :div, task.name, class: "task-name" %>
-		<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user %>
+		<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 		<%= render partial: "tasks/tools", :locals => {:task => task} %>
 		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" %>
 	</li>

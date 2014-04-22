@@ -7,6 +7,7 @@
 	<div class="panel-body">
 		<div class="user-info">
 			<p>
+				<%= image_tag @user.profile_photo.url(:thumb), class: "profile-photo" %><br>
 				<i class="fa fa-envelope"></i> <%= @user.email %><br>
 				<i class="fa fa-key"></i> Last Sign-In: <%= time_ago_in_words(@user.last_sign_in_at) %><br>
 				<i class="fa fa-user-md"></i> Admin: <%= @user.admin %>
