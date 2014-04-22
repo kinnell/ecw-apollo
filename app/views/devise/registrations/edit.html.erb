@@ -16,7 +16,11 @@
 
           <div class="form-group">
             <center>
-              <%= image_tag current_user.profile_photo.url(:thumb), class: "profile-photo" %>
+              <% if current_user.profile_photo %>
+                <%= image_tag current_user.profile_photo.url(:thumb), class: "profile-photo" %>
+              <% else %>
+                <%= image_tag "turtle75.jpg", class: "profile-photo" %>
+              <% end %>
              </center>
           </div>
 
