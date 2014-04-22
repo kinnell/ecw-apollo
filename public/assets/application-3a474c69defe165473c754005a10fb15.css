@@ -81,6 +81,24 @@
 .comment .comment-date {
   color: #999;
   font-size: 12px; }
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default; }
+  ul.ui-autocomplete li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0; }
+    ul.ui-autocomplete li a {
+      color: #000;
+      display: block;
+      padding: 3px; }
+    ul.ui-autocomplete li a.ui-state-hover, ul.ui-autocomplete li a.ui-state-active {
+      background-color: #FFFCB2; }
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -5424,6 +5442,10 @@ a:hover {
     opacity: 0.8; }
   .tools-dropdown li a:hover {
     opacity: 1; }
+.profile-photo {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: 1px solid #EEE; }
 /*!
  * jQuery UI CSS Framework 1.10.4
  * http://jqueryui.com
