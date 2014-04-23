@@ -1,5 +1,11 @@
-
 $blue: #79D3FC;
-$dark-blue: #059ce0;
+$dark-blue: darken($blue, 10%);
 $red: #CD3333;
-$dark-red: #a42828;
+$dark-red: darken($red, 10%);
+
+$charcoal: #2b2d37;
+$dark-charcoal: darken($charcoal, 3%);
+
+$dark-gray: lighten(#6c6b70, 5%);
+$lighter-gray: #76757a;
+

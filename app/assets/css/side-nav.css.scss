@@ -1,22 +1,24 @@
 @import 'colors';
-$gray-blue: #2b2d37;
-$dark-gray: #6c6b70;
-$lighter-gray: #76757a;
-$darker-gray-blue: #22242c;
-
 
 nav.side-nav {
 	position: fixed;
 	height: 100%;
 
-	background-color: $gray-blue;
-	//background: url('concrete_wall.png') repeat;
+	padding: 0px;
 
-	padding: 20px 0px;
+	background-color: $charcoal;
+	//background: url('concrete_wall.png') repeat;
 
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 
+
+	.user-section {
+		padding: 20px 0;
+		background-color: darken($dark-charcoal, 5%);
+
+
+	}
 	.user-name {
 		display: inline-block;
 		padding-left: 20px;
@@ -25,6 +27,13 @@ nav.side-nav {
 
 	.profile-photo {
 		margin-left: 20px;
+	}
+
+	.brand {
+		color: white;
+		font-family: 'Orbitron', sans-serif;
+		padding: 15px 40px 10px 40px;
+		font-size: 20px;
 	}
 
 	hr { margin: 0px auto; width: 90%; border-color: $dark-gray; opacity: 0.1;}
@@ -65,19 +74,20 @@ nav.side-nav {
 		}
 
 		a:hover {
-			background-color: $darker-gray-blue;
+			background-color: $dark-charcoal;
 			color: white;
 		}
 
 	}
 
 	ul li.selected a {
-		background-color: $darker-gray-blue;
+		background-color: $dark-charcoal;
 		color: white;
 
-		.badge {
-			background-color: $dark-gray;
+		i {
+			color: $dark-blue;
 		}
+
 	}
 
 	ul li.selected a:hover {
