@@ -3,6 +3,9 @@
 	<% if task.due_date %>
 
 		<li class="<%= 'task-late' if task.late? %>">
+			<%= link_to '<i class="fa fa-star"></i>'.html_safe, toggle_starred_task_path(task), method: :post if task.starred %>
+			<%= link_to '<i class="fa fa-star-o"></i>'.html_safe, toggle_starred_task_path(task), method: :post unless task.starred %>
+
 			<% if task.user == current_user %>
 				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
 			<% else %>
@@ -18,6 +21,9 @@
 	<% else %>
 
 		<li>
+			<%= link_to '<i class="fa fa-star"></i>'.html_safe, toggle_starred_task_path(task), method: :post if task.starred %>
+			<%= link_to '<i class="fa fa-star-o"></i>'.html_safe, toggle_starred_task_path(task), method: :post unless task.starred %>
+
 			<% if task.user == current_user %>
 				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
 			<% else %>

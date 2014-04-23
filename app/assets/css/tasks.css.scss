@@ -17,11 +17,14 @@
 
 	ul {
 		list-style-type: none;
-		padding: 5px 0 0 15px;
+		padding: 5px 0 0 0;
 
 		li { padding-bottom: 10px; }
 
 		li a i { padding-right: 5px; }
+
+		li a i.fa-star { color: #ffd76e; padding-right: 3px; }
+		li a i.fa-star-o { color: #CCC; padding-right: 3px; }
 
 		li .task-name, li .task-date, li .task-user { display: inline-block; }
 

@@ -3,12 +3,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all.incomplete.order('due_date')
+    @tasks = Task.all.incomplete.order("due_date")
   end
 
 
   def myTasks
-    @tasks = current_user.tasks.incomplete.order('due_date')
+    @tasks = current_user.tasks.incomplete.order("due_date")
   end
 
   def show
@@ -63,6 +63,14 @@ class TasksController < ApplicationController
       redirect_to :back
     end
   end
+
+  def toggle_starred
+    @task = Task.find(params[:id])
+    if @task.update_attributes(:starred => @task.starred.!)
+      redirect_to :back
+    end
+  end
+
 
   private
     def set_task
