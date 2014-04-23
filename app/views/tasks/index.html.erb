@@ -1,38 +1,30 @@
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>
+
 <div class="panel panel-default">
 
-  <div class="panel-heading"><h4><i class="fa fa-check-circle"></i> All Tasks <%= link_to "(View My Tasks)", myTasks_path %></h4></div>
+  <div class="panel-heading"><h4><i class="fa fa-check-circle"></i> Tasks
+
+    <ul id="tabs" class="nav nav-pills" data-tabs="tabs" style="float: right; font-size: 12px;">
+        <li class="active"><a href="#myTasks" data-toggle="tab">Your Tasks</a></li>
+        <li><a href="#allTasks" data-toggle="tab">All Tasks</a></li>
+    </ul></h4></div>
 
   <div class="panel-body">
 
-    <div class="tasks-list">
-
-      <% @tasks.due.group_by {|t| t.due_date.to_date }.each do |date, tasks_by_date| %>
-
-        <h4><%= print_time_ago(date) %><font color='#999' size="2"> <%= "(#{print_date(date, 'l')})".html_safe %></font></h4><hr>
-
-        <%  tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
-          <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-          <ul><%= render tasks %></ul>
-        <% end %>
-
-        <br>
-
-      <% end %>
-
-      <% if @tasks.notDue.exists? %>
-
-        <h4><font color="#999">no due date</font></h4><hr>
-        <% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks| %>
-          <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-          <ul><%= render tasks %></ul>
-        <% end %>
-
-        <br>
-
-      <% end %>
-
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="myTasks">
+            <%= render partial: "tasks/tasks_list", :locals => {:tasks => current_user.tasks.incomplete.order("due_date")} %>
+        </div>
+        <div class="tab-pane" id="allTasks">
+            <%= render partial: "tasks/tasks_list", :locals => {:tasks => Task.all.incomplete.order("due_date")} %>
+        </div>
     </div>
 
   </div>
 
 </div>
+
