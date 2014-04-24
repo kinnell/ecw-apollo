@@ -16,5 +16,5 @@
 /tmp
 .DS_Store
 
-#Ignore public system assets
+# Ignore Paperclip unloaded files
 /public/system
