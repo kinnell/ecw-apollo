@@ -9,7 +9,6 @@
     	<div class="user-name"><%= current_user.name %></div>
     </div>
 
-
 	<ul class="nav nav-pills nav-stacked">
 		<hr>
 		<li class="<%= 'selected' if current_page?(tasks_path) %>"><%= link_to "<i class='fa fa-check-circle'></i> Tasks <span class='badge'>#{current_user.tasks.incomplete.count}</span>".html_safe, tasks_path %></li>

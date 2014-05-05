@@ -1,0 +1,12 @@
+@import 'colors';
+
+.user-profile {
+	.panel-heading {
+		background-color: $charcoal;
+		color: white;
+		text-align: center;
+	}
+
+	h5 { font-weight: 100; }
+
+}
