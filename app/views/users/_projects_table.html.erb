@@ -1,7 +1,8 @@
 <table class="table">
 	<thead>
 		<tr>
-       	<th width="15%">Product</th>
+			<th width="2%"><i class="fa fa-star" style="color: #666;" %></i></th>
+       	<th width="13%">Product</th>
          <th width="30%">Project</th>
          <th width="15%">Assigned By</th>
          <th width="10%">Start Date</th>
@@ -12,8 +13,9 @@
 	</thead>
 	<tbody>
 
-			<% for project in projects %>
-							<tr>
+			<% for project in projects.order("starred DESC, due_date") %>
+			<tr>
+				<td><%= project.starred_toggle %></td>
 				<td><%= link_to project.product.name, project.product %></td>
 				<td><%= link_to project.name, project %></td>
 				<td><%= project.assigned_by %></td>

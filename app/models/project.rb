@@ -28,4 +28,14 @@ class Project < ActiveRecord::Base
   		self.product = Product.find_or_create_by_name(name).id if name.present?
 	end
 
+	def starred_toggle
+		if starred
+			'<i class="fa fa-star" style="color: #ffd76e;"></i>'.html_safe
+		else
+			'<i class="fa fa-star-o" style="color: #999;"></i>'.html_safe
+		end
+	end
+
+
+
 end

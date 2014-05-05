@@ -67,6 +67,14 @@ class ProjectsController < ApplicationController
   	end
   end
 
+  def update_status(new_status)
+  	@project = Project.find(params[:id])
+  	if project.update_attributes(:status => new_status)
+  		redirect_to :back
+  	end
+  end
+
+
 	private
 
 	def set_project

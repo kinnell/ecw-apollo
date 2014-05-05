@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
 	belongs_to :project
 	belongs_to :user
+	belongs_to :item
 
 	scope :completed, -> { where(:completed => true) }
 	scope :incomplete, -> { where(:completed => false) }
