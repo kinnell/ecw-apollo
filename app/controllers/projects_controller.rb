@@ -3,10 +3,6 @@ class ProjectsController < ApplicationController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@projects = Project.all.order("starred DESC, due_date")
-	end
-
-	def myProjects
 		@projects = current_user.projects.order("starred DESC").uniq
 	end
 

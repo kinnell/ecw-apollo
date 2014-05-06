@@ -2,11 +2,75 @@
 	<div class="panel panel-default">
 
 		<div class="panel-heading">
-			<%= render partial: "projects/title", :locals => {:project => @project} %>
+			<h4>
+				<%= link_to '<i class="fa fa-star" style="color: #ffd76e;"></i>'.html_safe, toggle_starred_project_path(@project), method: :post if @project.starred %>
+				<%= link_to '<i class="fa fa-star-o" style="color: #999;"></i>'.html_safe, toggle_starred_project_path(@project), method: :post unless @project.starred %>
+
+				<%= link_to "[#{@project.product.name}] #{@project.name}", @project %>
+
+				<ul class="tools-dropdown">
+				  <li class="dropdown">
+				    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
+				    <ul class="dropdown-menu pull-right">
+				      <li><%= link_to '<i class="fa fa-pencil"></i> Edit this project'.html_safe, edit_project_path(@project) %></li>
+				      <li><%= link_to '<i class="fa fa-trash-o"></i> Delete this project'.html_safe, @project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+				    </ul>
+				  </li>
+				</ul>
+
+				<%= render partial: "projects/status", :locals => {:project => @project} %>
+
+			</h4>
 		</div>
 
 		<div class="panel-body">
-			<%= render partial: "projects/info", :locals => {:project => @project} %>
+			<div class="project-info" style="line-height: 200%">
+				<div class="row" style="margin-top: 0px;">
+
+					<div class="col-md-4">
+					</div>
+
+					<div class="col-md-4">
+					</div>
+
+					<div class="col-md-4">
+					</div>
+
+
+					<div class="col-md-4">
+						<i class="fa fa-calendar"></i>
+						<b>Start Date:</b> <%= print_date(@project.created_at, "m") %>
+					</div>
+
+					<div class="col-md-4">
+						<i class="fa fa-calendar"></i> <b>Due Date:</b> <%= @project.due_date ? print_date(@project.due_date, "m") : "n/a"  %>
+					</div>
+
+					<div class="col-md-4">
+						<i class="fa fa-calendar"></i> <b>End Date:</b> <%= @project.end_date ?  print_date(@project.end_date, "m") : "n/a" %>
+					</div>
+
+
+
+					<div class="col-md-8">
+						<i class="fa fa-user"></i> <b>Assigned:</b> <%= @project.users.first ? @project.users.uniq.map {|u| u.name}.join(", ") : "None" %>
+					</div>
+
+					<div class="col-md-4">
+						<i class="fa fa-user"></i> <b>Assigned By:</b> <%= @project.assigned_by %>
+					</div>
+
+					<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b><br><font color="#777"><%= @project.description.gsub(/\n/, '<br>').html_safe %></font><hr></div>
+
+					<div class="col-md-12">
+						<div class="progress active">
+							<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.progress_percent %>%"><span><%= @project.progress_percent %>% Complete (<%= @project.tasks.completed.count %> out of <%= @project.tasks.count %> tasks)</span></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 		</div>
 
 	</div>

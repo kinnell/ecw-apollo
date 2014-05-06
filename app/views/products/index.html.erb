@@ -15,7 +15,7 @@
         <%= link_to product.name, product %>
       </h4>
 
-      <%= render partial: "products/projects_table", :locals => {:product => product} %>
+      <%= render partial: "projects/table", :locals => {:projects => product.projects} %>
 
       <hr>
       <br><br>

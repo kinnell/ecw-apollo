@@ -1,4 +1,5 @@
-<table class="table">
+<table class="table projects-table">
+
 	<thead>
 		<tr>
 			<th width="2%"><i class="fa fa-star" style="color: #666;" %></i></th>
@@ -11,9 +12,9 @@
          <th width="15%" style="text-align: center;">Status</th>
     	</tr>
 	</thead>
-	<tbody>
 
-			<% for project in projects.order("starred DESC, due_date") %>
+	<tbody>
+		<% for project in projects.order("starred DESC, due_date") %>
 			<tr>
 				<td><%= project.starred_toggle %></td>
 				<td><%= link_to project.product.name, project.product %></td>
@@ -24,8 +25,7 @@
 				<td style="text-align: center;"><%= print_date(project.end_date, "s") if project.end_date %></td>
 				<td style="text-align: center;"><%= render partial: "projects/status", :locals => {:project => project} %></td>
 			</tr>
-			<% end %>
-
-
+		<% end %>
 	</tbody>
+
 </table>

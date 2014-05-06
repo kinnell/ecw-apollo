@@ -1,0 +1,31 @@
+<table class="table">
+
+	<thead>
+		<tr>
+			<th width="2%"><i class="fa fa-star" style="color: #666;" %></i></th>
+       	<th width="13%">Product</th>
+         <th width="25%">Project</th>
+         <th width="15%">Assigned By</th>
+         <th width="10%" style="text-align: center;">Start Date</th>
+         <th width="10%" style="text-align: center;">Due Date</th>
+         <th width="10%" style="text-align: center;">End Date</th>
+         <th width="15%" style="text-align: center;">Status</th>
+    	</tr>
+	</thead>
+
+	<tbody>
+		<% for project in projects.order("starred DESC, due_date") %>
+			<tr>
+				<td style="vertical-align: middle;"><%= project.starred_toggle %></td>
+				<td style="vertical-align: middle;"><%= link_to project.product.name, project.product %></td>
+				<td style="vertical-align: middle;"><%= link_to project.name, project %></td>
+				<td style="vertical-align: middle;"><%= project.assigned_by %></td>
+				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.created_at, "s") %></td>
+				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.due_date, "s") if project.due_date %></td>
+				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.end_date, "s") if project.end_date %></td>
+				<td style="vertical-align: middle; text-align: center;"><%= render partial: "projects/status", :locals => {:project => project} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
