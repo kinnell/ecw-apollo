@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table projects-table">
 
 	<thead>
 		<tr>
@@ -16,16 +16,19 @@
 	<tbody>
 		<% for project in projects.order("starred DESC, due_date") %>
 			<tr>
-				<td style="vertical-align: middle;"><%= project.starred_toggle %></td>
-				<td style="vertical-align: middle;"><%= link_to project.product.name, project.product %></td>
-				<td style="vertical-align: middle;"><%= link_to project.name, project %></td>
-				<td style="vertical-align: middle;"><%= project.assigned_by %></td>
-				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.created_at, "s") %></td>
-				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.due_date, "s") if project.due_date %></td>
-				<td style="vertical-align: middle; text-align: center;"><%= print_date(project.end_date, "s") if project.end_date %></td>
-				<td style="vertical-align: middle; text-align: center;"><%= render partial: "projects/status", :locals => {:project => project} %></td>
+				<td><%= render partial: "projects/starred", :locals => {:project => project} %></td>
+				<td><%= link_to project.product.name, project.product %></td>
+				<td><%= link_to project.name, project %></td>
+				<td><%= project.assigned_by %></td>
+				<td style="text-align: center;"><%= print_date(project.created_at, "s") %></td>
+				<td style="text-align: center;"><%= print_date(project.due_date, "s") if project.due_date %></td>
+				<td style="text-align: center;"><%= print_date(project.end_date, "s") if project.end_date %></td>
+				<td style="text-align: center;"><%= render partial: "projects/status", :locals => {:project => project} %></td>
 			</tr>
 		<% end %>
 	</tbody>
 
 </table>
+
+
+

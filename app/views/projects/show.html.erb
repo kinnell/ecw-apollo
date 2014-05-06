@@ -3,8 +3,7 @@
 
 		<div class="panel-heading">
 			<h4>
-				<%= link_to '<i class="fa fa-star" style="color: #ffd76e;"></i>'.html_safe, toggle_starred_project_path(@project), method: :post if @project.starred %>
-				<%= link_to '<i class="fa fa-star-o" style="color: #999;"></i>'.html_safe, toggle_starred_project_path(@project), method: :post unless @project.starred %>
+				<%= render partial: "projects/starred", :locals => {:project => @project} %>
 
 				<%= link_to "[#{@project.product.name}] #{@project.name}", @project %>
 
