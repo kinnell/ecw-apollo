@@ -1,26 +1,29 @@
-<div class="btn-group project-status">
+<div class="btn-group project-status pull-right">
 
   <% status_hash = {"In Queue" => {"type" => "info", "icon" => "list-ol"},
                     "In Progress" => {"type" => "primary", "icon" => "refresh"},
-                    "Waiting" => {"type" => "warning", "icon" => "refresh"},
+                    "Waiting" => {"type" => "warning", "icon" => "spinner"},
                     "On Hold" => {"type" => "default", "icon" => "pause"},
                     "Cancelled" => {"type" => "danger", "icon" => "times-circle"},
                     "Completed" => {"type" => "success", "icon" => "check-circle"}}
 
       status_hash_type = status_hash[project.status]["type"] if status_hash[project.status]
       status_hash_icon = status_hash[project.status]["icon"] if status_hash[project.status]
-      %>
+  %>
 
-  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs dropdown-toggle' data-toggle='dropdown'><i class='fa fa-#{status_hash_icon}'></i> #{project.status}</button>".html_safe %>
+  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs btn-title'><i class='fa fa-#{status_hash_icon} fa-fw'></i> #{project.status}</button>".html_safe %>
+  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs dropdown-toggle' data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Toggle Dropdown</span></button>".html_safe %>
 
   <ul class="dropdown-menu pull-right" role="menu">
     <% for s in status_hash.keys %>
-      <li>
-      <%= link_to update_status_project_path(project, s), method: :post do %>
-        <%= "<i class='fa fa-caret-right'></i> ".html_safe if project.status == s %>
-        <%= "<i class='fa fa-caret-right' style='visibility: hidden'></i> ".html_safe unless project.status == s %>
-        <%= s %>
-        <% end %>
+      <li onclick="$(this).find('form').submit();">
+        <%= form_for(project) do |f| %>
+            <%= "<i class='fa fa-caret-right'></i> ".html_safe if project.status == s %>
+            <%= "<i class='fa fa-caret-right' style='visibility: hidden'></i> ".html_safe unless project.status == s %>
+            <%= f.hidden_field :status, :value => s %>
+            <%= s %>
+            <%= f.submit "Save", style: "display: none;" %>
+         <% end %>
       </li>
 
     <% end %>

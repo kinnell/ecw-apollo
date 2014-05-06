@@ -33,7 +33,10 @@ class ProjectsController < ApplicationController
 
 	def update
 		if @project.update(project_params)
-			redirect_to @project, notice: 'Project was successfully updated.'
+			respond_to do |format|
+				format.html { redirect_to :back, notice: 'Project was successfully updated.' }
+				format.js
+			end
 		else
 		  render action: 'edit'
 		end
@@ -44,32 +47,9 @@ class ProjectsController < ApplicationController
 		redirect_to projects_url
 	end
 
-	def complete
-    @project = Project.find(params[:id])
-    if @project.update_attributes(:status => "Completed")
-      @project.update_attributes(:end_date => DateTime.now)
-      redirect_to :back
-    end
-  end
-
-  def uncomplete
-    @project = Project.find(params[:id])
-    if @project.update_attributes(:status => "In Progress")
-      @project.update_attributes(:end_date => nil)
-      redirect_to :back
-    end
-  end
-
   def toggle_starred
   	@project = Project.find(params[:id])
   	if @project.update_attributes(:starred => @project.starred.!)
-  		redirect_to :back
-  	end
-  end
-
-  def update_status(new_status)
-  	@project = Project.find(params[:id])
-  	if project.update_attributes(:status => new_status)
   		redirect_to :back
   	end
   end
