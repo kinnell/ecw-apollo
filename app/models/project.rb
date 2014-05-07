@@ -30,5 +30,7 @@ class Project < ActiveRecord::Base
 
 	def self.sort_by_dueDate() order("due_date, name") end
 
+	def isLate() due_date ? ((due_date < DateTime.now) & (status != "Completed") && (status != "Cancelled")) : false end
+
 
 end

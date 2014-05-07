@@ -22,7 +22,6 @@
             <%= "<i class='fa fa-caret-right' style='visibility: hidden'></i> ".html_safe unless project.status == s %>
             <%= f.hidden_field :status, :value => s %>
             <%= s %>
-            <%= f.submit "Save", style: "display: none;" %>
          <% end %>
       </li>
     <% end %>

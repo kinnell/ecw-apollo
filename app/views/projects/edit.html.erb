@@ -11,6 +11,7 @@
           <i class="fa fa-folder-o" style="color: #999;"></i>
            <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => "Select Product", :required => true}, {:class => 'form-control', style: "min-width: 20%;" }) %>
            <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true, style: "width: 50%;", :required => true %>
+
         </div>
       </fieldset>
 

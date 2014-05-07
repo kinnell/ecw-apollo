@@ -9,7 +9,7 @@ module DateHelper
 	end
 
 	def print_time_ago (dT)
-		if dT < DateTime.now then "<div class='late'>due #{time_ago_in_words(dT)} ago</div>".html_safe
+		if dT < DateTime.now then "<div class='late' style='display: inline-block;'>due #{time_ago_in_words(dT)} ago</div>".html_safe
 		else "due in #{time_ago_in_words(dT)}".html_safe
 		end
 	end
