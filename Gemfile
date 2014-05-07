@@ -45,6 +45,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem "puma"
+
 gem 'devise', '~> 3.1.1'
 
 gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'
@@ -52,5 +54,6 @@ gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass'
 gem 'newrelic_rpm'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.20.0'
+
 
 gem 'best_in_place'
