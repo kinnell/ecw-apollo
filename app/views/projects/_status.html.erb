@@ -21,7 +21,15 @@
             <%= "<i class='fa fa-caret-right'></i> ".html_safe if project.status == s %>
             <%= "<i class='fa fa-caret-right' style='visibility: hidden'></i> ".html_safe unless project.status == s %>
             <%= f.hidden_field :status, :value => s %>
+
+            <% if (s == "Completed") || (s == "Cancelled") %>
+              <%= f.hidden_field :end_date, :value => DateTime.now %>
+            <% else %>
+              <%= f.hidden_field :end_date, :value => nil %>
+            <% end %>
+
             <%= s %>
+
          <% end %>
       </li>
     <% end %>

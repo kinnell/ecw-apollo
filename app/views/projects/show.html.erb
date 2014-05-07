@@ -41,15 +41,15 @@
 
 					<div class="col-md-4">
 						<i class="fa fa-calendar"></i>
-						<b>Start Date:</b> <%= print_date(@project.created_at, "m") %>
+						<b>Start Date:</b> <%= print_date(@project.created_at, "xl") %>
 					</div>
 
 					<div class="col-md-4">
-						<i class="fa fa-calendar"></i> <b>Due Date:</b> <%= @project.due_date ? print_date(@project.due_date, "m") : "n/a"  %>
+						<i class="fa fa-calendar"></i> <b>Due Date:</b> <%= @project.due_date ? print_date(@project.due_date, "xl") : "n/a"  %>
 					</div>
 
 					<div class="col-md-4">
-						<i class="fa fa-calendar"></i> <b>End Date:</b> <%= @project.end_date ?  print_date(@project.end_date, "m") : "n/a" %>
+						<i class="fa fa-calendar"></i> <b>End Date:</b> <%= @project.end_date ?  print_date(@project.end_date, "xl") : "n/a" %>
 					</div>
 
 

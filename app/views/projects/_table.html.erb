@@ -25,7 +25,7 @@
 				<td>
 					<% if project.users.first %>
 						<% for u in project.users.uniq %>
-							<%= link_to u, :title => "get", :"data-toggle" => "tooltip", :"data-placement" => "top" do %>
+							<%= link_to u, :title => u.name, :"data-toggle" => "tooltip", :"data-placement" => "top" do %>
 								<%= image_tag u.profile_photo.url(:small), class: "project-user-photo" %>
 							<% end %>
 						<% end %>
