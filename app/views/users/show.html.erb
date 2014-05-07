@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => @user.projects.incomplete.uniq} %>
+		<%= render partial: "projects/table", :locals => {:projects => @user.projects.incomplete.custom_sort} %>
 	</div>
 
 </div>
@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => @user.projects.completed.uniq} %>
+		<%= render partial: "projects/table", :locals => {:projects => @user.projects.completed.custom_sort} %>
 	</div>
 
 </div>

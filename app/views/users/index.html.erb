@@ -9,7 +9,9 @@
     <% for user in @users %>
 
       <h4><%= image_tag user.profile_photo.url(:small), class: "profile-photo", style: "width: 50px; height: 50px; margin-right: 10px;" %> <%= link_to user.name, user %></h4>
-      <%= render partial: "projects/table", :locals => {:projects => user.projects.incomplete.uniq} %>
+
+      <%= render partial: "projects/table", :locals => {:projects => user.projects.incomplete.custom_sort} %>
+
       <br><br>
 
     <% end %>

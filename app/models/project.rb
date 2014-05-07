@@ -13,29 +13,22 @@ class Project < ActiveRecord::Base
 	validates :name, presence: true
 	validates :product_id, presence: true
 
-	scope :completed, -> { where(:status => "Completed") }
-	scope :incomplete, -> { where(:end_date => nil) }
+	scope :completed, -> { where(status: ["Completed", "Cancelled"]) }
+	scope :incomplete, -> { where.not(status: ["Completed", "Cancelled"]) }
 
 	def progress_percent
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end
 
-	def product_name
-	  product.try(:name)
+	def self.custom_sort
+		where(:starred => true).sort_by_status + where(:starred => false).sort_by_status
 	end
 
-	def product_name=(name)
-  		self.product = Product.find_or_create_by_name(name).id if name.present?
+	def self.sort_by_status
+		(where(:status => "In Progress").sort_by_dueDate + where(:status => "Waiting").sort_by_dueDate + where(:status => "On Hold").sort_by_dueDate + where(:status => "In Queue").sort_by_dueDate + where(:status => "Completed").sort_by_dueDate + where(:status => "Cancelled").sort_by_dueDate).uniq
 	end
 
-	def starred_toggle
-		if starred
-			'<i class="fa fa-star" style="color: #ffd76e;"></i>'.html_safe
-		else
-			'<i class="fa fa-star-o" style="color: #999;"></i>'.html_safe
-		end
-	end
-
+	def self.sort_by_dueDate() order("due_date, name") end
 
 
 end

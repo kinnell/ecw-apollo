@@ -14,7 +14,7 @@
 	</thead>
 
 	<tbody>
-		<% for project in projects.order("starred DESC, due_date") %>
+		<% for project in projects %>
 			<tr>
 				<td><%= render partial: "projects/starred", :locals => {:project => project} %></td>
 				<td><%= link_to project.product.name, project.product %></td>
