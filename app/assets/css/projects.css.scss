@@ -46,4 +46,11 @@
 
 }
 
-table.projects-table { tr td { vertical-align: middle; } }
+table.projects-table {
+	margin-bottom: 0px;
+	tr td { vertical-align: middle; }
+
+	.edit-cog i {
+		color: #999;
+	}
+}
