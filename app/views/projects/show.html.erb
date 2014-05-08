@@ -8,15 +8,7 @@
 				<%= link_to "[#{@project.product.name}]", @project.product %> <%= link_to "#{@project.name}", @project %>
 
 
-				<ul class="tools-dropdown">
-				  <li class="dropdown">
-				    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
-				    <ul class="dropdown-menu pull-right">
-				      <li><%= link_to '<i class="fa fa-pencil"></i> Edit this project'.html_safe, edit_project_path(@project) %></li>
-				      <li><%= link_to '<i class="fa fa-trash-o"></i> Delete this project'.html_safe, @project, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-				    </ul>
-				  </li>
-				</ul>
+				<%= link_to '<i class="fa fa-cog"></i>'.html_safe, edit_project_path(@project), class: "pull-right", style: "margin: 3px; padding-left: 10px;" %>
 
 				<div class="pull-right">
 					<%= render partial: "projects/status", :locals => {:project => @project} %>

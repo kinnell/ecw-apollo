@@ -55,5 +55,7 @@ gem 'newrelic_rpm'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.20.0'
 
+gem 'date_time_attribute'
+
 
 gem 'best_in_place'

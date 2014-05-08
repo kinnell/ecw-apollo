@@ -64,6 +64,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    date_time_attribute (0.1.1)
+      activesupport (>= 3.0.0)
     debug_inspector (0.0.2)
     devise (3.1.2)
       bcrypt-ruby (~> 3.0)
@@ -173,6 +175,7 @@ DEPENDENCIES
   bootstrap-sass!
   bullet
   coffee-rails (~> 4.0.0)
+  date_time_attribute
   devise (~> 3.1.1)
   jbuilder (~> 1.2)
   jquery-rails

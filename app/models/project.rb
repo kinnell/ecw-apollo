@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+	include DateTimeAttribute
+
 	belongs_to :product
 
 	has_many :tasks, dependent: :destroy
@@ -15,6 +17,8 @@ class Project < ActiveRecord::Base
 
 	scope :completed, -> { where(status: ["Completed", "Cancelled"]) }
 	scope :incomplete, -> { where.not(status: ["Completed", "Cancelled"]) }
+
+	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
 	def progress_percent
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0

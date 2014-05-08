@@ -31,5 +31,7 @@ module Apollo
     config.generators.javascripts = false
     config.generators.helper      = false
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+
   end
 end

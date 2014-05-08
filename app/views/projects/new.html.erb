@@ -28,10 +28,8 @@
 
           <div class="form-group col-md-4">
             <b>Due Date: </b><br>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <%= f.datetime_local_field :due_date, class: "form-control", :value => "0000-00-00T17:00:00" %>
-            </div>
+              <%= f.date_field :due_date_date, class: "form-control" %>
+              <%= f.time_field :due_date_time, class: "form-control", :value => "17:00:00.000" %>
           </div>
 
 
