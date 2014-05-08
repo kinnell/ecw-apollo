@@ -28824,14 +28824,6 @@ $.widget( "ui.tooltip", {
   })
 
 }(jQuery);
-(function() {
-  jQuery(function($) {
-    return $('#project_product_name').autocomplete({
-      source: $('#project_product_name').data('autocomplete-source')
-    });
-  });
-
-}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
