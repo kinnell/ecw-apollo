@@ -44,7 +44,7 @@
           <div class="form-group col-md-12">
             <b>Users Assigned:</b><br>
             <%= hidden_field_tag "project[user_ids][]", nil %>
-            <% User.all.each do |user| %>
+            <% User.all.order("name").each do |user| %>
               <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) %>
               <%= user.name %><br>
             <% end %>
