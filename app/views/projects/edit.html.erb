@@ -46,17 +46,27 @@
              <br><br>
           </div>
 
-
           <br><br>
 
           <div class="form-group col-md-12">
+
             <b>Users Assigned:</b><br>
-           <%  User.all.each_with_index do |user,idx| %>
-            <%= check_box_tag "project[assignments_attributes][#{idx}][user_id]", user.id, @project.user_ids.include?(user.id) %>
-            <%= user.name %>
-            <br>
-          <% end %>
+            <%= hidden_field_tag "project[user_ids][]", nil %>
+            <% User.all.each do |user| %>
+              <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) %>
+              <%= user.name %><br>
+            <% end %>
+
+            <% if false %>
+            <b>Users Assigned:</b><br>
+            <%  User.all.each_with_index do |user,idx| %>
+              <%= check_box_tag "project[assignments_attributes][#{idx}][user_id]", user.id, @project.user_ids.include?(user.id) %>
+              <%= user.name %>
+              <br>
+            <% end %>
+            <% end %>
           </div>
+
 
        </fieldset>
       </div>
@@ -65,6 +75,7 @@
         <%= f.submit "Save Project", class: "btn btn-sm btn-success" %>
         <%= link_to 'Delete this project'.html_safe, @project, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
+
 
 
 

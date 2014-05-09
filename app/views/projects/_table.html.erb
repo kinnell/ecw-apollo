@@ -31,7 +31,7 @@
 						<% end %>
 
 					<% else %>
-					"None"
+						None
 					<% end %>
 				</td>
 				<td style="text-align: center;"><%= print_date(project.created_at, "s") %></td>
@@ -40,7 +40,7 @@
 				</td>
 				<td style="text-align: center;"><%= print_date(project.end_date, "s") if project.end_date %></td>
 				<td style="text-align: center;"><%= render partial: "projects/status", :locals => {:project => project} %></td>
-				<td class="edit-cog"><%= link_to '<i class="fa fa-cog"></i>'.html_safe, edit_project_path(project) %></td>
+				<td class="edit-cog"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %></td>
 			</tr>
 		<% end %>
 	</tbody>

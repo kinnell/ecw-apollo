@@ -16,6 +16,9 @@
 
     <% end %>
 
+    <h4>All Projects</h4>
+    <%= render partial: "projects/table", :locals => {:projects => Project.all.incomplete.custom_sort} %>
+
   </div>
 
 </div>
