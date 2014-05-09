@@ -17,7 +17,7 @@
         <hr>
          <li class="<%= 'selected' if current_page?(myCalendar_path) %>"><%= link_to "<i class='fa fa-calendar'></i> Calendar".html_safe, myCalendar_path %></li>
         <hr>
-        <li class="<%= 'selected' if params[:controller] == 'users' %>"><%= link_to '<i class="fa fa-users"></i> Team'.html_safe, users_path %></li>
+        <li class="<%= 'selected' if current_page?(users_path) %>"><%= link_to '<i class="fa fa-users"></i> Team'.html_safe, users_path %></li>
         <hr>
         <li class="<%= 'selected' if current_page?(edit_user_registration_path) %>"><%= link_to '<i class="fa fa-cog"></i> Settings'.html_safe, edit_user_registration_path %></li>
         <hr>
