@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 
   <div class="panel-heading">
-    <h4><i class="fa fa-users"></i> Team
+    <h4><i class="fa fa-users"></i> Projects by Team Member
   </div>
 
   <div class="panel-body">
@@ -16,12 +16,26 @@
 
     <% end %>
 
-    <h4>All Projects</h4>
-    <%= render partial: "projects/table", :locals => {:projects => Project.all.incomplete.custom_sort} %>
+  </div>
+
+</div>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h4><i class="fa fa-users"></i> All Projects
+  </div>
+
+  <div class="panel-body">
+
+    <%= render partial: "projects/table", :locals => {:projects => Project.all.custom_sort} %>
 
   </div>
 
 </div>
+
+
+
 
 
 <br>
