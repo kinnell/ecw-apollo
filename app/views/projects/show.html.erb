@@ -151,7 +151,7 @@
 				</ul>
 
 
-				<ul class="items-list"><%= render @project.items %></ul><hr>
+				<ul class="items-list"><%= render @project.items.order("created_at") %></ul><hr>
 				<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
 
 
