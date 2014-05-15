@@ -1,3 +1,25 @@
 <li>
-	<i class="fa fa-file-o"></i> <%= item.name %><%= render partial: "items/tools", :locals => {:item => item} %><br>
+	<h4><i class="fa fa-picture-o"></i> <%= item.name %><%= render partial: "items/tools", :locals => {:item => item} %></h4>
+
+	<hr>
+
+	<% if item.tasks.incomplete.count > 0 %>
+		<%= content_tag :div, "Remaining Tasks", class: "title-sm" %>
+		<ul>
+			<%= render item.tasks.incomplete.due.order("starred DESC, due_date") %>
+			<%= render item.tasks.incomplete.notDue.order("starred DESC, created_at") %>
+		</ul>
+	<% end %>
+
+	<%= render partial: "tasks/new", :locals => {:item => item} %><br>
+
+	<% if item.tasks.completed.count > 0 %>
+
+		<%= content_tag :div, "Completed Tasks", class: "title-sm" %>
+		<ul class="tasks-list"><%= render item.tasks.completed.order("completed_at") %></ul>
+
+	<% end %>
+
+
+	<br>
 </li>

@@ -13,7 +13,9 @@ class Task < ActiveRecord::Base
 
 	validates :name, presence: true
 
-	def late? () due_date < DateTime.now end
+	def late?() due_date < DateTime.now end
+
+	def self.general() where(:item_id => nil) end
 
 end
 

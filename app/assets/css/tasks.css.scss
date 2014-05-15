@@ -1,6 +1,22 @@
 @import 'colors';
 
+
+.items-list {
+
+}
+
+.tasks-list {
+
+
+}
+
+
+
+
+
 .tasks-list, .items-list {
+	list-style-type: none;
+	padding: 5px 0 0 0;
 
 	.title-sm {
 		display: inline-block;
@@ -18,12 +34,17 @@
 		list-style-type: none;
 		padding: 5px 0 0 0;
 
-		li { padding-bottom: 10px; }
+		li { margin-left: 20px; }
+
+		li.dropdown { margin-left: 0px; }
+
 
 		li a i { padding-right: 5px; }
 
 		li a i.fa-star { color: #ffd76e; padding-right: 3px; }
 		li a i.fa-star-o { color: #CCC; padding-right: 3px; }
+
+		li .task-name { padding-bottom: 5px; }
 
 		li .task-name, li .task-date, li .task-user { display: inline-block; }
 
@@ -43,7 +64,7 @@
 		li.task-completed .task-name { text-decoration: line-through;}
 
 		hr {
-			margin: 2px 0 15px 20px;
+			margin: 2px 0 15px 40px;
 			border-top: 1px solid #EEE;
 		}
 
@@ -68,7 +89,12 @@
 
 }
 
-.items-list ul li .fa-file-o { color: #AAA; margin-right: 3px; }
+
+.items-list {
+	li .fa-file-o { color: #AAA; margin-right: 3px; }
+	li h4 { color: #333; }
+
+}
 
 
 .tools { float: right; }

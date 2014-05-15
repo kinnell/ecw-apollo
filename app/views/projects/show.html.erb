@@ -21,15 +21,6 @@
 			<div class="project-info" style="line-height: 200%">
 				<div class="row" style="margin-top: 0px;">
 
-					<div class="col-md-4">
-					</div>
-
-					<div class="col-md-4">
-					</div>
-
-					<div class="col-md-4">
-					</div>
-
 
 					<div class="col-md-4">
 						<i class="fa fa-calendar"></i>
@@ -54,7 +45,7 @@
 						<i class="fa fa-user"></i> <b>Assigned By:</b> <%= @project.assigned_by %>
 					</div>
 
-					<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b><br><font color="#777"><%= @project.description.gsub(/\n/, '<br>').html_safe %></font><hr></div>
+					<div class="col-md-12" style="line-height: 150%"><br><b>Description:</b><br><font color="#777"><%= @project.description.gsub(/\n/, '<br>').html_safe %></font><br><br></div>
 
 
 				</div>
@@ -64,6 +55,7 @@
 
 	</div>
 </div>
+
 
 <div class="col-md-12">
 	<div class="panel panel-default">
@@ -81,6 +73,7 @@
 </div>
 
 
+<% if false %>
 <div class="col-md-12">
 
 	<div class="panel panel-default">
@@ -95,7 +88,7 @@
 
 			<div class="tasks-list">
 
-				<div id="addTask" class="collapse"><%= render partial: "tasks/new" %><br><hr></div>
+				<div id="addTask" class="collapse"><%= render partial: "tasks/new", :locals => {:item => nil} %><br><hr></div>
 				<%= content_tag :div, "Remaining Tasks", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
 
 				<ul>
@@ -117,24 +110,51 @@
 	</div>
 
 </div>
+<% end %>
 
 <div class="col-md-12">
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>
-				<i class="fa fa-picture-o"></i> Items (<%= @project.items.count %>)
+				<i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)
 				<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-xs btn-primary", style: "float: right;" %>
 			</h4>
 		</div>
 
 		<div class="panel-body">
-			<div class="items-list">
-				<ul><%= render @project.items %></ul><hr>
+
+
+				<ul class="items-list">
+
+					<li>
+						<h4>General</h4><hr>
+						<%= content_tag :div, "Remaining Tasks", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
+						<ul>
+							<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
+							<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
+						</ul>
+						<% if false %><%= render partial: "tasks/new", :locals => {:item => item} %><% end %>
+					</li>
+
+					<%= render partial: "tasks/new", :locals => {:item => nil} %><br>
+
+					<% if @project.tasks.general.completed.count > 0 %>
+						<div class="tasks-list">
+							<%= content_tag :div, "Completed Tasks", class: "title-sm" %>
+							<ul><%= render @project.tasks.general.completed.order("completed_at") %></ul>
+						</div>
+					<% end %>
+
+
+
+				</ul>
+
+
+				<ul class="items-list"><%= render @project.items %></ul><hr>
 				<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
 
 
-			</div>
 
 		</div>
 
