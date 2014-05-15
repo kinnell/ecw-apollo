@@ -4,7 +4,7 @@
 	<hr>
 
 	<% if item.tasks.incomplete.count > 0 %>
-		<%= content_tag :div, "Remaining Tasks", class: "title-sm" %>
+		<%= content_tag :div, "Remaining Tasks (#{item.tasks.incomplete.count})", class: "title-sm" %>
 		<ul>
 			<%= render item.tasks.incomplete.due.order("starred DESC, due_date") %>
 			<%= render item.tasks.incomplete.notDue.order("starred DESC, created_at") %>
@@ -15,9 +15,12 @@
 
 	<% if item.tasks.completed.count > 0 %>
 
-		<%= content_tag :div, "Completed Tasks", class: "title-sm" %>
-		<ul class="tasks-list"><%= render item.tasks.completed.order("completed_at") %></ul>
+		<%= content_tag :div, "Completed Tasks (#{item.tasks.completed.count})", class: "title-sm" %>
 
+		<%= link_to "<i class='fa fa-eye'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-completedTasks" %>
+		<ul class="tasks-list collapse" id="item-<%= item.id %>-completedTasks"><%= render item.tasks.completed.order("completed_at") %></ul>
+
+		<br>
 	<% end %>
 
 
