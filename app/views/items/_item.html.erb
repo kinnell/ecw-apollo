@@ -13,7 +13,7 @@
 		</ul>
 	<% end %>
 
-	<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %></div>
+	<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
 
 	<% if item.tasks.completed.count > 0 %>
 

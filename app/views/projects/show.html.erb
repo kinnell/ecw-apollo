@@ -141,7 +141,7 @@
 						<% end %>
 					</li>
 
-					<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %></div>
+					<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %><br></div>
 
 					<% if @project.tasks.general.completed.count > 0 %>
 						<div class="tasks-list">
