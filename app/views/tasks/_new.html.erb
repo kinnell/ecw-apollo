@@ -12,8 +12,7 @@
 			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm", :required => true, style: "min-width: 60%;" %>
 			<%= f.date_field :due_date, class: "form-control input-sm" %>
 			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm' }) %>
-			<%= f.submit "Add Task", class: "btn btn-sm btn-primary" %>
-			<%= link_to "x".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', style: "margin-left: 5px;" %>
+			<%= f.submit "Add Task", class: "btn btn-sm btn-info" %>
 		</div>
 	<% end %>
 

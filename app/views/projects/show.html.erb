@@ -118,7 +118,7 @@
 		<div class="panel-heading">
 			<h4>
 				<i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)
-				<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-xs btn-primary", style: "float: right;" %>
+				<%= link_to "Add Item".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-sm btn-primary", style: "float: right;" %>
 			</h4>
 		</div>
 
@@ -128,16 +128,20 @@
 				<ul class="items-list">
 
 					<li>
-						<h4>General</h4><hr>
-						<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
-						<ul>
-							<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
-							<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
-						</ul>
-						<% if false %><%= render partial: "tasks/new", :locals => {:item => item} %><% end %>
+						<h4>General
+							<%= link_to "Add Task".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-addTask", class: "btn btn-info btn-xs pull-right", style: "margin-right: 25px;" %>
+						</h4><hr>
+
+						<% if @project.tasks.general.incomplete.count > 0 %>
+							<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
+							<ul>
+								<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
+								<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
+							</ul>
+						<% end %>
 					</li>
 
-					<%= render partial: "tasks/new", :locals => {:item => nil} %><br>
+					<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %></div>
 
 					<% if @project.tasks.general.completed.count > 0 %>
 						<div class="tasks-list">
