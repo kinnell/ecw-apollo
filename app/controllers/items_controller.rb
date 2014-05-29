@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to :back
+    redirect_to @item.project
   end
 
   private

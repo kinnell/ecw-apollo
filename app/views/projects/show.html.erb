@@ -73,45 +73,6 @@
 </div>
 
 
-<% if false %>
-<div class="col-md-12">
-
-	<div class="panel panel-default">
-
-		<div class="panel-heading">
-			<h4><i class="fa fa-check-circle"></i> Tasks (<%= @project.tasks.incomplete.count %>)
-				<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addTask', class: "btn btn-xs btn-primary", style: "float: right;" %>
-			</h4>
-		</div>
-
-		<div class="panel-body">
-
-			<div class="tasks-list">
-
-				<div id="addTask" class="collapse"><%= render partial: "tasks/new", :locals => {:item => nil} %><br><hr></div>
-				<%= content_tag :div, "Remaining Tasks", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
-
-				<ul>
-					<%= render @project.tasks.incomplete.due.order("starred DESC, due_date") %>
-					<%= render @project.tasks.incomplete.notDue.order("starred DESC, created_at") %>
-				</ul>
-
-			</div>
-
-			<hr>
-
-			<div class="tasks-list">
-				<%= content_tag :div, "Completed Tasks", class: "title-sm" %>
-				<ul><%= render @project.tasks.completed.order("completed_at") %></ul>
-			</div>
-
-		</div>
-
-	</div>
-
-</div>
-<% end %>
-
 <div class="col-md-12">
 
 	<div class="panel panel-default">
@@ -123,6 +84,9 @@
 		</div>
 
 		<div class="panel-body">
+
+
+			<div id="addItem" class="collapse"><%= render partial: "items/new" %><hr></div>
 
 
 				<ul class="items-list">
@@ -157,8 +121,7 @@
 				</ul>
 
 
-				<ul class="items-list"><%= render @project.items.order("created_at") %></ul><hr>
-				<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
+				<ul class="items-list"><%= render @project.items.order("created_at") %></ul>
 
 
 

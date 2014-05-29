@@ -9,10 +9,17 @@
 			<% else %>
 				<%= f.hidden_field :item_id, :value => nil %>
 			<% end %>
+
 			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm", :required => true, style: "min-width: 60%;" %>
-			<%= f.date_field :due_date, class: "form-control input-sm" %>
+
+        	<%= f.date_field :due_date_date, class: "form-control input-sm" %>
+        	<%= f.time_field :due_date_time, class: "form-control input-sm", :value => "17:00:00.000" %>
+
 			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm' }) %>
 			<%= f.submit "Add Task", class: "btn btn-sm btn-info" %>
+
+
+
 		</div>
 	<% end %>
 

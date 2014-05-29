@@ -13,6 +13,9 @@ class Task < ActiveRecord::Base
 
 	validates :name, presence: true
 
+	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
+
+
 	def late?() due_date < DateTime.now end
 
 	def self.general() where(:item_id => nil) end

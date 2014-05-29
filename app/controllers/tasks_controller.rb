@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-      redirect_to :back
+      redirect_to @task.project
   end
 
   def complete
@@ -73,6 +73,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id, :item_id)
+      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id, :item_id, :starred)
     end
 end

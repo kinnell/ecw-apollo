@@ -3,18 +3,18 @@
 
 .items-list {
 
-}
-
-.tasks-list {
-
+	li .fa-file-o { color: #AAA; margin-right: 3px; }
+	li h4 { color: #333; }
 
 }
+
 
 
 
 
 
 .tasks-list, .items-list {
+
 	list-style-type: none;
 	padding: 5px 0 0 0;
 
@@ -25,6 +25,15 @@
 		padding-bottom: 5px;
 	}
 
+	.dropdown-menu li {
+		margin-left: 0px;
+	}
+
+	.dropdown-menu li a i {
+		padding-right: 0px;
+	}
+
+
 	hr {
 		margin-top: 0.5em;
 		margin-bottom: 0.5em;
@@ -32,7 +41,7 @@
 
 	ul {
 		list-style-type: none;
-		padding: 5px 0 0 0;
+		padding: 5px 0 5px 0;
 
 		li { margin-left: 20px; }
 
@@ -90,11 +99,6 @@
 }
 
 
-.items-list {
-	li .fa-file-o { color: #AAA; margin-right: 3px; }
-	li h4 { color: #333; }
-
-}
 
 
 .tools { float: right; }
