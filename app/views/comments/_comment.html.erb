@@ -1,8 +1,25 @@
-<div class="comment">
-	<%= link_to comment.user.name, comment.user, class: "commenter" %>:
-	<%= content_tag :div, comment.content, class: "comment-content" %>
-	<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools", style: "padding-top: 8px;" %><br>
-	<%= content_tag :div, "<font color='#666'>#{time_ago_in_words(comment.created_at)} ago</font> (#{print_date(comment.created_at, 'xl')})".html_safe, class: "comment-date" %>
-</div>
+<% if comment.user %>
+	<div class="comment">
+		<div class="row">
+			<div class="col-md-2">
+				<%= link_to comment.user, :class => "has_tooltip", :title => comment.user.name, :"data-toggle" => "tooltip", :"data-placement" => "bottom" do %>
+					<%= image_tag comment.user.profile_photo.url(:small), class: "comment-user-photo" %>
+				<% end %>
+			</div>
 
-<hr>
+			<div class="col-md-10">
+
+				<%= link_to comment.user.name, comment.user, class: "commenter" %>
+				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools pull-right", style: "padding-left: 8px;" %>
+				<%= content_tag :div, "<font color='#666'>#{time_ago_in_words(comment.created_at)} ago</font>".html_safe, :title => print_date(comment.created_at, 'xl'), :"data-toggle" => "tooltip", :"data-placement" => "bottom", class: "comment-date has_tooltip pull-right" %>
+
+
+				<br>
+				<%= content_tag :div, comment.content, class: "comment-content" %>
+			</div>
+		</div>
+
+	</div>
+
+	<hr>
+<% end %>

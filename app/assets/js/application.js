@@ -14,7 +14,11 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap
 //= require projects
 //= require_tree .
 
+jQuery( function($) {
+	$('.has_tooltip').tooltip();
+});

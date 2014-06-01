@@ -33,6 +33,21 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label class="col-sm-2 control-label" style="padding-top: 4px;">Status:</label>
+            <div class="col-sm-4">
+              <%= f.select(:status, [['In Queue'],['In Progress'],['Waiting'],['On Hold'],['Cancelled'],['Completed']], {}, { :class => 'form-control input-sm' }) %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" style="padding-top: 4px;">Type:</label>
+            <div class="col-sm-4">
+              <%= f.select(:item_type, [['Graphic'],['Print'],['Video'],['Web']], {}, { :class => 'form-control input-sm' }) %>
+            </div>
+          </div>
+
+
 
         </fieldset>
 

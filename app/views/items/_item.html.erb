@@ -1,6 +1,13 @@
 <li>
-	<h4><i class="fa fa-picture-o"></i> <%= item.name %><%= render partial: "items/tools", :locals => {:item => item} %>
-		<%= link_to "Add Task".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-info btn-xs pull-right", style: "margin-right: 10px;" %>
+	<h4><%= "<i class='fa fa-#{item_type_hash[item.item_type]["icon"] if item_type_hash[item.item_type]} fa-fw item-type-icon'></i>".html_safe %>
+		<%= item.name %>
+
+		<%= render partial: "items/tools", :locals => {:item => item} %>
+
+		<%= link_to "Add Task".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-info btn-xs pull-right", style: "margin-right: 10px; margin-left: 10px;" %>
+
+		<div class="pull-right"><%= render partial: "items/status", :locals => {:item => item} %></div>
+
 	</h4>
 
 	<hr>
@@ -13,7 +20,7 @@
 		</ul>
 	<% end %>
 
-	<div class="collapse" id="item-<%= item.id %>-addTask"><br><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
+	<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
 
 	<% if item.tasks.completed.count > 0 %>
 

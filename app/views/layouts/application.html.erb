@@ -6,16 +6,17 @@
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 
+
    <%= javascript_include_tag "jquery-1.10.2.min" %>
    <%= javascript_include_tag "jquery.noty" %>
 
 	<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body class="<%= user_signed_in? ? 'inside-page' : 'front-page'%>">
+<body class="<%= user_signed_in? ? 'inside-page' : 'front-page'%>" style="<%=' padding-top: 50px;' unless user_signed_in? %>">
 
   <%= render "layouts/noty" %>
 
@@ -23,12 +24,12 @@
 
 <% if user_signed_in? %>
 	<div class="row" style="margin-top: 0px;">
-		<div class="col-md-2 col-xs-3">
+		<div class="col-md-2">
 			<%= render "layouts/side_nav" %>
 		</div>
 
-		<div class="col-md-10 col-xs-15">
-			<div class="container-fluid" style="margin-top: 20px;"><%= yield %></div>
+		<div class="col-md-10" style="padding-top: 20px;">
+			<%= yield %>
 		</div>
 
 	</div>

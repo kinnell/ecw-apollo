@@ -43,7 +43,7 @@
 		<%= content_tag :div, task.name, class: "task-name" %>
 		<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 		<%= render partial: "tasks/tools", :locals => {:task => task} %>
-		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" %>
+		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" if false%>
 	</li>
 
 <% end %>

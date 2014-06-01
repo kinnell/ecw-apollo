@@ -3,15 +3,10 @@
 
 .items-list {
 
-	li .fa-file-o { color: #AAA; margin-right: 3px; }
+	li .item-type-icon { color: #999; margin-right: 1px; }
 	li h4 { color: #333; }
 
 }
-
-
-
-
-
 
 .tasks-list, .items-list {
 
@@ -57,7 +52,7 @@
 
 		li .task-name, li .task-date, li .task-user { display: inline-block; }
 
-		li .task-date { color: #666; float: right; margin-right: 5px; }
+		li .task-date { color: #666; float: right; margin-right: 10px; }
 
 		li .task-user { color: #999; }
 

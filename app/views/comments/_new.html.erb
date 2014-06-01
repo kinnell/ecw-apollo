@@ -1,13 +1,17 @@
-<center>
+<div class="panel panel-default">
 	<%= form_for [@project.comments.new], :html => {:class => 'form-inline'} do |f| %>
-
-		<div class="form-group" style="width: 100%;">
-			<%= f.hidden_field :user_id, :value => current_user.id %>
-			<%= f.hidden_field :project_id, :value => @project.id %>
-			<%= f.text_field :content, :placeholder => "Comment", class: "form-control input-sm", style: "width: 85%; float: left;", :required => true %>
-			<%= f.submit "Add Comment", class: "btn btn-sm btn-primary" %>
-			<%= link_to "x".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addComment', style: "margin-left: 5px;" %>
+		<div class="panel-body" style="padding: 0px;">
+			<div class="form-group" style="width: 100%;">
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.hidden_field :project_id, :value => @project.id %>
+				<%= f.text_area :content, :placeholder => "Type your project update here...", class: "form-control", style: "width: 100%; float: left; border: 0px; padding: 10px;", :required => true, :rows => "3" %>
+			</div>
 		</div>
-
+		<div class="panel-footer">
+			<div class="form-group" style="width: 100%;">
+				<%= f.submit "Post update", class: "btn btn-sm btn-primary pull-right" %>
+			</div>
+		</div>
 	<% end %>
-</center>
+</div>
+

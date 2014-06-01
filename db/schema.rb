@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428155301) do
+ActiveRecord::Schema.define(version: 20140530180015) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 20140428155301) do
   add_index "comments", ["project_id"], name: "index_comments_on_project_id"
 
   create_table "items", force: true do |t|
-    t.string   "name",       default: "", null: false
+    t.string   "name",       default: "",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.string   "status",     default: "In Queue", null: false
+    t.string   "item_type"
   end
 
   add_index "items", ["project_id"], name: "index_items_on_project_id"
@@ -66,14 +68,13 @@ ActiveRecord::Schema.define(version: 20140428155301) do
     t.boolean  "completed",    default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id",                   null: false
     t.datetime "completed_at"
     t.integer  "user_id",                      null: false
     t.boolean  "starred",      default: false, null: false
     t.integer  "item_id"
+    t.integer  "project_id"
   end
 
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
