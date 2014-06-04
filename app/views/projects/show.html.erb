@@ -32,7 +32,7 @@
 								<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm" %>
 								<ul class="tasks-list">
 									<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
-									<%= render @project.tasks.general.notDue.order("starred DESC, created_at") %>
+									<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
 								</ul>
 
 							<% end %>

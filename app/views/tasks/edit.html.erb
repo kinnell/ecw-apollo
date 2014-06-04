@@ -34,7 +34,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Completed:</label>
             <div class="col-sm-4" style="padding-top: 7px;">
-              <%= @task.completed_at ? print_date(@task.completed_at, "xl") : "Incomplete"  %>
+              <%= @task.completed ? print_date(@task.completed_at, "xl") : "Incomplete"  %>
             </div>
           </div>
 

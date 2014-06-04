@@ -10,9 +10,13 @@
         <div class="tasks-index-date"><%= print_time_ago(date) %></div>
         <hr>
 
-        <% tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
+        <% tasks_by_date.group_by { |t| t.project }.each do |project, tasks_by_projects| %>
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-          <ul class="tasks-list"><%= render tasks %></ul>
+          <ul class="tasks-list">
+            <% tasks_by_projects.group_by { |t| t.starred }.each do |starred, tasks| %>
+              <%= render tasks %>
+            <% end %>
+          </ul>
         <% end %>
 
         <br>

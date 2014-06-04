@@ -4,7 +4,7 @@
 
 		<div class="panel-heading">
 			<h3><%= @product.name %>
-				<div class="tools"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_product_path(@product) %> <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, @product, method: :delete, data: { confirm: 'Are you sure?' } %></div></h3>
+				<div class="pull-right"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_product_path(@product) %></div></h3>
 		</div>
 
 		<div class="panel-body">
