@@ -1,18 +1,18 @@
-<div class="panel panel-default">
+<div class="col-md-12">
+  <div class="panel panel-default tasks-index-panel">
 
-  <div class="panel-heading"><h4><i class="fa fa-check-circle"></i> My Tasks</h4></div>
+    <div class="panel-heading"><h4><i class="fa fa-check-circle"></i> My Tasks</h4></div>
 
-  <div class="panel-body">
-
-    <div class="tasks-list">
+    <div class="panel-body">
 
       <% @tasks.due.group_by {|t| t.due_date.to_date }.each do |date, tasks_by_date| %>
 
-        <h4><%= print_time_ago(date) %><font color='#999' size="2"> <%= "(#{print_date(date, 'l')})".html_safe %></font></h4><hr>
+        <div class="tasks-index-date"><%= print_time_ago(date) %></div>
+        <hr>
 
-        <%  tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
+        <% tasks_by_date.group_by { |t| t.project }.each do |project, tasks| %>
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-          <ul><%= render tasks %></ul>
+          <ul class="tasks-list"><%= render tasks %></ul>
         <% end %>
 
         <br>
@@ -21,18 +21,20 @@
 
       <% if @tasks.notDue.exists? %>
 
-        <h4><font color="#999">no due date</font></h4><hr>
+        <div class="tasks-index-date">no due date</div>
+        <hr>
+
         <% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks| %>
           <div class="title-sm"><%= link_to "[#{project.product.name}] #{project.name.upcase}", project %></div>
-          <ul><%= render tasks %></ul>
+          <ul class="tasks-list"><%= render tasks %></ul>
         <% end %>
 
         <br>
 
       <% end %>
 
+
     </div>
 
   </div>
-
 </div>

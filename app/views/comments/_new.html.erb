@@ -1,14 +1,14 @@
-<div class="panel panel-default">
+<div class="panel panel-default new-comment-panel">
 	<%= form_for [@project.comments.new], :html => {:class => 'form-inline'} do |f| %>
-		<div class="panel-body" style="padding: 0px;">
-			<div class="form-group" style="width: 100%;">
+		<div class="panel-body">
+			<div class="form-group">
 				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.hidden_field :project_id, :value => @project.id %>
-				<%= f.text_area :content, :placeholder => "Type your project update here...", class: "form-control", style: "width: 100%; float: left; border: 0px; padding: 10px;", :required => true, :rows => "3" %>
+				<%= f.text_area :content, :placeholder => "Type your project comment here...", class: "form-control new-comment-field", :required => true, :rows => "3" %>
 			</div>
 		</div>
 		<div class="panel-footer">
-			<div class="form-group" style="width: 100%;">
+			<div class="form-group">
 				<%= f.submit "Post update", class: "btn btn-sm btn-primary pull-right" %>
 			</div>
 		</div>

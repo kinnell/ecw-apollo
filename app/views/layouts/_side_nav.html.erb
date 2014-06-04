@@ -13,7 +13,7 @@
 		<hr>
 		<li class="<%= 'selected' if params[:controller] == 'tasks' %>"><%= link_to "<i class='fa fa-check-circle'></i> Tasks <span class='badge'>#{current_user.tasks.incomplete.count}</span>".html_safe, tasks_path %></li>
 			<hr>
-        <li class="<%= 'selected' if params[:controller] == 'projects' %>"><%= link_to "<i class='fa fa-folder-o'></i> Projects <span class='badge'>#{current_user.projects.incomplete.uniq.count}</span>".html_safe, projects_path %></li>
+        <li class="<%= 'selected' if params[:controller] == 'projects' %>"><%= link_to "<i class='fa fa-folder-o'></i> Projects <span class='badge'>#{current_user.projects.incomplete.uniq.count}</span>".html_safe, current_user %></li>
         <hr>
          <li class="<%= 'selected' if current_page?(myCalendar_path) %>"><%= link_to "<i class='fa fa-calendar'></i> Calendar".html_safe, myCalendar_path %></li>
         <hr>

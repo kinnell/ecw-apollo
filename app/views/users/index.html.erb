@@ -1,41 +1,23 @@
-<div class="panel panel-default">
+<div class="col-md-12">
 
-  <div class="panel-heading">
-    <h4><i class="fa fa-users"></i> Active Projects by Team Member
-  </div>
+  <% for user in @users %>
 
-  <div class="panel-body">
+    <div class="panel panel-default user-profile">
 
-    <% for user in @users %>
+      <div class="panel-heading">
+        <h3>
+          <%= image_tag user.profile_photo.url(:small), class: "profile-photo" %>
+          <%= link_to user.name, user %>
+        </h3>
+      </div>
 
-      <h4><%= image_tag user.profile_photo.url(:small), class: "profile-photo", style: "width: 50px; height: 50px; margin-right: 10px;" %> <%= link_to user.name, user %></h4>
 
-      <%= render partial: "projects/table", :locals => {:projects => user.projects.incomplete.custom_sort} %>
+      <div class="panel-body">
+        <%= render partial: "projects/table", :locals => {:projects => user.projects.incomplete.custom_sort} %>
+      </div>
 
-      <br><br>
+    </div>
 
-    <% end %>
-
-  </div>
-
-</div>
-
-<div class="panel panel-default">
-
-  <div class="panel-heading">
-    <h4><i class="fa fa-users"></i> All Projects
-  </div>
-
-  <div class="panel-body">
-
-    <%= render partial: "projects/table", :locals => {:projects => Project.all.custom_sort} %>
-
-  </div>
+  <% end %>
 
 </div>
-
-
-
-
-
-<br>

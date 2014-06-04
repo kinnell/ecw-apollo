@@ -1,37 +1,36 @@
-<li>
-	<h4><%= "<i class='fa fa-#{item_type_hash[item.item_type]["icon"] if item_type_hash[item.item_type]} fa-fw item-type-icon'></i>".html_safe %>
-		<%= item.name %>
+<li class="item">
+	<h4 class="item-main">
+		<%= "<i class='fa fa-#{item_type_hash[item.item_type]["icon"] if item_type_hash[item.item_type]} fa-fw item-type-icon'></i>".html_safe %>
 
-		<%= render partial: "items/tools", :locals => {:item => item} %>
+		<div class="item-name"><%= item.name %></div>
 
-		<%= link_to "Add Task".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-info btn-xs pull-right", style: "margin-right: 10px; margin-left: 10px;" %>
+		<div class="item-tools"><%= render partial: "items/tools", :locals => {:item => item} %></div>
+
+		<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-default btn-xs pull-right add-task-btn" %>
 
 		<div class="pull-right"><%= render partial: "items/status", :locals => {:item => item} %></div>
 
 	</h4>
 
-	<hr>
+		<div class="<%= 'tasks-list-box' if item.tasks.count > 0 %>">
 
-	<% if item.tasks.incomplete.count > 0 %>
-		<%= content_tag :div, "Remaining Tasks (#{item.tasks.incomplete.count})", class: "title-sm" %>
-		<ul>
-			<%= render item.tasks.incomplete.due.order("starred DESC, due_date") %>
-			<%= render item.tasks.incomplete.notDue.order("starred DESC, created_at") %>
-		</ul>
-	<% end %>
+			<% if item.tasks.incomplete.size > 0 %>
+				<hr>
+				<%= content_tag :div, "Remaining Tasks (#{item.tasks.incomplete.count})", class: "title-sm" %>
+				<ul class="tasks-list">
+					<%= render item.tasks.incomplete.due.order("starred DESC, due_date") %>
+					<%= render item.tasks.incomplete.notDue.order("starred DESC, created_at") %>
+				</ul>
 
-	<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
+			<% end %>
 
-	<% if item.tasks.completed.count > 0 %>
+			<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
 
-		<%= content_tag :div, "Completed Tasks (#{item.tasks.completed.count})", class: "title-sm" %>
+			<% if item.tasks.completed.count > 0 %>
+				<%= link_to "Completed Tasks (#{item.tasks.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-completedTasks", class: "title-sm" %>
+				<ul class="tasks-list collapse" id="item-<%= item.id %>-completedTasks"><%= render item.tasks.completed.order("completed_at") %></ul>
+			<% end %>
 
-		<%= link_to "<i class='fa fa-eye'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-completedTasks" %>
-		<ul class="tasks-list collapse" id="item-<%= item.id %>-completedTasks"><%= render item.tasks.completed.order("completed_at") %></ul>
+		</div>
 
-		<br>
-	<% end %>
-
-
-	<br>
 </li>

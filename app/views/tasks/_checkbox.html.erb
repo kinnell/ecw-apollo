@@ -1,0 +1,4 @@
+<%= form_for task, html: {class: "task-checkbox"} do |f| %>
+	<%= f.hidden_field :completed_at, :value => DateTime.now %>
+	<%= f.check_box :completed, :onchange => "$(this).parent('form').submit();", :disabled => (task.user != current_user) %>
+<% end %>

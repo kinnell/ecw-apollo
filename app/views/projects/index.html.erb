@@ -1,26 +1,17 @@
-<div class="panel panel-default">
+<div class="col-md-12">
 
-	<div class="panel-heading">
-		<h4><i class="fa fa-refresh"></i></span>
-			Current Projects (<%= current_user.projects.incomplete.uniq.count %>)
-			<%= link_to "New Project", new_project_path, class: "btn btn-sm btn-default", style: "float: right;" %>
-		</h4>
-	</div>
+  <div class="panel panel-default">
 
-	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => current_user.projects.incomplete.custom_sort} %>
-	</div>
+    <div class="panel-heading">
+      <h4><i class="fa fa-users"></i> All Projects
+    </div>
 
-</div>
+    <div class="panel-body">
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h4><i class="fa fa-check-circle"></i>
-			Completed Projects (<%= current_user.projects.completed.uniq.count %>)</h4>
-	</div>
+      <%= render partial: "projects/table", :locals => {:projects => Project.all.custom_sort} %>
 
-	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => current_user.projects.completed.custom_sort} %>
-	</div>
+    </div>
+
+  </div>
 
 </div>

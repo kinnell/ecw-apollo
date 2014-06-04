@@ -16,7 +16,7 @@ class Task < ActiveRecord::Base
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
 
-	def late?() due_date < DateTime.now end
+	def late?() due_date < DateTime.now if due_date end
 
 	def self.general() where(:item_id => nil) end
 

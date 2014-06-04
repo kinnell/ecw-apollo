@@ -28,7 +28,12 @@ class TasksController < ApplicationController
 
   def update
       if @task.update(task_params)
-        redirect_to @task.project, notice: 'Task was successfully updated.'
+        respond_to do |format|
+          format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
+          format.js
+          format.json
+        end
+
       else
         render action: 'edit'
       end
@@ -37,26 +42,6 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
       redirect_to @task.project
-  end
-
-  def complete
-    @task = Task.find(params[:id])
-    if @task.user == current_user
-      if @task.update_attributes(:completed => true)
-        @task.update_attributes(:completed_at => DateTime.now)
-        redirect_to :back
-      end
-    else
-      redirect_to :back, notice: 'That is not your task to complete!'
-    end
-  end
-
-  def uncomplete
-    @task = Task.find(params[:id])
-    if @task.update_attributes(:completed => false)
-      @task.update_attributes(:completed_at => nil)
-      redirect_to :back
-    end
   end
 
   def toggle_starred
@@ -73,6 +58,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id, :item_id, :starred)
+      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id, :item_id, :starred, :completed_at)
     end
 end

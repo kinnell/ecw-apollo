@@ -2,9 +2,10 @@
 	<%= form_for [@project.items.new], :html => {:class => 'form-inline'} do |f| %>
 
 		<div class="form-group" style="width: 100%;">
+
 			<%= f.hidden_field :project_id, :value => @project.id %>
 			<%= f.text_field :name, :placeholder => "Item name", class: "form-control input-sm", :required => true, style: "width: 90%; float: left;" %>
-			<%= f.submit "Add Item", class: "btn btn-sm btn-primary" %>
+			<%= f.submit "Add Item", class: "btn btn-sm btn-default", style: "background-color: #F9F9F9;" %>
 		</div>
 
 	<% end %>

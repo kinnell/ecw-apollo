@@ -1,35 +1,41 @@
-<div class="panel panel-default user-profile">
+<div class="col-md-12">
 
-	<div class="panel-heading">
-		<br>
-		<%= image_tag @user.profile_photo.url(:thumb), class: "profile-photo" %><br>
-		<h3><%= @user.name %></h3>
-		<h5><%= @user.email %></h5>
+	<div class="panel panel-default user-profile">
+
+		<div class="panel-heading">
+			<br>
+			<%= image_tag @user.profile_photo.url(:thumb), class: "profile-photo" %><br>
+			<h3><%= @user.name %></h3>
+			<h5><%= @user.email %></h5>
+		</div>
+
 	</div>
 
-</div>
+	<div class="panel panel-default">
 
-<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4><i class="fa fa-refresh"></i></span>
+				Current Projects (<%= @user.projects.incomplete.uniq.count %>)
+			<%= link_to "New Project", new_project_path, class: "btn btn-sm btn-default pull-right", style: "margin-top: -5px;" if @user == current_user %>
+			</h4>
+		</div>
 
-	<div class="panel-heading">
-		<h4><i class="fa fa-refresh"></i></span>
-			Current Projects (<%= @user.projects.incomplete.uniq.count %>)</h4>
+		<div class="panel-body">
+			<%= render partial: "projects/table", :locals => {:projects => @user.projects.incomplete.custom_sort} %>
+		</div>
+
 	</div>
 
-	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => @user.projects.incomplete.custom_sort} %>
-	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4><i class="fa fa-check-circle"></i>
+				Completed Projects (<%= @user.projects.completed.uniq.count %>)</h4>
+		</div>
 
-</div>
+		<div class="panel-body">
+			<%= render partial: "projects/table", :locals => {:projects => @user.projects.completed.custom_sort} %>
+		</div>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h4><i class="fa fa-check-circle"></i>
-			Completed Projects (<%= @user.projects.completed.uniq.count %>)</h4>
-	</div>
-
-	<div class="panel-body">
-		<%= render partial: "projects/table", :locals => {:projects => @user.projects.completed.custom_sort} %>
 	</div>
 
 </div>

@@ -1,10 +1,67 @@
 @import 'colors';
 
-.project-status {
+.project-user-photo {
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	width: 25px;
+	height: 25px;
+}
+
+.project-details-panel {
+
+	.panel-body {
+		line-height: 200%;
+
+		.project-label { padding-left: 0px; font-weight: 700;}
+
+		.project-field {
+			.fa { margin-right: 5px; color: #999; }
+			i { color: #999; }
+		}
+		.project-hr { padding: 0px; }
+
+		.project-assigned {
+			line-height: 250%;
+
+			.project-user-photo { margin-right: 5px; }
+
+			i { color: #999; padding-top: 4px; }
+		}
+
+		.project-description {
+			padding: 0px;
+			padding-bottom: 20px;
+			line-height: 150%;
+			text-align: justify;
+			font-color: #888;
+
+			i { color: #999; }
+
+		}
+
+	}
+
+}
+
+.project-starred {
+	display: inline-block;
+	.fa:hover {
+		color: $golden;
+		-webkit-transition: all .25s ease-in-out;
+      -moz-transition: all .25s ease-in-out;
+      -o-transition: all .25s ease-in-out;
+      transition: all .25s ease-in-out;
+	}
+	.fa-star { color: $golden; }
+	.fa-star-o { color: #999999; }
+}
+
+
+.project-status, .item-status {
 
 	display: inline-block;
 
-	button {
+	.dropdown-btn {
 		text-align: left;
 		font-size: 12px;
 		font-weight: 500;
@@ -20,35 +77,24 @@
 		width: 100px;
 	}
 
-	ul li {
+	.dropdown-menu li.dropdown-menu-item {
 		cursor: pointer;
 		text-align: left;
 		padding: 5px 0px 5px 10px;
 	}
 
-	ul li:hover {
+	.dropdown-menu li.dropdown-menu-item:hover {
 		background-color: #EEE;
 	}
 
 }
 
-.project-info, .user-info {
-
-	p {
-		color: #666;
-		line-height: 200%;
-	}
-
-	i {
-		padding-right: 5px;
-		color: #666;
-	}
-
-}
 
 table.projects-table {
 	margin-bottom: 0px;
 	tr td { vertical-align: middle; }
+
+	tr:hover { background-color: #f9f9f9; }
 
 	.edit-cog i {
 		color: #999;

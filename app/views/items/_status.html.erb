@@ -1,16 +1,16 @@
-<div class="btn-group project-status">
+<div class="btn-group item-status">
 
   <%
       status_hash_type = status_hash[item.status]["type"] if status_hash[item.status]
       status_hash_icon = status_hash[item.status]["icon"] if status_hash[item.status]
   %>
 
-  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs btn-title'><i class='fa fa-#{status_hash_icon} fa-fw'></i> #{item.status}</button>".html_safe %>
-  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs dropdown-toggle' data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Toggle Dropdown</span></button>".html_safe %>
+  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs btn-title dropdown-btn'><i class='fa fa-#{status_hash_icon} fa-fw'></i> #{item.status}</button>".html_safe %>
+  <%= "<button type='button' class='btn btn-#{status_hash_type} btn-xs dropdown-toggle dropdown-btn' data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Toggle Dropdown</span></button>".html_safe %>
 
   <ul class="dropdown-menu pull-right" role="menu">
     <% for s in status_hash.keys %>
-      <li onclick="$(this).find('form').submit();">
+      <li class="dropdown-menu-item" onclick="$(this).find('form').submit();">
         <%= form_for(item) do |f| %>
             <%= "<i class='fa fa-caret-right'></i> ".html_safe if item.status == s %>
             <%= "<i class='fa fa-caret-right' style='visibility: hidden'></i> ".html_safe unless item.status == s %>

@@ -1,74 +1,57 @@
-<div class="col-md-12">
-	<div class="panel panel-default">
+<div class="col-md-8" style="padding-right: 0px;">
 
+	<div class="panel panel-default project-tasks-panel">
 		<div class="panel-heading">
 			<h4>
 				<%= render partial: "projects/starred", :locals => {:project => @project} %>
+				<%= link_to "[#{@project.product.name}]", @project.product %> <%= @project.name %>
+				<%= link_to "Add Item".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-sm btn-default pull-right", style: "margin-top: -4px;" %><br>
 
-				<%= link_to "[#{@project.product.name}]", @project.product %> <%= link_to "#{@project.name}", @project %>
-
-				<div class="pull-right">
-					<%= render partial: "projects/status", :locals => {:project => @project} %>
-				</div>
-
-			</h4>
-		</div>
-	</div>
-
-</div>
-
-<div class="col-md-8">
-
-
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4>
-				Tasks
-				<%= link_to "Add Item".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-sm btn-primary", style: "float: right;" %>
 			</h4>
 		</div>
 
 		<div class="panel-body">
 
 
-
 			<div id="addItem" class="collapse"><%= render partial: "items/new" %><hr></div>
 
+			<ul class="items-list">
+				<li class="item">
+					<h4 class="item-main">
 
-				<ul class="items-list">
+						<div class="item-name">Project Tasks</div>
 
-					<li>
-						<h4>General
-							<%= link_to "Add Task".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-addTask", class: "btn btn-info btn-xs pull-right", style: "margin-right: 25px;" %>
-						</h4><hr>
+						<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-addTask", class: "btn btn-default btn-xs pull-right add-task-btn", style: "margin-right: 28px;" %>
 
-						<% if @project.tasks.general.incomplete.count > 0 %>
-							<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm", style: "color: #333; margin-bottom: 4px;" %>
-							<ul>
-								<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
-								<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
-							</ul>
-						<% end %>
-					</li>
+					</h4>
 
-					<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %><br></div>
+						<div class="<%= 'tasks-list-box' if @project.tasks.general.count > 0 %>">
 
-					<% if @project.tasks.general.completed.count > 0 %>
-						<div class="tasks-list">
-							<%= content_tag :div, "Completed Tasks (#{@project.tasks.general.completed.count})", class: "title-sm" %>
-							<%= link_to "<i class='fa fa-eye'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-completedTasks" %>
-							<ul class="tasks-list collapse" id="project-<%= @project.id %>-general-completedTasks"><%= render @project.tasks.general.completed.order("completed_at") %></ul>
+							<% if @project.tasks.general.incomplete.size > 0 %>
+								<hr>
+								<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm" %>
+								<ul class="tasks-list">
+									<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
+									<%= render @project.tasks.general.notDue.order("starred DESC, created_at") %>
+								</ul>
+
+							<% end %>
+
+							<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %><br></div>
+
+							<% if @project.tasks.general.completed.count > 0 %>
+								<div class="tasks-list">
+									<%= link_to "Completed Tasks (#{@project.tasks.general.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-completedTasks", class: "title-sm" %>
+									<ul class="tasks-list collapse" id="project-<%= @project.id %>-general-completedTasks"><%= render @project.tasks.general.completed.order("completed_at") %></ul>
+								</div>
+							<% end %>
+
 						</div>
-						<br>
-					<% end %>
 
+				</li>
+			</ul>
 
-
-				</ul>
-
-
-				<ul class="items-list"><%= render @project.items.order("created_at") %></ul>
-
+			<ul class="items-list"><%= render @project.items.order("created_at") %></ul>
 
 
 		</div>
@@ -79,69 +62,82 @@
 
 <div class="col-md-4">
 
-	<div class="panel panel-default">
+	<div class="panel panel-default project-details-panel">
 		<div class="panel-heading">
-			<h4>
-				Details
-				<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project), class: "pull-right", style: "margin: 3px; padding-left: 10px;" %>
-			</h4>
+			<h5>
+				<div class="panel-title">Project Details</div>
+				<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project), class: "pull-right has_tooltip", :title => "Edit project details", :"data-toggle" => "tooltip", :"data-placement" => "left" %>
+			</h5>
 		</div>
-		<div class="panel-body" style="line-height: 200%">
-			<div class="col-md-4" style="padding-left: 0px;"><b>Start Date:</b></div>
-			<div class="col-md-8"><i class="fa fa-calendar" style="margin-right: 5px; color: #999;"></i> <%= print_date(@project.created_at, "xl") %></div>
 
-			<div class="col-md-4" style="padding-left: 0px;"><b>Due Date:</b></div>
-			<div class="col-md-8">
+		<div class="panel-body">
+
+			<div class="col-md-4 project-label">Start Date:</div>
+			<div class="col-md-8 project-field"><i class="fa fa-calendar"></i> <%= print_date(@project.created_at, "xl") %></div>
+
+			<div class="col-md-4 project-label">Due Date:</div>
+			<div class="col-md-8 project-field">
 				<% if @project.due_date %>
-					<i class="fa fa-calendar" style="margin-right: 5px; color: #999;"></i> <%= print_date(@project.due_date, "xl") %>
+					<i class="fa fa-calendar"></i> <%= print_date(@project.due_date, "xl") %>
 				<% else %>
 					<i>No Due Date</i>
 				<% end %>
 			</div>
 
-			<div class="col-md-4" style="padding-left: 0px;"><b>End Date:</b></div>
-			<div class="col-md-8">
+			<div class="col-md-4 project-label">End Date:</div>
+			<div class="col-md-8 project-field">
 				<% if @project.end_date %>
-					<i class="fa fa-calendar" style="margin-right: 5px; color: #999;"></i> <%= print_date(@project.end_date, "xl") %>
+					<i class="fa fa-calendar"></i> <%= print_date(@project.end_date, "xl") %>
 				<% else %>
-					<i style="color: #999">Incomplete</i>
+					<i>Project not completed</i>
 				<% end %>
 			</div>
 
+			<div class="col-md-12 project-hr"><hr></div>
 
-			<div class="col-md-12"><hr></div>
+			<div class="col-md-4 project-label">Product:</div>
+			<div class="col-md-8 project-field"><%= link_to @project.product.name, @project.product %></div>
 
-			<div class="col-md-4" style="padding-left: 0px;"><b>Assigned By:</b></div>
-			<div class="col-md-8"><%= @project.assigned_by %></div>
+			<div class="col-md-4 project-label">Status:</div>
+			<div class="col-md-8"><%= render partial: "projects/status", :locals => {:project => @project} %></div>
 
-			<div class="col-md-4" style="padding-left: 0px; padding-top: 4px;"><b>Assigned:</b></div>
-			<div class="col-md-8">
-				<% if @project.users.first %>
+			<div class="col-md-12 project-hr"><hr></div>
+
+			<div class="col-md-4 project-label">Assigned By:</div>
+			<div class="col-md-8 project-field"><%= @project.assigned_by %></div>
+
+			<div class="col-md-4 project-label" style="padding-top: 4px;"><b>Assigned:</b></div>
+			<div class="col-md-8 project-assigned">
+				<% if @project.has_users %>
 					<% for u in @project.users.uniq %>
-						<%= link_to u, :style => "line-height: 250%;" do %>
-							<%= image_tag u.profile_photo.url(:small), class: "project-user-photo", style: "margin-right: 8px;" %>
-							<%= u.name %>
-						<% end %>
+						<%= render partial: "users/photo", :locals => {:user => u} %>
+						<%= link_to u.name, u %>
 						<br>
 					<% end %>
 				<% else %>
-					<i style="color: #999">No one</i>
+					<i>No one assigned</i><br>
 				<% end %>
-
 			</div>
 
-			<div class="col-md-12"><hr></div>
+			<div class="col-md-12 project-hr"><hr></div>
 
-			<div style="line-height: 150%; text-align: justify;"><b>Description:</b><br><font color="#777"><%= @project.description.gsub(/\n/, '<br>').html_safe %></font><br><br></div>
+			<div class="col-md-12 project-label">Description:</div>
+			<div class="col-md-12 project-description">
+				<% if @project.description.length != 0 %>
+					<%= @project.description.gsub(/\n/, '<br>').html_safe %>
+				<% else %>
+					<i>No description provided</i>
+				<% end %>
+			</div>
 
 		</div>
 	</div>
 
 	<%= render partial: "comments/new" %>
 
-	<div class="panel panel-default">
+	<div class="panel panel-default comment-wall-panel">
 		<div class="panel-heading">
-			<h4>Updates</h4>
+			<h5><div class="panel-title">Project Wall</div></h5>
 		</div>
 		<div class="panel-body">
 			<%= render @project.comments.order('created_at DESC') %>

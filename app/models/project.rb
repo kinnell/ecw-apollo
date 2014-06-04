@@ -36,6 +36,7 @@ class Project < ActiveRecord::Base
 
 	def isLate() due_date ? ((due_date < DateTime.now) & (status != "Completed") && (status != "Cancelled")) : false end
 
+	def has_users() users.exists end
 
 
 end

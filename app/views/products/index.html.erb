@@ -1,26 +1,28 @@
-<div class="panel panel-default">
+<div class="col-md-12">
+  <div class="panel panel-default">
 
-  <div class="panel-heading">
-    <h4>
-      <i class="fa fa-shopping-cart"></i> Products
-      <%= link_to "Create Product", new_product_path, class: "btn btn-sm btn-primary", style: "float: right;" %>
-    </h4>
-  </div>
-
-  <div class="panel-body">
-
-    <% for product in @products %>
-
+    <div class="panel-heading">
       <h4>
-        <%= link_to product.name, product %>
+        <i class="fa fa-shopping-cart"></i> Products
+        <%= link_to "Create Product", new_product_path, class: "btn btn-sm btn-primary", style: "float: right;" %>
       </h4>
+    </div>
 
-      <%= render partial: "projects/table", :locals => {:projects => product.projects} %>
+    <div class="panel-body">
 
-      <br><br>
+      <% for product in @products %>
 
-    <% end %>
+        <h4>
+          <%= link_to product.name, product %>
+        </h4>
+
+        <%= render partial: "projects/table", :locals => {:projects => product.projects} %>
+
+        <br><br>
+
+      <% end %>
+
+    </div>
 
   </div>
-
 </div>

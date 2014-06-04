@@ -47,3 +47,16 @@ a:hover {
 .alert-info {
 	text-align: center;
 }
+
+.tools-dropdown {
+	float: right;
+	list-style-type: none;
+	padding: 0px;
+	margin-right: 5px;
+	.dropdown-menu { min-width: 0px; }
+	.dropdown-menu li { padding-bottom: 0px; margin-left: 0px; }
+	.dropdown-menu li ul { padding: 5px 0; }
+	.dropdown-menu li ul a i { padding: 0px; }
+}
+
+.text-center { text-align: center; }

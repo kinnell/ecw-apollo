@@ -1,0 +1,52 @@
+@import 'colors';
+
+.items-list {
+
+	list-style-type: none;
+	padding: 0;
+
+	.item {
+
+		border-bottom: 1px solid #F6F6F6;
+		//margin-bottom: 10px;
+
+		.item-main {
+			padding: 15px 0;
+			margin: 0px;
+
+			.item-name {
+				color: #333;
+				font-weight: 300;
+				font-size: 16px;
+				display: inline-block;
+			}
+
+			.item-type-icon { color: #999; margin-right: 1px; }
+
+			.item-status { margin-top: -4px; }
+
+			.add-task-btn {
+				margin-right: 10px;
+				margin-left: 10px;
+				color: #999;
+				margin-top: -2px;
+			}
+
+			.item-tools { float: right;}
+
+		}
+
+		.item-main:hover { background-color: #F9F9F9; }
+
+		hr { margin-top: 0; margin-bottom: 0.5em; }
+
+		.title-sm {
+			display: inline-block;
+			color: #999;
+			font-size: 12px;
+			padding-left: 10px;
+		}
+
+	}
+
+}

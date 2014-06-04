@@ -1,8 +1,9 @@
 <center>
 
-	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline'} do |f| %>
+	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline add-task'} do |f| %>
 
-		<div class="form-group" style="width: 100%;">
+		<div class="form-group">
+			<i class="fa fa-level-up fa-rotate-90"></i>
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control" %>
 			<% if item %>
 				<%= f.hidden_field :item_id, :value => item.id %>
@@ -10,17 +11,17 @@
 				<%= f.hidden_field :item_id, :value => nil %>
 			<% end %>
 
-			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm", :required => true, style: "min-width: 40%;" %>
+			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm add-task-name", :required => true %>
 
         	<%= f.date_field :due_date_date, class: "form-control input-sm" %>
         	<%= f.time_field :due_date_time, class: "form-control input-sm", :value => "17:00:00.000" %>
 
-			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm' }) %>
-			<%= f.submit "Add Task", class: "btn btn-sm btn-info" %>
+			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm add-task-user' }) %>
 
-
+			<%= f.submit "Add Task", class: "btn btn-sm btn-default", style: "background-color: #F9F9F9;" %>
 
 		</div>
+
 	<% end %>
 
 </center>

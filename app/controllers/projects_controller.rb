@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+   respond_to :html, :js
+
    before_action :authenticate_user!
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
@@ -30,7 +32,7 @@ class ProjectsController < ApplicationController
 	def update
 		if @project.update(project_params)
 			respond_to do |format|
-				format.html { redirect_to project_path, notice: 'Project was successfully updated.' }
+				format.html { redirect_to :back, notice: 'Project was successfully updated.' }
 				format.js
 			end
 		else

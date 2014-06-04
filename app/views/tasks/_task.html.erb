@@ -1,51 +1,21 @@
-<% unless task.completed %>
+<li class="task <%= 'task-late' if task.late? && !task.completed %> <%= 'task-completed' if task.completed %>">
 
-	<% if task.due_date %>
+	<%= render partial: "tasks/starred", :locals => {:task => task} %>
 
-		<li class="<%= 'task-late' if task.late? %>">
-			<%= link_to '<i class="fa fa-star"></i>'.html_safe, toggle_starred_task_path(task), method: :post if task.starred %>
-			<%= link_to '<i class="fa fa-star-o"></i>'.html_safe, toggle_starred_task_path(task), method: :post unless task.starred %>
+	<%= render partial: "tasks/checkbox", :locals => {:task => task} %>
 
-			<% if task.user == current_user %>
-				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-			<% else %>
-				<a><i class="fa fa-square-o" style="color: #CCC;"></i></a>
-			<% end %>
-			<%= content_tag :div, task.name, class: "task-name" %>
-			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
-			<%= render partial: "tasks/tools", :locals => {:task => task} %>
-			<%= content_tag :div, " due #{print_date(task.due_date, "s")}", class: "task-date" %>
+	<%= content_tag :div, task.name, class: "task-name" %>
 
-		</li>
+	<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 
+	<%= render partial: "tasks/tools", :locals => {:task => task} %>
+
+	<% if task.completed %>
+		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" %>
 	<% else %>
-
-		<li>
-			<%= link_to '<i class="fa fa-star"></i>'.html_safe, toggle_starred_task_path(task), method: :post if task.starred %>
-			<%= link_to '<i class="fa fa-star-o"></i>'.html_safe, toggle_starred_task_path(task), method: :post unless task.starred %>
-
-			<% if task.user == current_user %>
-				<%= link_to '<i class="fa fa-square-o"></i>'.html_safe, complete_task_path(task), method: :post %>
-			<% else %>
-				<a><i class="fa fa-square-o" style="color: #CCC;"></i></a>
-			<% end %>
-			<%= content_tag :div, task.name, class: "task-name" %>
-			<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
-			<%= render partial: "tasks/tools", :locals => {:task => task} %>
-		</li>
-
+		<%= content_tag :div, " due #{print_date(task.due_date, "s")}", class: "task-date" if task.due_date %>
 	<% end %>
 
-<% else %>
-
-	<li class="task-completed">
-		<%= link_to '<i class="fa fa-check-square-o"></i>'.html_safe, uncomplete_task_path(task), method: :post %>
-		<%= content_tag :div, task.name, class: "task-name" %>
-		<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
-		<%= render partial: "tasks/tools", :locals => {:task => task} %>
-		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" if false%>
-	</li>
-
-<% end %>
+</li>
 
 <hr>

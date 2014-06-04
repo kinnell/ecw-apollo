@@ -1,25 +1,27 @@
-<div class="panel panel-default">
+<div class="col-md-12">
+	<div class="panel panel-default">
 
-	<div class="panel-heading"><h4><i class="fa fa-calendar"></i> My Calendar <%= link_to "(View Overall Calendar)", calendar_path %></h4></div>
+		<div class="panel-heading"><h4><i class="fa fa-calendar"></i> My Calendar <%= link_to "(View Overall Calendar)", calendar_path %></h4></div>
 
-	<div class="panel-body">
-		<h2 id="month">
-	    <%= link_to "<", date: @date.prev_month %>
-	    <%= @date.strftime("%B %Y") %>
-	    <%= link_to ">", date: @date.next_month %>
-	  </h2>
+		<div class="panel-body">
+			<h2 id="month">
+		    <%= link_to "<", date: @date.prev_month %>
+		    <%= @date.strftime("%B %Y") %>
+		    <%= link_to ">", date: @date.next_month %>
+		  </h2>
 
-		<%= calendar @date do |date| %>
-			<%= date.day %>
-			<% if @tasks_by_date[date] %>
-				<ul>
-					<% @tasks_by_date[date].each do |task| %>
-						<%= link_to "<li><i class='fa fa-check-circle'></i> #{task.name[0,20]}...</li>".html_safe, task.project %>
-					<% end %>
-				</ul>
+			<%= calendar @date do |date| %>
+				<%= date.day %>
+				<% if @tasks_by_date[date] %>
+					<ul>
+						<% @tasks_by_date[date].each do |task| %>
+							<%= link_to "<li><i class='fa fa-check-circle'></i> #{task.name[0,20]}...</li>".html_safe, task.project %>
+						<% end %>
+					</ul>
+				<% end %>
 			<% end %>
-		<% end %>
+
+		</div>
 
 	</div>
-
 </div>
