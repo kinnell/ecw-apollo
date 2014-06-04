@@ -8,9 +8,10 @@
 		</div>
 
 		<div class="panel-body">
-			 <%= render partial: "projects/table", :locals => {:projects => @product.projects} %>
+			 <%= render partial: "projects/table", :locals => {:projects => @product.projects.custom_sort} %>
 		</div>
 
 	</div>
 
 </div>
+
