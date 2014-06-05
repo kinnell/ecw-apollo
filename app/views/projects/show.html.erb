@@ -12,12 +12,13 @@
 
 		<div class="panel-body">
 
-
-			<div id="addItem" class="collapse"><%= render partial: "items/new" %><hr></div>
+			<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
 
 			<ul class="items-list">
 				<li class="item">
 					<h4 class="item-main">
+
+						<%= "<i class='fa fa-folder-o fa-fw item-type-icon'></i>".html_safe %>
 
 						<div class="item-name">Project Tasks</div>
 
@@ -40,10 +41,8 @@
 							<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %><br></div>
 
 							<% if @project.tasks.general.completed.count > 0 %>
-								<div class="tasks-list">
 									<%= link_to "Completed Tasks (#{@project.tasks.general.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-completedTasks", class: "title-sm" %>
 									<ul class="tasks-list collapse" id="project-<%= @project.id %>-general-completedTasks"><%= render @project.tasks.general.completed.order("completed_at") %></ul>
-								</div>
 							<% end %>
 
 						</div>
