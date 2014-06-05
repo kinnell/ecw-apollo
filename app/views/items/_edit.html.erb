@@ -21,7 +21,7 @@
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Created At:</label>
-            <div class="col-sm-4" style="padding-top: 7px;">
+            <div class="col-sm-8" style="padding-top: 7px;">
               <%= print_date(item.created_at, "xl") %>
             </div>
           </div>
@@ -30,7 +30,7 @@
 
           <div class="form-group">
             <label class="col-sm-3 control-label">Project:</label>
-            <div class="col-sm-4" style="padding-top: 7px;">
+            <div class="col-sm-8" style="padding-top: 7px;">
               <%= link_to "[#{item.project.product.name}] #{item.project.name}", item.project %>
             </div>
           </div>
