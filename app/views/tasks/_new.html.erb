@@ -21,7 +21,12 @@
 			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm add-task-user', :selected => current_user.name}) %>
 
 			<%= f.submit "Add Task", class: "btn btn-sm btn-default" %>
-			<button type="button" class="close pull-right" data-toggle="collapse" data-target="item-#{item.id}-addTask">&times;</button>
+			<% if item %>
+			<button type="button" class="close pull-right" data-toggle="collapse" data-target="#item-<%= item.id %>-addTask">&times;</button>
+			<% else %>
+			<button type="button" class="close pull-right" data-toggle="collapse" data-target="#project-<%= @project.id %>-general-addTask">&times;</button>
+			<% end %>
+
 
 		</div>
 

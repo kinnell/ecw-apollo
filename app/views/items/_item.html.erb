@@ -27,7 +27,7 @@
 
 			<% end %>
 
-			<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %><br></div>
+			<div class="collapse" id="item-<%= item.id %>-addTask"><%= render partial: "tasks/new", :locals => {:item => item} %></div>
 
 			<% if item.tasks.completed.count > 0 %>
 				<%= link_to "Completed Tasks (#{item.tasks.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-completedTasks", class: "title-sm" %>
