@@ -7,17 +7,13 @@
     <div class="panel-body">
       <%= form_for(@product) do |f| %>
 
-        <% if @product.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-            <ul><% @product.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul>
-          </div>
-        <% end %>
-
         <fieldset>
 
           <div class="form-group">
-            <%= f.text_field :name, :placeholder => "Product Name", class: "form-control", :autofocus => true, :required => true %>
+            <label class="col-sm-3 control-label">Product:</label>
+            <div class="col-sm-8">
+              <%= f.text_field :name, :placeholder => "Product Name", class: "form-control", :required => true %>
+            </div>
           </div>
 
           <%= f.submit "Save", class: "btn btn-md btn-success btn-block" %>

@@ -1,0 +1,98 @@
+<div class="modal fade" id="edit_task_<%= task.id %>_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"> Edit Task</h4>
+      </div>
+
+      <%= form_for(task, html: {class: 'form-horizontal'}) do |f| %>
+
+        <div class="modal-body">
+          <fieldset>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Task:</label>
+              <div class="col-sm-8">
+                <%= f.text_field :name, :placeholder => "Task Name", class: "form-control", :required => true %>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Created At:</label>
+              <div class="col-sm-5" style="padding-top: 7px;">
+                <%= print_date(task.created_at, "xl") %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Due Date:</label>
+              <div class="col-sm-6">
+                <%= f.datetime_local_field :due_date, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Completed:</label>
+              <div class="col-sm-5" style="padding-top: 7px;">
+                <%= task.completed ? print_date(task.completed_at, "xl") : "Incomplete"  %>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Project:</label>
+              <div class="col-sm-5" style="padding-top: 7px;">
+                <%= link_to "[#{task.project.product.name}] #{task.project.name}", task.project %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="padding-top: 4px;">Item:</label>
+              <div class="col-sm-6">
+                <%= f.collection_select(:item_id, task.project.items.uniq, :id , :name, {:required => true, :include_blank => "General"}, {:class => 'form-control input-sm'}) %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" style="padding-top: 4px;">Assigned:</label>
+              <div class="col-sm-5">
+                <%= f.collection_select(:user_id, task.project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm' }) %>
+              </div>
+            </div>
+
+
+            <hr>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Starred?:</label>
+              <div class="col-sm-5" style="padding-top: 7px;">
+                <% if false %> <%= task.starred ? "Starred" : "Normal" %> <% end %>
+                <%= f.check_box :starred %>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Status:</label>
+              <div class="col-sm-5" style="padding-top: 7px;">
+                <%= task.completed ? "Completed" : "Incomplete" %>
+              </div>
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit "Save Task", class: "btn btn-md btn-success" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

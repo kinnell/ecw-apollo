@@ -4,7 +4,9 @@
 
 		<div class="panel-heading">
 			<h3><%= @product.name %>
-				<div class="pull-right"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_product_path(@product) %></div></h3>
+				<div class="pull-right" data-toggle="modal" data-target="#edit_product_<%= @product.id %>_modal"><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></div>
+			</h3>
+			<%= render partial: "products/edit", :locals => {:product => @product } %>
 		</div>
 
 		<div class="panel-body">

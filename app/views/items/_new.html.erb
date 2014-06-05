@@ -4,13 +4,15 @@
 		<div class="form-group">
 
 			<i class="fa fa-level-up fa-rotate-90"></i>
-			<div class="add-item-title"> Add Item:</div>
+			<div class="add-item-title"> Add <b>Item</b>:</div>
 
 			<%= f.hidden_field :project_id, :value => @project.id %>
 			<%= f.text_field :name, :placeholder => "Item name", class: "form-control input-sm add-item-name", :required => true %>
 			 <%= f.select(:item_type, [['Graphic'],['Print'],['Video'],['Web']], {}, { :class => 'form-control input-sm' }) %>
 			<%= f.submit "Add Item", class: "btn btn-sm btn-default" %>
+			<button type="button" class="close pull-right" data-toggle="collapse" data-target='#addItem'>&times;</button>
 		</div>
 
 	<% end %>
 </center>
+

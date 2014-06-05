@@ -65,8 +65,9 @@
 		<div class="panel-heading">
 			<h5>
 				<div class="panel-title">Project Details</div>
-				<%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(@project), class: "pull-right has_tooltip", :title => "Edit project details", :"data-toggle" => "tooltip", :"data-placement" => "left" %>
+				<div class="pull-right" data-toggle="modal" data-target="#edit_project_<%= @project.id %>_modal"><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></div>
 			</h5>
+			<%= render partial: "projects/edit", :locals => {:project => @project } %>
 		</div>
 
 		<div class="panel-body">

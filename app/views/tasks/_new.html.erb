@@ -3,8 +3,9 @@
 	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline add-task'} do |f| %>
 
 		<div class="form-group">
+
 			<i class="fa fa-level-up fa-rotate-90"></i>
-			<div class="add-task-title"> Add Task:</div>
+			<div class="add-task-title"> Add <b>Task</b>:</div>
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control" %>
 			<% if item %>
 				<%= f.hidden_field :item_id, :value => item.id %>
@@ -20,6 +21,7 @@
 			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm add-task-user', :selected => current_user.name}) %>
 
 			<%= f.submit "Add Task", class: "btn btn-sm btn-default" %>
+			<button type="button" class="close pull-right" data-toggle="collapse" data-target="item-#{item.id}-addTask">&times;</button>
 
 		</div>
 

@@ -1,0 +1,77 @@
+<div class="modal fade" id="edit_project_<%= project.id %>_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"> Edit Project</h4>
+      </div>
+
+      <%= form_for(project, html: {class: 'form-horizontal'}) do |f| %>
+
+        <div class="modal-body">
+          <fieldset>
+
+            <div class="col-md-4">
+              <b>Product: </b><br>
+              <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => "Select Product", :required => true}, {:class => 'form-control' }) %>
+            </div>
+
+            <div class="col-md-8">
+              <b>Project Name: </b><br>
+              <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true, style: "display: inline-block;", :required => true %>
+            </div>
+
+            <br><br>
+
+
+            <div class="col-md-12" style="padding-top: 15px;">
+              <b>Description: </b><br>
+              <%= f.text_area :description, :placeholder => "Description", class: "form-control", style: "width: 100%", rows: "7" %>
+            </div>
+
+            <div class="col-md-4" style="padding-top: 15px;">
+              <b>Due Date: </b><br>
+                <%= f.date_field :due_date_date, class: "form-control" %>
+                <%= f.time_field :due_date_time, class: "form-control", :placeholder => "17:00:00.000" %>
+            </div>
+
+
+             <div class="col-md-4" style="padding-top: 15px;">
+              <b>Assigned By: </b><br>
+              <%= f.text_field :assigned_by, :placeholder => "Name", class: "form-control" %>
+            </div>
+
+            <div class="col-md-4" style="padding-top: 15px;">
+              <b>Status:</b><br>
+               <%= f.select(:status, [['In Queue'],['In Progress'],['Waiting'],['On Hold'],['Cancelled'],['Completed']], {}, { :class => 'form-control' }) %>
+               <br><br>
+            </div>
+
+            <br><br>
+
+            <div class="col-md-12" style="padding-top: 5px;">
+
+              <b>Users Assigned:</b><br>
+              <%= hidden_field_tag "project[user_ids][]", nil %>
+              <% User.all.order("name").each do |user| %>
+                <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) %>
+                <%= user.name %><br>
+              <% end %>
+
+            </div>
+
+
+         </fieldset>
+
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit "Save Project", class: "btn btn-md btn-success" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

@@ -57,6 +57,12 @@ a:hover {
 	.dropdown-menu li { padding-bottom: 0px; margin-left: 0px; }
 	.dropdown-menu li ul { padding: 5px 0; }
 	.dropdown-menu li ul a i { padding: 0px; }
+
+	.dropdown-menu .dropdown-btn-modal i { padding: 6px 20px; }
+	.dropdown-menu .dropdown-btn-modal:hover {
+		background-color: #F6F6F6;
+		cursor: pointer;
+	}
 }
 
 .text-center { text-align: center; }

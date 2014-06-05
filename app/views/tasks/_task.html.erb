@@ -16,6 +16,8 @@
 		<%= content_tag :div, " due #{print_date(task.due_date, "s")}", class: "task-date" if task.due_date %>
 	<% end %>
 
+	<%= render partial: "tasks/edit", :locals => {:task => task } %>
+
 </li>
 
 <hr>

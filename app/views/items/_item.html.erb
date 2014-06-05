@@ -10,7 +10,10 @@
 
 		<div class="pull-right"><%= render partial: "items/status", :locals => {:item => item} %></div>
 
+
 	</h4>
+
+		<%= render partial: "items/edit", :locals => {:item => item } %>
 
 		<div class="<%= 'tasks-list-box' if item.tasks.count > 0 %>">
 
