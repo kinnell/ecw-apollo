@@ -33,11 +33,16 @@
 				margin-top: -2px;
 			}
 
-			.item-tools { float: right;}
+			.item-tools { float: right; opacity: 0; }
 
 		}
 
-		.item-main:hover { background-color: #F9F9F9; }
+		.item-main:hover {
+			background-color: #F9F9F9;
+
+			.item-tools { opacity: 1; }
+
+		}
 
 		hr { margin-top: 0; margin-bottom: 0.5em; }
 

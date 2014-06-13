@@ -1,4 +1,4 @@
-<li class="task <%= 'task-late' if task.late? && !task.completed %> <%= 'task-completed' if task.completed %>">
+<li class="task <%= 'task-late' if task.late? && !task.completed %> <%= 'task-completed' if task.completed %>" id="task_<%= task.id %>">
 
 	<%= render partial: "tasks/starred", :locals => {:task => task} %>
 

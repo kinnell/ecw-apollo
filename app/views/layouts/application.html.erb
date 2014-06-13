@@ -10,6 +10,7 @@
    <%= javascript_include_tag "jquery-1.10.2.min" %>
    <%= javascript_include_tag "jquery.noty" %>
 
+
 	<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
@@ -20,23 +21,21 @@
 
   <%= render "layouts/noty" %>
 
+	<% if user_signed_in? %>
+		<div class="row" style="margin-top: 0px;">
+			<div class="col-md-2">
+				<%= render "layouts/side_nav" %>
+			</div>
 
+			<div class="col-md-10" style="padding-top: 20px;">
+				<%= yield %>
+			</div>
 
-<% if user_signed_in? %>
-	<div class="row" style="margin-top: 0px;">
-		<div class="col-md-2">
-			<%= render "layouts/side_nav" %>
 		</div>
 
-		<div class="col-md-10" style="padding-top: 20px;">
-			<%= yield %>
-		</div>
-
-	</div>
-
-<% else %>
-	<div class="container"><%= yield %></div>
-<% end %>
+	<% else %>
+		<div class="container"><%= yield %></div>
+	<% end %>
 
 </body>
 </html>

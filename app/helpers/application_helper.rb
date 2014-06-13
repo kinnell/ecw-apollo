@@ -14,7 +14,8 @@ module ApplicationHelper
                     "Print" => {"icon" => "file-text-o"},
                     "Video" => {"icon" => "file-video-o"},
                     "Web" => {"icon" => "file-code-o"},
-                 		nil => {"icon" => "file-o"}}
+                 		nil => {"icon" => "file-o"},
+                    "" => {"icon" => "file-o"}}
 	end
 
 

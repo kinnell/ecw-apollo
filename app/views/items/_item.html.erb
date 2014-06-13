@@ -6,7 +6,7 @@
 
 		<div class="item-tools"><%= render partial: "items/tools", :locals => {:item => item} %></div>
 
-		<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-default btn-xs pull-right add-task-btn" %>
+		<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item-#{item.id}-addTask", class: "btn btn-default btn-xs pull-right add-task-btn", :onclick => "$(this).parents('.item').find('#item_#{item.id if item}_newTask_taskName').focus();" %>
 
 		<div class="pull-right"><%= render partial: "items/status", :locals => {:item => item} %></div>
 

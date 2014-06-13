@@ -21,4 +21,5 @@
 
 jQuery( function($) {
 	$('.has_tooltip').tooltip();
+	$('.has_popover').popover();
 });

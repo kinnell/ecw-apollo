@@ -34,10 +34,15 @@
 		.task-user { color: #999; }
 
 		.task-date { color: #666; float: right; margin-right: 10px; }
+
+		.tools-dropdown { opacity: 0; padding-right: 3px; }
 	}
 
 	.task:hover {
 		background-color: #F9F9F9;
+
+		.tools-dropdown { opacity: 1; padding-right: 3px;  }
+
 	}
 
 	hr { margin: 0 0 0 30px !important; border-top: 1px solid #EEE; }
@@ -53,6 +58,8 @@
 
 
 .add-task {
+
+	.form-group { text-align: left; padding-left: 10px; }
 
 	background-color: #F6F6F6;
 	padding: 10px;
@@ -72,6 +79,11 @@
 	.add-task-title { font-size: 12px; display: inline-block; margin-left: 5px; margin-right: 5px; }
 	.btn { background-color: #F9F9F9; }
 	.close { padding-top: 4px; }
+
+	#addTask-dateBtn, #addTask-datefield, #addTask-timeBtn, #addTask-timefield { display: inline-block; }
+	#addTask-dateBtn, #addTask-timeBtn { padding: 8px 10px; }
+	#addTask-datefield, #addTask-timeBtn, #addTask-timefield { display: none; }
+
 }
 
 .tasks-index-panel {

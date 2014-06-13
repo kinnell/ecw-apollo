@@ -21,7 +21,9 @@ Apollo::Application.routes.draw do
     root :to => "projects#index", as: :authenticated_root
   end
 
-  root :to => "pages#home"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
 
   get '/projects', to: "projects#index"
   get '/projects/new', to: "projects#new"

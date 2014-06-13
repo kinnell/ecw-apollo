@@ -98,6 +98,9 @@
 			<div class="col-md-4 project-label">Product:</div>
 			<div class="col-md-8 project-field"><%= link_to @project.product.name, @project.product %></div>
 
+			<div class="col-md-4 project-label">Items:</div>
+			<div class="col-md-8 project-field"><%= @project.items.count if @project.items %></div>
+
 			<div class="col-md-4 project-label">Status:</div>
 			<div class="col-md-8"><%= render partial: "projects/status", :locals => {:project => @project} %></div>
 

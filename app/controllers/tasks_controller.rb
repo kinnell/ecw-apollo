@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
   def index
     @tasks = current_user.tasks.incomplete.order("due_date")
@@ -27,21 +28,19 @@ class TasksController < ApplicationController
   end
 
   def update
-      if @task.update(task_params)
-        respond_to do |format|
-          format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
-          format.js
-          format.json
-        end
-
-      else
-        render action: 'edit'
-      end
+    @task.update_attributes!(task_params)
+      respond_to do |format|
+        format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
+        format.js
+    end
   end
 
   def destroy
     @task.destroy
-      redirect_to @task.project
+    respond_to do |format|
+      format.html { redirect_to @task.project }
+      format.js
+    end
   end
 
   def toggle_starred
@@ -58,6 +57,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :project_id, :user_id, :item_id, :starred, :completed_at)
+      params.require(:task).permit(:name, :due_date, :due_date_date, :due_date_time, :completed, :project_id, :user_id, :item_id, :starred, :completed_at)
     end
 end

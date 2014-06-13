@@ -7,24 +7,34 @@
 			<i class="fa fa-level-up fa-rotate-90"></i>
 			<div class="add-task-title"> Add <b>Task</b>:</div>
 			<%= f.hidden_field :project_id, :value => @project.id, class: "form-control" %>
+
 			<% if item %>
 				<%= f.hidden_field :item_id, :value => item.id %>
 			<% else %>
 				<%= f.hidden_field :item_id, :value => nil %>
 			<% end %>
 
-			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm add-task-name", :required => true %>
+			<%= f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm add-task-name", id: "item_#{item.id if item}_newTask_taskName", :required => true %>
 
-        	<%= f.date_field :due_date_date, class: "form-control input-sm" %>
-        	<%= f.time_field :due_date_time, class: "form-control input-sm", :value => "17:00:00.000" %>
+			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true, :selected => current_user.id}, {:class => 'form-control input-sm add-task-user'}) %>
 
-			<%= f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true}, {:class => 'form-control input-sm add-task-user', :selected => current_user.name}) %>
+
+     		<i id="addTask-dateBtn" class="fa fa-calendar btn btn-sm btn-default has_tooltip" title="Add Due Date" data-toggle="tooltip" data-placement="bottom" onclick="$(this).hide(); $(this).siblings().show(); $(this).siblings('#addTask-timefield').hide(); "></i>
+
+     		<%= f.date_field :due_date_date, id: "addTask-datefield", class: "form-control input-sm", :onchange => "$(this).siblings('#addTask-timefield').val('17:00:00.000');" %>
+
+     		<i id="addTask-timeBtn" class="fa fa-clock-o btn btn-sm btn-default has_tooltip" title="Add Due Time" data-toggle="tooltip" data-placement="bottom" onclick="$(this).hide(); $(this).siblings('#addTask-timefield').show();"></i>
+
+     		<%= f.time_field :due_date_time, id: "addTask-timefield", class: "form-control input-sm" %>
+
+
 
 			<%= f.submit "Add Task", class: "btn btn-sm btn-default" %>
+
 			<% if item %>
-			<button type="button" class="close pull-right" data-toggle="collapse" data-target="#item-<%= item.id %>-addTask">&times;</button>
+				<button type="button" class="close pull-right" data-toggle="collapse" data-target="#item-<%= item.id %>-addTask">&times;</button>
 			<% else %>
-			<button type="button" class="close pull-right" data-toggle="collapse" data-target="#project-<%= @project.id %>-general-addTask">&times;</button>
+				<button type="button" class="close pull-right" data-toggle="collapse" data-target="#project-<%= @project.id %>-general-addTask">&times;</button>
 			<% end %>
 
 
