@@ -21,7 +21,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
       if @task.save
-        redirect_to :back, notice: 'Task was successfully created.'
+        respond_to do |format|
+          format.html { redirect_to :back, notice: 'Task was successfully created.' }
+          format.js
+        end
       else
         render action: 'new'
       end
@@ -46,9 +49,19 @@ class TasksController < ApplicationController
   def toggle_starred
     @task = Task.find(params[:id])
     if @task.update_attributes(:starred => @task.starred.!)
-      redirect_to :back
+      respond_to do |format|
+        format.js
+      end
     end
   end
+
+  def toggle_completed
+    @task = Task.find(params[:id])
+
+    if @task != nil?
+      @task.update_attributes(:completed => @task.completed.!)
+    end
+end
 
 
   private

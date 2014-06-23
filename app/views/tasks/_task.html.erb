@@ -1,14 +1,22 @@
 <li class="task <%= 'task-late' if task.late? && !task.completed %> <%= 'task-completed' if task.completed %>" id="task_<%= task.id %>">
 
-	<%= render partial: "tasks/starred", :locals => {:task => task} %>
+	<%= render "tasks/starred", :task => task %>
 
-	<%= render partial: "tasks/checkbox", :locals => {:task => task} %>
+	<%= render "tasks/checkbox", :task => task %>
 
 	<%= content_tag :div, task.name, class: "task-name" %>
 
+	<% if task.notes.any? %>
+		<%= link_to 'javascript:;' do %>
+			<i class="fa fa-comment note-icon" data-toggle="modal" data-target="#task_<%= task.id %>_notes_modal"></i>
+		<% end %>
+	<% end %>
+
+	<%= render "notes/index", :task => task %>
+
 	<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
 
-	<%= render partial: "tasks/tools", :locals => {:task => task} %>
+	<%= render "tasks/tools", :task => task %>
 
 	<% if task.completed %>
 		<%= content_tag :div, " Completed #{print_date(task.completed_at, 's')}", class: "task-date" %>
@@ -16,7 +24,7 @@
 		<%= content_tag :div, " due #{print_date(task.due_date, "s")}", class: "task-date" if task.due_date %>
 	<% end %>
 
-	<%= render partial: "tasks/edit", :locals => {:task => task } %>
+	<%= render "tasks/edit", :task => task %>
 
 </li>
 

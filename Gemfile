@@ -60,3 +60,5 @@ gem 'date_time_attribute'
 
 
 gem 'best_in_place'
+
+gem 'rails_best_practices'

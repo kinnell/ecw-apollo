@@ -1,0 +1,16 @@
+<li class="item" id="item_general">
+	<h4 class="item-main">
+
+		<%= "<i class='fa fa-folder-o fa-fw item-type-icon'></i>".html_safe %>
+
+		<div class="item-name">Project Tasks</div>
+
+		<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item_general_addTask", class: "btn btn-default btn-xs pull-right add-task-btn", style: "margin-right: 28px;" %>
+
+	</h4>
+
+		<div class="collapse" id="item_general_addTask"><%= render "tasks/new", :item => nil %></div>
+
+		<%= render "items/tasks", { :tasks => project.tasks.general, :item_id => 0 } if @project.tasks.general.any? %>
+
+</li>

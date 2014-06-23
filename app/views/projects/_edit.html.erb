@@ -32,7 +32,7 @@
             <div class="col-md-4" style="padding-top: 15px;">
               <b>Due Date: </b><br>
                 <%= f.date_field :due_date_date, class: "form-control" %>
-                <%= f.time_field :due_date_time, class: "form-control", :placeholder => "17:00:00.000" %>
+                <%= f.time_field :due_date_time, class: "form-control" %>
             </div>
 
 
@@ -49,7 +49,7 @@
 
             <br><br>
 
-            <div class="col-md-12" style="padding-top: 5px;">
+            <div class="col-md-12" style="padding-top: 15px;">
 
               <b>Users Assigned:</b><br>
               <%= hidden_field_tag "project[user_ids][]", nil %>
@@ -67,6 +67,7 @@
 
         <div class="modal-footer">
           <%= f.submit "Save Project", class: "btn btn-md btn-success" %>
+          <%= link_to 'Delete this project'.html_safe, project, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
 
       <% end %>

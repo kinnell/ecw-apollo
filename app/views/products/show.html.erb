@@ -6,11 +6,11 @@
 			<h3><%= @product.name %>
 				<div class="pull-right" data-toggle="modal" data-target="#edit_product_<%= @product.id %>_modal"><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></div>
 			</h3>
-			<%= render partial: "products/edit", :locals => {:product => @product } %>
+			<%= render "products/edit", :product => @product %>
 		</div>
 
 		<div class="panel-body">
-			 <%= render partial: "projects/table", :locals => {:projects => @product.projects.custom_sort} %>
+			 <%= render "projects/table", :projects => @product.projects.priority_sort %>
 		</div>
 
 	</div>

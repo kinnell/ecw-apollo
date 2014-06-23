@@ -11,7 +11,9 @@ Apollo::Application.routes.draw do
     resources :comments
   end
 
-  resources :tasks
+  resources :tasks do
+    resources :notes
+  end
 
   devise_for :users
 
@@ -27,7 +29,12 @@ Apollo::Application.routes.draw do
 
   get '/projects', to: "projects#index"
   get '/projects/new', to: "projects#new"
+
   get '/tasks', to: "tasks#index"
+
+  get "notes/index"
+  get "notes/new"
+
   get '/users', to: "users#index"
 
   get 'calendar', to: "pages#calendar"
@@ -37,7 +44,7 @@ Apollo::Application.routes.draw do
   match '/projects/:id/uncomplete' => "projects#uncomplete", :as => :uncomplete_project, via: [:post]
 
   match '/projects/:id/toggle_starred' => "projects#toggle_starred", :as => :toggle_starred_project, via: [:post]
-  match '/projects/:id/update_status' => "projects#update_status", :as => :update_status_project, via: [:post]
+
   match '/tasks/:id/toggle_starred' => "tasks#toggle_starred", :as => :toggle_starred_task, via: [:post]
 
 

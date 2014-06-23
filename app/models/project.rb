@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
 	include DateTimeAttribute
 
 	belongs_to :product
+	delegate :name, :to => :product, prefix: true
 
 	has_many :tasks, dependent: :destroy
 	has_many :items, dependent: :destroy
@@ -18,13 +19,15 @@ class Project < ActiveRecord::Base
 	scope :completed, -> { where(status: ["Completed", "Cancelled"]) }
 	scope :incomplete, -> { where.not(status: ["Completed", "Cancelled"]) }
 
+	scope :unassigned, -> { includes(:assignments).where(:assignments => {user_id: nil}) }
+
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
 	def progress_percent
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end
 
-	def self.custom_sort
+	def self.priority_sort
 		where(:starred => true).sort_by_status + where(:starred => false).sort_by_status
 	end
 
@@ -34,7 +37,7 @@ class Project < ActiveRecord::Base
 
 	def self.sort_by_dueDate() order("due_date, name") end
 
-	def isLate() due_date ? ((due_date < DateTime.now) & (status != "Completed") && (status != "Cancelled")) : false end
+	def late?() due_date ? ((due_date < DateTime.now) && (status != "Completed") && (status != "Cancelled")) : false end
 
 	def has_users() users.exists end
 

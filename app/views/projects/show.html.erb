@@ -3,10 +3,9 @@
 	<div class="panel panel-default project-tasks-panel">
 		<div class="panel-heading">
 			<h4>
-				<%= render partial: "projects/starred", :locals => {:project => @project} %>
-				<%= link_to "[#{@project.product.name}]", @project.product %> <%= @project.name %>
+				<%= render "projects/starred", :project => @project %>
+				<%= link_to "[#{@project.product_name}]", @project.product %> <%= @project.name %>
 				<%= link_to "Add Item".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-sm btn-default pull-right", style: "margin-top: -4px;" %><br>
-
 			</h4>
 		</div>
 
@@ -15,42 +14,9 @@
 			<div id="addItem" class="collapse"><%= render partial: "items/new" %></div>
 
 			<ul class="items-list">
-				<li class="item">
-					<h4 class="item-main">
-
-						<%= "<i class='fa fa-folder-o fa-fw item-type-icon'></i>".html_safe %>
-
-						<div class="item-name">Project Tasks</div>
-
-						<%= link_to "<i class='fa fa-plus'></i>".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-addTask", class: "btn btn-default btn-xs pull-right add-task-btn", style: "margin-right: 28px;" %>
-
-					</h4>
-
-						<div class="<%= 'tasks-list-box' if @project.tasks.general.count > 0 %>">
-
-							<% if @project.tasks.general.incomplete.size > 0 %>
-								<hr>
-								<%= content_tag :div, "Remaining Tasks (#{@project.tasks.general.incomplete.count})", class: "title-sm" %>
-								<ul class="tasks-list">
-									<%= render @project.tasks.general.incomplete.due.order("starred DESC, due_date") %>
-									<%= render @project.tasks.general.incomplete.notDue.order("starred DESC, created_at") %>
-								</ul>
-
-							<% end %>
-
-							<div class="collapse" id="project-<%= @project.id %>-general-addTask"><%= render partial: "tasks/new", :locals => {:item => nil} %><br></div>
-
-							<% if @project.tasks.general.completed.count > 0 %>
-									<%= link_to "Completed Tasks (#{@project.tasks.general.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#project-#{@project.id}-general-completedTasks", class: "title-sm" %>
-									<ul class="tasks-list collapse" id="project-<%= @project.id %>-general-completedTasks"><%= render @project.tasks.general.completed.order("completed_at") %></ul>
-							<% end %>
-
-						</div>
-
-				</li>
+				<%= render "projects/general_tasks", :project => @project %>
+				<%= render @project.items.order("created_at") %>
 			</ul>
-
-			<ul class="items-list"><%= render @project.items.order("created_at") %></ul>
 
 
 		</div>
@@ -67,7 +33,7 @@
 				<div class="panel-title">Project Details</div>
 				<div class="pull-right" data-toggle="modal" data-target="#edit_project_<%= @project.id %>_modal"><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></div>
 			</h5>
-			<%= render partial: "projects/edit", :locals => {:project => @project } %>
+			<%= render "projects/edit", :project => @project %>
 		</div>
 
 		<div class="panel-body">
@@ -96,13 +62,13 @@
 			<div class="col-md-12 project-hr"><hr></div>
 
 			<div class="col-md-4 project-label">Product:</div>
-			<div class="col-md-8 project-field"><%= link_to @project.product.name, @project.product %></div>
+			<div class="col-md-8 project-field"><%= link_to @project.product_name, @project.product %></div>
 
 			<div class="col-md-4 project-label">Items:</div>
 			<div class="col-md-8 project-field"><%= @project.items.count if @project.items %></div>
 
 			<div class="col-md-4 project-label">Status:</div>
-			<div class="col-md-8"><%= render partial: "projects/status", :locals => {:project => @project} %></div>
+			<div class="col-md-8"><%= render "projects/status", :project => @project %></div>
 
 			<div class="col-md-12 project-hr"><hr></div>
 
@@ -113,7 +79,7 @@
 			<div class="col-md-8 project-assigned">
 				<% if @project.has_users %>
 					<% for u in @project.users.uniq %>
-						<%= render partial: "users/photo", :locals => {:user => u} %>
+						<%= render "users/photo", :user => u %>
 						<%= link_to u.name, u %>
 						<br>
 					<% end %>

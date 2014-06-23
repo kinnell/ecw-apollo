@@ -1,6 +1,6 @@
 <center>
 
-	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline add-task'} do |f| %>
+	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline add-task'}, :remote => true do |f| %>
 
 		<div class="form-group">
 
@@ -32,7 +32,7 @@
 			<%= f.submit "Add Task", class: "btn btn-sm btn-default" %>
 
 			<% if item %>
-				<button type="button" class="close pull-right" data-toggle="collapse" data-target="#item-<%= item.id %>-addTask">&times;</button>
+				<button type="button" class="close pull-right" data-toggle="collapse" data-target="#item_<%= item.id %>_addTask">&times;</button>
 			<% else %>
 				<button type="button" class="close pull-right" data-toggle="collapse" data-target="#project-<%= @project.id %>-general-addTask">&times;</button>
 			<% end %>

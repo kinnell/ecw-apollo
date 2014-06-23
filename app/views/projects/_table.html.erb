@@ -18,25 +18,25 @@
 	<tbody>
 		<% for project in projects %>
 			<tr>
-				<td><%= render partial: "projects/starred", :locals => {:project => project} %></td>
-				<td><%= link_to project.product.name, project.product %></td>
+				<td><%= render "projects/starred", :project => project %></td>
+				<td><%= link_to project.product_name, project.product %></td>
 				<td><%= link_to project.name, project %></td>
 				<td><%= project.assigned_by %></td>
 				<td>
 					<% if project.has_users %>
 						<% for u in project.users.uniq %>
-							<%= render partial: "users/photo", :locals => {:user => u} %>
+							<%= render "users/photo", :user => u %>
 						<% end %>
 					<% else %>
 						None
 					<% end %>
 				</td>
 				<td class="text-center"><%= print_date(project.created_at, "s") %></td>
-				<td class="text-center" <%= "class=late" if project.isLate %>>
+				<td class="text-center <%= 'project-late' if project.late? %>">
 					<%= print_date(project.due_date, "s") if project.due_date %>
 				</td>
 				<td class="text-center"><%= print_date(project.end_date, "s") if project.end_date %></td>
-				<td class="text-center"><%= render partial: "projects/status", :locals => {:project => project} %></td>
+				<td class="text-center"><%= render "projects/status", :project => project %></td>
 				<td class="edit-cog"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %></td>
 			</tr>
 		<% end %>

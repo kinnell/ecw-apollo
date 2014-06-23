@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530180015) do
+ActiveRecord::Schema.define(version: 20140618152639) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20140530180015) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "assignments", ["project_id", "user_id"], name: "index_assignments_on_project_id_and_user_id"
+  add_index "assignments", ["project_id"], name: "index_assignments_on_project_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -29,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140530180015) do
   end
 
   add_index "comments", ["project_id"], name: "index_comments_on_project_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "items", force: true do |t|
     t.string   "name",       default: "",         null: false
@@ -40,6 +45,16 @@ ActiveRecord::Schema.define(version: 20140530180015) do
   end
 
   add_index "items", ["project_id"], name: "index_items_on_project_id"
+
+  create_table "notes", force: true do |t|
+    t.text     "content"
+    t.integer  "noteable_id"
+    t.string   "noteable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["noteable_id", "noteable_type"], name: "index_notes_on_noteable_id_and_noteable_type"
 
   create_table "products", force: true do |t|
     t.string   "name",       default: "", null: false
@@ -75,6 +90,8 @@ ActiveRecord::Schema.define(version: 20140530180015) do
     t.integer  "project_id"
   end
 
+  add_index "tasks", ["item_id"], name: "index_tasks_on_item_id"
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|

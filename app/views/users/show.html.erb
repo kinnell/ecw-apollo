@@ -16,12 +16,14 @@
 		<div class="panel-heading">
 			<h4><i class="fa fa-refresh"></i></span>
 				Current Projects (<%= @user.projects.incomplete.uniq.count %>)
-			<%= link_to "New Project", new_project_path, class: "btn btn-sm btn-default pull-right", style: "margin-top: -5px;" if @user == current_user %>
+				<%= link_to "New Project", "javascript:void(0)", class: "btn btn-sm btn-default pull-right", style: "margin-top: -5px;", :"data-toggle" => "modal", :"data-target" => "#new_project_modal" %>
 			</h4>
+
+			<%= render "projects/new", :project => @project %>
 		</div>
 
 		<div class="panel-body">
-			<%= render partial: "projects/table", :locals => {:projects => @user.projects.incomplete.custom_sort} %>
+			<%= render "projects/table", :projects => @user.projects.incomplete.priority_sort %>
 		</div>
 
 	</div>
@@ -33,7 +35,7 @@
 		</div>
 
 		<div class="panel-body">
-			<%= render partial: "projects/table", :locals => {:projects => @user.projects.completed.custom_sort} %>
+			<%= render "projects/table", :projects => @user.projects.completed.priority_sort %>
 		</div>
 
 	</div>

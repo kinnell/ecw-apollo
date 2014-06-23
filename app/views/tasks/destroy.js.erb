@@ -1,1 +1,4 @@
-$('#task_<%= @task.id %>').remove();
+$('#task_'+<%= @task.id %>).next('hr').remove();
+$('#task_'+<%= @task.id %>).addClass('animated fadeOut');
+$('#task_'+<%= @task.id %>).delay(500).queue(function() { $(this).remove(); });
+noty({text:'<center>Task Deleted</center>', type: 'information', layout: 'bottomRight', timeout: 1000, dismissQueue: true, animateOpen: {opacity: 'show'}});

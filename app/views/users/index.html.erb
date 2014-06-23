@@ -3,21 +3,27 @@
   <% for user in @users %>
 
     <div class="panel panel-default user-profile">
-
       <div class="panel-heading">
         <h3>
           <%= image_tag user.profile_photo.url(:small), class: "profile-photo" %>
           <%= link_to user.name, user %>
         </h3>
       </div>
-
-
       <div class="panel-body">
-        <%= render partial: "projects/table", :locals => {:projects => user.projects.incomplete.custom_sort} %>
+        <%= render "projects/table", :projects => user.projects.incomplete.priority_sort %>
       </div>
-
     </div>
 
   <% end %>
+
+
+    <div class="panel panel-default user-profile">
+      <div class="panel-heading">
+        <h3>Unassigned Projects</h3>
+      </div>
+      <div class="panel-body">
+        <%= render "projects/table", :projects => Project.all.unassigned %>
+      </div>
+    </div>
 
 </div>
