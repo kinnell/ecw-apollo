@@ -1,5 +1,5 @@
 class UserNotifier < ActionMailer::Base
-  default from: "jay.perry@eclinicalworks.com"
+  default from: "Jason Perry <jay.perry@eclinicalworks.com>"
 
   def new_project_email(project)
   	@project = project
