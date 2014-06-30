@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-   respond_to :html, :js
+  respond_to :html, :js
 
-   before_action :authenticate_user!
+  before_action :authenticate_user!
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :due_date, :due_date_date, :due_date_time, :end_date, :starred, :assigned_by, :description, :product_id, :status, user_ids: [])
+		params.require(:project).permit(:name, :due_date, :due_date_date, :due_date_time, :end_date, :starred, :assigned_by, :description, :product_id, :status, :created_by, user_ids: [])
 	end
 
 

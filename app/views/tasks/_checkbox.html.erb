@@ -1,5 +1,6 @@
 <%= form_for task, :remote => true, :authenticity_token => true, html: {class: "task-checkbox"} do |f| %>
 	<%= f.hidden_field :completed_at, :value => DateTime.now %>
+	<%= f.hidden_field :starred, :value => false %>
 	<%= f.check_box :completed, :disabled => (task.user != current_user), onclick: "$(this).parent('form').trigger('submit.rails');" %>
 <% end %>
 

@@ -1,4 +1,12 @@
 $('#task_'+<%= @task.id %>).next('hr').remove();
-$('#task_'+<%= @task.id %>).addClass('animated fadeOut');
-$('#task_'+<%= @task.id %>).delay(500).queue(function() { $(this).remove(); });
+$('#task_'+<%= @task.id %>).addClass('animated fadeOut').delay(200).slideUp();
+
 noty({text:'<center>Task Deleted</center>', type: 'information', layout: 'bottomRight', timeout: 1000, dismissQueue: true, animateOpen: {opacity: 'show'}});
+
+setTimeout(function(){
+	<% if @task.item_id? %>
+		$('#item_'+<%= @task.item_id %>+'_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.item.tasks, :item_id => @task.item_id }) %>");
+	<% else %>
+		$('#item_general_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
+	<% end %>
+},750);

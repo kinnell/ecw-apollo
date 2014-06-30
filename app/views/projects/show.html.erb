@@ -18,7 +18,6 @@
 				<%= render @project.items.order("created_at") %>
 			</ul>
 
-
 		</div>
 
 	</div>
@@ -73,7 +72,7 @@
 			<div class="col-md-12 project-hr"><hr></div>
 
 			<div class="col-md-4 project-label">Assigned By:</div>
-			<div class="col-md-8 project-field"><%= @project.assigned_by %></div>
+			<div class="col-md-8 project-field"><%= @project.assigned_by.present? ? @project.assigned_by : "<i>No One</i>".html_safe %></div>
 
 			<div class="col-md-4 project-label" style="padding-top: 4px;"><b>Assigned:</b></div>
 			<div class="col-md-8 project-assigned">
@@ -106,7 +105,7 @@
 
 	<div class="panel panel-default comment-wall-panel">
 		<div class="panel-heading">
-			<h5><div class="panel-title">Project Wall</div></h5>
+			<h5><div class="panel-title">Project Wall <%= "(#{@project.comments.count})" %></div></h5>
 		</div>
 		<div class="panel-body">
 			<%= render @project.comments.order('created_at DESC') %>

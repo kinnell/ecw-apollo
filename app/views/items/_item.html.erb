@@ -16,7 +16,9 @@
 
 		<div class="collapse" id="item_<%= item.id %>_addTask"><%= render "tasks/new", :item => item %></div>
 
-		<%= render "items/tasks", { :tasks => item.tasks, :item_id => item.id } if item.tasks.any? %>
+		<div class="tasks-list-box" id="item_<%= item.id %>_tasks" style="<%= 'margin-bottom: 15px;' if item.tasks.any? %>">
+			<%= render "items/tasks", { :tasks => item.tasks, :item_id => item.id } if item.tasks.any? %>
+		</div>
 
 </li>
 

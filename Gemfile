@@ -58,7 +58,6 @@ gem 'aws-sdk', '~> 1.20.0'
 
 gem 'date_time_attribute'
 
-
-gem 'best_in_place'
+gem 'font-awesome-sass'
 
 gem 'rails_best_practices'

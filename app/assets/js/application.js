@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require bootstrap
-//= require projects
 //= require_tree .
 
 jQuery( function($) {

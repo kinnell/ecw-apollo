@@ -1,9 +1,9 @@
 <% if @task.item_id? %>
-	$('#item_'+<%= @task.item.id %>).find('.tasks-list').html("<%= escape_javascript(render @task.item.tasks.incomplete.priority_sort) %>");
+	$('#item_'+<%= @task.item_id %>+'_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.item.tasks, :item_id => @task.item_id }) %>");
 	$('#item_'+<%= @task.item.id %>+"_addTask").find('form').trigger("reset");
 	$('#item_'+<%= @task.item.id %>+"_addTask").find('.add-task-name').focus();
 <% else %>
-	$('#item_general').find('.tasks-list').html("<%= escape_javascript(render @task.project.tasks.general.incomplete.priority_sort) %>");
+	$('#item_general_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
 	$('#item_general_addTask').find('form').trigger("reset");
 	$('#item_general_addTask').find('.add-task-name').focus();
 <% end %>

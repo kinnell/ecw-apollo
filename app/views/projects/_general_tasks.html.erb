@@ -11,6 +11,9 @@
 
 		<div class="collapse" id="item_general_addTask"><%= render "tasks/new", :item => nil %></div>
 
-		<%= render "items/tasks", { :tasks => project.tasks.general, :item_id => 0 } if @project.tasks.general.any? %>
+		<div class="tasks-list-box" id="item_general_tasks" style="<%= 'margin-bottom: 15px;' if @project.tasks.general.any? %>">
+			<%= render "items/tasks", { :tasks => project.tasks.general, :item_id => 0 } if @project.tasks.general.any? %>
+		</div>
+
 
 </li>

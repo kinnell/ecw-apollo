@@ -1,23 +1,22 @@
-<div class="tasks-list-box">
+
+<% if tasks.incomplete.any? %>
+	<hr>
+	<%= content_tag :div, "Remaining Tasks (#{tasks.incomplete.count})", class: "title-sm" %>
+
+	<ul class="tasks-list" id="item_<%= item_id %>_incompleteTasks">
+		<%= render tasks.incomplete.priority_sort %>
+	</ul>
+<% end %>
+
+<% if tasks.completed.any? %>
+	<%= link_to "Completed Tasks (#{tasks.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item_#{item_id}_completedTasks", class: "title-sm" %>
+
+	<ul class="tasks-list collapse" id="item_<%= item_id %>_completedTasks">
+		<%= render tasks.completed.order("completed_at") %>
+	</ul>
+<% end %>
 
 
-	<% if tasks.incomplete.any? %>
-		<hr>
-		<%= content_tag :div, "Remaining Tasks (#{tasks.incomplete.count})", class: "title-sm" %>
-
-		<ul class="tasks-list" id="item_<%= item_id %>_incompleteTasks">
-			<%= render tasks.incomplete.priority_sort %>
-		</ul>
-	<% end %>
 
 
-	<% if tasks.completed.any? %>
-		<%= link_to "Completed Tasks (#{tasks.completed.count})".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => "#item_#{item_id}_completedTasks", class: "title-sm" %>
 
-		<ul class="tasks-list collapse" id="item_<%= item_id %>_completedTasks">
-			<%= render tasks.completed.order("completed_at") %>
-		</ul>
-	<% end %>
-
-
-</div>

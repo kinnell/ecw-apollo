@@ -1,6 +1,6 @@
 @import 'colors';
 
-.comment-wall-panel .panel-body { padding-top: 20px; padding-bottom: 0px; overflow-y: scroll; height: 400px;}
+.comment-wall-panel .panel-body { padding-top: 20px; padding-bottom: 0px; overflow-y: scroll; max-height: 400px;}
 .new-comment-panel .panel-body { padding: 0px !important; }
 
 .new-comment-panel {

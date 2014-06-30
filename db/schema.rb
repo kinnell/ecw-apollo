@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618152639) do
+ActiveRecord::Schema.define(version: 20140624140419) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140618152639) do
     t.integer  "project_id"
     t.string   "status",     default: "In Queue", null: false
     t.string   "item_type"
+    t.integer  "created_by"
   end
 
   add_index "items", ["project_id"], name: "index_items_on_project_id"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140618152639) do
     t.string   "noteable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_by"
   end
 
   add_index "notes", ["noteable_id", "noteable_type"], name: "index_notes_on_noteable_id_and_noteable_type"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140618152639) do
     t.datetime "end_date"
     t.string   "assigned_by"
     t.boolean  "starred",                 default: false,      null: false
+    t.integer  "created_by"
   end
 
   add_index "projects", ["product_id"], name: "index_projects_on_product_id"
@@ -88,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140618152639) do
     t.boolean  "starred",      default: false, null: false
     t.integer  "item_id"
     t.integer  "project_id"
+    t.integer  "created_by"
   end
 
   add_index "tasks", ["item_id"], name: "index_tasks_on_item_id"

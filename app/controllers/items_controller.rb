@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :type, :project_id, :status, :item_type)
+      params.require(:item).permit(:name, :type, :project_id, :status, :item_type, :created_by)
     end
 
 end
