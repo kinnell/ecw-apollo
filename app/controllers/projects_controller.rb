@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
 		@project = Project.new(project_params)
 
 		if @project.save
+			UserNotifier.new_project_email(@project.users).deliver
 			redirect_to project_path(@project)
 		else
 			render action: 'new'

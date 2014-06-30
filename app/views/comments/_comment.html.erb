@@ -12,7 +12,7 @@
 
 				<%= link_to comment.user_name, comment.user, class: "commenter" %>
 
-				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools has_tooltip", :"data-toggle" => "tooltip", :"data-placement" => "top", :title => "Delete comment" %>
+				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools has_tooltip", :"data-toggle" => "tooltip", :"data-placement" => "bottom", :title => "Delete comment" %>
 
 				<%= content_tag :div, "#{time_ago_in_words(comment.created_at)} ago".html_safe, :title => print_date(comment.created_at, 'xl'), :"data-toggle" => "tooltip", :"data-placement" => "bottom", class: "comment-date has_tooltip" %>
 
