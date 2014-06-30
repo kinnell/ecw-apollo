@@ -13,46 +13,46 @@
         <div class="modal-body">
           <fieldset>
 
+            <%= f.hidden_field :created_by, :value => current_user.id %>
 
+            <div class="col-md-4">
+              <b>Product: </b><br>
+               <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => "Select Product", :required => true}, {:class => 'form-control' }) %>
+            </div>
 
-          <div class="col-md-4">
-            <b>Product: </b><br>
-             <%= f.collection_select(:product_id, Product.all.sort_by {|p| p.name.downcase }, :id , :name, {:include_blank => "Select Product", :required => true}, {:class => 'form-control' }) %>
-          </div>
+            <div class="col-md-8">
+              <b>Project Name: </b><br>
+               <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true, :required => true %>
+            </div>
 
-          <div class="col-md-8">
-            <b>Project Name: </b><br>
-             <%= f.text_field :name, :placeholder => "Project Name", class: "form-control", :autofocus => true, :required => true %>
-          </div>
+            <div class="col-md-12" style="padding-top: 15px;">
+              <b>Description: </b><br>
+              <%= f.text_area :description, :placeholder => "Description", class: "form-control", style: "width: 100%", rows: "7" %>
+            </div>
 
-          <div class="col-md-12" style="padding-top: 15px;">
-            <b>Description: </b><br>
-            <%= f.text_area :description, :placeholder => "Description", class: "form-control", style: "width: 100%", rows: "7" %>
-          </div>
+            <div class="col-md-3" style="padding-top: 15px;">
+              <b>Due Date: </b><br>
+              <%= f.date_field :due_date_date, class: "form-control", onchange: "$(this).parent().next().children('input').val('17:00:00.000');" %>
+            </div>
 
-          <div class="col-md-3" style="padding-top: 15px;">
-            <b>Due Date: </b><br>
-            <%= f.date_field :due_date_date, class: "form-control", onchange: "$(this).parent().next().children('input').val('17:00:00.000');" %>
-          </div>
+            <div class="col-md-3" style="padding-top: 15px;">
+              <b>Due Time: </b><br>
+              <%= f.time_field :due_date_time, class: "form-control"  %>
+            </div>
 
-          <div class="col-md-3" style="padding-top: 15px;">
-            <b>Due Time: </b><br>
-            <%= f.time_field :due_date_time, class: "form-control"  %>
-          </div>
+            <div class="col-md-4" style="padding-top: 15px;">
+              <b>Assigned By: </b><br>
+              <%= f.text_field :assigned_by, :placeholder => "Name", class: "form-control" %>
+            </div>
 
-          <div class="col-md-4" style="padding-top: 15px;">
-            <b>Assigned By: </b><br>
-            <%= f.text_field :assigned_by, :placeholder => "Name", class: "form-control" %>
-          </div>
-
-          <div class="col-md-12" style="padding-top: 15px;">
-            <b>Users Assigned:</b><br>
-            <%= hidden_field_tag "project[user_ids][]", nil %>
-            <% User.all.order("name").each do |user| %>
-              <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) %>
-              <%= user.name %><br>
-            <% end %>
-          </div>
+            <div class="col-md-12" style="padding-top: 15px;">
+              <b>Users Assigned:</b><br>
+              <%= hidden_field_tag "project[user_ids][]", nil %>
+              <% User.all.order("name").each do |user| %>
+                <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) %>
+                <%= user.name %><br>
+              <% end %>
+            </div>
 
 
          </fieldset>
