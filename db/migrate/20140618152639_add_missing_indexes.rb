@@ -4,7 +4,6 @@ class AddMissingIndexes < ActiveRecord::Migration
      add_index :assignments, :project_id
      add_index :assignments, [:project_id, :user_id]
      add_index :comments, :user_id
-     add_index :tasks, :project_id
      add_index :tasks, :item_id
    end
 end

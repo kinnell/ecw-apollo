@@ -89,13 +89,12 @@ ActiveRecord::Schema.define(version: 20140624140419) do
     t.datetime "completed_at"
     t.integer  "user_id",                      null: false
     t.boolean  "starred",      default: false, null: false
-    t.integer  "item_id"
     t.integer  "project_id"
+    t.integer  "item_id"
     t.integer  "created_by"
   end
 
   add_index "tasks", ["item_id"], name: "index_tasks_on_item_id"
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
