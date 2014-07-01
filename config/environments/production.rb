@@ -88,7 +88,7 @@ Apollo::Application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => 'ecw-apollo.heroku.com' }
+  config.action_mailer.default_url_options = { :host => "ecwapollo.com" }
 
 
   config.serve_static_assets = true

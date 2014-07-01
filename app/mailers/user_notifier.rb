@@ -1,11 +1,10 @@
 class UserNotifier < ActionMailer::Base
-  default from: "Jason Perry <jay.perry@eclinicalworks.com>"
 
-  def new_project_email(project)
+  def new_project_email(user, project)
+
   	@project = project
-  	for user in @project.users
-	  	mail(to: user.email, subject: "[eCW apollo] New Project!")
-	  end
+  	@user = user
+	  mail(from: "#{@project.creator.name} <#{@project.creator.email}>", to: "#{@user.name} <#{@user.email}>", subject: "[eCW apollo] You have been assigned to [#{@project.product_name}] #{@project.name}")
   end
 
 end

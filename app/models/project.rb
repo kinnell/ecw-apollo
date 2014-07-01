@@ -23,6 +23,8 @@ class Project < ActiveRecord::Base
 
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
+	def creator() User.find(self.created_by) end
+
 	def progress_percent
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end

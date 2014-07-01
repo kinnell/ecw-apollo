@@ -11,6 +11,8 @@ group :development, :test do
 	gem 'bullet'
 	gem 'better_errors'
 	gem 'binding_of_caller'
+	gem 'mailcatcher'
+	gem 'rails_best_practices'
 end
 
 group :production do
@@ -60,4 +62,5 @@ gem 'date_time_attribute'
 
 gem 'font-awesome-sass'
 
-gem 'rails_best_practices'
+
+

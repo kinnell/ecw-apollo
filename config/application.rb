@@ -33,5 +33,7 @@ module Apollo
 
     config.time_zone = 'Eastern Time (US & Canada)'
 
+    config.action_mailer.default_url_options = { :host => "ecwapollo.com" }
+
   end
 end

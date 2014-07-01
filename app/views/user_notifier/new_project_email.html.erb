@@ -1,1 +1,224 @@
-<p><%= link_to "Project", project_path(@project) %></p>
+<body bgcolor="#f6f6f6">
+
+<table class="body-wrap">
+	<tr>
+		<td></td>
+		<td class="container" bgcolor="#FFFFFF">
+
+			<div class="content">
+
+				<div style="float: right; padding-bottom: 5px;"><a href="http://www.ecwapollo.com">eCW apollo</a></div>
+				<hr><br>
+
+				<p><%= @user.name %>,</p>
+
+				<% if @user == @project.creator %>
+					<p>You have assigned yourself to a new project:</p>
+				<% else %>
+					<p><%= @project.creator.name %> has assigned you to a new project:</p>
+				<% end %>
+
+				<div style="margin: 10px 10px; padding: 1px 20px; background-color: #fafafa; border-radius: 5px; border: solid 1px #eee;">
+
+					<h3>[<%= @project.product_name %>] <%= @project.name %></h3>
+					<p><b>Due Date:</b>
+						<%= @project.due_date? ? @project.due_date.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d, %Y at %l:%M %p") : "<i style='color: #999'>No Due Date</i>".html_safe %>
+					</p>
+
+					<p><b>Assigned By:</b>
+						<%= @project.assigned_by.present? ? @project.assigned_by : "<i style='color: #999'>No One</i>".html_safe %>
+					</p>
+
+					<p><b>Assigned:</b>
+						<%= @project.has_users ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe %>
+					</p>
+
+					<p><b>Description:</b><br>
+						<% if @project.description.length != 0 %>
+							<%= @project.description.gsub(/\n/, '<br>').html_safe %>
+						<% else %>
+							<i>No description provided</i>
+						<% end %>
+					</p>
+
+				</div>
+
+				<p>To access the project, <%= link_to "click here", project_path(@project) %>.</p>
+
+
+				<hr>
+				<center><p style="font-size: 10px; color: #999; margin-top: 10px;"><a href="http://www.ecwapollo.com">eCW apollo</a> | http://www.ecwapollo.com</p></center>
+
+			</div>
+
+		</td>
+		<td></td>
+	</tr>
+</table>
+
+
+
+
+<style>
+
+/* -------------------------------------
+		GLOBAL
+------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.6;
+}
+
+img {
+	max-width: 100%;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+	width: 100%!important;
+	height: 100%;
+	color: #333;
+}
+
+hr { width: 100%; border-top: 1px solid #EEE; border-bottom: 0px;}
+
+/* -------------------------------------
+		ELEMENTS
+------------------------------------- */
+a {
+	color: #348eda;
+	text-decoration: none;
+}
+
+.btn-primary {
+	text-decoration: none;
+	color: #FFF;
+	background-color: #348eda;
+	border: solid #348eda;
+	border-width: 10px 20px;
+	line-height: 2;
+	font-weight: bold;
+	margin-right: 10px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 25px;
+}
+
+.btn-secondary {
+	text-decoration: none;
+	color: #FFF;
+	background-color: #aaa;
+	border: solid #aaa;
+	border-width: 10px 20px;
+	line-height: 2;
+	font-weight: bold;
+	margin-right: 10px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 25px;
+}
+
+.last {
+	margin-bottom: 0;
+}
+
+.first {
+	margin-top: 0;
+}
+
+.padding {
+	padding: 10px 0;
+}
+
+
+/* -------------------------------------
+		BODY
+------------------------------------- */
+table.body-wrap {
+	border-radius: 0px;
+	margin: 0px auto;
+	padding: 20px;
+	width: 50%;
+}
+
+table.body-wrap .container {
+	border: 1px solid #f0f0f0;
+	padding: 20px 35px 10px 35px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* -------------------------------------
+		TYPOGRAPHY
+------------------------------------- */
+h1, h2, h3 {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	line-height: 1.1;
+	margin-bottom: 15px;
+	color: #000;
+	margin: 15px 0 10px;
+	line-height: 1.2;
+	font-weight: 200;
+}
+
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 28px;
+}
+h3 {
+	font-size: 22px;
+}
+
+p, ul, ol {
+	margin-bottom: 10px;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+ul li, ol li {
+	margin-left: 5px;
+	list-style-position: inside;
+}
+
+/* ---------------------------------------------------
+		RESPONSIVENESS
+		Nuke it from orbit. It's the only way to be sure.
+------------------------------------------------------ */
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+	display: block!important;
+	margin: 0 auto!important; /* makes it centered */
+	clear: both!important;
+}
+
+/* Set the padding on the td rather than the div for Outlook compatibility */
+.body-wrap .container {
+	padding: 20px;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+	margin: 0 auto;
+	display: block;
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table {
+	width: 100%;
+}
+
+</style>
+
+</body>
+
+
