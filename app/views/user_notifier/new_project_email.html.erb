@@ -1,65 +1,6 @@
-<body bgcolor="#f6f6f6">
-
-<table class="body-wrap">
-	<tr>
-		<td></td>
-		<td class="container" bgcolor="#FFFFFF">
-
-			<div class="content">
-
-				<div style="float: right; padding-bottom: 5px;"><a href="http://www.ecwapollo.com">eCW apollo</a></div>
-				<hr><br>
-
-				<p><%= @user.name %>,</p>
-
-				<% if @user == @project.creator %>
-					<p>You have assigned yourself to a new project:</p>
-				<% else %>
-					<p><%= @project.creator.name %> has assigned you to a new project:</p>
-				<% end %>
-
-				<div style="margin: 10px 10px; padding: 1px 20px; background-color: #fafafa; border-radius: 5px; border: solid 1px #eee;">
-
-					<h3>[<%= @project.product_name %>] <%= @project.name %></h3>
-					<p><b>Due Date:</b>
-						<%= @project.due_date? ? @project.due_date.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d, %Y at %l:%M %p") : "<i style='color: #999'>No Due Date</i>".html_safe %>
-					</p>
-
-					<p><b>Assigned By:</b>
-						<%= @project.assigned_by.present? ? @project.assigned_by : "<i style='color: #999'>No One</i>".html_safe %>
-					</p>
-
-					<p><b>Assigned:</b>
-						<%= @project.has_users ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe %>
-					</p>
-
-					<p><b>Description:</b><br>
-						<% if @project.description.length != 0 %>
-							<%= @project.description.gsub(/\n/, '<br>').html_safe %>
-						<% else %>
-							<i>No description provided</i>
-						<% end %>
-					</p>
-
-				</div>
-
-				<p>To access the project, <%= link_to "click here", project_path(@project) %>.</p>
-
-
-				<hr>
-				<center><p style="font-size: 10px; color: #999; margin-top: 10px;"><a href="http://www.ecwapollo.com">eCW apollo</a> | http://www.ecwapollo.com</p></center>
-
-			</div>
-
-		</td>
-		<td></td>
-	</tr>
-</table>
-
-
-
-
-<style>
+<html>
+<head>
+	<style>
 
 /* -------------------------------------
 		GLOBAL
@@ -67,7 +8,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", "Helvetica", Helvetica, Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.6;
 }
@@ -159,7 +100,6 @@ table.body-wrap .container {
 		TYPOGRAPHY
 ------------------------------------- */
 h1, h2, h3 {
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	line-height: 1.1;
 	margin-bottom: 15px;
 	color: #000;
@@ -178,16 +118,12 @@ h3 {
 	font-size: 22px;
 }
 
-p, ul, ol {
+p {
 	margin-bottom: 10px;
 	font-weight: normal;
 	font-size: 14px;
 }
 
-ul li, ol li {
-	margin-left: 5px;
-	list-style-position: inside;
-}
 
 /* ---------------------------------------------------
 		RESPONSIVENESS
@@ -219,6 +155,72 @@ ul li, ol li {
 
 </style>
 
+</head>
+
+<body bgcolor="#f6f6f6">
+
+<table class="body-wrap">
+	<tr>
+		<td></td>
+		<td class="container" bgcolor="#FFFFFF">
+
+			<div class="content">
+
+				<div style="float: right; padding-bottom: 5px;"><a href="http://www.ecwapollo.com">eCW apollo</a></div>
+				<hr><br>
+
+				<p><%= @user.name %>,</p>
+
+				<% if @user == @project.creator %>
+					<p>You have assigned yourself to a new project:</p>
+				<% else %>
+					<p><%= @project.creator.name %> has assigned you to a new project:</p>
+				<% end %>
+
+				<div style="margin: 10px 10px; padding: 1px 20px; background-color: #fafafa; border-radius: 5px; border: solid 1px #eee;">
+
+					<h3>[<%= @project.product_name %>] <%= @project.name %></h3>
+					<p><b>Due Date:</b>
+						<%= @project.due_date? ? @project.due_date.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d, %Y at %l:%M %p") : "<i style='color: #999'>No Due Date</i>".html_safe %>
+					</p>
+
+					<p><b>Assigned By:</b>
+						<%= @project.assigned_by.present? ? @project.assigned_by : "<i style='color: #999'>No One</i>".html_safe %>
+					</p>
+
+					<p><b>Assigned:</b>
+						<%= @project.has_users ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe %>
+					</p>
+
+					<p><b>Description:</b><br>
+						<% if @project.description.length != 0 %>
+							<%= @project.description.gsub(/\n/, '<br>').html_safe %>
+						<% else %>
+							<i>No description provided</i>
+						<% end %>
+					</p>
+
+				</div>
+
+				<p>To access the project, <%= link_to "click here", project_path(@project) %>.</p>
+
+
+				<hr>
+				<center><p style="font-size: 10px; color: #999; margin-top: 10px;"><a href="http://www.ecwapollo.com">eCW apollo</a> | http://www.ecwapollo.com</p></center>
+
+			</div>
+
+		</td>
+		<td></td>
+	</tr>
+</table>
 </body>
+</html>
+
+
+
+
+
+
 
 
