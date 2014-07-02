@@ -29,6 +29,10 @@ class Project < ActiveRecord::Base
 		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
 	end
 
+	def self.completed_sort
+		priority_sort.sort_by! {|p| p.end_date}
+	end
+
 	def self.priority_sort
 		where(:starred => true).sort_by_status + where(:starred => false).sort_by_status
 	end
