@@ -16,5 +16,8 @@ class PagesController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
+  def changelog
+  end
+
 
 end

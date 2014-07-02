@@ -1,0 +1,9 @@
+@import 'colors';
+
+.changelog {
+	.panel-body {
+		h5 { text-transform: uppercase; font-size: 12px; margin-bottom: 5px; color: #999; }
+		ul { padding-left: 30px; margin-bottom: 20px;}
+		li {line-height: 1.5; }
+	}
+}
