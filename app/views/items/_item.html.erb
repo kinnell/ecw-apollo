@@ -1,6 +1,6 @@
 <li class="item" id="item_<%= item.id %>">
 	<h4 class="item-main">
-		<%= "<i class='fa fa-#{item_type_hash[item.try(:item_type)]["icon"]} fa-fw item-type-icon'></i>".html_safe %>
+		<%= "<i class='fa fa-#{item_type_hash[item.item_type]["icon"]} fa-fw item-type-icon'></i>".html_safe %>
 
 		<div class="item-name"><%= item.name %></div>
 

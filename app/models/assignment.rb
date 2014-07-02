@@ -6,8 +6,6 @@ class Assignment < ActiveRecord::Base
 
 	private
 
-	def send_notification_email
-		UserNotifier.new_project_email(user, project).deliver
-	end
+	def send_notification_email() UserNotifier.new_project_email(user, project).deliver end
 
 end
