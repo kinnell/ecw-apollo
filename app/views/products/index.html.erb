@@ -16,7 +16,8 @@
           <%= link_to product.name, product %>
         </h4>
 
-        <%= render "projects/table", :projects => product.projects %>
+
+        <%= render "projects/completed_projects", :projects => product.projects.incomplete.priority_sort + product.projects.completed.completed_sort %>
 
         <br><br>
 

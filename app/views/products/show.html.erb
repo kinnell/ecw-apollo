@@ -10,7 +10,13 @@
 		</div>
 
 		<div class="panel-body">
-			 <%= render "projects/table", :projects => @product.projects.priority_sort %>
+			<h4>Active Projects</h4>
+			<%= render "projects/active_projects", :projects => @product.projects.incomplete.priority_sort %>
+
+			<br>
+
+			<h4>Completed Projects</h4>
+			<%= render "projects/completed_projects", :projects => @product.projects.completed.completed_sort %>
 		</div>
 
 	</div>

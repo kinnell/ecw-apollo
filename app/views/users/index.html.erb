@@ -12,7 +12,7 @@
         </h3>
       </div>
       <div class="panel-body">
-        <%= render "projects/table", :projects => user.projects.incomplete.priority_sort %>
+        <%= render "projects/active_projects", :projects => user.projects.incomplete.priority_sort %>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
         <h3>Unassigned Projects</h3>
       </div>
       <div class="panel-body">
-        <%= render "projects/table", :projects => Project.all.unassigned %>
+        <%= render "projects/active_projects", :projects => Project.all.unassigned %>
       </div>
     </div>
 
