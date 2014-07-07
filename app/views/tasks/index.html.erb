@@ -31,9 +31,10 @@
         <% @tasks.notDue.group_by { |t| t.project }.each do |project, tasks_by_projects| %>
           <div class="title-sm"><%= link_to "[#{project.product_name}] #{project.name.upcase}", project %></div>
           <ul class="tasks-list">
-            <% tasks_by_projects.group_by { |t| t.starred }.each do |starred, tasks| %>
-              <%= render tasks %>
-            <% end %>
+
+              <% tasks = tasks_by_projects.group_by { |t| t.starred } %>
+              <%= render tasks[true] + tasks[false] %>
+
           </ul>
         <% end %>
 
