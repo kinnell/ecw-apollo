@@ -33,8 +33,8 @@
           <ul class="tasks-list">
 
               <% tasks = tasks_by_projects.group_by { |t| t.starred } %>
-              <%= render tasks[true] %>
-              <%= render tasks[false] %>
+              <%= render tasks[true] if tasks[true] %>
+              <%= render tasks[false] if tasks[false] %>
 
           </ul>
         <% end %>
