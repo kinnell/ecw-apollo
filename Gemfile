@@ -62,5 +62,7 @@ gem 'date_time_attribute'
 
 gem 'font-awesome-sass'
 
+gem 'mousetrap-rails'
+
 
 

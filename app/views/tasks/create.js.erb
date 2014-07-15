@@ -3,7 +3,7 @@
 	$('#item_'+<%= @task.item.id %>+"_addTask").find('form').trigger("reset");
 	$('#item_'+<%= @task.item.id %>+"_addTask").find('.add-task-name').focus();
 <% else %>
-	$('#item_general_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
+	$('#item_0_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
 	$('#item_general_addTask').find('form').trigger("reset");
 	$('#item_general_addTask').find('.add-task-name').focus();
 <% end %>

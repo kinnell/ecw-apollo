@@ -2,7 +2,7 @@
 
 <nav class="side-nav col-md-2">
 
-    <div class="brand"><%= link_to "apollo 1.46", changelog_path %></div>
+    <div class="brand"><%= link_to "apollo 1.5", changelog_path %></div>
 
     <div class="user-section">
     	<%= link_to current_user do %><%= image_tag current_user.profile_photo.url(:small), class: "profile-photo" %><% end %>
@@ -13,7 +13,7 @@
 		<hr>
 		<li class="<%= 'selected' if params[:controller] == 'tasks' %>"><%= link_to "<i class='fa fa-check-circle'></i> Tasks <span class='badge'>#{current_user.tasks.incomplete.count}</span>".html_safe, tasks_path %></li>
 			<hr>
-        <li class="<%= 'selected' if (params[:controller] == 'projects' || current_page?(user_path(current_user))) %>"><%= link_to "<i class='fa fa-folder-o'></i> Projects <span class='badge'>#{current_user.projects.incomplete.uniq.count}</span>".html_safe, current_user %></li>
+        <li class="<%= 'selected' if (params[:controller] == 'projects' || current_page?(user_path(current_user))) %>"><%= link_to "<i class='fa fa-folder-o'></i> Projects <span class='badge'>#{current_user.projects.incomplete.uniq.count}</span>".html_safe, current_user, data: { keybinding: 'p' } %></li>
         <hr>
          <li class="<%= 'selected' if current_page?(myCalendar_path) %>"><%= link_to "<i class='fa fa-calendar'></i> Calendar".html_safe, myCalendar_path %></li>
         <hr>

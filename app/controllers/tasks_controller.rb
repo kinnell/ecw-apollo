@@ -32,9 +32,16 @@ class TasksController < ApplicationController
 
   def update
     @task.update_attributes!(task_params)
+    if param_updated?(:completed)
+      respond_to do |format|
+        format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
+        format.js { render action: "toggle_completed" }
+      end
+    else
       respond_to do |format|
         format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
         format.js
+      end
     end
   end
 
@@ -55,14 +62,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def toggle_completed
-    @task = Task.find(params[:id])
-
-    if @task != nil?
-      @task.update_attributes(:completed => @task.completed.!)
-    end
-end
-
 
   private
     def set_task
@@ -72,4 +71,7 @@ end
     def task_params
       params.require(:task).permit(:name, :due_date, :due_date_date, :due_date_time, :completed, :project_id, :user_id, :item_id, :starred, :completed_at, :created_by)
     end
+
+    def param_updated?(param_name) task_params[param_name].present? end
+
 end

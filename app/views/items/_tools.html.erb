@@ -5,7 +5,7 @@
 
       <li class="dropdown-btn-modal" data-toggle="modal" data-target="#edit_item_<%= item.id %>_modal"><i class="fa fa-pencil"></i></li>
 
-      <li><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, [item.project, item], method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
   </li>
 </ul>

@@ -7,6 +7,6 @@ setTimeout(function(){
 	<% if @task.item_id? %>
 		$('#item_'+<%= @task.item_id %>+'_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.item.tasks, :item_id => @task.item_id }) %>");
 	<% else %>
-		$('#item_general_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
+		$('#item_0_tasks').html("<%= escape_javascript(render 'items/tasks', { :tasks => @task.project.tasks.general, :item_id => 0 }) %>");
 	<% end %>
 },750);

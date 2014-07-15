@@ -1,6 +1,6 @@
 <center>
 
-	<%= form_for [@project.tasks.new], :html => {:class => 'form-inline add-task'}, :remote => true do |f| %>
+	<%= form_for [@project, @project.tasks.new], :html => {:class => 'form-inline add-task'}, :remote => true do |f| %>
 
 		<div class="form-group">
 
