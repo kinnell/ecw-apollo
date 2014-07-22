@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_url, notice: 'Product was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product, notice: 'Product was successfully updated.'
     else
-      render action: 'edit'
+      redirect_to :back, notice: "Product was not updated!"
     end
   end
 

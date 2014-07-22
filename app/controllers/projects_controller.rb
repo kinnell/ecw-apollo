@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
 	def index
 		@projects = current_user.projects
+
 	end
 
 	def show
@@ -25,7 +26,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to project_path(@project)
 		else
-			render action: 'new'
+			render 'new'
 		end
 	end
 
@@ -36,7 +37,7 @@ class ProjectsController < ApplicationController
 				format.js
 			end
 		else
-		  render action: 'edit'
+		  render 'edit'
 		end
 	end
 

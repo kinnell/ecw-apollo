@@ -15,7 +15,7 @@
 
 		<div class="panel-heading">
 			<h4><i class="fa fa-refresh"></i>
-				Active Projects (<%= current_user.projects.incomplete.uniq.count %>)
+				Active Projects (<%= @projects.incomplete.uniq.count %>)
 
 				<%= link_to "New Project", "javascript:void(0)", class: "btn btn-sm btn-default pull-right", style: "margin-top: -5px;", :"data-toggle" => "modal", :"data-target" => "#new_project_modal" %>
 			</h4>
@@ -25,7 +25,7 @@
 		</div>
 
 		<div class="panel-body">
-			<%= render "projects/active_projects", :projects => current_user.projects.incomplete.priority_sort %>
+			<%= render "projects/active_projects", :projects => @projects.incomplete.priority_sort %>
 		</div>
 
 	</div>
@@ -33,11 +33,11 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4><i class="fa fa-check-circle"></i>
-				Completed Projects (<%= current_user.projects.completed.uniq.count %>)</h4>
+				Completed Projects (<%= @projects.completed.uniq.count %>)</h4>
 		</div>
 
 		<div class="panel-body">
-			<%= render "projects/completed_projects", :projects => current_user.projects.completed.completed_sort %>
+			<%= render "projects/completed_projects", :projects => @projects.completed.completed_sort %>
 		</div>
 
 	</div>

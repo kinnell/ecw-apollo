@@ -10,6 +10,8 @@
         <div class="tasks-index-date"><%= print_time_ago(date) %></div>
         <hr>
 
+
+
         <% tasks_by_date.group_by { |t| t.project }.each do |project, tasks_by_projects| %>
           <div class="title-sm"><%= link_to "[#{project.product_name}] #{project.name.upcase}", project %></div>
           <ul class="tasks-list">

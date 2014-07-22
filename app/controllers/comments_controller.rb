@@ -14,12 +14,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.create(comment_params)
 
-    if @comment.save
-      redirect_to :back, notice: 'Comment was successfully created.'
-    else
-      redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
 
   end
@@ -28,13 +27,18 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to :back, notice: 'Comment was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+
   end
 
   private

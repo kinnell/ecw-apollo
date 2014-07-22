@@ -26,7 +26,7 @@ class TasksController < ApplicationController
           format.js
         end
       else
-        render action: 'new'
+        render 'new'
       end
   end
 
@@ -62,8 +62,8 @@ class TasksController < ApplicationController
     end
   end
 
-
   private
+
     def set_task
       @task = Task.find(params[:id])
     end
@@ -73,5 +73,6 @@ class TasksController < ApplicationController
     end
 
     def param_updated?(param_name) task_params[param_name].present? end
+
 
 end

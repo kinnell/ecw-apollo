@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to :back, notice: 'Item was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
 
   end
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to :back, notice: 'Item was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 
