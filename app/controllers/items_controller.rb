@@ -10,22 +10,15 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-
-    if @item.save
-      redirect_to :back, notice: 'Item was successfully created.'
-    else
-      render 'new'
-    end
-
+    @item = Item.create(item_params)
+    flash[:notice] = @item.errors.empty? ? "Item was successfully created." : "Error: Item was not created."
+    redirect_to :back
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to :back, notice: 'Item was successfully updated.'
-    else
-      render 'edit'
-    end
+    @item.update(item_params)
+    flash[:notice] = @item.errors.empty? ? "Item was successfully updated." : "Error: Item was not updated."
+    redirect_to :back
   end
 
   def destroy

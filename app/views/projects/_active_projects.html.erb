@@ -37,7 +37,8 @@
 					<%= print_date(project.due_date, "s") if project.due_date %>
 				</td>
 				<td class="text-center"><%= render "projects/status", :project => project %></td>
-				<td class="edit-cog"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project) %></td>
+				<td class="edit-cog"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_project_path(project), remote: true %></td>
+
 			</tr>
 		<% end %>
 	</tbody>

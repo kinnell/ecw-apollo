@@ -17,20 +17,15 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to products_url, notice: 'Product was successfully created.'
-    else
-      render 'new'
-    end
+    @product = Product.create(product_params)
+    flash[:notice] = @product.errors.empty? ? "Product was successfully created." : "Error: Product was not created."
+    redirect_to :back
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
-    else
-      redirect_to :back, notice: "Product was not updated!"
-    end
+    @product.updated(product_params)
+    flash[:notice] = @product.errors.empty? ? "Product was successfully updated." : "Error: Product was not successfully updated."
+    redirect_to :back
   end
 
   def destroy

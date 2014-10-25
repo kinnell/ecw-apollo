@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
 
 	def index
 		@projects = current_user.projects
-
 	end
 
 	def show
@@ -18,6 +17,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
+		render 'edit.js.erb'
 	end
 
 	def create
