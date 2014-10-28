@@ -1,0 +1,5 @@
+$('#project_comments').html("<%= escape_javascript(render @comment.project.comments.order('created_at DESC')) %>");
+$('#new_comment').trigger("reset");
+$('#comment_'+<%= @comment.id %>).addClass('animated fadeIn');
+
+noty({text:'<center>Comment Added!</center>', type: 'information', layout: 'bottomRight', timeout: 1000, dismissQueue: true, animateOpen: {opacity: 'show'}});

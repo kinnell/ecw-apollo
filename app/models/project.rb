@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
 	validates :name, presence: true
 	validates :product_id, presence: true
 
+	default_scope { includes(:users, :product) }
+
 	scope :completed, -> { where(status: ["Completed", "Cancelled"]) }
 	scope :incomplete, -> { where.not(status: ["Completed", "Cancelled"]) }
 

@@ -62,8 +62,8 @@
         </div>
 
         <div class="modal-footer">
-          <%= f.submit "Save Project", class: "btn btn-sm btn-success" %>
           <%= link_to 'Delete this project'.html_safe, project, class: "btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= f.submit "Save Project", class: "btn btn-sm btn-success" %>
         </div>
 
       <% end %>

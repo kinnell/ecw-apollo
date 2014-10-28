@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
+		render 'edit.js.erb'
 	end
 
 	def create
@@ -25,7 +26,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to project_path(@project)
 		else
-			render action: 'new'
+			render 'new'
 		end
 	end
 
@@ -36,7 +37,7 @@ class ProjectsController < ApplicationController
 				format.js
 			end
 		else
-		  render action: 'edit'
+		  render 'edit'
 		end
 	end
 

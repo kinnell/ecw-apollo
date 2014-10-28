@@ -1,5 +1,5 @@
 <div class="panel panel-default new-comment-panel">
-	<%= form_for [@project.comments.new], :html => {:class => 'form-inline'} do |f| %>
+	<%= form_for [@project, @project.comments.new], :html => {:class => 'form-inline'}, remote: true do |f| %>
 		<div class="panel-body">
 			<div class="form-group">
 				<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -14,4 +14,3 @@
 		</div>
 	<% end %>
 </div>
-

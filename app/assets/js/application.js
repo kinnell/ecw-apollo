@@ -12,13 +12,19 @@
 //
 //= require jquery
 //= require jquery.ui.all
-//= require jquery_ujs
 //= require turbolinks
 //= require jquery.turbolinks
 //= require bootstrap
+//= require mousetrap
 //= require_tree .
 
-jQuery( function($) {
-	$('.has_tooltip').tooltip();
-	$('.has_popover').popover();
-});
+jQuery(
+	function($) {
+		$('.has_tooltip').tooltip();
+		$('.has_popover').popover();
+	}
+);
+
+
+
+

@@ -14,36 +14,40 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.create(comment_params)
 
-    if @comment.save
-      redirect_to :back, notice: 'Comment was successfully created.'
-    else
-      redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
 
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to :back, notice: 'Comment was successfully updated.'
-    else
-      render action: 'edit'
-    end
+    @comment.update(comment_params)
+    flash[:notice] = @comment.errors.empty? ? "Comment was successfully updated." : "Error: Comment was not updated."
+    redirect_to :back
   end
 
   def destroy
     @comment.destroy
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+
   end
 
   private
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
 
-  def comment_params
-    params.require(:comment).permit(:content, :user_id, :project_id)
-  end
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
+    def comment_params
+      params.require(:comment).permit(:content, :user_id, :project_id)
+    end
 
 end
+

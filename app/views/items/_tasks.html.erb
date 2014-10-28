@@ -1,4 +1,3 @@
-
 <% if tasks.incomplete.any? %>
 	<hr>
 	<%= content_tag :div, "Remaining Tasks (#{tasks.incomplete.count})", class: "title-sm" %>
@@ -15,8 +14,3 @@
 		<%= render tasks.completed.order("completed_at") %>
 	</ul>
 <% end %>
-
-
-
-
-

@@ -14,7 +14,7 @@
 
 	<%= render "notes/index", :task => task %>
 
-	<%= content_tag :div, "(#{task.user.name})", class: "task-user" if task.user && (task.user != current_user) %>
+	<%= content_tag :div, "(#{task.user_name})", class: "task-user" if task.user && (task.user != current_user) %>
 
 	<%= render "tasks/tools", :task => task %>
 

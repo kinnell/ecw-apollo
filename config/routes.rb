@@ -1,23 +1,19 @@
 Apollo::Application.routes.draw do
 
-  resources :comments
+  devise_for :users
 
-  resources :items
+  resources :users
 
   resources :products
 
   resources :projects do
+    resources :tasks do
+      resources :notes
+    end
     resources :items
     resources :comments
   end
 
-  resources :tasks do
-    resources :notes
-  end
-
-  devise_for :users
-
-  resources :users
 
   authenticated :user do
     root :to => "projects#index", as: :authenticated_root
@@ -46,7 +42,7 @@ Apollo::Application.routes.draw do
 
   match '/projects/:id/toggle_starred' => "projects#toggle_starred", :as => :toggle_starred_project, via: [:post]
 
-  match '/tasks/:id/toggle_starred' => "tasks#toggle_starred", :as => :toggle_starred_task, via: [:post]
+  match '/tasks/:id/toggle_starred' => "tasks#toggle_starred", :as => :toggle_starred_task, via: [:patch]
 
 
 end

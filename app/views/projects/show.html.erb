@@ -105,9 +105,9 @@
 
 	<div class="panel panel-default comment-wall-panel">
 		<div class="panel-heading">
-			<h5><div class="panel-title">Project Wall <%= "(#{@project.comments.count})" %></div></h5>
+			<h5><div class="panel-title">Project Wall</div></h5>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body" id="project_comments">
 			<%= render @project.comments.order('created_at DESC') %>
 		</div>
 	</div>
