@@ -64,15 +64,14 @@ class TasksController < ApplicationController
 
   private
 
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    def task_params
-      params.require(:task).permit(:name, :due_date, :due_date_date, :due_date_time, :completed, :project_id, :user_id, :item_id, :starred, :completed_at, :created_by)
-    end
+  def task_params
+    params.require(:task).permit(:name, :due_date, :due_date_date, :due_date_time, :completed, :project_id, :user_id, :item_id, :starred, :completed_at, :created_by)
+  end
 
-    def param_updated?(param_name) task_params[param_name].present? end
-
+  def param_updated?(param_name) task_params[param_name].present? end
 
 end

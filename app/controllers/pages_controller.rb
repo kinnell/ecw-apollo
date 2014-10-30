@@ -19,5 +19,4 @@ class PagesController < ApplicationController
   def changelog
   end
 
-
 end

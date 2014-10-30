@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
-		render 'edit.js.erb'
+		render "edit.js.erb"
 	end
 
 	def create
@@ -26,18 +26,18 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to project_path(@project)
 		else
-			render 'new'
+			render "new"
 		end
 	end
 
 	def update
 		if @project.update(project_params)
 			respond_to do |format|
-				format.html { redirect_to :back, notice: 'Project was successfully updated.' }
+				format.html { redirect_to :back, notice: "Project was successfully updated." }
 				format.js
 			end
 		else
-		  render 'edit'
+		  render "edit"
 		end
 	end
 
@@ -62,6 +62,5 @@ class ProjectsController < ApplicationController
 	def project_params
 		params.require(:project).permit(:name, :due_date, :due_date_date, :due_date_time, :end_date, :starred, :assigned_by, :description, :product_id, :status, :created_by, user_ids: [])
 	end
-
 
 end

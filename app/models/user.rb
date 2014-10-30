@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -13,6 +11,5 @@ class User < ActiveRecord::Base
    has_many :tasks
 
    has_attached_file :profile_photo, :styles => { :medium => "200x200#", :thumb => "75x75#", :small => "50x50", :tiny => "25x25" }, :default_url => "turtle75.jpg"
-
 
 end

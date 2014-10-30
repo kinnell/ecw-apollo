@@ -21,8 +21,6 @@ class Task < ActiveRecord::Base
 	scope :starred, -> { where(:starred => true) }
 	scope :notStarred, -> { where(:starred => false) }
 
-
-
 	validates :name, presence: true
 
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
