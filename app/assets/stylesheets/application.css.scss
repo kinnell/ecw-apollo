@@ -12,6 +12,9 @@
  *= require_tree .
  *= require general
  *= require jquery.ui.all
- *= require font-awesome
  *= require mousetrap
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+

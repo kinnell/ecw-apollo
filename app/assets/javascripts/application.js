@@ -14,7 +14,7 @@
 //= require jquery.ui.all
 //= require turbolinks
 //= require jquery.turbolinks
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require mousetrap
 //= require_tree .
 
