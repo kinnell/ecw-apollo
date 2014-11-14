@@ -1,5 +1,5 @@
 %tr
-  %td= print_job.number 
+  %td.text-center= print_job.number 
   %td
     - if print_job.project_id
       = link_to print_job.name, project_path(print_job.project_id)
@@ -7,13 +7,13 @@
       = print_job.name
   %td= print_job.account
   %td= print_job.printer
-  %td= print_job.quantity
-  %td= print_job.rate
-  %td= print_job.total_quote
-  %td= print_job.rewards_percentage
-  %td= print_job.total_rewards
-  %td= print_job.total_paid
-  %td= print_job.date_paid.strftime("%D") if print_job.date_paid
+  %td.text-center= print_job.quantity
+  %td.text-center= number_to_currency(print_job.rate)
+  %td.text-center= number_to_currency(print_job.total_quote)
+  %td.text-center= print_job.rewards_percentage
+  %td.text-center= number_to_currency(print_job.total_rewards)
+  %td.text-center= number_to_currency(print_job.total_paid)
+  %td.text-center= print_job.date_paid.strftime("%D") if print_job.date_paid
   %td
     = link_to edit_print_job_path(print_job), class: "button btn btn-xs btn-warning", remote: true do
       %i.fa.fa-pencil

@@ -2,14 +2,11 @@ class PrintJob < ActiveRecord::Base
   belongs_to :project
 
   def cost
-    quantity ||= 0
-    rate ||= 0
-    quantity * rate
+    (quantity && rate) ? quantity * rate : 0
   end
 
   def total_rewards
-    rewards_percentage ||= 0
-    cost * rewards_percentage
+    (cost && rewards_percentage) ? cost * rewards_percentage * 0.01 : 0
   end
 
 end
