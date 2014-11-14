@@ -9,13 +9,13 @@
 
     %hr
 
-    %li{class: "#{'selected' if params[:controller] == 'tasks'}"}
-      = link_to tasks_path do
-        %i.fa.fa-fw.fa-check-circle
-        .inline.hidden-sm Tasks
-        %span.badge.hidden-sm= current_user.tasks.incomplete.count
-
-    %hr
+    -# %li{class: "#{'selected' if params[:controller] == 'tasks'}"}
+    -#   = link_to tasks_path do
+    -#     %i.fa.fa-fw.fa-check-circle
+    -#     .inline.hidden-sm Tasks
+    -#     %span.badge.hidden-sm= current_user.tasks.incomplete.count
+    -#
+    -# %hr
 
     %li{class: "#{'selected' if (params[:controller] == 'projects' || current_page?(user_path(current_user)))}"}
       = link_to current_user, data: { keybinding: "p" } do
@@ -25,12 +25,12 @@
 
     %hr
 
-    %li{class: "#{'selected' if current_page?(myCalendar_path)}"}
-      = link_to myCalendar_path do
-        %i.fa.fa-fw.fa-calendar
-        .inline.hidden-sm Calendar
-      
-    %hr
+    -# %li{class: "#{'selected' if current_page?(myCalendar_path)}"}
+    -#   = link_to myCalendar_path do
+    -#     %i.fa.fa-fw.fa-calendar
+    -#     .inline.hidden-sm Calendar
+    -#   
+    -# %hr
 
     %li{class: "#{'selected' if current_page?(users_path)}"}
       = link_to users_path do
