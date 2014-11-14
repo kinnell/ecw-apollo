@@ -12,17 +12,17 @@
       %table.table.table-hover.table-responsive
         %thead
           %tr
-            %th.text-center #
-            %th Name
-            %th Account
-            %th Printer
-            %th.text-center Qty
-            %th.text-center Rate
-            %th.text-center Total Quote
-            %th.text-center Rewards %
-            %th.text-center Total Rewards
-            %th.text-center Total Paid
-            %th.text-center Date Paid
+            %th.text-center= sort_link(@q, :number, "#")
+            %th= sort_link(@q, :name, "Name")
+            %th= sort_link(@q, :account, "Account")
+            %th= sort_link(@q, :printer, "Printer")
+            %th.text-center= sort_link(@q, :quantity, "Qty")
+            %th.text-center= sort_link(@q, :rate, "Rate")
+            %th.text-center= sort_link(@q, :total_quote, "Total Quote")
+            %th.text-center= sort_link(@q, :rewards_percentage, "Rewards %")
+            %th.text-center= sort_link(@q, :total_rewards, "Total Rewards")
+            %th.text-center= sort_link(@q, :total_paid, "Total Paid")
+            %th.text-center= sort_link(@q, :date_paid, "Date Paid")
             %th Actions
         %tbody= render @print_jobs
 

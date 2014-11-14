@@ -1,7 +1,8 @@
 class PrintJobsController < ApplicationController
 
   def index
-    @print_jobs = PrintJob.order(:id)
+    @q = PrintJob.search(params[:q])
+    @print_jobs = @q.result(distinct: true)
     respond_to do |format|
       format.html
       format.xls
