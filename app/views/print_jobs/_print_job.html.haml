@@ -10,7 +10,7 @@
   %td.text-center= print_job.quantity
   %td.text-center= number_to_currency(print_job.rate)
   %td.text-center= number_to_currency(print_job.total_quote)
-  %td.text-center= print_job.rewards_percentage
+  %td.text-center= "#{print_job.rewards_percentage}%"
   %td.text-center= number_to_currency(print_job.total_rewards)
   %td.text-center= number_to_currency(print_job.total_paid)
   %td.text-center= print_job.date_paid.strftime("%D") if print_job.date_paid
