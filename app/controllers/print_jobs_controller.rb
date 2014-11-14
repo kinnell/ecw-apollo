@@ -6,6 +6,7 @@ class PrintJobsController < ApplicationController
     respond_to do |format|
       format.html
       format.xls
+      format.js
     end
   end
 
