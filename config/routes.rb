@@ -14,6 +14,7 @@ Apollo::Application.routes.draw do
     resources :comments
   end
 
+  resources :print_jobs, only: [:index, :create, :edit, :update, :destroy]
 
   authenticated :user do
     root :to => "projects#index", as: :authenticated_root

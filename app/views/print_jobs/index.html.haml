@@ -1,0 +1,28 @@
+.col-md-12
+  .panel.panel-default
+    .panel-heading
+      %h4
+        %i.fa.fa-print
+          Print Jobs
+        %button.btn.btn-default.btn-sm.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
+
+    .panel-body
+      %table.table.table-hover.table-responsive
+        %thead
+          %tr
+            %th #
+            %th Name
+            %th Account
+            %th Printer
+            %th Quantity
+            %th Rate
+            %th Total Quote
+            %th Rewards %
+            %th Total Rewards
+            %th Total Paid
+            %th Date Paid
+            %th Actions
+        %tbody= render @print_jobs
+
+= render "new"
+          

@@ -1,0 +1,84 @@
+#new-printJob-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      - @print_job = PrintJob.new
+      = form_for @print_job do |f|
+
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+          %h4 New Print Job 
+
+        .modal-body
+
+          .row 
+
+            .form-group.col-md-2
+              %b Job #:
+              = f.text_field :number, class: "form-control"
+
+            .form-group.col-md-3
+              %b Account:
+              = f.select :account, ["eClinicalWorks", "healow"], {}, class: "form-control"
+            
+            .form-group.col-md-5
+              %b Job Name:
+              = f.text_field :name, class: "form-control"
+
+            .form-group.col-md-2
+              %b Printer:
+              = f.select :printer, ["Staples"], {}, class: "form-control"
+
+          .row
+
+            .form-group.col-md-12
+              %b Project:
+              = f.select :project_id, Project.all.order("name").map { |p| [p.name, p.id] }, { include_blank: true }, class: "form-control"
+
+          .row
+
+            .form-group.col-md-2
+              %b Qty:
+              = f.number_field :quantity, class: "form-control", value: 1, min: 1
+
+            .form-group.col-md-2
+              %b Rate:
+              .input-group
+                .input-group-addon $
+                = f.number_field :rate, class: "form-control", step: 0.01
+
+          .row
+
+            .form-group.col-md-3
+              %b Total Quote:
+              .input-group
+                .input-group-addon $
+                = f.number_field :total_quote, class: "form-control", step: 0.01
+
+            .form-group.col-md-3
+              %b Total Paid:
+              .input-group
+                .input-group-addon $
+                = f.number_field :total_paid, class: "form-control", step: 0.01
+
+            .form-group.col-md-2
+              %b Rewards %:
+              .input-group
+                = f.number_field :rewards_percentage, class: "form-control", value: 5
+                .input-group-addon %
+
+            .form-group.col-md-3
+              %b Date Paid:
+              = f.date_field :date_paid, class: "form-control"
+
+
+          .row
+
+            .form-group.col-md-12
+              %b Notes:
+              = f.text_area :note, class: "form-control"
+              
+
+
+
+        .modal-footer
+          = f.submit "Create Print Job", class: "btn btn-success btn-sm"

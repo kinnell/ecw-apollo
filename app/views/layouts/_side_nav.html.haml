@@ -39,6 +39,13 @@
 
     %hr
 
+    %li{class: "#{'selected' if current_page?(print_jobs_path)}"}
+      = link_to print_jobs_path do
+        %i.fa.fa-fw.fa-print
+        .inline.hidden-sm Print Jobs
+
+    %hr
+
     %li{class: "#{'selected' if current_page?(products_path)}"}
       = link_to products_path do
         %i.fa.fa-fw.fa-shopping-cart

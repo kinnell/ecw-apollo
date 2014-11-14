@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722143751) do
+ActiveRecord::Schema.define(version: 20141112182830) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 20140722143751) do
   end
 
   add_index "notes", ["noteable_id", "noteable_type"], name: "index_notes_on_noteable_id_and_noteable_type"
+
+  create_table "print_jobs", force: true do |t|
+    t.integer  "project_id"
+    t.string   "number"
+    t.string   "name"
+    t.string   "account"
+    t.string   "printer"
+    t.integer  "quantity"
+    t.decimal  "rate"
+    t.decimal  "total_quote"
+    t.decimal  "rewards_percentage"
+    t.decimal  "total_paid"
+    t.datetime "date_paid"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name",       default: "", null: false
