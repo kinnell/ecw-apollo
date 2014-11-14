@@ -1,6 +1,11 @@
 class PrintJobsController < ApplicationController
+
   def index
-    @print_jobs = PrintJob.all
+    @print_jobs = PrintJob.order(:id)
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def create

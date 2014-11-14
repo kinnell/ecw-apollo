@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+
+  <Worksheet ss:Name="eCW Print Jobs">
+    <Table>
+
+      <Row>
+        <Cell><Data ss:Type="String">#</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Account</Data></Cell>
+        <Cell><Data ss:Type="String">Printer</Data></Cell>
+        <Cell><Data ss:Type="String">Qty</Data></Cell>
+        <Cell><Data ss:Type="String">Rate</Data></Cell>
+        <Cell><Data ss:Type="String">Total Quote</Data></Cell>
+        <Cell><Data ss:Type="String">Rewards</Data></Cell>
+        <Cell><Data ss:Type="String">Total Rewards</Data></Cell>
+        <Cell><Data ss:Type="String">Total Paid</Data></Cell>
+        <Cell><Data ss:Type="String">Date Paid</Data></Cell>
+      </Row>
+
+      <% @print_jobs.each do |print_job| %>
+        <Row>
+          <Cell><Data ss:Type="String"><%= print_job.number %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= print_job.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= print_job.account %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= print_job.printer %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.quantity %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.rate %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.total_quote %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.rewards_percentage %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.total_rewards %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= print_job.total_paid %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= print_job.date_paid %></Data></Cell>
+        </Row>
+      <% end %>
+
+    </Table>
+  </Worksheet>
+</Workbook>
