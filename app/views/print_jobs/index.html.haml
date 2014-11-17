@@ -4,9 +4,6 @@
       %h4
         %i.fa.fa-print
           Print Jobs
-        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
-        = link_to print_jobs_path(format: "xls"), class: "btn btn-primary btn-sm btn-margin pull-right" do
-          Download as XLS
 
     .panel-body
       = search_form_for @q, class: "form-inline", remote: true do |f|
@@ -36,6 +33,11 @@
           = f.date_field :date_paid_lteq,
             class: "form-control",
             onchange: "$(this).parents('form').trigger('submit.rails');"
+
+        .form-group.pull-right
+          %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
+          = link_to print_jobs_path(format: "xls"), class: "btn btn-primary btn-sm btn-margin pull-right" do
+            Download as XLS
 
         %br
         %br
