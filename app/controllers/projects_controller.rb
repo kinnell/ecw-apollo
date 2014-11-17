@@ -5,7 +5,14 @@ class ProjectsController < ApplicationController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@projects = current_user.projects
+    @q = current_user.projects.search(params[:q])
+    @projects = @q.result(distinct: true)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
 	end
 
 	def show

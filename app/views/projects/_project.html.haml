@@ -1,0 +1,36 @@
+%tr{id: "project_#{project.id}"}
+
+  %td
+    .project-starred
+      =link_to toggle_starred_project_path(project), method: :post do
+        %i.fa{class: "#{project.starred ? 'fa-star' : 'fa-star-o'}"} 
+
+  %td= link_to project.product_name, project.product
+
+  %td= link_to project.name, project
+
+  %td.text-center= project.items.count
+
+  %td= project.assigned_by
+
+  %td
+    - if project.has_users
+      - project.users.uniq.each do |user|
+        = render "users/photo", user: user
+    - else
+      None
+
+  %td.text-center= project.created_at.strftime("%D")
+
+  %td.text-center
+    - if project.end_date
+      = project.end_date.strftime("%D")
+    - else
+      = project.due_date.strftime("%D") if project.due_date
+
+  %td.text-center= render "projects/status", project: project
+
+  %td.text-center
+    = link_to edit_project_path(project), class: "button btn btn-xs btn-warning", remote: true do
+      %i.fa.fa-pencil
+
