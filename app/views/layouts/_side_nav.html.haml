@@ -32,12 +32,6 @@
     -#   
     -# %hr
 
-    %li{class: "#{'selected' if current_page?(users_path)}"}
-      = link_to users_path do
-        %i.fa.fa-fw.fa-users
-        .inline.hidden-sm Team
-
-    %hr
 
     %li{class: "#{'selected' if current_page?(print_jobs_path)}"}
       = link_to print_jobs_path do
@@ -46,12 +40,19 @@
 
     %hr
 
-    %li{class: "#{'selected' if current_page?(products_path)}"}
-      = link_to products_path do
-        %i.fa.fa-fw.fa-shopping-cart
-        .inline.hidden-sm Products
+    %li{class: "#{'selected' if current_page?(users_path)}"}
+      = link_to users_path do
+        %i.fa.fa-fw.fa-users
+        .inline.hidden-sm Team
 
     %hr
+
+    -# %li{class: "#{'selected' if current_page?(products_path)}"}
+    -#   = link_to products_path do
+    -#     %i.fa.fa-fw.fa-shopping-cart
+    -#     .inline.hidden-sm Products
+    -#
+    -# %hr
 
     %li{class: "#{'selected' if current_page?(edit_user_registration_path)}"}
       = link_to edit_user_registration_path do
