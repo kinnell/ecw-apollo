@@ -2,14 +2,12 @@
 
   %td
     .project-starred
-      =link_to toggle_starred_project_path(project), method: :post do
+      =link_to project_path(project, project: { starred: project.starred.! }), method: :patch, remote: true do
         %i.fa{class: "#{project.starred ? 'fa-star' : 'fa-star-o'}"} 
 
   %td= link_to project.product_name, project.product
 
   %td= link_to project.name, project
-
-  %td.text-center= project.items.count
 
   %td= project.assigned_by
 

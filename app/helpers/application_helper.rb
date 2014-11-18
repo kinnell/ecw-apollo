@@ -18,7 +18,4 @@ module ApplicationHelper
                     "" => {"icon" => "file-o"}}
 	end
 
-
-
-
 end

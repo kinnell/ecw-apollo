@@ -6,19 +6,55 @@
       %h4
         %i.fa.fa-folder
           Projects
+        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-project-modal" } } New Project
 
     .panel-body
 
-      = search_form_for @q, class: "form-inline", remote: true do |f|
+      = search_form_for @q, remote: true do |f|
 
-        .form-group
-          %label.control-label{style: "margin-right: 15px;"} Search:
+        .form-group.col-md-2
+          %label.control-label Search:
           = f.text_field :name_or_product_name_cont,
-            class: "form-control input-sm",
+            class: "form-control",
             onkeyup: "$(this).parents('form').trigger('submit.rails')"
 
-      %br
+        .form-group.col-md-2
+          %label.control-label Product:
+          = f.select :product_name_eq,
+            options_for_select(Product.all.map{ |p| [p.name, p.name] }),
+            { include_blank: "All Products" },
+            class: "form-control",
+            onchange: "$(this).parents('form').trigger('submit.rails');"
 
+        .form-group.col-md-2
+          %label.control-label Assigned:
+          = f.select :users_name_eq,
+            options_for_select(User.all.map{ |u| [u.name, u.name] }),
+            { include_blank: "All Users" },
+            class: "form-control",
+            onchange: "$(this).parents('form').trigger('submit.rails');"
+
+        .form-group.col-md-2
+          %label.control-label Status:
+          = f.select :status_eq,
+            options_for_select(status_hash.keys.map{ |s| [s, s] }),
+            { include_blank: "All Statuses" },
+            class: "form-control",
+            onchange: "$(this).parents('form').trigger('submit.rails');"
+
+        .form-group.col-md-2
+          %label.control-label From:
+          = f.date_field :created_at_or_end_date_or_due_date_gteq,
+            class: "form-control",
+            onchange: "$(this).parents('form').trigger('submit.rails');"
+
+        .form-group.col-md-2
+          %label.control-label To:
+          = f.date_field :created_at_or_end_date_or_due_date_lteq,
+            class: "form-control",
+            onchange: "$(this).parents('form').trigger('submit.rails');"
+
+      %br
 
       %table.table.table-hover.table-responsive
         %thead
@@ -26,20 +62,15 @@
             %th
               %i.fa.fa-star{style: "color: #666"}
             %th= sort_link(@q, :product_name, "Product")
-            %th Project
-            %th
-            %th Assigned By
+            %th= sort_link(@q, :name, "Project")
+            %th= sort_link(@q, :assigned_by, "Assigned By")
             %th Assigned
-            %th.text-center Start Date
+            %th.text-center= sort_link(@q, :created_at, "Start Date")
             %th.text-center End Date
-            %th.text-center Status
+            %th.text-center= sort_link(@q, :status, "Status")
             %th.text-center Actions
 
         %tbody= render @projects
 
+= render "new"
 
--#
--# 				<%= link_to "New Project", "javascript:void(0)", class: "btn btn-sm btn-default pull-right", style: "margin-top: -5px;", :"data-toggle" => "modal", :"data-target" => "#new_project_modal" %>
--# 			</h4>
--#
--# 			<%= render "projects/new", :project => @project %>
