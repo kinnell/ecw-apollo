@@ -29,6 +29,6 @@
               %td= user.email
               %td
               %td.text-center= user.created_at.strftime("%D")
-              %td.text-center= user.last_sign_in_at ? time_ago_in_words(user.last_sign_in_at) : "Never"
+              %td.text-center= user.last_sign_in_at ? "#{time_ago_in_words(user.last_sign_in_at)} ago" : "Never"
               %td
 
