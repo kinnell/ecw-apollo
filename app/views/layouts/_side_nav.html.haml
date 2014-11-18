@@ -21,7 +21,6 @@
       = link_to projects_path, data: { keybinding: "p" } do
         %i.fa.fa-fw.fa-folder-o
         .inline.hidden-sm Projects
-        %span.badge.hidden-sm= current_user.projects.incomplete.uniq.count
 
     %hr
 
