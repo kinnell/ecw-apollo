@@ -12,14 +12,23 @@
       %table.table.table-hover.table-responsive
         %thead
           %tr
-            %th id
+            %th
             %th Name
             %th Email
+            %th Status
+            %th.text-center Registration Date
+            %th.text-center Last Sign In
+            %th.text-center Actions
 
         %tbody
           - @users.each do |user|
             %tr
-              %td= user.id
+              %td
+                = render "photo", user: user
               %td= user.name
               %td= user.email
+              %td
+              %td.text-center= user.created_at.strftime("%D")
+              %td.text-center= user.last_sign_in_at ? time_ago_in_words(user.last_sign_in_at) : "Never"
+              %td
 
