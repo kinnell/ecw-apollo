@@ -29,7 +29,7 @@
         .form-group.col-md-2
           %label.control-label Assigned:
           = f.select :users_name_eq,
-            options_for_select(User.all.map{ |u| [u.name, u.name] }),
+            options_for_select(User.all.map{ |u| [u.name, u.name] }, current_user.name),
             { include_blank: "All Users" },
             class: "form-control",
             onchange: "$(this).parents('form').trigger('submit.rails');"

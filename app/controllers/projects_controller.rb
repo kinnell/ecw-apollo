@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
 	def index
     @q = Project.all.search(params[:q])
+    @q.users_name_eq = current_user.name unless params[:q] && params[:q][:users_name_eq]
     @projects = @q.result(distinct: true)
 
     respond_to do |format|
