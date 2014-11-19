@@ -1,0 +1,16 @@
+- if flash.any?
+  - flash.each do |key, value|
+
+    - if value.kind_of?(Array)
+      - value.each do |message|
+        :javascript
+          $.growl("#{message}", { type: "#{key}", allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
+    - else
+      :javascript
+        $.growl("#{value}", { type: "#{key}", allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
+
+
+- if controller.devise_controller? && resource.errors.any?
+  - resource.errors.full_messages.uniq.each do |message|
+    :javascript
+      $.growl("#{message}", { type: "alert", allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });

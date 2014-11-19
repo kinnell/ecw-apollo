@@ -1,6 +1,6 @@
 %nav.side-nav.col-md-2
 
-  .brand= link_to "apollo 1.5", changelog_path
+  .brand= link_to "apollo 1.7", changelog_path
   .user-section
     = link_to projects_path do
       = image_tag current_user.profile_photo.url(:small), class: "profile-photo"
@@ -31,7 +31,6 @@
     -#   
     -# %hr
 
-
     %li{class: "#{'selected' if current_page?(print_jobs_path)}"}
       = link_to print_jobs_path do
         %i.fa.fa-fw.fa-print
@@ -52,7 +51,6 @@
         .inline.hidden-sm Team
 
     %hr
-
 
     %li{class: "#{'selected' if current_page?(edit_user_registration_path)}"}
       = link_to edit_user_registration_path do
