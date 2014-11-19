@@ -5,7 +5,7 @@
       =link_to project_path(project, project: { starred: project.starred.! }), method: :patch, remote: true do
         %i.fa{class: "#{project.starred ? 'fa-star' : 'fa-star-o'}"} 
 
-  %td= link_to project.product_name, project.product
+  %td= project.product_name
 
   %td= link_to project.name, project
 
