@@ -1,43 +1,44 @@
 .col-md-12
+
   .panel.panel-default
+
     .panel-heading
       %h4
         %i.fa.fa-print
           Print Jobs
+        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
+        = link_to print_jobs_path(format: "xls"),
+          class: "btn btn-primary btn-sm btn-margin pull-right" do
+          Download as XLS
 
     .panel-body
-      = search_form_for @q, class: "form-inline", remote: true do |f|
+      = search_form_for @q, remote: true do |f|
 
-        .form-group
-          %label.control-label{style: "margin-right: 15px;"} Search:
+        .form-group.col-md-4
+          %label.control-label Search:
           = f.text_field :number_or_name_cont,
             class: "form-control input-sm",
             onkeyup: "$(this).parents('form').trigger('submit.rails')"
 
-        .form-group
-          %label.control-label{style: "margin-right: 15px; margin-left: 15px;"} Account:
+        .form-group.col-md-2
+          %label.control-label Account:
           = f.select :account_cont,
             options_for_select([["eClinicalWorks", "eClinicalWorks"],["healow", "healow"]], params[:account]),
             {include_blank: "All Accounts"},
-            class: "form-control",
+            class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
-        .form-group
-          %label.control-label{style: "margin-right: 15px; margin-left: 15px;"} From:
+        .form-group.col-md-2
+          %label.control-label From:
           = f.date_field :date_paid_gteq,
-            class: "form-control",
+            class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
-        .form-group
-          %label.control-label{style: "margin-right: 15px; margin-left: 15px;"} To:
+        .form-group.col-md-2
+          %label.control-label To:
           = f.date_field :date_paid_lteq,
-            class: "form-control",
+            class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
-
-        .form-group.pull-right
-          %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
-          = link_to print_jobs_path(format: "xls"), class: "btn btn-primary btn-sm btn-margin pull-right" do
-            Download as XLS
 
         %br
         %br

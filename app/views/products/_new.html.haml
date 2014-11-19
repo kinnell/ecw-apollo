@@ -3,13 +3,11 @@
     .modal-content
 
       - @product = Product.new 
-
       = form_for @product do |f|
 
         .modal-header
-          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"}
-            &times;
-          %h4.modal-title#myModalLabel New Product
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"} &times;
+          %h4 New Product
 
         .modal-body
 

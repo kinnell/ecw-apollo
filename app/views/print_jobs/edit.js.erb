@@ -2,4 +2,3 @@ if ($("#edit-printJob-"+<%= @print_job.id %>+"-modal").length == 0) {
   $("body").append("<%= j render 'print_jobs/edit', print_job: @print_job %>")
 }
 $("#edit-printJob-"+<%= @print_job.id %>+"-modal").modal("show")
-

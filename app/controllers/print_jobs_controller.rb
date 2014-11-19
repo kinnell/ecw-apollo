@@ -1,5 +1,7 @@
 class PrintJobsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @q = PrintJob.search(params[:q])
     @print_jobs = @q.result(distinct: true)
@@ -18,6 +20,7 @@ class PrintJobsController < ApplicationController
 
   def edit
     @print_job = PrintJob.find(params[:id])
+    respond_to { |format| format.js }
   end
 
   def update
