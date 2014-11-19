@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    respond_to { |format| format.js }
   end
 
   def create
@@ -23,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.updated(product_params)
+    @product.update(product_params)
     flash[:notice] = @product.errors.empty? ? "Product was successfully updated." : "Error: Product was not successfully updated."
     redirect_to :back
   end

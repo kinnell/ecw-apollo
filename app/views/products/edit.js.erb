@@ -1,0 +1,4 @@
+if ($("#edit-product-"+<%= @product.id %>+"-modal").length == 0) {
+	$("body").append("<%= escape_javascript(render 'products/edit', :product => @product) %>")
+}
+$("#edit-product-"+<%= @product.id %>+"-modal").modal("show")
