@@ -1,0 +1,27 @@
+#new-product-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+
+      - @product = Product.new 
+
+      = form_for @product do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"}
+            &times;
+          %h4.modal-title#myModalLabel New Product
+
+        .modal-body
+
+          .row
+
+            .form-group.col-md-12
+              %label.control-label Product Name:
+              = f.text_field :name,
+                placeholder: "Product Name",
+                class: "form-control",
+                autofocus: true,
+                required: true
+
+        .modal-footer
+          = f.submit "Add Project", class: "btn btn-sm btn-success"
