@@ -1,0 +1,73 @@
+#new-project-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+
+      - @project = Project.new
+
+      = form_for @project do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"}
+            &times;
+          %h4.modal-title#myModalLabel New Project
+
+
+        .modal-body
+
+          .row
+            = f.hidden_field :created_by, value: current_user.id
+
+            .form-group.col-md-4
+              %label.control-label Product
+              = f.collection_select :product_id,
+                Product.all.sort_by {|p| p.name.downcase }, :id, :name,
+                { include_blank: "Select Product", required: true }, 
+                { class: "form-control" }
+
+            .form-group.col-md-8
+              %label.control-label Project Name:
+              = f.text_field :name,
+                placeholder: "Project Name",
+                class: "form-control",
+                autofocus: true,
+                required: true
+
+          .row
+            .form-group.col-md-12
+              %label.control-label Description:
+              = f.text_area :description,
+                placeholder: "Description",
+                class: "form-control",
+                rows: "7"
+
+          .row
+            .form-group.col-md-3
+              %label.control-label Due Date:
+              = f.date_field :due_date_date,
+                class: "form-control",
+                onchange: "$('#due-date-time-field').val('17:00:00.000');"
+
+            .form-group.col-md-3
+              %label.control-label Due Time:
+              = f.time_field :due_date_time,
+                id: "due-date-time-field",
+                class: "form-control"
+
+
+            .form-group.col-md-4
+              %label.control-label Assigned By:
+              = f.text_field :assigned_by,
+                placeholder: "Name",
+                class: "form-control"
+
+          .row
+            .form-group.col-md-12
+              %label.control-label Users Assigned:
+              = hidden_field_tag "project[user_ids][]", nil
+              - User.all.order("name").each do |user|
+                %br
+                = check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id)
+                = user.name
+
+        .modal-footer
+          = f.submit "Add Project", class: "btn btn-sm btn-success"
