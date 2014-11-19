@@ -3,4 +3,8 @@ class Product < ActiveRecord::Base
 
 	validates :name, uniqueness: true
 
+  def deletable?
+    projects.empty?
+  end
+
 end

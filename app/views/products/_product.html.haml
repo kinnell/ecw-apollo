@@ -6,3 +6,10 @@
       class: "button btn btn-xs btn-warning",
       remote: true do
       %i.fa.fa-pencil
+
+    = link_to product_path(product),
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete this product?" },
+      class: "button btn btn-xs btn-danger",
+      disabled: !product.deletable? do
+      %i.fa.fa-trash
