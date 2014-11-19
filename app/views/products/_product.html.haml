@@ -1,6 +1,7 @@
 %tr{id: "product_#{product.id}"}
   %td= product.name
-  %td
+  %td.text-center= product.projects.count
+  %td.text-center
     = link_to edit_product_path(product),
       class: "button btn btn-xs btn-warning",
       remote: true do
