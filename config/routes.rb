@@ -3,7 +3,7 @@ Apollo::Application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show]
 
-  resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  resources :products, only: [:index, :edit, :create, :update, :destroy]
 
   resources :projects, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
     resources :tasks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do

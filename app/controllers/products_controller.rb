@@ -1,19 +1,12 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all.sort_by {|p| p.name.downcase }
   end
 
-  def show
-  end
-
-  def new
-    @product = Product.new
-  end
-
   def edit
+    @product = Product.find(params[:id])
     respond_to { |format| format.js }
   end
 
@@ -24,21 +17,19 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
     @product.update(product_params)
     flash[:notice] = @product.errors.empty? ? "Product was successfully updated." : "Error: Product was not successfully updated."
     redirect_to :back
   end
 
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_url
+    redirect_to :back
   end
 
   private
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
 
   def product_params
     params.require(:product).permit(:name)
