@@ -20,13 +20,3 @@
 //= require mousetrap
 //= require_tree .
 
-jQuery(
-	function($) {
-		$('.has_tooltip').tooltip();
-		$('.has_popover').popover();
-	}
-);
-
-
-
-
