@@ -2,15 +2,15 @@
 	<div class="comment" id="comment_<%= comment.id %>">
 		<div class="row">
 
-			<div class="col-md-2 comment-user-photo-section">
-				<%= link_to comment.user, :class => "has_tooltip", :title => comment.user_name, :"data-toggle" => "tooltip", :"data-placement" => "bottom" do %>
+      <div class="col-md-2 comment-user-photo-section">
+				<%= link_to users_path, :class => "has_tooltip", :title => comment.user_name, :"data-toggle" => "tooltip", :"data-placement" => "bottom" do %>
 					<%= image_tag comment.user.profile_photo.url(:small), class: "comment-user-photo" %>
 				<% end %>
 			</div>
 
 			<div class="col-md-10 comment-content-section">
 
-				<%= link_to comment.user_name, comment.user, class: "commenter" %>
+        <%= link_to comment.user_name, users_path, class: "commenter" %>
 
 				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "comment-tools has_tooltip", :"data-toggle" => "tooltip", :"data-placement" => "bottom", :title => "Delete comment", remote: true %>
 

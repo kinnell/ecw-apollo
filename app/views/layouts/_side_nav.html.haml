@@ -17,7 +17,7 @@
     -#
     -# %hr
 
-    %li{class: "#{'selected' if (params[:controller] == 'projects' || current_page?(user_path(current_user)))}"}
+    %li{class: "#{'selected' if params[:controller] == 'projects'}"}
       = link_to projects_path, data: { keybinding: "p" } do
         %i.fa.fa-fw.fa-folder-o
         .inline.hidden-sm Projects

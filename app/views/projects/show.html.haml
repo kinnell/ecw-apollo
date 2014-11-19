@@ -61,7 +61,7 @@
         - if @project.has_users
           - for u in @project.users.uniq
             = render "users/photo", :user => u
-            = link_to u.name, u
+            = u.name
             %br/
         - else
           %i No one assigned

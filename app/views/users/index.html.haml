@@ -14,9 +14,9 @@
           %tr
             %th
             %th Name
+            %th.text-center Status
             %th Email
-            %th Status
-            %th.text-center Registration Date
+            %th.text-center Join Date
             %th.text-center Last Sign In
             %th.text-center Actions
 
@@ -24,10 +24,14 @@
           - @users.each do |user|
             %tr
               %td
-                = render "photo", user: user
+                = image_tag user.profile_photo.url(:small), class: "project-user-photo"
               %td= user.name
+              %td.text-center
+                - if user.confirmed?
+                  %span.label.label-success Confirmed
+                - else
+                  %span.label.label-default Not Confirmed
               %td= user.email
-              %td
               %td.text-center= user.created_at.strftime("%D")
               %td.text-center= user.last_sign_in_at ? "#{time_ago_in_words(user.last_sign_in_at)} ago" : "Never"
               %td
