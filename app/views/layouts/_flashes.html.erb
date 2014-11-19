@@ -1,0 +1,36 @@
+<% if flash.any? %>
+  <% flash.each do |key, value| %>
+
+    <% if value.kind_of?(Array) %>
+
+      <% value.each do |message| %>
+        <script>
+          var msg = "<%= message %>"
+          var key = "<%= key %>"
+          $.growl(msg, { type: key, allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
+        </script>
+      <% end %>
+
+    <% else %>
+
+      <script>
+        var msg = "<%= value %>"
+        var key = "<%= key %>"
+        $.growl(msg, { type: key, allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
+      </script>
+
+    <% end %>
+
+  <% end %>
+<% end %>
+
+<% if controller.devise_controller? && resource.errors.any? %>
+  <% resource.errors.full_messages.uniq.each do |message| %>
+
+    <script>
+      var msg = "<%= message %>"
+      $.growl(msg, { type: "alert", allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
+    </script>
+
+  <% end %>
+<% end %>

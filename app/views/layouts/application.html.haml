@@ -14,7 +14,7 @@
 
   %body{class: "#{user_signed_in? ? 'inside-page' : 'front-page'}", style: "#{' padding-top: 50px;' unless user_signed_in?} "}
 
-    = render "layouts/noty"
+    = render "layouts/flashes"
 
     - if user_signed_in?
 
