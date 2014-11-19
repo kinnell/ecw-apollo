@@ -1,0 +1,436 @@
+.col-md-12
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.5
+        .pull-right July 14, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Keyboard Shortcuts implemented via Mousetrap
+        %li Pressing 'p' takes you to Projects view
+      %h5 Projects
+      %ul
+        %li JQuery with task completion
+        %li JQuery with project comments
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.46
+        .pull-right July 10, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Changelog created & accessible by menu
+        %li Font Awesome URL added back to fix icons
+      %h5 Projects
+      %ul
+        %li Completed Projects now sorted by end date in Project index view
+        %li Active Projects & Completed Projects either show due_date or end_date, respectively, but not both
+        %li Number of items visible in Project tables
+      %h5 Tasks
+      %ul
+        %li Tasks sort by starred for Tasks page fixed
+      %h5 Emails
+      %ul
+        %li Email Notification UI created
+        %li Email Notification for assigned users when Project is created
+        %li Email Notification now get sent whenever anyone new is assigned to Project
+      %h5 Users
+      %ul
+        %li Password confirmation issue fixed
+        %li Team Page user profile made into a link to user profile
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.45
+        .pull-right June 30, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Font Awesome now local
+        %li Note added
+        %li Missing indexes added to tables for optimization
+        %li Migration for created_by for projects, tasks, items & notes
+      %h5 Products
+      %ul
+        %li Add Products back in Menu
+      %h5 Projects
+      %ul
+        %li Refactored Project tasks
+        %li Jquery new task implemented
+        %li Jquery delete task implemented
+        %li Jquery starred task implemented
+        %li Highlight project date if past due_date
+        %li Project due_date not mandatory any more
+        %li New Project modal added
+        %li Project Wall overflow fixed
+      %h5 Items
+      %ul
+        %li Created_by added to Item
+      %h5 Tasks
+      %ul
+        %li New task due_date bug fixed
+        %li Created_by added to Task
+      %h5 Note
+      %ul
+        %li Note created with content
+        %li Created_by added to Note
+      %h5 User Interface
+      %ul
+        %li Noty moved to bottom right
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.40
+        .pull-right June 5, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Various bug fixes
+        %li Authenticated root fixed
+        %li www.ecwapollo.com purchased
+        %li DNS Name Servers for ecwapollo.com configured
+        %li www.ecwapollo.com verified
+      %h5 Products
+      %ul
+        %li Projects in Products are sorted correctly now
+        %li Modal edit added
+      %h5 Projects
+      %ul
+        %li Project Page revamped
+        %li Project refactored
+        %li Modal edit added
+        %li Project wall scroll overflow fixed
+        %li Unassigned Projects show in team view
+        %li New Project goes to Project after saved
+      %h5 Items
+      %ul
+        %li Modal edit added
+        %li Item types added
+      %h5 Tasks
+      %ul
+        %li Edit task with details implemented
+        %li Hover over for task implemented
+      %h5 User Interface
+      %ul
+        %li Major refactoring of CSS/SCSS
+        %li Formatting issues fixed
+        %li Make UI more flat, less clustered
+        %li Add tooltips
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.35
+        .pull-right May 29, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li New root implemented
+        %li Maintainence & Refactoring
+      %h5 Projects
+      %ul
+        %li Show all projects in team
+        %li Project add/edit users listed alphabetically
+        %li Fixed user/projects assignment
+      %h5 Tasks
+      %ul
+        %li Completed tasks hidden by default
+        %li Association with Items created (belongs_to)
+        %li Tasks can be created for items or for project (general tasks)
+      %h5 Items
+      %ul
+        %li Items better integrated into Projects
+        %li Association with Tasks created (has_many)
+      %h5 Users
+      %ul
+        %li Alphabetical sort of users on Team Page
+      %h5 User Interface
+      %ul
+        %li Task & Items UI updated
+        %li Spacing issue with Add Task fixed
+        %li Spacing issue with Add Task for Items fixed
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.30
+        .pull-right May 06, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Install and configure Puma for speed
+      %h5 Projects
+      %ul
+        %li Custom sort written for Projects sort
+        %li Refactored Projects
+        %li Project status changed with jquery
+        %li Late due_date highlighted for Project
+        %li Add assigned to to Projects tables
+        %li Implement profile photo instead of name for assigned to
+        %li Time and date separation added for due_date
+      %h5 Products
+      %ul
+        %li New & Edit Product link re-added to Products
+        %li UI usability improved
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.27
+        .pull-right April 23, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Refactored & upkeep
+        %li Amazon S3 (AWS) added to handle profile photos
+        %li Created new directory for assets in dev
+        %li Added public/system to git ignore
+        %li Removed public/system from Heroku
+        %li Amazon S3 with Paperclip gem implemented
+      %h5 Tasks
+      %ul
+        %li Integrated starred partial to tasks
+      %h5 User Interface
+      %ul
+        %li Navbar jellybeans updated
+        %li Tabbed menu for tasks and projects
+        %li UI updated
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.24
+        .pull-right April 21, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Assets cleaned & precompiled
+      %h5 Users
+      %ul
+        %li User profile photos added
+        %li User profile photo sizes implemented
+      %h5 User Interface
+      %ul
+        %li Navbar jellybeans updated
+        %li UI updated
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.21
+        .pull-right April 18, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Routes updated
+      %h5 Tasks
+      %ul
+        %li myTasks page added
+        %li user_id & project_id made mandatory for tasks
+        %li Assigning tasks to users implemented
+        %li Only assigned user can complete task
+        %li Starred added to tasks
+      %h5 Calendar
+      %ul
+        %li myCalendar page added
+      %h5 User Interface
+      %ul
+        %li User Interface updated to show tasks better
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.20
+        .pull-right April 16, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Comments added
+        %li Assets cleaned and precompiled
+        %li Refactored time
+        %li Environment (development & production) asset management configured
+      %h5 Projects
+      %ul
+        %li Assignments fixed for adding users
+        %li MyProjects page added
+        %li Projects refactored
+        %li Alphabetize Projects order
+        %li Updated Project status to: In Queue, Waiting, In Progress, Completed, Cancelled
+        %li Added task titles to Project index respectively
+        %li Project status "Cancelled" now mimics "Completed" behavior
+        %li Time for project due dates defaults to 5 PM EST
+      %h5 Items
+      %ul
+        %li Status added to Items
+        %li Items integrated into Projects
+      %h5 Tasks
+      %ul
+        %li Task progress bar added
+        %li Tasks order alphabetized
+      %h5 Comments
+      %ul
+        %li Comments created with content
+        %li Association added with Projects (belongs_to)
+        %li Association added with Users (belongs_to)
+        %li Comments refactored
+      %h5 User Interface
+      %ul
+        %li User Interface updated
+        %li Top Menu replaced by Side Menu
+        %li Background made darker
+        %li Dates past deadlines become bold & red
+        %li Nav Bar jellybeans added for counts
+        %li UI forms updated for adding tasks, comments, items
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.15
+        .pull-right April 10, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Items added
+        %li Added Calendar for tasks
+      %h5 Projects
+      %ul
+        %li Priority added to Projects
+        %li Assigned By added to Projects
+        %li Starred added to Projects
+        %li End Date added to Projects
+        %li Priority removed from Projects - deemed extraneous
+        %li Status added to Projects
+        %li Description changed from string to text
+      %h5 Calendar
+      %ul
+        %li Calendar UI implemented
+      %h5 Items
+      %ul
+        %li Items created with name & type
+        %li Association added with Projects (belongs_to)
+      %h5 Tasks
+      %ul
+        %li Association added with items (belongs_to)
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.10
+        .pull-right April 4, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Dashboard added for tasks view
+      %h5 Tasks
+      %ul
+        %li Association added with Users (belongs_to)
+      %h5 User Interface
+      %ul
+        %li Noty.Js implemented for notification handling
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 1.00
+        .pull-right April 2, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Assignments added to relation Users & Projects
+        %li Refactored CSS/SCSS
+        %li Refactored & created partials for efficiency
+        %li Assets cleaned & precompiled for release
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 0.50
+        .pull-right March 28, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Products for projects created
+        %li New user interface
+      %h5 Products
+      %ul
+        %li Products created with name
+        %li Association with projects implemented (has_many)
+      %h5 Users
+      %ul
+        %li User settings created
+        %li User profile created
+      %h5 User Interface
+      %ul
+        %li Top menu created
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 0.40
+        .pull-right March 24, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Projects added
+        %li Tasks added
+        %li New user interface
+      %h5 Projects
+      %ul
+        %li Projects created with name, description & due_date
+        %li Association with tasks implemented (has_many)
+      %h5 Tasks
+      %ul
+        %li Tasks created with name, completed & due_date
+        %li Association with projects implemented (belongs_to)
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 0.30
+        .pull-right March 21, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li SendGrid set up for Mailer settings
+        %li New Relic set up for error monitoring
+      %h5 Users
+      %ul
+        %li Email confirmation required for registration implemented
+        %li Registration with eClinicalWorks emails only implemented
+        %li Forgot password & Reset password pages created
+        %li Names added to users
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 0.20
+        .pull-right March 20, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li SASS stylesheets set up
+        %li Bootstrap gem installed & configured
+      %h5 Users
+      %ul
+        %li User authentication with devise
+        %li Registration & login pages created
+        %li Forgot password & Reset password pages created
+
+  .panel.panel-default.changelog
+    .panel-heading
+      %h4
+        apollo 0.10
+        .pull-right March 17, 2014
+    .panel-body
+      %h5 General
+      %ul
+        %li Initial commit to Git
+        %li Heroku setup at ecw-apollo.herokuapp.com
+        %li Basic landing pages created
+        %li User databases & models added

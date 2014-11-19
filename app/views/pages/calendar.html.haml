@@ -1,0 +1,24 @@
+.col-md-12
+
+  .panel.panel-default
+
+    .panel-heading
+      %h4
+        %i.fa.fa-calendar
+        Overall Calendar 
+
+    .panel-body
+      %h2#month
+        = link_to "<", date: @date.prev_month
+        = @date.strftime("%B %Y")
+        = link_to ">", date: @date.next_month
+
+      = calendar @date do |date|
+        = date.day
+        - if @tasks_by_date[date]
+          %ul
+            - @tasks_by_date[date].each do |task|
+              = link_to task.project do
+                %li
+                  %i.fa.fa-check-circle
+                  = task.name.truncate(20)
