@@ -2,7 +2,7 @@
   .modal-dialog
     .modal-content
 
-      - @product = Product.new 
+      - @product = Product.new
       = form_for @product do |f|
 
         .modal-header
@@ -14,7 +14,7 @@
           .row
 
             .form-group.col-md-12
-              %label.control-label Product Name:
+              %label Product Name:
               = f.text_field :name,
                 placeholder: "Product Name",
                 class: "form-control",

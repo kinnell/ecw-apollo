@@ -13,13 +13,13 @@
       = search_form_for @q, remote: true do |f|
 
         .form-group.col-md-2
-          %label.control-label Search:
+          %label Search:
           = f.text_field :name_or_product_name_cont,
             class: "form-control input-sm",
             onkeyup: "$(this).parents('form').trigger('submit.rails')"
 
         .form-group.col-md-2
-          %label.control-label Product:
+          %label Product:
           = f.select :product_name_eq,
             options_for_select(Product.all.map{ |p| [p.name, p.name] }),
             { include_blank: "All Products" },
@@ -27,7 +27,7 @@
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label Assigned:
+          %label Assigned:
           = f.select :users_name_eq,
             options_for_select(User.all.map{ |u| [u.name, u.name] }, current_user.name),
             { include_blank: "All Users" },
@@ -35,7 +35,7 @@
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label Status:
+          %label Status:
           = f.select :status_eq,
             options_for_select(status_hash.keys.map{ |s| [s, s] }),
             { include_blank: "All Statuses" },
@@ -43,13 +43,13 @@
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label From:
+          %label From:
           = f.date_field :created_at_or_end_date_or_due_date_gteq,
             class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label To:
+          %label To:
           = f.date_field :created_at_or_end_date_or_due_date_lteq,
             class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"

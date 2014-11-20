@@ -18,14 +18,14 @@
             = f.hidden_field :created_by, value: current_user.id
 
             .form-group.col-md-4
-              %label.control-label Product
+              %label Product
               = f.collection_select :product_id,
                 Product.all.sort_by {|p| p.name.downcase }, :id, :name,
-                { include_blank: "Select Product", required: true }, 
+                { include_blank: "Select Product", required: true },
                 { class: "form-control" }
 
             .form-group.col-md-8
-              %label.control-label Project Name:
+              %label Project Name:
               = f.text_field :name,
                 placeholder: "Project Name",
                 class: "form-control",
@@ -34,7 +34,7 @@
 
           .row
             .form-group.col-md-12
-              %label.control-label Description:
+              %label Description:
               = f.text_area :description,
                 placeholder: "Description",
                 class: "form-control",
@@ -42,27 +42,27 @@
 
           .row
             .form-group.col-md-3
-              %label.control-label Due Date:
+              %label Due Date:
               = f.date_field :due_date_date,
                 class: "form-control",
                 onchange: "$('#due-date-time-field').val('17:00:00.000');"
 
             .form-group.col-md-3
-              %label.control-label Due Time:
+              %label Due Time:
               = f.time_field :due_date_time,
                 id: "due-date-time-field",
                 class: "form-control"
 
 
             .form-group.col-md-4
-              %label.control-label Assigned By:
+              %label Assigned By:
               = f.text_field :assigned_by,
                 placeholder: "Name",
                 class: "form-control"
 
           .row
             .form-group.col-md-12
-              %label.control-label Users Assigned:
+              %label Users Assigned:
               = hidden_field_tag "project[user_ids][]", nil
               - User.all.order("name").each do |user|
                 %br

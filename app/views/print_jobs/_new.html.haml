@@ -7,31 +7,31 @@
 
         .modal-header
           %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-          %h4 New Print Job 
+          %h4 New Print Job
 
         .modal-body
 
-          .row 
+          .row
 
             .form-group.col-md-2
-              %label.control-label Job #:
+              %label Job #:
               = f.text_field :number,
                 class: "form-control"
 
             .form-group.col-md-3
-              %label.control-label Account:
+              %label Account:
               = f.select :account,
                 ["eClinicalWorks", "healow"],
                 {},
                 class: "form-control"
-            
+
             .form-group.col-md-5
-              %label.control-label Job Name:
+              %label Job Name:
               = f.text_field :name,
                 class: "form-control"
 
             .form-group.col-md-2
-              %label.control-label Printer:
+              %label Printer:
               = f.select :printer,
                 ["Staples"],
                 {},
@@ -40,7 +40,7 @@
           .row
 
             .form-group.col-md-12
-              %label.control-label Project:
+              %label Project:
               = f.select :project_id,
                 Project.all.order("name").map { |p| [p.name, p.id] },
                 { include_blank: true },
@@ -49,14 +49,14 @@
           .row
 
             .form-group.col-md-2
-              %label.control-label Qty:
+              %label Qty:
               = f.number_field :quantity,
                 class: "form-control",
                 value: 1,
                 min: 1
 
             .form-group.col-md-2
-              %label.control-label Rate:
+              %label Rate:
               .input-group
                 .input-group-addon $
                 = f.number_field :rate,
@@ -66,7 +66,7 @@
           .row
 
             .form-group.col-md-3
-              %label.control-label Total Quote:
+              %label Total Quote:
               .input-group
                 .input-group-addon $
                 = f.number_field :total_quote,
@@ -74,7 +74,7 @@
                   step: 0.01
 
             .form-group.col-md-3
-              %label.control-label Total Paid:
+              %label Total Paid:
               .input-group
                 .input-group-addon $
                 = f.number_field :total_paid,
@@ -82,7 +82,7 @@
                   step: 0.01
 
             .form-group.col-md-2
-              %label.control-label Rewards %:
+              %label Rewards %:
               .input-group
                 = f.number_field :rewards_percentage,
                   class: "form-control",
@@ -90,16 +90,16 @@
                 .input-group-addon %
 
             .form-group.col-md-3
-              %label.control-label Date Paid:
+              %label Date Paid:
               = f.date_field :date_paid,
                 class: "form-control"
 
           .row
 
             .form-group.col-md-12
-              %label.control-label Notes:
+              %label Notes:
               = f.text_area :note,
                 class: "form-control"
-              
+
         .modal-footer
           = f.submit "Create Print Job", class: "btn btn-success btn-sm"

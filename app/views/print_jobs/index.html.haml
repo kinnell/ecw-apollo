@@ -15,13 +15,13 @@
       = search_form_for @q, remote: true do |f|
 
         .form-group.col-md-4
-          %label.control-label Search:
+          %label Search:
           = f.text_field :number_or_name_cont,
             class: "form-control input-sm",
             onkeyup: "$(this).parents('form').trigger('submit.rails')"
 
         .form-group.col-md-2
-          %label.control-label Account:
+          %label Account:
           = f.select :account_cont,
             options_for_select([["eClinicalWorks", "eClinicalWorks"],["healow", "healow"]], params[:account]),
             {include_blank: "All Accounts"},
@@ -29,13 +29,13 @@
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label From:
+          %label From:
           = f.date_field :date_paid_gteq,
             class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
 
         .form-group.col-md-2
-          %label.control-label To:
+          %label To:
           = f.date_field :date_paid_lteq,
             class: "form-control input-sm",
             onchange: "$(this).parents('form').trigger('submit.rails');"
@@ -61,4 +61,4 @@
         %tbody= render @print_jobs
 
 = render "new"
-          
+
