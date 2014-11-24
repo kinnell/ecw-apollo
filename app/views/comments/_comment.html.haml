@@ -1,0 +1,22 @@
+- if comment.user
+  .comment{id: "comment-#{comment.id}"}
+    .row
+      .col-md-2.comment-user-photo-section
+        = image_tag comment.user.profile_photo.url(:small), class: "comment-user-photo"
+
+      .col-md-10.comment-context-section
+        = link_to comment.user_name, users_path, class: "commenter"
+        = link_to [comment.project, comment], method: :delete,
+          remote: true,
+          data: { title: "Delete comment", toggle: "tooltip", placement: "bottom" },
+          confirm: "Are you sure?",
+          class: "comment-tools" do
+          %i.fa.fa-trash-o
+
+        = content_tag :div, "#{time_ago_in_words(comment.created_at)} ago".html_safe, class: "comment-date"
+
+        %br
+
+        = content_tag :div, comment.content, class: "comment-content"
+
+    %hr

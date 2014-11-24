@@ -10,7 +10,7 @@ Apollo::Application.routes.draw do
       resources :notes, only: [:index, :new]
     end
     resources :items, only: [:new, :edit, :create, :update, :destroy]
-    resources :comments, only: [:index, :new, :edit, :create, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :print_jobs, only: [:index, :create, :edit, :update, :destroy]

@@ -32,28 +32,27 @@
 
 	.comment-content-section {
 		width: 88%;
+  }
+  a.commenter { font-weight: bold; }
 
-		a.commenter { font-weight: bold; }
+  .comment-content {
+    display: inline-block;
+    text-align: justify;
+    font-color: #333;
+  }
 
-		.comment-content {
-			display: inline-block;
-			text-align: justify;
-			font-color: #333;
-		}
+  .comment-tools {
+    float: right;
+    padding-left: 8px;
+  }
 
-		.comment-tools {
-			float: right;
-			padding-left: 8px;
-		}
+  .comment-date {
+    color: #666;
+    font-size: 12px;
+    display: inline-block;
+    cursor: pointer;
+    float: right;
+  }
 
-		.comment-date {
-			color: #666;
-			font-size: 12px;
-			display: inline-block;
-			cursor: pointer;
-			float: right;
-		}
-
-	}
 
 }
