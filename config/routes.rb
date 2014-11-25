@@ -6,9 +6,7 @@ Apollo::Application.routes.draw do
   resources :products, only: [:index, :edit, :create, :update, :destroy]
 
   resources :projects, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
-    resources :tasks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
-      resources :notes, only: [:index, :new]
-    end
+    resources :tasks, only: [:index, :show, :new, :edit, :create, :update, :destroy]
     resources :items, only: [:new, :edit, :create, :update, :destroy]
     resources :comments, only: [:create, :destroy]
   end

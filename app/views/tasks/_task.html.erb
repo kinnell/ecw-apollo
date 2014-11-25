@@ -6,14 +6,6 @@
 
 	<%= content_tag :div, task.name, class: "task-name" %>
 
-	<% if task.notes.any? %>
-		<%= link_to 'javascript:;' do %>
-			<i class="fa fa-comment note-icon" data-toggle="modal" data-target="#task_<%= task.id %>_notes_modal"></i>
-		<% end %>
-	<% end %>
-
-	<%= render "notes/index", :task => task %>
-
 	<%= content_tag :div, "(#{task.user_name})", class: "task-user" if task.user && (task.user != current_user) %>
 
 	<%= render "tasks/tools", :task => task %>
