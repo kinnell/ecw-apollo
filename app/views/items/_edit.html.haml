@@ -1,0 +1,44 @@
+.modal.fade{id: "edit-item-#{item.id}-modal", "aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+
+      = form_for [item.project, item] do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"} &times;
+          %h4 Edit Item
+
+        .modal-body
+
+          .row
+
+            .form-group.col-md-12
+              %label Item:
+              = f.text_field :name,
+                class: "form-control",
+                required: true
+
+          .row
+
+            .form-group.col-md-12
+              %label Created At:
+              %p= print_date(item.created_at, "xl")
+
+          .row
+
+            .form-group.col-md-12
+              %label Project:
+              %p= link_to "[#{item.project.product_name}] #{item.project_name}", item.project
+
+          .row
+
+            .form-group.col-md-6
+              %label Status:
+              = f.select :status, [["In Queue"], ["In Progress"], ["Waiting"], ["On Hold"], ["Cancelled"], ["Completed"]], {}, { class: "form-control input-sm" }
+
+            .form-group.col-md-6 
+              %label Type:
+              = f.select :item_type, [["Graphic"], ["Print"], ["Video"], ["Web"]], { include_blank: "Misc" }, { class: "form-control input-sm" }
+
+        .modal-footer
+          = f.submit "Save Item", class: "btn btn-md btn-success"

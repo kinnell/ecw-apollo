@@ -1,0 +1,4 @@
+if ($("#edit-task-"+<%= @task.id %>+"-modal").length == 0) {
+	$("body").append("<%= j render 'tasks/edit', task: @task %>")
+}
+$("#edit-task-"+<%= @task.id %>+"-modal").modal("show")

@@ -1,5 +1,0 @@
-<div class="task-starred has_tooltip" style="<%= 'visibility: hidden;' if task.completed %>" title="Toggle task star" data-toggle="tooltip" data-placement="bottom">
-	<%= link_to toggle_starred_task_path(task), method: :patch, :remote => true do %>
-		<i class="fa fa-star<%= '-o' unless task.starred %>"></i>
-	<% end %>
-</div>

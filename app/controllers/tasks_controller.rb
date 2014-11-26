@@ -1,20 +1,9 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :js
-
-  def index
-    @tasks = current_user.tasks.incomplete.order("due_date")
-  end
-
-  def show
-  end
-
-  def new
-    @task = Task.new
-  end
 
   def edit
+    @task = Task.find(params[:id])
+    respond_to { |format| format.js }
   end
 
   def create
@@ -26,17 +15,15 @@ class TasksController < ApplicationController
           format.js
         end
       else
-        render 'new'
+        redirect_to :back
       end
   end
 
   def update
+    @task = Task.find(params[:id])
     @task.update_attributes!(task_params)
     if param_updated?(:completed)
-      respond_to do |format|
-        format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
-        format.js { render action: "toggle_completed" }
-      end
+      respond_to { |format| format.js }
     else
       respond_to do |format|
         format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
@@ -46,6 +33,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
     respond_to do |format|
       format.html { redirect_to @task.project }
@@ -53,20 +41,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def toggle_starred
-    @task = Task.find(params[:id])
-    if @task.update_attributes(:starred => @task.starred.!)
-      respond_to do |format|
-        format.js
-      end
-    end
-  end
-
   private
-
-  def set_task
-    @task = Task.find(params[:id])
-  end
 
   def task_params
     params.require(:task).permit(:name, :due_date, :due_date_date, :due_date_time, :completed, :project_id, :user_id, :item_id, :starred, :completed_at, :created_by)

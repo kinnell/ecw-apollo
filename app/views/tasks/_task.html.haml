@@ -1,0 +1,33 @@
+%li.task{class: "#{'task-late' if task.late? && !task.completed} #{'task-completed' if task.completed}", id: "task-#{task.id}"}
+
+  .task-starred{style: "#{'visibility: hidden;' if task.completed}"}
+    = link_to project_task_path(task.project, task, task: { starred: task.starred.! }), method: :patch, remote: true do
+      %i.fa{class: "#{task.starred ? 'fa-star' : 'fa-star-o'}"}
+
+  = form_for [task.project, task], remote: true, authenticity_token: true, html: {class: "task-checkbox"} do |f|
+    = f.hidden_field :completed_at, value: DateTime.now
+    = f.hidden_field :starred, value: false
+    = f.check_box :completed, onchange: "$(this.form).trigger('submit.rails');", disabled: task.user != current_user
+
+  .task-name= task.name
+
+  .task-user= "(#{task.user_name})"
+  
+  %ul.tools-dropdown
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", data: { toggle: "dropdown" } }
+        %i.fa.fa-angle-down
+      %ul.dropdown-menu
+        %li
+          = link_to edit_project_task_path(task.project, task), remote: true do
+            %i.fa.fa-pencil
+        %li
+          = link_to [task.project, task], method: :delete, confirm: "Are you sure?", remote: true do
+            %i.fa.fa-trash-o
+
+  - if task.completed
+    .task-date= " Completed #{print_date(task.completed_at, 's')}"
+  - elsif task.due_date
+    .task-date= " due #{print_date(task.due_date, 's')}"
+    
+

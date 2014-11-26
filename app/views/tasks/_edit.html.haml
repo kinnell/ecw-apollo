@@ -1,0 +1,63 @@
+.modal.fade{id: "edit-task-#{task.id}-modal", "aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+
+      = form_for [task.project, task] do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"} &times;
+          %h4 Edit Task 
+
+        .modal-body
+
+          .row
+
+            .form-group.col-md-12
+              %label Task: 
+              = f.text_field :name,
+                class: "form-control",
+                required: true
+
+          .row
+
+            .form-group.col-md-6
+              %label Created At:
+              %p= print_date(task.created_at, "xl")
+
+            .form-group.col-md-6
+              %label Due Date:
+              = f.datetime_local_field :due_date,
+                class: "form-control"
+
+          .row
+
+            .form-group.col-md-6
+              %label Project:
+              %p= link_to "[#{task.project.product_name}] #{task.project_name}", task.project
+
+            .form-group.col-md-6
+              %label Item
+              = f.collection_select :item_id,
+                task.project.items.uniq, :id, :name,
+                { required: true, include_blank: "General" },
+                { class: "form-control input-sm" }
+
+          .row
+
+            .form-group.col-md-6
+              %label Assigned:
+              = f.collection_select :user_id,
+                task.project.users.uniq, :id, :name,
+                { required: true },
+                { class: "form-control input-sm" }
+
+            .form-group.col-md-3
+              %label Starred?
+              %p= f.check_box :starred
+
+            .form-group.col-md-3
+              %label Status:
+              %p= task.completed ? "Completed" : "Incomplete"
+
+        .modal-footer
+          = f.submit "Save Project", class: "btn btn-sm btn-success"

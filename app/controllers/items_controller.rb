@@ -1,12 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-
-  def new
-    @item = Item.new
-  end
 
   def edit
+    @item = Item.find(params[:id])
+    respond_to { |format| format.js }
   end
 
   def create
@@ -16,21 +13,19 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
     @item.update(item_params)
     flash[:notice] = @item.errors.empty? ? "Item was successfully updated." : "Error: Item was not updated."
     redirect_to :back
   end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to @item.project
   end
 
   private
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
 
   def item_params
     params.require(:item).permit(:name, :type, :project_id, :status, :item_type, :created_by)

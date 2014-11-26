@@ -1,0 +1,19 @@
+%center
+
+  = form_for [@project, @project.items.new], html: { class: "form-inline" } do |f|
+
+    .form-group
+
+      %i.fa.fa-level-up.fa-rotate-90
+      .add-item-title Add Item:
+
+      = f.hidden_field :project_id, value: @project.id
+      = f.hidden_field :created_by, value: current_user.id
+
+      = f.text_field :name, placeholder: "Item name", class: "form-control input-sm add-item-name", required: true
+
+      = f.select :item_type, [["Graphic"], ["Print"], ["Video"], ["Web"]], { include_blank: "Misc" }, { class: "form-control input-sm" }
+
+      = f.submit "Add Item", class: "btn btn-sm btn-default"
+
+      %button.close.pull-right{type: "button", data: { toggle: "collapse", target: "#addItem" }} &times;

@@ -8,6 +8,7 @@
 
 	.task {
 		padding: 10px 0 10px 10px;
+    border-bottom: 1px solid #EEE;
 
 		.task-starred, .task-checkbox, .task-name, .task-date, .task-user { display: inline-block; }
 
