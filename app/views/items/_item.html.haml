@@ -1,0 +1,53 @@
+%li.item{id: "item-#{item.id}"}
+
+  %h4.item-main
+    = "<i class='fa fa-#{item_type_hash[item.item_type]["icon"]} fa-fw item-type-icon'></i>".html_safe
+    .item-name= item.name
+
+    %ul.tools-dropdown
+      %li.dropdown
+        %a.dropdown-toggle{href: "#", data: { toggle: "dropdown" }}
+          %i.fa.fa-angle-down
+        %ul.dropdown-menu
+          %li
+            = link_to edit_project_item_path(item.project, item), remote: true do
+              %i.fa.fa-pencil
+          %li
+            = link_to [item.project, item], method: :delete, confirm: "Are you sure?" do
+              %i.fa.fa-trash-o
+
+    = link_to "<i class='fa fa-plus'></i>".html_safe, "javascript:;", "data-toggle" => "collapse", "data-target" => "#item-#{item.id}-addTask",  class: "btn btn-default btn-xs pull-right add-task-btn"
+
+    .btn-group.item-status.pull-right
+      - status_hash_type = status_hash[item.status]["type"] if status_hash[item.status]
+      - status_hash_icon = status_hash[item.status]["icon"] if status_hash[item.status]
+
+      %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_hash_type}"}
+        %i.fa.fa-fw{class: "fa-#{status_hash_icon}"}
+        = item.status
+
+      %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_hash_type}", data: { toggle: "dropdown" }}
+        %span.caret
+        %span.sr-only Toggle Dropdown
+
+      %ul.dropdown-menu.pull-right{role: "menu"}
+
+        - for s in status_hash.keys
+          %li.dropdown-menu-item{onclick: "$(this).find('form').trigger('submit.rails');"}
+
+            = form_for [item.project, item] do |f|
+              %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless item.status == s}"}
+
+              = f.hidden_field :status, value: s
+
+              = f.hidden_field :end_date,
+                value: (s == "Completed" || s == "Cancelled") ? DateTime.now : nil
+
+              = s
+
+  .collapse{id: "item-#{item.id}-addTask"}
+    = render "tasks/new", item: item
+
+  - if item.tasks.any?
+    .tasks-list-box{id: "item-#{item.id}-tasks", style: "margin-bottom: 15px;"}
+      = render "items/tasks", tasks: item.tasks, item_id: item.id

@@ -20,7 +20,7 @@
     .panel-heading
       %h5
         .panel-title Project Details
-        .pull-right{"data-target" => "#edit_project_#{@project.id}_modal", "data-toggle" => "modal"}
+        .pull-right{"data-target" => "#edit-project-#{@project.id}-modal", "data-toggle" => "modal"}
           %a{:href => "javascript:void(0)"}
             %i.fa.fa-pencil
       = render "projects/edit", :project => @project

@@ -1,0 +1,11 @@
+%li#item-general.item
+  %h4.item-main
+    %i.fa.fa-folder-o.fa-fw.item-type-icon
+    .item-name Project Tasks
+    = link_to "<i class='fa fa-plus'></i>".html_safe, "javascript:;", "data-toggle" => "collapse", "data-target" => "#item-general-addTask", class: "btn btn-default btn-xs pull-right add-task-btn", style: "margin-right: 28px;"
+
+  #item-general-addTask.collapse= render "tasks/new", item: nil
+
+  - if @project.tasks.general.any?
+    #item_0_tasks.tasks-list-box{style: "margin-bottom: 15px;"}
+      = render "items/tasks", tasks: project.tasks.general, item_id: 0

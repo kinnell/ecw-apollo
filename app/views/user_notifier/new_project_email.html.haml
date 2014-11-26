@@ -1,0 +1,65 @@
+!!!
+%html
+  %head
+    :css
+      * {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+        line-height: 1.6;
+        font-family: 'Open Sans', 'Helvetica', Helvetica, Arial, sans-serif;
+      }
+
+      a { color: #348eda; text-decoration: none; }
+
+      p {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+  %body{:bgcolor => "#f6f6f6", :style => "-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100%!important; height: 100%; color: #333; background-color: #f6f6f6; font-family: 'Open Sans', 'Helvetica', Helvetica, Arial, sans-serif;"}
+    %div{:style => "width: 100%!important; height: 100%!important; margin: 0; padding: 0; background-color: #f6f6f6; padding: 20px;"}
+      %table{:style => "width: 50%; margin: auto; border-radius: 0px; padding: 20px;"}
+        %tr
+          %td
+          %td.container{:style => "background-color: #FFFFFF; display: block!important; margin: 0 auto!important; clear: both!important; padding: 20px 35px 10px 35px; border: 1px solid #f0f0f0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);"}
+            .content{:style => "margin: 0 auto; display: block;"}
+              %div{:style => "float: right; padding-bottom: 5px;"}
+                %a{:href => "http://www.ecwapollo.com", :style => "color: #348eda; text-decoration: none;"} eCW apollo
+              %hr{:style => "width: 100%; border-top: 1px solid #EEE; border-bottom: 0px;"}/
+              %br/
+              %p
+                = @user.name
+                ,
+              - if @user == @project.creator
+                %p You have assigned yourself to a new project:
+              - else
+                %p
+                  = @project.creator.name
+                  has assigned you to a new project:
+              %div{:style => "margin: 10px 10px; padding: 1px 20px; background-color: #fafafa; border-radius: 5px; border: solid 1px #eee;"}
+                %h3{:style => "line-height: 1.1; margin-bottom: 15px; color: #000; margin: 15px 0 10px; line-height: 1.2; font-weight: 500; font-size: 18px;"}
+                  [#{@project.product_name}] #{@project.name}
+                %p
+                  %b Due Date:
+                  = @project.due_date? ? @project.due_date.in_time_zone('Eastern Time (US & Canada)').strftime("%B %-d, %Y at %l:%M %p") : "<i style='color: #999'>No Due Date</i>".html_safe
+                %p
+                  %b Assigned By:
+                  = @project.assigned_by.present? ? @project.assigned_by : "<i style='color: #999'>No One</i>".html_safe
+                %p
+                  %b Assigned:
+                  = @project.has_users ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe
+                %p
+                  %b Description:
+                  %br/
+                  - if @project.description.length != 0
+                    = @project.description.gsub(/\n/, '<br>').html_safe
+                  - else
+                    %i No description provided
+              %p
+                To access the project, #{link_to "click here", project_url(@project)}.
+              %hr{:style => "width: 100%; border-top: 1px solid #EEE; border-bottom: 0px;"}/
+              %center
+                %p{:style => "font-size: 10px; color: #999; margin-top: 10px;"}
+                  %a{:href => "http://www.ecwapollo.com", :style => "color: #348eda; text-decoration: none;"} eCW apollo
+                  | www.ecwapollo.com
+          %td

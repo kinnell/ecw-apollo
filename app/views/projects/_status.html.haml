@@ -1,0 +1,26 @@
+.btn-group.project-status
+  - status_hash_type = status_hash[project.status]["type"] if status_hash[project.status]
+  - status_hash_icon = status_hash[project.status]["icon"] if status_hash[project.status]
+
+  %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_hash_type}"}
+    %i.fa.fa-fw{class: "fa-#{status_hash_icon}"}
+    = project.status
+
+  %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_hash_type}", data: { toggle: "dropdown" }}
+    %span.caret
+    %span.sr-only Toggle Dropdown
+
+  %ul.dropdown-menu.pull-right{role: "menu"}
+
+    - for s in status_hash.keys
+      %li.dropdown-menu-item{onclick: "$(this).find('form').trigger('submit.rails');"}
+
+        = form_for project do |f|
+          %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless project.status == s}"}
+
+          = f.hidden_field :status, value: s
+
+          = f.hidden_field :end_date,
+            value: (s == "Completed" || s == "Cancelled") ? DateTime.now : nil
+
+          = s

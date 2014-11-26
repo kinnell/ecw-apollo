@@ -1,0 +1,69 @@
+.modal.fade{id: "edit-project-#{project.id}-modal", "aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+
+      = form_for project do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"} &times;
+          %h4 Edit Project
+
+        .modal-body
+
+          .row
+
+            .form-group.col-md-4
+              %label Product:
+              = f.collection_select :product_id,
+                Product.all.sort_by {|p| p.name.downcase }, :id , :name,
+                { include_blank: "Select Product", required: true },
+                { class: "form-control" }
+
+            .form-group.col-md-8
+              %label Project Name
+              = f.text_field :name,
+                class: "form-control",
+                required: true
+
+          .row
+
+            .form-group.col-md-12
+              %label Description
+              = f.text_area :description,
+                class: "form-control",
+                rows: "7"
+
+          .row
+
+            .form-group.col-md-3
+              %label Due Date:
+              = f.date_field :due_date_date, class: "form-control"
+
+            .form-group.col-md-3
+              %label Due Time:
+              = f.time_field :due_date_time, class: "form-control"
+
+            .form-group.col-md-3
+              %label Assigned By:
+              = f.text_field :assigned_by, class: "form-control"
+
+            .form-group.col-md-3
+              %label Status:
+              = f.select :status,
+                [["In Queue"], ["In Progress"], ["Waiting"], ["On Hold"], ["Cancelled"], ["Completed"]],
+                {},
+                { class: "form-control input-sm" }
+
+          .row
+
+            .form-group.col-md-12
+              %label Users Assigned:
+              = hidden_field_tag "project[user_ids][]", nil
+              - User.all.order("name").each do |user|
+                %br
+                = check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id)
+                = user.name
+
+        .modal-footer
+          = link_to "Delete this Project", project, method: :delete, confirm: "Are you sure?", class: "btn btn-sm btn-danger"
+          = f.submit "Save Project", class: "btn btn-sm btn-success"
