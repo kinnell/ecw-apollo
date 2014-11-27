@@ -1,59 +1,18 @@
-@import 'bootstrap';
 @import 'colors';
-
-// GENERAL HTML //
 
 html, body {
   font-family: 'Open Sans', sans-serif;
-  //font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
-hr {
-	border-top: 1px solid #ddd;
-}
+hr { border-top: 1px solid #DDD; }
 
-.container {
-	margin-bottom: 50px;
-}
+a:hover {	text-decoration: none; }
 
-.container-fluid {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.inline {
-  display: inline;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-.fa-stack {
-	color: $dark-blue;
-}
-
-.front-page {
-	background: url('background.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.inside-page {
-	background: #ecf0f1;
-	background: url('grid2.png') repeat;
-}
+.inline { display: inline; }
 
 .late {
-//	display: inline-block;
 	color: $red;
 	font-weight: 700;
-}
-
-.alert-info {
-	text-align: center;
 }
 
 .tools-dropdown {
@@ -73,6 +32,13 @@ a:hover {
 	}
 }
 
-.btn-margin { margin: 0 2px; }
+.profile-photo {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 
-.sort_link { color: black; }
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}

@@ -1,0 +1,23 @@
+@import 'colors';
+
+.modal {
+
+  .modal-header {
+    padding: 10px 15px 10px 25px;
+  }
+
+  .modal-body {
+    padding: 25px;
+  }
+
+  .modal-footer {
+    padding: 15px;
+  }
+  
+	.modal-header, .modal-footer {
+		background-color: whitesmoke;
+	}
+
+  .modal-header .close {  margin-top: 0px; }
+
+}

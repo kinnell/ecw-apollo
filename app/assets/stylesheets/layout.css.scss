@@ -1,0 +1,21 @@
+.container {
+	margin-bottom: 50px;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.front-page {
+	background: url('background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.inside-page {
+	background: #ecf0f1;
+	background: url('grid2.png') repeat;
+}

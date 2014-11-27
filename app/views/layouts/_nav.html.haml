@@ -1,65 +1,40 @@
 %nav.side-nav.col-md-2
 
   .brand= link_to "apollo 1.7", changelog_path
-  .user-section
+
+  .user-banner
     = link_to projects_path do
-      = image_tag current_user.profile_photo.url(:small), class: "profile-photo"
+      = image_tag current_user.profile_photo.url(:small), class: "user-photo profile-photo"
     .user-name.hidden-sm= current_user.name
+
   %ul.nav.nav-pills.nav-stacked
 
-    %hr
-
-    -# %li{class: "#{'selected' if params[:controller] == 'tasks'}"}
-    -#   = link_to tasks_path do
-    -#     %i.fa.fa-fw.fa-check-circle
-    -#     .inline.hidden-sm Tasks
-    -#     %span.badge.hidden-sm= current_user.tasks.incomplete.count
-    -#
-    -# %hr
-
-    %li{class: "#{'selected' if params[:controller] == 'projects'}"}
+    %li.nav-item{class: "#{'selected' if params[:controller] == 'projects'}"}
       = link_to projects_path, data: { keybinding: "p" } do
         %i.fa.fa-fw.fa-folder-o
         .inline.hidden-sm Projects
 
-    %hr
-
-    -# %li{class: "#{'selected' if current_page?(myCalendar_path)}"}
-    -#   = link_to myCalendar_path do
-    -#     %i.fa.fa-fw.fa-calendar
-    -#     .inline.hidden-sm Calendar
-    -#   
-    -# %hr
-
-    %li{class: "#{'selected' if current_page?(print_jobs_path)}"}
+    %li.nav-item{class: "#{'selected' if current_page?(print_jobs_path)}"}
       = link_to print_jobs_path do
         %i.fa.fa-fw.fa-print
         .inline.hidden-sm Print Jobs
 
-    %hr
-
-    %li{class: "#{'selected' if current_page?(products_path)}"}
+    %li.nav-item{class: "#{'selected' if current_page?(products_path)}"}
       = link_to products_path do
         %i.fa.fa-fw.fa-shopping-cart
         .inline.hidden-sm Products
 
-    %hr
-
-    %li{class: "#{'selected' if current_page?(users_path)}"}
+    %li.nav-item{class: "#{'selected' if current_page?(users_path)}"}
       = link_to users_path do
         %i.fa.fa-fw.fa-users
         .inline.hidden-sm Team
 
-    %hr
-
-    %li{class: "#{'selected' if current_page?(edit_user_registration_path)}"}
+    %li.nav-item{class: "#{'selected' if current_page?(edit_user_registration_path)}"}
       = link_to edit_user_registration_path do
         %i.fa.fa-fw.fa-cog
         .inline.hidden-sm Settings
 
-    %hr
-
-    %li
+    %li.nav-item
       = link_to destroy_user_session_path, method: :delete do
         %i.fa.fa-fw.fa-sign-out
         .inline.hidden-sm Log Out
