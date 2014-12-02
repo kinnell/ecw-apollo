@@ -1,4 +1,5 @@
-.col-md-8{:style => "padding-right: 0px;"}
+.col-md-8
+
   .panel.panel-default.project-tasks-panel
     .panel-heading
       %h4
@@ -7,72 +8,102 @@
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
         = link_to "[#{@project.product_name}]", @project.product
         = @project.name
-        = link_to "Add Item".html_safe, 'javascript:;', "data-toggle" => "collapse", 'data-target' => '#addItem', class: "btn btn-sm btn-default pull-right", style: "margin-top: -4px;"
-        %br/
+        %button.btn.btn-sm.btn-default.pull-right{data: { toggle: "collapse", target: "#addItem" }}
+          Add Item
+        %br
     .panel-body
       #addItem.collapse= render partial: "items/new"
       %ul.items-list
-        = render "projects/general_tasks", :project => @project
+        = render "projects/general_tasks", project: @project
         = render @project.items.order("created_at")
 
 .col-md-4
+
   .panel.panel-default.project-details-panel
+
     .panel-heading
       .panel-title
         Project Details
-        .btn.btn-xs.btn-warning.pull-right{"data-target" => "#edit-project-#{@project.id}-modal", "data-toggle" => "modal"}
+        %button.btn.btn-xs.btn-warning.pull-right{data: { toggle: "modal", target: "#edit-project-#{@project.id}-modal" }}
           %i.fa.fa-pencil
-        = render "projects/edit", :project => @project
+        = render "projects/edit", project: @project
+
     .panel-body
-      .col-md-4.project-label Start Date:
-      .col-md-8.project-field
-        %i.fa.fa-calendar
-        = print_date(@project.created_at, "xl")
-      .col-md-4.project-label Due Date:
-      .col-md-8.project-field
-        - if @project.due_date
+
+      .row
+        %label.col-md-4 Start Date:
+        .col-md-8
           %i.fa.fa-calendar
-          = print_date(@project.due_date, "xl")
-        - else
-          %i No Due Date
-      .col-md-4.project-label End Date:
-      .col-md-8.project-field
-        - if @project.end_date
-          %i.fa.fa-calendar
-          = print_date(@project.end_date, "xl")
-        - else
-          %i Project not completed
-      .col-md-12.project-hr
-        %hr/
-      .col-md-4.project-label Product:
-      .col-md-8.project-field= link_to @project.product_name, @project.product
-      .col-md-4.project-label Items:
-      .col-md-8.project-field= @project.items.count if @project.items
-      .col-md-4.project-label Status:
-      .col-md-8= render "projects/status", :project => @project
-      .col-md-12.project-hr
-        %hr/
-      .col-md-4.project-label Assigned By:
-      .col-md-8.project-field= @project.assigned_by.present? ? @project.assigned_by : "<i>No One</i>".html_safe
-      .col-md-4.project-label{:style => "padding-top: 4px;"}
-        %b Assigned:
-      .col-md-8.project-assigned
-        - if @project.has_users
-          - for u in @project.users.uniq
-            = render "users/photo", :user => u
-            = u.name
-            %br/
-        - else
-          %i No one assigned
-          %br/
-      .col-md-12.project-hr
-        %hr/
-      .col-md-12.project-label Description:
-      .col-md-12.project-description
-        - if @project.description.length != 0
-          = @project.description.gsub(/\n/, '<br>').html_safe
-        - else
-          %i No description provided
+          = print_date(@project.created_at, "xl")
+
+      .row
+        %label.col-md-4 Due Date:
+        .col-md-8
+          - if @project.due_date
+            %i.fa.fa-calendar
+            = print_date(@project.due_date, "xl")
+          - else
+            %i No Due Date
+
+      .row
+        .col-md-4.project-label End Date:
+        .col-md-8.project-field
+          - if @project.end_date
+            %i.fa.fa-calendar
+            = print_date(@project.end_date, "xl")
+          - else
+            %i Project not completed
+
+      .row
+        .col-md-12.project-hr
+          %hr
+
+      .row
+        .col-md-4.project-label Product:
+        .col-md-8.project-field= link_to @project.product_name, @project.product
+        
+      .row
+        .col-md-4.project-label Items:
+        .col-md-8.project-field= @project.items.count if @project.items
+        
+      .row
+        .col-md-4.project-label Status:
+        .col-md-8= render "projects/status", :project => @project
+        
+      .row
+        .col-md-12.project-hr
+          %hr
+        
+      .row
+        .col-md-4.project-label Assigned By:
+        .col-md-8.project-field= @project.assigned_by.present? ? @project.assigned_by : "<i>No One</i>".html_safe
+        
+      .row
+        .col-md-4.project-label{style: "padding-top: 4px;"}
+          %b Assigned:
+        .col-md-8.project-assigned
+          - if @project.has_users
+            - for u in @project.users.uniq
+              = render "users/photo", user: u
+              = u.name
+              %br
+          - else
+            %i No one assigned
+            %br
+        
+      .row
+        .col-md-12.project-hr
+          %hr
+        
+      .row
+        .col-md-12.project-label Description:
+        
+      .row
+        .col-md-12.project-description
+          - if @project.description.length != 0
+            = @project.description.gsub(/\n/, '<br>').html_safe
+          - else
+            %i No description provided
 
   = render partial: "comments/new"
 
