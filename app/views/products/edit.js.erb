@@ -1,4 +1,4 @@
 if ($("#edit-product-"+<%= @product.id %>+"-modal").length == 0) {
-	$("body").append("<%= j render 'products/edit', product: @product %>")
+	$("body").append("<%= j render "products/edit", product: @product %>")
 }
 $("#edit-product-"+<%= @product.id %>+"-modal").modal("show")

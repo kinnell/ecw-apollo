@@ -1,9 +1,9 @@
-$('#task_'+<%= @task.id %>).find('.task-starred > a > i').attr("class", "fa fa-star<%= '-o' unless @task.starred %>");
+$("#task_"+<%= @task.id %>).find(".task-starred > a > i").attr("class", "fa fa-star<%= "-o" unless @task.starred %>");
 
 <% if @task.item_id? %>
-	$('#task_'+<%= @task.id %>).parents('.tasks-list').html("<%= escape_javascript(render @task.item.tasks.incomplete.priority_sort) %>");
+	$("#task_"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.item.tasks.incomplete.priority_sort %>");
 <% else %>
-	$('#task_'+<%= @task.id %>).parents('.tasks-list').html("<%= escape_javascript(render @task.project.tasks.general.incomplete.priority_sort) %>");
+	$("#task_"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.project.tasks.general.incomplete.priority_sort %>");
 <% end %>
 
-$('#task_'+<%= @task.id %>).addClass('animated fadeIn');
+$("#task_"+<%= @task.id %>).addClass("animated fadeIn");

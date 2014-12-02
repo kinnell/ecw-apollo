@@ -1,4 +1,4 @@
 if ($("#edit-project-"+<%= @project.id %>+"-modal").length == 0) {
-	$("body").append("<%= escape_javascript(render 'projects/edit', :project => @project); %>")
+	$("body").append("<%= j render "projects/edit", :project => @project %>")
 }
 $("#edit-project-"+<%= @project.id %>+"-modal").modal("show")
