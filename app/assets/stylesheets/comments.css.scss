@@ -1,0 +1,65 @@
+@import 'colors';
+
+.comment {
+
+  .col-md-2 { width: 12%; }
+  .col-md-10 { width: 88%; }
+
+  .comment-user-photo {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .commenter { 
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .comment-tools {
+    float: right;
+    padding-left: 8px;
+  }
+
+  .comment-date {
+    float: right;
+    color: #666;
+    font-size: 12px;
+  }
+
+  .comment-content {
+    display: inline-block;
+    text-align: justify;
+    font-color: #333;
+  }
+
+}
+
+.comment-wall-panel .panel-body { 
+  padding-top: 20px;
+  padding-bottom: 0px;
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+#new-comment-modal {
+
+  .modal-body {
+    padding: 0px;
+
+    .row {
+      width: 100%;
+      margin: 0px;
+    }
+
+    textarea {
+      width: 100%;
+      float: left;
+      border: 0px;
+      padding: 10px;
+    }
+  }
+}

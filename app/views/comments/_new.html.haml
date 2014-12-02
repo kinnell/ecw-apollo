@@ -1,10 +1,22 @@
-.panel.panel-default.new-comment-panel
-  = form_for [@project, @project.comments.new], html: { class: "form-inline" }, remote: true do |f|
-    .panel-body
-      .form-group
-        = f.hidden_field :project_id, value: @project.id
-        = f.text_area :content, placeholder: "Type your project comment here...", class: "form-control new-comment-field", required: true, rows: 3
-    
-    .panel-footer
-      .form-group
-        = f.submit "Post update", class: "btn btn-sm btn-primary pull-right"
+#new-comment-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+
+      = form_for [@project, @project.comments.new], remote: true do |f|
+
+        .modal-header
+          %button.button.close{"data-dismiss" => "modal", "aria-hidden" => "true"} &times;
+          %h4 New Comment
+
+        .modal-body
+          .row
+            = f.hidden_field :project_id, value: @project.id
+            = f.text_area :content,
+              placeholder: "Type your project comment here...",
+              class: "form-control",
+              autofocus: true,
+              required: true,
+              rows: 3
+
+        .modal-footer
+          = f.submit "Add comment", class: "btn btn-sm btn-success"
