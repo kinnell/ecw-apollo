@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      Project Comments
+      %button.btn.btn-xs.btn-success.pull-right{data: { toggle: "modal", target: "#new-comment-modal" }}
+        %i.fa.fa-comment
+  #project-comments.panel-body
+    = render project.comments.order('created_at DESC')
+
+= render "comments/new"

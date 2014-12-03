@@ -105,13 +105,4 @@
           - else
             %i No description provided
 
-  = render "comments/new"
-
-  .panel.panel-default.comment-wall-panel
-    .panel-heading
-      .panel-title
-        Project Wall
-        %button.btn.btn-xs.btn-success.pull-right{data: { toggle: "modal", target: "#new-comment-modal" }}
-          %i.fa.fa-comment
-    #project-comments.panel-body
-      = render @project.comments.order('created_at DESC')
+  = render "comments/project_comments", project: @project
