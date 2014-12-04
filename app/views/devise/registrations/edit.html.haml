@@ -3,13 +3,13 @@
 
     .panel.panel-default
 
-      .panel-heading
-        %h4
-          %i.fa.fa-cog
-          Settings
+      = form_for resource, as: resource_name, url: registration_path(resource_name), method: :put do |f|
+        .panel-heading
+          %h4
+            %i.fa.fa-cog
+            Settings
 
-      .panel-body
-        = form_for resource, as: resource_name, url: registration_path(resource_name), method: :put do |f|
+        .panel-body
 
           .form-group
             %center
@@ -42,7 +42,7 @@
               placeholder: "Confirm Password",
               class: "form-control"
 
+        .panel-footer
+
           = f.submit "Update", class: "btn btn-md btn-success btn-block"
 
-      .panel-footer
-        = link_to "Delete my account", registration_path(resource_name), method: :delete, confirm: "Are you sure?"
