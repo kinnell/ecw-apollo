@@ -24,7 +24,7 @@
           - @users.each do |user|
             %tr
               %td
-                = image_tag user.profile_photo.url(:small), class: "project-user-photo"
+                = render user
               %td= user.name
               %td.text-center
                 - if user.confirmed?

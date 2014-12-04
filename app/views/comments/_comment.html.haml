@@ -1,7 +1,7 @@
 .comment{id: "comment-#{comment.id}"}
   .row
     .col-md-2
-      = image_tag comment.user.profile_photo.url(:small), class: "comment-user-photo"
+      = image_tag comment.user.profile_photo.url(:small), class: "profile-photo"
 
     .col-md-10
       .commenter= comment.user_name

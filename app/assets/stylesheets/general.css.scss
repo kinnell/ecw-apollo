@@ -32,13 +32,36 @@ a:hover {	text-decoration: none; }
 	}
 }
 
-.profile-photo {
+.profile-photo, .profile-photo-small {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+}
 
-  width: 50px;
-  height: 50px;
+.profile-photo {
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
+}
+
+.profile-photo-small {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.project-starred, .task-starred {
+	display: inline-block;
+  margin-right: 3px;
+
+	.fa:hover {
+		color: $golden;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+	}
+	.fa-star { color: $golden; }
+	.fa-star-o { color: #999999; }
 }

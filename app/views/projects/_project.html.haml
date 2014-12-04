@@ -11,12 +11,7 @@
 
   %td= project.assigned_by
 
-  %td
-    - if project.has_users
-      - project.users.uniq.each do |user|
-        = render "users/photo", user: user
-    - else
-      None
+  %td= render project.users.uniq
 
   %td.text-center= project.created_at.strftime("%D")
 

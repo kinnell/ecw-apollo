@@ -1,7 +1,7 @@
 %li.item{id: "item-#{item.id}"}
 
-  %h4.item-main
-    = "<i class='fa fa-#{item_type_hash[item.item_type]["icon"]} fa-fw item-type-icon'></i>".html_safe
+  %h4
+    %i.fa.fa-fw.item-type-icon{class: "fa-#{item_type_hash[item.item_type]["icon"]}"}
     .item-name= item.name
 
     %ul.tools-dropdown
@@ -16,7 +16,10 @@
             = link_to [item.project, item], method: :delete, confirm: "Are you sure?" do
               %i.fa.fa-trash-o
 
-    = link_to "<i class='fa fa-plus'></i>".html_safe, "javascript:;", "data-toggle" => "collapse", "data-target" => "#item-#{item.id}-addTask",  class: "btn btn-default btn-xs pull-right add-task-btn"
+    = link_to "javascript:;",
+      data: { toggle: "collapse", target: "#item-#{item.id}-addTask" },
+      class: "btn btn-default btn-xs add-task-btn pull-right" do
+      %i.fa.fa-plus
 
     .btn-group.item-status.pull-right
       - status_hash_type = status_hash[item.status]["type"] if status_hash[item.status]
