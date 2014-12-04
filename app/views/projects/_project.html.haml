@@ -2,7 +2,7 @@
 
   %td
     .project-starred
-      =link_to project_path(project, project: { starred: project.starred.! }), remote: true, method: :patch do
+      =link_to project_path(project, project: { starred: project.starred.! }), method: :patch do
         %i.fa{class: "#{project.starred ? 'fa-star' : 'fa-star-o'}"} 
 
   %td= project.product_name

@@ -1,0 +1,16 @@
+.col-md-12
+
+  .panel.panel-default
+
+    .panel-heading
+      %h4
+        %i.fa.fa-folder
+        Projects
+        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-project-modal" } } New Project
+      = render "new"
+
+    .panel-body
+
+      #projects-table
+        = render "index", q: @q, projects: @projects
+
