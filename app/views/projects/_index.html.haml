@@ -1,0 +1,76 @@
+= search_form_for q, remote: true do |f|
+
+  .form-group.col-md-2
+    %label Search:
+    = f.text_field :name_or_product_name_cont,
+      class: "form-control input-sm"
+
+  .form-group.col-md-2
+    %label Product:
+    = f.select :product_name_eq,
+      options_for_select(Product.all.map{ |p| [p.name, p.name] }, q.product_name_eq),
+      { include_blank: "All Products" },
+      class: "form-control input-sm",
+      onchange: "$(this).parents('form').trigger('submit.rails');"
+
+  .form-group.col-md-2
+    %label Assigned:
+    = f.select :users_name_eq,
+      options_for_select(User.all.map{ |u| [u.name, u.name] }, q.users_name_eq),
+      { include_blank: "All Users" },
+      class: "form-control input-sm",
+      onchange: "$(this).parents('form').trigger('submit.rails');"
+
+  .form-group.col-md-2
+    %label Status:
+    = f.select :status_eq,
+      options_for_select(status_hash.keys.map{ |s| [s, s] }, q.status_eq),
+      { include_blank: "All Statuses" },
+      class: "form-control input-sm",
+      onchange: "$(this).parents('form').trigger('submit.rails');"
+
+  .form-group.col-md-2
+    %label From:
+    = f.date_field :created_at_or_end_date_or_due_date_gteq,
+      class: "form-control input-sm",
+      onchange: "$(this).parents('form').trigger('submit.rails');"
+
+  .form-group.col-md-2
+    %label To:
+    = f.date_field :created_at_or_end_date_or_due_date_lteq,
+      class: "form-control input-sm",
+      onchange: "$(this).parents('form').trigger('submit.rails');"
+
+%br
+
+%table.table.table-hover.table-responsive
+  %thead
+    %tr
+      %th
+        %i.fa.fa-star{style: "color: #666"}
+      %th= sort_link(q, :product_name, "Product")
+      %th= sort_link(q, :name, "Project")
+      %th= sort_link(q, :assigned_by, "Assigned By")
+      %th Assigned
+      %th.text-center= sort_link(q, :created_at, "Start Date")
+      %th.text-center End Date
+      %th.text-center= sort_link(q, :status, "Status")
+      %th.text-center Actions
+
+  %tbody= render projects
+
+:javascript
+  $("#q_name_or_product_name_cont").keyup(function() {
+    delay(function(){
+      $("#q_name_or_product_name_cont").parents("form").trigger("submit.rails"); 
+    }, 500);
+  });
+
+  var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    };
+  })();
+

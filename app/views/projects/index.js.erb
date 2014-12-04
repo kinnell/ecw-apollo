@@ -1,1 +1,1 @@
-$("tbody").html("<%= j render @projects %>") 
+$("#projects-table").html("<%= j render 'projects/index', q: @q, projects: @projects %>")

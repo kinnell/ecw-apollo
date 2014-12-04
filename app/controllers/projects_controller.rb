@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
     @q = Project.all.search(params[:q])
     @q.users_name_eq = current_user.name unless params[:q] && params[:q][:users_name_eq]
     @projects = @q.result(distinct: true)
+    @projects = @projects.priority_sort unless params[:q] && params[:q][:s]
 
     respond_to do |format|
       format.html
