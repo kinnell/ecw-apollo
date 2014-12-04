@@ -1,5 +1,5 @@
 .col-md-12
-  .panel.panel-default
+  .panel.panel-default.panel-page-header
     .panel-heading
       %h4
         .project-starred
@@ -7,6 +7,11 @@
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
         = link_to "[#{@project.product_name}]", @project.product
         = @project.name
+        .pull-right
+          = render "projects/status", project: @project
+          %button.btn.btn-xs.btn-warning{data: { toggle: "modal", target: "#edit-project-#{@project.id}-modal" }, style: "padding: 3px 8px;"}
+            %i.fa.fa-pencil
+      = render "projects/edit", project: @project
 
 .col-md-8
 
@@ -30,9 +35,6 @@
     .panel-heading
       .panel-title
         Project Details
-        %button.btn.btn-xs.btn-warning.pull-right{data: { toggle: "modal", target: "#edit-project-#{@project.id}-modal" }}
-          %i.fa.fa-pencil
-        = render "projects/edit", project: @project
 
     .panel-body
 
@@ -58,12 +60,6 @@
         %label.col-md-4 Assigned:
         .col-md-8= render @project.users.uniq
 
-      %hr
-
-      .row
-        %label.col-md-4 Status:
-        .col-md-8= render "projects/status", project: @project
-        
       %hr
         
       .row
