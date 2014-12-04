@@ -4,7 +4,7 @@
 
   .user-banner
     = link_to projects_path do
-      %center= image_tag current_user.profile_photo.url(:small), class: "user-photo profile-photo-large"
+      %center= image_tag current_user.profile_photo.url(:thumb), class: "user-photo profile-photo-large"
 
   %ul.nav.nav-pills.nav-stacked
 
