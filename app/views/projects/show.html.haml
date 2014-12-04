@@ -1,14 +1,19 @@
-.col-md-8
-
-  .panel.panel-default.project-tasks-panel
+.col-md-12
+  .panel.panel-default
     .panel-heading
       %h4
         .project-starred
-          =link_to project_path(@project, project: { starred: @project.starred.! }), method: :patch, remote: true do
+          =link_to project_path(@project, project: { starred: @project.starred.! }), method: :patch do
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
         = link_to "[#{@project.product_name}]", @project.product
         = @project.name
 
+.col-md-8
+
+  .panel.panel-default.project-tasks-panel
+    .panel-heading
+      .panel-title
+        Project Tasks
         %button.btn.btn-sm.btn-default.pull-right{data: { toggle: "collapse", target: "#addItem" }}
           Add Item
 
