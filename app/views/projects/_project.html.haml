@@ -21,7 +21,10 @@
     - else
       = project.due_date.strftime("%D") if project.due_date
 
-  %td.text-center= render "projects/status", project: project
+  %td.text-center
+    %span.label{class: "label-#{status_hash[project.status]["type"]}", style: "padding: 5px 10px;"}
+      %i.fa.fa-fw{class: "fa-#{status_hash[project.status]["icon"]}"}
+      = project.status
 
   %td.text-center
     = link_to edit_project_path(project), class: "button btn btn-xs btn-warning", remote: true do
