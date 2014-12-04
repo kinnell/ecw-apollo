@@ -66,8 +66,7 @@
 	.btn { background-color: #F9F9F9; }
 	.close { padding-top: 4px; }
 
-	#addTask-dateBtn, #addTask-datefield, #addTask-timeBtn, #addTask-timefield { display: inline-block; }
-	#addTask-dateBtn, #addTask-timeBtn { padding: 8px 10px; }
+	#addTask-datefield, #addTask-timefield { display: inline-block; }
 	#addTask-datefield, #addTask-timeBtn, #addTask-timefield { display: none; }
 
 }

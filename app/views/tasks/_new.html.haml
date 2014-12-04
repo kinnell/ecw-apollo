@@ -1,36 +1,46 @@
 %center
 
-  = form_for [@project, @project.tasks.new], :html => {:class => 'form-inline add-task'}, :remote => true do |f|
+  = form_for [@project, @project.tasks.new], html: { class: "form-inline add-task" }, remote: true do |f|
 
     .form-group
       %i.fa.fa-level-up.fa-rotate-90
       .add-task-title
         Add Task
 
-      = f.hidden_field :project_id, :value => @project.id, class: "form-control"
-      = f.hidden_field :created_by, :value => current_user.id
+      = f.hidden_field :item_id, value: item ? item.id : nil
 
-      - if item
-        = f.hidden_field :item_id, :value => item.id
-      - else
-        = f.hidden_field :item_id, :value => nil
+      = f.text_field :name,
+        placeholder: "Task Name",
+        required: true,
+        class: "form-control input-sm add-task-name"
 
-      = f.text_field :name, :placeholder => "Task Name", class: "form-control input-sm add-task-name", id: "item_#{item.id if item}_newTask_taskName", :required => true
+      = f.collection_select :user_id, @project.users.uniq, :id, :name,
+        { required: true, selected: current_user.id },
+        { class: "form-control input-sm add-task-user" }
 
-      = f.collection_select(:user_id, @project.users.uniq, :id , :name, {:required => true, :selected => current_user.id}, {:class => 'form-control input-sm add-task-user'})
+      = link_to "javascript:;",
+        data: { toggle: "tooltip", placement: "bottom", title: "Add Due Date" },
+        onclick: "$(this).hide(); $(this).siblings().show(); $(this).siblings('#addTask-timefield').hide();",
+        class: "btn btn-sm btn-default" do
+        %i.fa.fa-calendar
 
-      %i#addTask-dateBtn.fa.fa-calendar.btn.btn-sm.btn-default.has_tooltip{"data-placement" => "bottom", "data-toggle" => "tooltip", :onclick => "$(this).hide(); $(this).siblings().show(); $(this).siblings('#addTask-timefield').hide(); ", :title => "Add Due Date"}
+      = f.date_field :due_date_date,
+        id: "addTask-datefield",
+        class: "form-control input-sm",
+        onchange: "$(this).siblings('#addTask-timefield').val('17:00:00.000');"
 
-      = f.date_field :due_date_date, id: "addTask-datefield", class: "form-control input-sm", :onchange => "$(this).siblings('#addTask-timefield').val('17:00:00.000');"
+      = link_to "javascript:;",
+        data: { toggle: "tooltip", placement: "bottom", title: "Add Due Time" },
+        onclick: "$(this).hide(); $(this).siblings('#addTask-timefield').show();",
+        id: "addTask-timeBtn",
+        class: "btn btn-sm btn-default" do
+        %i.fa.fa-clock-o
 
-      %i#addTask-timeBtn.fa.fa-clock-o.btn.btn-sm.btn-default.has_tooltip{"data-placement" => "bottom", "data-toggle" => "tooltip", :onclick => "$(this).hide(); $(this).siblings('#addTask-timefield').show();", :title => "Add Due Time"}
-
-      = f.time_field :due_date_time, id: "addTask-timefield", class: "form-control input-sm"
+      = f.time_field :due_date_time,
+        id: "addTask-timefield",
+        class: "form-control input-sm"
 
       = f.submit "Add Task", class: "btn btn-sm btn-default"
                                   
-      - if item
-        %button.close.pull-right{"data-target" => "#item_#{item.id}_addTask", "data-toggle" => "collapse", :type => "button"} &times;
-      - else
-        %button.close.pull-right{"data-target" => "#item_general_addTask", "data-toggle" => "collapse", :type => "button"} &times;
+      %button.close.pull-right{data: { target: "#item-#{ item ? item.id : 0 }-addTask", toggle: "collapse" }, type: "button"} &times;
 

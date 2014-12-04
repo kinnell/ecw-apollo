@@ -7,16 +7,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-
-      if @task.save
-        respond_to do |format|
-          format.html { redirect_to :back, notice: 'Task was successfully created.' }
-          format.js
-        end
-      else
-        redirect_to :back
-      end
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.create(task_params)
+    @task.update(created_by: current_user.id)
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Task was successfully created.' }
+      format.js
+    end
   end
 
   def update

@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
-		render "edit.js.erb"
+    respond_to { |format| format.js }
 	end
 
 	def create
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			redirect_to project_path(@project)
 		else
-			render "new"
+      redirect_to :back
 		end
 	end
 
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
 				format.js
 			end
 		else
-		  render "edit"
+      redirect_to :back
 		end
 	end
 
@@ -52,13 +52,6 @@ class ProjectsController < ApplicationController
 		@project.destroy
 		redirect_to projects_url
 	end
-
-  def toggle_starred
-  	@project = Project.find(params[:id])
-  	if @project.update_attributes(:starred => @project.starred.!)
-  		redirect_to :back
-  	end
-  end
 
 	private
 
