@@ -3,13 +3,12 @@
 <% if @task.completed %>
 	$("#task-"+<%= @task.id %>).addClass("task-completed");
 <% else %>
-	$("#task-"+<%= @task.id %>).removeClass("task-completed");
+  $("#task-"+<%= @task.id %>).removeClass("task-completed");
 <% end %>
 
-$("#task-"+<%= @task.id %>).addClass("animated fadeOut").delay(500).slideUp();
+$("#task-"+<%= @task.id %>).addClass("animated fadeOut").slideUp();
 
 setTimeout(function(){
 	$("#item-"+<%= item_id %>+"-tasks").html("<%= j render "items/tasks", { tasks: @task.item_tasks, item_id: item_id } %>");
-},1000);
-
+},500);
 

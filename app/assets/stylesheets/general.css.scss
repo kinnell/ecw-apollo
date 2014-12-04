@@ -6,7 +6,8 @@ html, body {
 
 hr { border-top: 1px solid #DDD; }
 
-a:hover {	text-decoration: none; }
+a, a:hover {	text-decoration: none !important; }
+
 
 .inline { display: inline; }
 
