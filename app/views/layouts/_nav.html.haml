@@ -1,40 +1,46 @@
-%nav.side-nav.col-md-2
+%nav.side-nav.col-md-1
 
-  .brand= link_to "apollo 1.7", changelog_path
+  %center.brand= link_to "apollo", changelog_path
 
   .user-banner
     = link_to projects_path do
-      = image_tag current_user.profile_photo.url(:small), class: "user-photo profile-photo"
-    .user-name.hidden-sm= current_user.name
+      %center= image_tag current_user.profile_photo.url(:small), class: "user-photo profile-photo-large"
 
   %ul.nav.nav-pills.nav-stacked
 
     %li.nav-item{class: "#{'selected' if params[:controller] == 'projects'}"}
       = link_to projects_path, data: { keybinding: "p" } do
-        %i.fa.fa-fw.fa-folder-o
-        .inline.hidden-sm Projects
+        %center
+          %i.fa.fa-fw.fa-folder-o
+          .hidden-sm Projects 
 
     %li.nav-item{class: "#{'selected' if current_page?(print_jobs_path)}"}
       = link_to print_jobs_path do
-        %i.fa.fa-fw.fa-print
-        .inline.hidden-sm Print Jobs
+        %center
+          %i.fa.fa-fw.fa-print
+          .hidden-sm Print Jobs
 
     %li.nav-item{class: "#{'selected' if current_page?(products_path)}"}
       = link_to products_path do
-        %i.fa.fa-fw.fa-shopping-cart
-        .inline.hidden-sm Products
+        %center
+          %i.fa.fa-fw.fa-shopping-cart
+          .hidden-sm Products 
 
     %li.nav-item{class: "#{'selected' if current_page?(users_path)}"}
       = link_to users_path do
-        %i.fa.fa-fw.fa-users
-        .inline.hidden-sm Team
+        %center
+          %i.fa.fa-fw.fa-users
+          .hidden-sm Team 
 
     %li.nav-item{class: "#{'selected' if current_page?(edit_user_registration_path)}"}
       = link_to edit_user_registration_path do
-        %i.fa.fa-fw.fa-cog
-        .inline.hidden-sm Settings
+        %center
+          %i.fa.fa-fw.fa-cog
+          .hidden-sm Settings 
 
     %li.nav-item
-      = link_to destroy_user_session_path, method: :delete do
-        %i.fa.fa-fw.fa-sign-out
-        .inline.hidden-sm Log Out
+      = link_to destroy_user_session_path,
+        method: :delete do
+        %center
+          %i.fa.fa-fw.fa-sign-out
+          .hidden-sm Log Out
