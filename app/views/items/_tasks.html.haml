@@ -4,5 +4,8 @@
   %ul.tasks-list{id: "item-#{item_id}-incompleteTasks"}= render tasks.incomplete.priority_sort
 
 - if tasks.completed.any?
-  = link_to "Completed Tasks (#{tasks.completed.count})".html_safe, "javascript:;", "data-toggle" => "collapse", "data-target" => "#item_#{item_id}_completedTasks", class: "title-sm"
-  %ul.tasks-list.collapse{id: "item_#{item_id}_completedTasks"}= render tasks.completed.order("completed_at")
+  = link_to "javascript:;",
+    data: { toggle: "collapse", target: "#item-#{item_id}-completedTasks" },
+    class: "title-sm" do
+    Completed Tasks (#{tasks.completed.count})
+  %ul.tasks-list.collapse{id: "item-#{item_id}-completedTasks"}= render tasks.completed.order("completed_at")

@@ -21,16 +21,26 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update_attributes!(task_params)
-    if param_updated?(:completed)
-      respond_to { |format| format.js }
-    else
-      respond_to do |format|
-        format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
-        format.js
-      end
+    @task.update(task_params)
+    respond_to do |format|
+      format.html { redirect_to @task.project, notice: 'Task was successfully updated.' }
+      format.js
     end
   end
+
+  def toggle_starred
+    @task = Task.find(params[:id])
+    @task.update(starred: @task.starred.!)
+    respond_to { |format| format.js }
+  end
+
+  def toggle_completed
+    @task = Task.find(params[:id])
+    @task.update(completed: @task.completed.!)
+    @task.update(completed_at: DateTime.now, starred: false) if @task.completed
+    respond_to { |format| format.js }
+  end
+  
 
   def destroy
     @task = Task.find(params[:id])

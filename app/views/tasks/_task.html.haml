@@ -1,13 +1,15 @@
 %li.task{class: "#{'task-late' if task.late? && !task.completed} #{'task-completed' if task.completed}", id: "task-#{task.id}"}
 
   .task-starred{style: "#{'visibility: hidden;' if task.completed}"}
-    = link_to project_task_path(task.project, task, task: { starred: task.starred.! }), method: :patch, remote: true do
+    = link_to toggle_starred_project_task_path(task.project, task), method: :patch, remote: true do
       %i.fa{class: "#{task.starred ? 'fa-star' : 'fa-star-o'}"}
 
-  = form_for [task.project, task], remote: true, authenticity_token: true, html: {class: "task-checkbox"} do |f|
-    = f.hidden_field :completed_at, value: DateTime.now
-    = f.hidden_field :starred, value: false
-    = f.check_box :completed, onchange: "$(this.form).trigger('submit.rails');", disabled: task.user != current_user
+  = link_to toggle_completed_project_task_path(task.project, task),
+    method: :patch,
+    remote: true,
+    disabled: task.user != current_user,
+    class: "task-checkbox" do
+    = check_box_tag "completed", 1, task.completed
 
   .task-name= task.name
 

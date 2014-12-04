@@ -7,7 +7,10 @@ Apollo::Application.routes.draw do
 
   resources :projects, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
     resources :items, only: [:edit, :create, :update, :destroy]
-    resources :tasks, only: [:edit, :create, :update, :destroy]
+    resources :tasks, only: [:edit, :create, :update, :destroy] do
+      patch :toggle_starred, on: :member
+      patch :toggle_completed, on: :member
+    end
     resources :comments, only: [:create, :destroy]
   end
 

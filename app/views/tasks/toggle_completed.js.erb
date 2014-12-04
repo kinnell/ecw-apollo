@@ -1,21 +1,15 @@
 <% item_id = @task.item_id || 0 %>
 
 <% if @task.completed %>
-	$("#task_"+<%= @task.id %>).addClass("task-completed");
+	$("#task-"+<%= @task.id %>).addClass("task-completed");
 <% else %>
-	$("#task_"+<%= @task.id %>).removeClass("task-completed");
+	$("#task-"+<%= @task.id %>).removeClass("task-completed");
 <% end %>
 
-$("#task_"+<%= @task.id %>).addClass("animated fadeOut").delay(200).slideUp();
+$("#task-"+<%= @task.id %>).addClass("animated fadeOut").delay(500).slideUp();
 
 setTimeout(function(){
-
-	$("#item_"+<%= item_id %>+"_tasks").html("<%= j render "items/tasks", { :tasks => (@task.item.present? ? @task.item.tasks : @task.project.tasks.general), :item_id => item_id } %>");
-
-	<% unless @task.completed %>$("#item_"+<%= item_id %>+"_completedTasks").addClass("in");<% end %>
-
-	$("#task_"+<%= @task.id %>).addClass("animated fadeIn");
-
-},500);
+	$("#item-"+<%= item_id %>+"-tasks").html("<%= j render "items/tasks", { tasks: @task.item_tasks, item_id: item_id } %>");
+},1000);
 
 
