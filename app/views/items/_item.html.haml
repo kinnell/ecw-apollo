@@ -51,6 +51,5 @@
   .collapse{id: "item-#{item.id}-addTask"}
     = render "tasks/new", item: item
 
-  - if item.tasks.any?
-    .tasks-list-box{id: "item-#{item.id}-tasks", style: "margin-bottom: 15px;"}
-      = render "items/tasks", tasks: item.tasks, item_id: item.id
+  .tasks-list-box{id: "item-#{item.id}-tasks", style: "#{'margin-bottom: 15px;' if item.tasks.any?}"}
+    = render "items/tasks", tasks: item.tasks, item_id: item.id

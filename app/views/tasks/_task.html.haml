@@ -13,7 +13,8 @@
 
   .task-name= task.name
 
-  .task-user= "(#{task.user_name})"
+  .task-user
+    = "(#{task.user_name})" if task.user != current_user
   
   %ul.tools-dropdown
     %li.dropdown
