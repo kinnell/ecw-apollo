@@ -46,17 +46,6 @@
       %hr
 
       .row
-        %label.col-md-4 Product:
-        .col-md-8= link_to @project.product_name, @project.product
-        
-        
-      .row
-        %label.col-md-4 Status:
-        .col-md-8= render "projects/status", project: @project
-        
-      %hr
-        
-      .row
         %label.col-md-4 Assigned By:
         .col-md-8= @project.assigned_by || "No One"
         
@@ -66,6 +55,12 @@
 
       %hr
 
+      .row
+        %label.col-md-4 Status:
+        .col-md-8= render "projects/status", project: @project
+        
+      %hr
+        
       .row
         %label.col-md-12 Description:
         .col-md-12.project-description
