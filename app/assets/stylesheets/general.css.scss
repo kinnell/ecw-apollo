@@ -61,12 +61,14 @@ a:hover {	text-decoration: none; }
   margin-right: 3px;
 
 	.fa:hover {
-		color: $golden;
     -webkit-transition: all .25s ease-in-out;
     -moz-transition: all .25s ease-in-out;
     -o-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
 	}
 	.fa-star { color: $golden; }
-	.fa-star-o { color: #999999; }
+  .fa-star:hover { color: #BBBBBB; }
+	.fa-star-o { color: #BBBBBB; }
+  .fa-star-o:hover { color: $golden; }
+
 }
