@@ -6,9 +6,12 @@
       %h4
         %i.fa.fa-print
         Print Jobs
-        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } } New Print Job
+        %button.btn.btn-success.btn-sm.btn-margin.pull-right{data: { toggle: "modal", target: "#new-printJob-modal" } }
+          %i.fa.fa-plus-circle.btn-margin
+          Create a new print job 
         = link_to print_jobs_path(format: "xls"),
           class: "btn btn-primary btn-sm btn-margin pull-right" do
+          %i.fa.fa-download.btn-margin
           Download as XLS
 
     .panel-body

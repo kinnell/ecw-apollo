@@ -24,8 +24,9 @@
     .panel-heading
       .panel-title
         Project Tasks
-        %button.btn.btn-sm.btn-default.pull-right{data: { toggle: "collapse", target: "#addItem" }}
-          Add Item
+        %button.btn.btn-sm.btn-success.pull-right{data: { toggle: "collapse", target: "#addItem" }}
+          %i.fa.fa-plus-circle.btn-margin
+          Create a new item 
 
     .panel-body
       #addItem.collapse= render partial: "items/new"
