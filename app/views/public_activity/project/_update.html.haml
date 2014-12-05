@@ -1,0 +1,11 @@
+.activity
+  %span
+    = image_tag activity.owner.profile_photo.url(:small), class: "profile-photo"
+  .activity-desk
+    .panel
+      .panel-body
+        .arrow
+        -# %h4= "#{time_ago_in_words(activity.created_at)} ago"
+        %p
+          %b= activity.owner.name
+          updated this project.

@@ -21,6 +21,7 @@ gem "paperclip", "~> 3.0"
 gem "aws-sdk", "~> 1.20.0"
 gem "date_time_attribute"
 gem "ransack"
+gem "public_activity"
 
 gem "mousetrap-rails"
 gem "haml-rails"

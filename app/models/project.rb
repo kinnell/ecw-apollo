@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
 	include DateTimeAttribute
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller.current_user }
 
 	belongs_to :product
 	delegate :name, :to => :product, prefix: true

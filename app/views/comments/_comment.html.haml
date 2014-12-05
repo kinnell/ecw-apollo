@@ -1,22 +1,17 @@
 .comment{id: "comment-#{comment.id}"}
-  .row
-    .col-md-2
-      = image_tag comment.user.profile_photo.url(:small), class: "profile-photo"
-
-    .col-md-10
-      .commenter= comment.user_name
-
-      = link_to [comment.project, comment], method: :delete,
-        remote: true,
-        data: { title: "Delete comment", toggle: "tooltip", placement: "bottom" },
-        confirm: "Are you sure?",
-        class: "comment-tools" do
-        %i.fa.fa-trash-o
-
-      .comment-date= "#{time_ago_in_words(comment.created_at)} ago"
-
-      %br
-
-      .comment-content= comment.content
-
+  %span
+    = image_tag comment.user.profile_photo.url(:small), class: "profile-photo"
+  .comment-desk
+    .panel
+      .panel-body
+        .arrow
+        %h4
+          %b= comment.user_name 
+          .pull-right
+            = link_to [comment.project, comment], method: :delete,
+              remote: true,
+              confirm: "Are you sure?" do
+              %i.fa.fa-trash-o
+            = "#{time_ago_in_words(comment.created_at)} ago"
+        %p= comment.content
   %hr
