@@ -1,3 +1,4 @@
 $("#project-comments").prepend("<%= j render @comment %>")
 $("#new_comment").trigger("reset")
 $("#new-comment-modal").modal("hide")
+$("#comment-"+<%= @comment.id %>).addClass("animated fadeInDown")

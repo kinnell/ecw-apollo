@@ -7,7 +7,12 @@
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
         = link_to "[#{@project.product_name}]", @project.product
         = @project.name
-        .pull-right
+        .pull-right{style: "font-size: 12px;"}
+          %b Assigned By:
+          = @project.assigned_by || "No One"
+          |
+          %b Assigned:
+          = render @project.users.uniq
           = render "projects/status", project: @project
           %button.btn.btn-xs.btn-warning{data: { toggle: "modal", target: "#edit-project-#{@project.id}-modal" }, style: "padding: 3px 8px;"}
             %i.fa.fa-pencil
@@ -49,16 +54,6 @@
       .row
         %label.col-md-4 End Date:
         .col-md-8= print_date(@project.end_date, "xl") || "-"
-
-      %hr
-
-      .row
-        %label.col-md-4 Assigned By:
-        .col-md-8= @project.assigned_by || "No One"
-        
-      .row
-        %label.col-md-4 Assigned:
-        .col-md-8= render @project.users.uniq
 
       %hr
         
