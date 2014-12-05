@@ -1,6 +1,6 @@
 = search_form_for q, remote: true do |f|
 
-  .form-group.col-md-2
+  .form-group.col-md-4
     %label Search:
     = f.text_field :name_or_product_name_cont,
       class: "form-control input-sm"
@@ -26,18 +26,6 @@
     = f.select :status_eq,
       options_for_select(status_hash.keys.map{ |s| [s, s] }, q.status_eq),
       { include_blank: "All Statuses" },
-      class: "form-control input-sm",
-      onchange: "$(this).parents('form').trigger('submit.rails');"
-
-  .form-group.col-md-2
-    %label From:
-    = f.date_field :created_at_or_end_date_or_due_date_gteq,
-      class: "form-control input-sm",
-      onchange: "$(this).parents('form').trigger('submit.rails');"
-
-  .form-group.col-md-2
-    %label To:
-    = f.date_field :created_at_or_end_date_or_due_date_lteq,
       class: "form-control input-sm",
       onchange: "$(this).parents('form').trigger('submit.rails');"
 

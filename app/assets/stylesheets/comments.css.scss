@@ -74,6 +74,7 @@
   // font-size: 18px;
   // margin-right: 10px;
   // color: #bebebe;
+  opacity: 0;
   margin-left: 5px;
   float: right;
 }
@@ -102,6 +103,11 @@
   display: inline-block;
   margin-bottom: 10px;
   width: 100%;
+}
+
+
+.comment-desk:hover {
+  i { opacity: 1.0; }
 }
 
 
