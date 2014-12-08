@@ -42,6 +42,17 @@
 
 .panel-page-header {
   margin-top: -20px;
+
+  .header-block {
+    padding-left: 25px;
+    margin-top: -3px;
+    float: right;
+    font-size: 12px;
+    line-height: 25px;
+
+    b { padding-right: 4px; }
+    // i { padding-right: 4px; }
+  }
 }
 
 
