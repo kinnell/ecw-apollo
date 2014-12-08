@@ -56,7 +56,6 @@
     .panel-body
 
       .row
-        %label.col-md-12 Description:
         .col-md-12.project-description
           - if @project.description.length != 0
             = @project.description.gsub(/\n/, '<br>').html_safe
