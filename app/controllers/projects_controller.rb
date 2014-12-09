@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-	before_action :set_project, only: [:show, :edit, :update, :destroy]
+	before_action :set_project, only: [:show, :edit, :update, :destroy, :update_status_of]
 
 	def index
     @q = Project.all.search(params[:q])
@@ -42,14 +42,16 @@ class ProjectsController < ApplicationController
 	end
 
 	def update
-		if @project.update(project_params)
-			respond_to do |format|
-				format.html { redirect_to :back, notice: "Project was successfully updated." }
-				format.js
-			end
-		else
-      redirect_to :back
-		end
+		@project.update(project_params)
+    if params[:project][:status] == "Completed" || params[:project][:status] == "Cancelled"
+      @project.update(end_date: DateTime.now)
+    elsif params[:project][:status]
+      @project.update(end_date: nil)
+    end
+    respond_to do |format|
+      format.html { redirect_to :back, notice: "Project was successfully updated." }
+      format.js
+    end
 	end
 
 	def destroy
