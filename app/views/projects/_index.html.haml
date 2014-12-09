@@ -29,6 +29,9 @@
       class: "form-control input-sm",
       onchange: "$(this).parents('form').trigger('submit.rails');"
 
+  .form-group.col-md-2
+    %p.pull-right{style: "margin-top: 29px"}= "#{@projects.count} Projects Found"
+
 %br
 
 %table.table.table-hover.table-responsive
