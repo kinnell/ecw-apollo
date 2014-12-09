@@ -8,9 +8,9 @@ class ProjectsController < ApplicationController
     @q.users_name_eq = current_user.name unless params[:q] && params[:q][:users_name_eq]
     @projects = @q.result(distinct: true)
 
-    @projects = @projects.incomplete unless params[:q] && params[:q][:status_eq]
+    @projects = @projects.active unless params[:q] && params[:q][:status_eq]
 
-    @projects = @projects.priority_sort unless params[:q] && params[:q][:s]
+    @projects = @projects.sort_by_priority_and_status unless params[:q] && params[:q][:s]
 
     respond_to do |format|
       format.html

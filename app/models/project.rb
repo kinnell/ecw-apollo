@@ -4,52 +4,50 @@ class Project < ActiveRecord::Base
   tracked owner: ->(controller, model) { controller.current_user }
 
 	belongs_to :product
-	delegate :name, :to => :product, prefix: true
+  delegate :name, to: :product, prefix: true
 
 	has_many :tasks, dependent: :destroy
 	has_many :items, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
-	has_many :assignments, :dependent => :destroy
-	has_many :users, :through => :assignments
-
-	accepts_nested_attributes_for :assignments, :reject_if => lambda { |a| a[:user_id].blank? }, :allow_destroy => true
+  has_many :assignments, dependent: :destroy
+	has_many :users, through: :assignments
+	accepts_nested_attributes_for :assignments, :reject_if => lambda { |a| a[:user_id].blank? }, allow_destroy: true
 
 	validates :name, presence: true
 	validates :product_id, presence: true
 
 	default_scope { includes(:users, :product) }
-
+	scope :active, -> { where(status: ["In Progress", "Waiting", "On Hold", "In Queue"]) }
 	scope :completed, -> { where(status: ["Completed", "Cancelled"]) }
-	scope :incomplete, -> { where.not(status: ["Completed", "Cancelled"]) }
-
-	scope :unassigned, -> { includes(:assignments).where(:assignments => {user_id: nil}) }
+	scope :unassigned, -> { includes(:assignments).where(assignments: { user_id: nil }) }
 
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
-	def creator() User.find(self.created_by) end
+	def creator
+    User.find(self.created_by)
+  end
 
-	def progress_percent
-		tasks.exists? ? (100*(tasks.completed.count.to_f/tasks.count.to_f)).round : 0
+	def self.sort_by_priority_and_status
+    where(starred: true).sort_by_status +
+    where(starred: false).sort_by_status
 	end
 
-	def self.completed_sort
-		priority_sort.sort_by! {|p| p.end_date}
-	end
+  def self.sort_by_status
+    where(status: "In Progress").order("due_date, name") +
+    where(status: "Waiting").order("due_date, name") +
+    where(status: "On Hold").order("due_date, name") +
+    where(status: "In Queue").order("due_date, name") +
+    where(status: "Completed").order("end_date, name") +
+    where(status: "Cancelled").order("end_date, name")
+  end
 
-	def self.priority_sort
-		where(:starred => true).sort_by_status + where(:starred => false).sort_by_status
-	end
+  def active?
+    ["In Progress", "Waiting", "On Hold", "In Queue"].include? status
+  end
 
-	def self.sort_by_status
-		(where(:status => "In Progress").sort_by_dueDate + where(:status => "Waiting").sort_by_dueDate + where(:status => "On Hold").sort_by_dueDate + where(:status => "In Queue").sort_by_dueDate + where(:status => "Completed").sort_by_dueDate + where(:status => "Cancelled").sort_by_dueDate).uniq
-	end
-
-	def self.sort_by_dueDate() order("due_date, name") end
-
-	def late?() due_date ? ((due_date < DateTime.now) && (status != "Completed") && (status != "Cancelled")) : false end
-
-	def has_users() users.exists end
-
+	def late?
+    active? && due_date && due_date < DateTime.now
+  end
 
 end

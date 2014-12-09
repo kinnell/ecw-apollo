@@ -47,7 +47,7 @@
                   = @project.assigned_by.present? ? @project.assigned_by : "<i style='color: #999'>No One</i>".html_safe
                 %p
                   %b Assigned:
-                  = @project.has_users ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe
+                  = @project.users.any? ? @project.users.uniq.map(&:name).join(", ") : "<i style='color: #999'>No One</i>".html_safe
                 %p
                   %b Description:
                   %br/

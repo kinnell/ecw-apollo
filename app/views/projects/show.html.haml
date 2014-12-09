@@ -26,7 +26,7 @@
           = render @project.users.uniq
         .header-block
           %b Assigned By:
-          = @project.assigned_by || "No One"
+          = @project.assigned_by.present? ? @project.assigned_by : "No One"
       = render "projects/edit", project: @project
 
 .col-md-8{style: "padding-top: 55px;"}
