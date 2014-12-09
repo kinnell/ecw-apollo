@@ -24,6 +24,12 @@ class Project < ActiveRecord::Base
 
 	date_time_attribute :due_date, time_zone: "Eastern Time (US & Canada)"
 
+  before_save :set_end_date, if: :status_changed?
+
+  def set_end_date
+    self.end_date = active? ? nil : DateTime.now
+  end
+
 	def creator
     User.find(self.created_by)
   end

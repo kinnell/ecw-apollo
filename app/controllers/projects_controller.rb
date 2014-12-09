@@ -43,11 +43,6 @@ class ProjectsController < ApplicationController
 
 	def update
 		@project.update(project_params)
-    if params[:project][:status] == "Completed" || params[:project][:status] == "Cancelled"
-      @project.update(end_date: DateTime.now)
-    elsif params[:project][:status]
-      @project.update(end_date: nil)
-    end
     respond_to do |format|
       format.html { redirect_to :back, notice: "Project was successfully updated." }
       format.js
