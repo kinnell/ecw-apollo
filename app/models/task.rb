@@ -12,14 +12,8 @@ class Task < ActiveRecord::Base
 
 	default_scope { includes(:project, :user, :notes) }
 
-	scope :completed, -> { where(:completed => true) }
-	scope :incomplete, -> { where(:completed => false) }
-
-	scope :notDue, -> { where(:due_date => nil) }
-	scope :due, -> { where.not(:due_date => nil) }
-
-	scope :starred, -> { where(:starred => true) }
-	scope :notStarred, -> { where(:starred => false) }
+	scope :completed, -> { where(completed: true) }
+	scope :incomplete, -> { where(completed: false) }
 
 	validates :name, presence: true
 
@@ -29,17 +23,23 @@ class Task < ActiveRecord::Base
     if item then item.tasks else project.tasks.general end
   end
 
-	def late?() due_date < DateTime.now if due_date end
+	def self.general
+    where(:item_id => nil)
+  end
 
-	def self.general() where(:item_id => nil) end
+  def late?
+    due_date && due_date < DateTime.now
+  end
 
-	def self.priority_sort
-		starred.sort_by_due + notStarred.sort_by_due
-	end
+  def self.sort_by_priority_and_due_date
+    where(starred: true).sort_by_due_date +
+    where(starred: false).sort_by_due_date
+  end
 
-	def self.sort_by_due
-		due.order("due_date, name") + notDue.order("created_at, name")
-	end
+  def self.sort_by_due_date
+    where.not(due_date: nil).order("due_date, name") +
+    where(due_date: nil).order("created_at, name")
+  end
 
 end
 

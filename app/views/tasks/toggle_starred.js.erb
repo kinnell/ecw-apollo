@@ -1,7 +1,7 @@
 <% if @task.item_id? %>
-	$("#task-"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.item.tasks.incomplete.priority_sort %>");
+	$("#task-"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.item.tasks.incomplete.sort_by_priority_and_due_date %>");
 <% else %>
-	$("#task-"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.project.tasks.general.incomplete.priority_sort %>");
+	$("#task-"+<%= @task.id %>).parents(".tasks-list").html("<%= j render @task.project.tasks.general.incomplete.sort_by_priority_and_due_date %>");
 <% end %>
 
 $("#task-"+<%= @task.id %>).addClass("animated fadeIn");
