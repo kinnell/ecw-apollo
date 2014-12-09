@@ -11,7 +11,6 @@ class Task < ActiveRecord::Base
 	has_many :notes, as: :noteable
 
 	default_scope { includes(:project, :user, :notes) }
-
 	scope :completed, -> { where(completed: true) }
 	scope :incomplete, -> { where(completed: false) }
 
