@@ -65,5 +65,5 @@
                 = user.name
 
         .modal-footer
-          = link_to "Delete this Project", project, method: :delete, confirm: "Are you sure?", class: "btn btn-sm btn-danger"
+          = link_to "Delete this Project", project, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger"
           = f.submit "Save Project", class: "btn btn-sm btn-success"

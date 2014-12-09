@@ -1,5 +1,5 @@
 %tr
-  %td.text-center= print_job.number 
+  %td.text-center= print_job.number
   %td
     - if print_job.project_id
       = link_to print_job.name, project_path(print_job.project_id)
@@ -23,8 +23,7 @@
 
     = link_to print_job,
       method: :delete,
-      confirm: "Are you sure you want to delete this Print Job?",
-      data: { title: "Delete Print Job", toggle: "tooltip", placement: "bottom" },
+      data: { title: "Delete Print Job", toggle: "tooltip", placement: "bottom", confirm: "Are you sure you want to delete this Print Job?" },
       class: "button btn btn-xs btn-danger" do
       %i.fa.fa-trash
 

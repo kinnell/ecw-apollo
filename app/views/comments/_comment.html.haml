@@ -6,11 +6,11 @@
       .panel-body
         .arrow
         %h4
-          %b= comment.user_name 
+          %b= comment.user_name
           .pull-right
             = link_to [comment.project, comment], method: :delete,
               remote: true,
-              confirm: "Are you sure?" do
+              data: { confirm: "Are you sure?" } do
               %i.fa.fa-times
             = "#{time_ago_in_words(comment.created_at)} ago"
         %p= comment.content

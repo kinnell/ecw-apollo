@@ -13,7 +13,7 @@
             = link_to edit_project_item_path(item.project, item), remote: true do
               %i.fa.fa-pencil
           %li
-            = link_to [item.project, item], method: :delete, confirm: "Are you sure?" do
+            = link_to [item.project, item], method: :delete, data: { confirm: "Are you sure?" } do
               %i.fa.fa-trash-o
 
     = link_to "javascript:;",
