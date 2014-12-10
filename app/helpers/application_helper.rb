@@ -16,7 +16,6 @@ module ApplicationHelper
     ITEM_TYPES[type]["icon"] 
   end
 
-
   private
 
   STATUSES = {"In Queue" => {"label" => "info", "icon" => "list-ol"},
