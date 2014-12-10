@@ -1,18 +1,15 @@
 .btn-group.project-status
-  - status_hash_type = status_hash[project.status]["type"] if status_hash[project.status]
-  - status_hash_icon = status_hash[project.status]["icon"] if status_hash[project.status]
-
-  %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_hash_type}"}
-    %i.fa.fa-fw{class: "fa-#{status_hash_icon}"}
+  %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_label(project.status)}"}
+    %i.fa.fa-fw{class: "fa-#{status_icon(project.status)}"}
     = project.status
 
-  %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_hash_type}", data: { toggle: "dropdown" }}
+  %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_label(project.status)}", data: { toggle: "dropdown" }}
     %span.caret
     %span.sr-only Toggle Dropdown
 
   %ul.dropdown-menu.pull-right{role: "menu"}
 
-    - status_hash.keys.each do |status_name|
+    - statuses.each do |status_name|
       = link_to project_path(project, project: { status: status_name }), method: :patch do
         %li.dropdown-menu-item
           %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless project.status == status_name}"}

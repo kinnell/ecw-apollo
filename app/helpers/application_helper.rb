@@ -1,21 +1,36 @@
 module ApplicationHelper
 
-	def status_hash
-		status_hash = {"In Queue" => {"type" => "info", "icon" => "list-ol"},
-                    "In Progress" => {"type" => "primary", "icon" => "refresh"},
-                    "Waiting" => {"type" => "warning", "icon" => "spinner"},
-                    "On Hold" => {"type" => "default", "icon" => "pause"},
-                    "Cancelled" => {"type" => "danger", "icon" => "times-circle"},
-                    "Completed" => {"type" => "success", "icon" => "check-circle"}}
-	end
+  def statuses
+    STATUSES.keys
+  end
+  
+  def status_icon(status)
+    STATUSES[status]["icon"]
+  end
 
-	def item_type_hash
-		item_type_hash = {"Graphic" => {"icon" => "file-image-o"},
-                    "Print" => {"icon" => "file-text-o"},
-                    "Video" => {"icon" => "file-video-o"},
-                    "Web" => {"icon" => "file-code-o"},
-                 		nil => {"icon" => "file-o"},
-                    "" => {"icon" => "file-o"}}
-	end
+  def status_label(status)
+    STATUSES[status]["label"]
+  end
+
+  def item_type_icon(type)
+    ITEM_TYPES[type]["icon"] 
+  end
+
+
+  private
+
+  STATUSES = {"In Queue" => {"label" => "info", "icon" => "list-ol"},
+              "In Progress" => {"label" => "primary", "icon" => "refresh"},
+              "Waiting" => {"label" => "warning", "icon" => "spinner"},
+              "On Hold" => {"label" => "default", "icon" => "pause"},
+              "Cancelled" => {"label" => "danger", "icon" => "times-circle"},
+              "Completed" => {"label" => "success", "icon" => "check-circle"}}
+
+  ITEM_TYPES = {"Graphic" => {"icon" => "file-image-o"},
+                "Print" => {"icon" => "file-text-o"},
+                "Video" => {"icon" => "file-video-o"},
+                "Web" => {"icon" => "file-code-o"},
+                nil => {"icon" => "file-o"},
+                "" => {"icon" => "file-o"}}
 
 end

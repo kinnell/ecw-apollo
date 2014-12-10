@@ -1,7 +1,7 @@
 %li.item{id: "item-#{item.id}"}
 
   %h4
-    %i.fa.fa-fw.item-type-icon{class: "fa-#{item_type_hash[item.item_type]["icon"]}"}
+    %i.fa.fa-fw.item-type-icon{class: "fa-#{item_type_icon(item.item_type)}"}
     .item-name= item.name
 
     %ul.tools-dropdown
@@ -22,31 +22,21 @@
       %i.fa.fa-plus
 
     .btn-group.item-status.pull-right
-      - status_hash_type = status_hash[item.status]["type"] if status_hash[item.status]
-      - status_hash_icon = status_hash[item.status]["icon"] if status_hash[item.status]
-
-      %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_hash_type}"}
-        %i.fa.fa-fw{class: "fa-#{status_hash_icon}"}
+      %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_label(item.status)}"}
+        %i.fa.fa-fw{class: "fa-#{status_icon(item.status)}"}
         = item.status
 
-      %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_hash_type}", data: { toggle: "dropdown" }}
+      %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_label(item.status)}", data: { toggle: "dropdown" }}
         %span.caret
         %span.sr-only Toggle Dropdown
 
       %ul.dropdown-menu.pull-right{role: "menu"}
 
-        - for s in status_hash.keys
-          %li.dropdown-menu-item{onclick: "$(this).find('form').trigger('submit.rails');"}
-
-            = form_for [item.project, item] do |f|
-              %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless item.status == s}"}
-
-              = f.hidden_field :status, value: s
-
-              = f.hidden_field :end_date,
-                value: (s == "Completed" || s == "Cancelled") ? DateTime.now : nil
-
-              = s
+        - statuses.each do |status_name|
+          = link_to project_item_path(item.project, item, item: { status: status_name }), method: :patch do
+            %li.dropdown-menu-item
+              %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless item.status == status_name}"}
+              = status_name
 
   .collapse{id: "item-#{item.id}-addTask"}
     = render "tasks/new", item: item
