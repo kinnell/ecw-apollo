@@ -1,0 +1,16 @@
+.btn-group.item-status.pull-right
+  %button.btn.btn-xs.btn-title.dropdown-btn{type: "button", class: "btn-#{status_label(item.status)}"}
+    %i.fa.fa-fw{class: "fa-#{status_icon(item.status)}"}
+    = item.status
+
+  %button.btn.btn-xs.dropdown-toggle.dropdown-btn{type: "button", class: "btn-#{status_label(item.status)}", data: { toggle: "dropdown" }}
+    %span.caret
+    %span.sr-only Toggle Dropdown
+
+  %ul.dropdown-menu.pull-right{role: "menu"}
+
+    - statuses.each do |status_name|
+      = link_to project_item_path(item.project, item, item: { status: status_name }), method: :patch do
+        %li.dropdown-menu-item
+          %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless item.status == status_name}"}
+          = status_name

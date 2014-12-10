@@ -7,26 +7,33 @@
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
         = link_to "[#{@project.product_name}]", @project.product
         = @project.name.truncate(60)
+
         .header-block
           %button.btn.btn-xs.btn-warning{data: { toggle: "modal", target: "#edit-project-#{@project.id}-modal" }}
             %i.fa.fa-pencil.btn-margin
+
         .header-block
           = render "projects/status", project: @project
+
         .header-block
           %b= @project.end_date ? "End Date:" : "Due Date:"
           - if @project.end_date
             = @project.end_date.strftime("%D")
           - else
             = @project.due_date ? @project.due_date.strftime("%D") : "None"
+
         .header-block
           %b Start Date: 
           = @project.created_at.strftime("%D")
+
         .header-block
           %b Assigned:
           = render @project.users.uniq
+
         .header-block
           %b Assigned By:
           = @project.assigned_by.present? ? @project.assigned_by : "No One"
+
       = render "projects/edit", project: @project
 
 .col-md-8{style: "padding-top: 55px;"}
