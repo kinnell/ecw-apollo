@@ -5,7 +5,7 @@
         .project-starred
           =link_to project_path(@project, project: { starred: @project.starred.! }), method: :patch do
             %i.fa{class: "#{@project.starred ? 'fa-star' : 'fa-star-o'}"} 
-        = link_to "[#{@project.product_name}]", @project.product
+        = link_to "[#{@project.product_name}]", products_path 
         = @project.name.truncate(60)
 
         .header-block
@@ -36,7 +36,7 @@
 
       = render "projects/edit", project: @project
 
-.col-md-8{style: "padding-top: 55px;"}
+.col-md-7{style: "padding-top: 55px;"}
 
   .panel.panel-default.project-tasks-panel
     .panel-heading
@@ -52,7 +52,7 @@
         = render "projects/general_tasks", project: @project
         = render @project.items.order("created_at")
 
-.col-md-4{style: "padding-top: 55px;"}
+.col-md-5{style: "padding-top: 55px;"}
 
   .panel.panel-default.project-details-panel
 

@@ -24,7 +24,7 @@
   .form-group.col-md-2
     %label Status:
     = f.select :status_eq,
-      options_for_select(status_hash.keys.map{ |s| [s, s] }, q.status_eq),
+      options_for_select(statuses.map{ |s| [s, s] }, q.status_eq),
       { include_blank: "All Statuses" },
       class: "form-control input-sm",
       onchange: "$(this).parents('form').trigger('submit.rails');"

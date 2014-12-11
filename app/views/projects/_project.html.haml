@@ -22,8 +22,8 @@
       = project.due_date.strftime("%D") if project.due_date
 
   %td.text-center
-    %span.label{class: "label-#{status_hash[project.status]["type"]}", style: "padding: 5px 10px;"}
-      %i.fa.fa-fw{class: "fa-#{status_hash[project.status]["icon"]}"}
+    %span.label{class: "label-#{status_label(project.status)}", style: "padding: 5px 10px;"}
+      %i.fa.fa-fw{class: "fa-#{status_icon(project.status)}"}
       = project.status
 
   %td.text-center
