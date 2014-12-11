@@ -27,10 +27,7 @@
                 = render user
               %td= user.name
               %td.text-center
-                - if user.confirmed?
-                  %span.label.label-success Confirmed
-                - else
-                  %span.label.label-default Not Confirmed
+                %span.label.label-success= user.status
               %td= user.email
               %td.text-center= user.created_at.strftime("%D")
               %td.text-center= user.last_sign_in_at ? "#{time_ago_in_words(user.last_sign_in_at)} ago" : "Never"
