@@ -1,6 +1,6 @@
 - if tasks.incomplete.any?
   %hr
-  .title-sm= "Remaining Tasks (#{tasks.incomplete.count})"
+  -# .title-sm= "Remaining Tasks (#{tasks.incomplete.count})"
   %ul.tasks-list{id: "item-#{item_id}-incompleteTasks"}= render tasks.incomplete.sort_by_priority_and_due_date
 
 - if tasks.completed.any?

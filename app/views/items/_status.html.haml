@@ -10,7 +10,7 @@
   %ul.dropdown-menu.pull-right{role: "menu"}
 
     - statuses.each do |status_name|
-      = link_to project_item_path(item.project, item, item: { status: status_name }), method: :patch do
+      = link_to project_item_path(item.project, item, item: { status: status_name }), method: :patch, remote: true do
         %li.dropdown-menu-item
           %i.fa.fa-caret-right{style: "#{'visibility: hidden' unless item.status == status_name}"}
           = status_name

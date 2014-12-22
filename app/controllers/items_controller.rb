@@ -16,7 +16,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     flash[:notice] = @item.errors.empty? ? "Item was successfully updated." : "Error: Item was not updated."
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def destroy

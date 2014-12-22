@@ -1,0 +1,3 @@
+$("#item-"+<%= @item.id %>).html("<%= j render "item", project: @item.project, item: @item %>")
+$("#item-"+<%= @item.id %>).fadeOut(100).fadeIn(100).fadeOut(50).fadeIn(50)
+$.growl("Item was successfully updated.", { type: "success", allow_dismiss: false, placement: { from: "bottom", align: "right" }, timer: 5000, animate: { enter: "animated bounceIn", exit: "animated fadeOut" } });
