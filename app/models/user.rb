@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def status
     if confirmed?
-      if active
+      if self.active == true
         "Active"
       elsif
         "Inactive"
