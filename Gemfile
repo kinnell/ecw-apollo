@@ -13,7 +13,7 @@ gem "jquery-ui-rails"
 gem "turbolinks"
 gem "jquery-turbolinks"
 gem "jbuilder", "~> 1.2"
-gem "puma"
+gem "thin"
 
 gem "devise", "~> 3.1.1"
 gem "newrelic_rpm"
