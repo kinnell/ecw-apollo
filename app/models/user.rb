@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_attached_file :profile_photo, styles: { medium: "200x200#", thumb: "75x75#", small: "50x50", tiny: "25x25" }, default_url: "turtle75.jpg"
 
   def status
-    if confirmed
+    if confirmed?
       if active
         "Active"
       elsif
